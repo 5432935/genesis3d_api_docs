@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geTClipIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geTClip</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Triangle Clipping to the screen rectangle</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\tclip.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geTClipIndexed.htm#SetupEdges">SetupEdges</A>, <A HREF="geTClipIndexed.htm#Push">Push</A>, <A HREF="geTClipIndexed.htm#Pop">Pop</A>, <A HREF="geTClipIndexed.htm#SetTexture">SetTexture</A>, <A HREF="geTClipIndexed.htm#Triangle">Triangle</A></P>
+<B><FONT COLOR="#000080"><P>Overview: </B></FONT><A HREF="geTClipIndexed.htm#Overview">view</A></P>
+<P>&nbsp;Additons for Genesis3D v1.6: <A HREF="geTClipIndexed.htm#SetRenderFlags">SetRenderFlags</A>, <A HREF="geTClipIndexed.htm#UnclippedTriangle">UnclippedTriangle</A></P>
+<B><FONT COLOR="#000080"><hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</P><DIR>
+<DIR>
+
+</B></I></FONT><P>TClip is a state machine like OpenGL</P>
+<P>you should call it like :</P>
+<P>&#9;gTClip_Push()</P>
+<P>&#9;gTClip _SetupEdges()</P>
+<P>&#9;gTClip _SetTexture()</P>
+<P>&#9;gTClip _Triangle()</P>
+<P>&#9;gTClip _Triangle()</P>
+<P>&#9;gTClip _SetTexture()</P>
+<P>&#9;gTClip _Triangle()</P>
+<P>&#9;gTClip _Triangle()</P>
+<P>&#9;...</P>
+<P>&#9;gTClip _Pop()</P>
+<P><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="SetupEdges"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> BackEdge);</P>
+</B><P>Note: prior to Genesis3D v1.6, </FONT><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><FONT COLOR="#0000ff"> was not present.</FONT><B><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Push"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTClip_Push</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><BLOCKQUOTE><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Pop"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTClip_Pop</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetTexture"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080"> * Bitmap);</P>
+</B></FONT><BLOCKQUOTE><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Triangle"><A NAME="y"></A></A><A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A><B><FONT COLOR="#000080"> TriVertex[3]);</P><DIR>
+<DIR>
+
+</B></FONT><P><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></P></DIR>
+</DIR>
+
+<hr>
+<P><A NAME="SetRenderFlags"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A> <B><FONT COLOR="#000080">newflags</B></FONT>);&#9;</P>
+<P>Added for Genesis3D v1.6</P>
+<P>Note:  Unclear what flags set <B>newflags</B> belongs to.  Perhaps <A HREF="geWorldIndexed.htm#Rendering_Flags">these</A>?</P><DIR>
+<DIR>
+
+<P><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></P></DIR>
+</DIR>
+
+<hr>
+<P><A NAME="UnclippedTriangle"></A><A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A><B><FONT COLOR="#000080"> TriVertex[3]</B></FONT>);</P>
+<P>Added for Genesis3D v1.6</P><DIR>
+<DIR>
+
+<P><A HREF="geTClipIndexed.htm#Contents">Return to Contents</A></P></DIR>
+</DIR>
+
+<hr>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:09:40 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:52 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

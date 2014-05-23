@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geWBitmapIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geWBitmap</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Creates geBitmaps from the data in the BSP, that are used to render</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\World\WBitmap.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geWBitmapIndexed.htm#Create">Create</A>, <A HREF="geWBitmapIndexed.htm#Destroy">Destroy</A>, <A HREF="geWBitmapIndexed.htm#GetWBitmapCount">GetWBitmapCount</A>, <A HREF="geWBitmapIndexed.htm#GetWBitmapByBitmap">GetWBitmapByBitmap</A>, <A HREF="geWBitmapIndexed.htm#GetWBitmapByIndex">GetWBitmapByIndex</A>, <A HREF="geWBitmapIndexed.htm#GetBitmapByIndex">GetBitmapByIndex</A>, <A HREF="geWBitmapIndexed.htm#GetBitmapByName">GetBitmapByName</A>, <A HREF="geWBitmapIndexed.htm#CreateAllWBitmaps">CreateAllWBitmaps</A>, <A HREF="geWBitmapIndexed.htm#DestroyAllWBitmaps">DestroyAllWBitmaps</A>, <A HREF="geWBitmapIndexed.htm#GetFlags">GetFlags</A>, <A HREF="geWBitmapIndexed.htm#GetBitmap">GetBitmap</A>, <A HREF="geWBitmapIndexed.htm#GetVisFrame">GetVisFrame</A>, <A HREF="geWBitmapIndexed.htm#SetVisFrame">SetVisFrame</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="geWBitmapIndexed.htm#Constants">view</A></P>
+<B><FONT COLOR="#000080"><P>Changes for Genesis3D v1.6</B></FONT>: <A HREF="geWBitmapIndexed.htm#Pool_GetWNameByBitmap">Pool_GetWNameByBitmap</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define&nbsp;&nbsp;TEXTURE_SKYBOX&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;&nbsp;&nbsp;// This is a skybox texture</DD>
+<DD>//&nbsp;TexInfo Flags (Global shared info about each surface)<BR>
+#define&nbsp;&nbsp;TEXINFO_MIRROR&nbsp;&nbsp;&nbsp;&nbsp;                (1&lt;&lt;0)<BR>
+#define&nbsp;&nbsp;TEXINFO_FULLBRIGHT&nbsp;&nbsp;&nbsp;         (1&lt;&lt;1)&nbsp;&nbsp;&nbsp;&nbsp;// No lightmap/fullbright<BR>
+#define&nbsp;&nbsp;TEXINFO_SKY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      (1&lt;&lt;2)&nbsp;&nbsp;&nbsp;&nbsp;// Sky face<BR>
+#define&nbsp;&nbsp;TEXINFO_LIGHT&nbsp;&nbsp;&nbsp;&nbsp;                    (1&lt;&lt;3)&nbsp;&nbsp;&nbsp;&nbsp;// Face produces light<BR>
+#define&nbsp;&nbsp;TEXINFO_TRANS&nbsp;&nbsp;&nbsp;&nbsp;                  (1&lt;&lt;4)&nbsp;&nbsp;&nbsp;&nbsp;// Face has transparency<BR>
+#define&nbsp;&nbsp;TEXINFO_GOURAUD&nbsp;&nbsp;&nbsp;&nbsp;            (1&lt;&lt;5)<BR>
+#define&nbsp;&nbsp;TEXINFO_FLAT&nbsp;&nbsp;&nbsp;&nbsp;                      (1&lt;&lt;6)<BR>
+#define&nbsp;&nbsp;TEXINFO_NO_LIGHTMAP&nbsp;&nbsp;&nbsp;    (1&lt;&lt;15)</DD>
+<DD>#define&nbsp;&nbsp;WBITMAP_SKYBOX&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;&nbsp;&nbsp;// This is a skybox wbitmap</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P><A NAME="geWBitmap"></A>typedef struct geWBitmap&nbsp;</FONT><FONT COLOR="#800000">geWBitmap</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<P>Notes from WBitmap.c:</P>
+<P>//&#9;WBitmap is the original owner of all the bitmaps in the .BSP file.  They are kind of a hack right now.<BR>
+//&#9;Right now, the textures are raw data in the .BSP.  This module, takes that data, and creates geBitmaps<BR>
+//&#9;for each texture in the.BSP file.  The faces are then referred to these geBitmaps, and NOT the texture data.<BR>
+//&#9;The texture data can then be freed.<BR>
+//&#9;The way it really should eventually work, is that the bitmaps will be in the .BSP upon load time!!!<BR>
+</P><DIR>
+<DIR>
+
+<P><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P></DIR>
+</DIR>
+
+<P><A NAME="geWBitmap_Pool"></A>typedef struct geWBitmap_Pool&nbsp;&nbsp;</FONT><FONT COLOR="#800000">geWBitmap_Pool</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<P>Notes from WBitmap.c:</P>
+<FONT COLOR="#000080"><P>     </FONT>geWBitmap_Pool contains a  linear array of WBitmaps created when the Pool was created</P><DIR>
+
+<BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* geWBitmap_</FONT><FONT COLOR="#800000">Pool_Create</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</A><B><FONT COLOR="#000080">* BSPData);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> geWBitmap_</FONT><FONT COLOR="#800000">Pool_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetWBitmapCount"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> geWBitmap_</FONT><FONT COLOR="#800000">Pool_GetWBitmapCount</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetWBitmapByBitmap"></A><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">* geWBitmap_</FONT><FONT COLOR="#800000">Pool_GetWBitmapByBitmap</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetWBitmapByIndex"></A><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">* geWBitmap_</FONT><FONT COLOR="#800000">Pool_GetWBitmapByIndex</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool, </B></FONT><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> Index);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBitmapByIndex"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> Index);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBitmapByName"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* geWBitmap_</FONT><FONT COLOR="#800000">Pool_GetBitmapByName</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * BitmapName);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateAllWBitmaps"></A><A HREF="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</A><B><FONT COLOR="#000080">* BSPData);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="DestroyAllWBitmaps"></A>void</FONT><B><FONT COLOR="#000080"> geWBitmap_</FONT><FONT COLOR="#800000">Pool_DestroyAllWBitmaps</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A><B><FONT COLOR="#000080">* Pool);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetFlags"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geWBitmap_GetFlags</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">* WBitmap);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBitmap"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">geWBitmap_GetBitmap</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">* WBitmap);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetVisFrame"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geWBitmap_GetVisFrame</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWBitmapIndexed.htm#geWBitmap">geWBitmap</A><B><FONT COLOR="#000080">* WBitmap);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetVisFrame"><A NAME="y"></A></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> VisFrame);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#000080"><P><A NAME="Pool_GetWNameByBitmap"></A>char*</FONT> <B><FONT COLOR="#800000">geWBitmap_Pool_GetWNameByBitmap</B></FONT>(<A HREF="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</A>* <B><FONT COLOR="#000080">Pool</B></FONT>, <FONT COLOR="#000080">const </FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A>* <B><FONT COLOR="#000080">Bitmap</B></FONT>);</P>
+<P>Added for Genesis3D v1.6</P>
+<P>Notes:  comments from the code indicate that the purpose of this function is to "// change texture name." </P>
+<P>The code itself searches through <B><FONT COLOR="#000080">Pool</B></FONT>, and if a <A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A> found, NULL is returned.</P>
+<BLOCKQUOTE><A HREF="geWBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+</BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:15:13 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:20 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

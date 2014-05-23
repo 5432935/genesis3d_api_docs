@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geExtBoxIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geExtBox</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Axial aligned bounding box (extent box) support</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Math\ExtBox.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geExtBoxIndexed.htm#ContainsPoint">ContainsPoint</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#ExtendToEnclose">ExtendToEnclose</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#GetScaling">GetScaling</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#GetTranslation">GetTranslation</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#Intersection">Intersection</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="geExtBoxIndexed.htm#IsValid">IsValid</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#LinearSweep">LinearSweep</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#RayCollision">RayCollision</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#Scale">Scale</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#Set">Set</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#SetToPoint">SetToPoint</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#SetScaling">SetScaling</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#SetTranslation">SetTranslation</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#Translate">Translate</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geExtBoxIndexed.htm#Union">Union</A><A NAME="x"></A></P>
+<P>&nbsp;<B><FONT COLOR="#000080">Types: </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A></P>
+<FONT COLOR="#000080"><P>Additions in Genesis3D v1.6:</FONT> <B>None</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="geExtBox"></A>geExtBox</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<B><BLOCKQUOTE>geExtBox represents and axially aligned extents box.</BLOCKQUOTE>
+</B><BLOCKQUOTE>typedef struct geExtBox { <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A> Min; <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A> Max; <BR>
+} geExtBox; </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="ContainsPoint"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">&nbsp;* Point);</B></FONT> </P>
+<B><BLOCKQUOTE>This function tests whether the point Point is contained by the extents box B.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="ExtendToEnclose"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Point );</B></FONT> </P>
+<B><BLOCKQUOTE>This function extends the extents box B so as to enclose the point Point.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Extend a box to encompass the passed point.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetScaling"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pScale);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the width, height and depth of the extent box B in the vector pScale.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetTranslation"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pCenter);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the coordinates of the center of extent box B in the vector pCenter (I think).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Intersection"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> geExtBox_Intersection (</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* B1, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* B2, </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* Result);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the extent box Result which results from the intersection of the extent boxes B1 and B2.&nbsp; If there is no intersection then the function returns </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> and does not alter Result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Return result of box intersection. If no intersection, returns <A HREF="BasetypesIndexed.htm#NULL">NULL</A>) with the intersected box, bResult may be one of b1 or b2.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="IsValid"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> geExtBox_IsValid(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* B);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks that B is a valid extents box.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Test a box for validity ( non <A HREF="BasetypesIndexed.htm#NULL">NULL</A> and max = min )</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="LinearSweep"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* EndPoint, </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* EnclosingBox);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates an extents box that encompasses BoxToSweep along the linear path from StartPoint to EndPoint and returns it in EnclosingBox.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Creates a box that encloses the entire area of a box that moves along linear path</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RayCollision"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Normal);</B></FONT> </P>
+<B><BLOCKQUOTE>This function computes the intersection of the ray defined by Start and End with the extents box B, returning the collision point T and the normal of the extents box at T Normal.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Collides a ray with box B.&nbsp; The ray is directed, from Start to End.&nbsp; Only returns a ray hitting the outside of the box.&nbsp; On success, <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, Normal is the surface normal of the box where the collision occured.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Scale"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> DZ);</B></FONT> </P>
+<B><BLOCKQUOTE>This function scales the extents box B about its center by (DX, DY, DZ).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Set"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Z2);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the elements of the extents box B.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Set the values in a box.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetToPoint"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Point);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets both the Min and Max of the extents box B to Point.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: Set box Min and Max to the passed point.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetScaling"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pScale);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the scaling of the set box B to the vector pScale.&nbsp; This differs from geExtBox_Scale in that geExtBox_Scale is relative to its original scale whereas geExtBox_SetScaling simply utilizes the center point and sets Min and Max up so that the scaling equals pScale.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetTranslation"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pCenter );</B></FONT> </P>
+<B><BLOCKQUOTE>This function moves the extents box B so that it is centered at pCenter.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Translate"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> DZ );</B></FONT> </P>
+<B><BLOCKQUOTE>This function moves the extent box B by (DX,DY,DZ).&nbsp; This is relative movement in comparison to SetTranslation's absolute.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Union"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> geExtBox_Union(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* B1, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* B2, </B></FONT><A HREF="geExtBoxIndexed.htm#geExtBox">geExtBox</A><B><FONT COLOR="#000080">* Result);</B></FONT> </P>
+<B><BLOCKQUOTE>This function computes the union of extent boxes B1 and B2 returning the result in Result.&nbsp; The union of 2 extent boxes is the extent box that minimally contains both.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from EXTBOX.H: computes union of b1 and b2 and returns in bResult.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geExtBoxIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+&nbsp; </P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:19:24 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:04 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

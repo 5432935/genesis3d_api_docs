@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePathIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>gePath</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Time-indexed keyframe creation, maintenance, and sampling.</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\bodyinst.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents: </P>
+</I></FONT><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePathIndexed.htm#Create">Create</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#CreateCopy">CreateCopy</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#CreateFromFile">CreateFromFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#CreateRef">CreateRef</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#Destroy">Destroy</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#DeleteKeyframe">DeleteKeyframe</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#GetKeyframe">GetKeyframe</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#GetKeyframeCount">GetKeyframeCount</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#GetKeyframeIndex">GetKeyframeIndex</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#GetTimeExtents">GetTimeExtents</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#InsertKeyframe">InsertKeyframe</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#ModifyKeyframe">ModifyKeyframe</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#OffsetTimes">OffsetTimes</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#Sample">Sample</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#SampleChannels">SampleChannels</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePathIndexed.htm#WriteToFile">WriteToFile</A><A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath,</FONT></A><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePathIndexed.htm#gePath_Interpolator">gePath_Interpolator</A></P>
+<B><FONT COLOR="#000080"><P>Constants: </B></FONT><A HREF="gePathIndexed.htm#Constants">view</A></P>
+<P>Additions for Genesis3D v1.6: <B>None</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<FONT FACE="Courier New,Courier"><BLOCKQUOTE>#define GE_PATH_ROTATION_CHANNEL&nbsp;&nbsp;&nbsp; 1</FONT> <BR>
+<FONT FACE="Courier New,Courier">#define GE_PATH_TRANSLATION_CHANNEL 2</FONT> <BR>
+<FONT FACE="Courier New,Courier">#define GE_PATH_ALL_CHANNELS (GE_PATH_ROTATION_CHANNEL | GE_PATH_TRANSLATION_CHANNEL)</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="gePath"></A>gePath</P>
+</FONT></STRONG><BLOCKQUOTE>typedef struct _gePath gePath;</BLOCKQUOTE>
+<BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp; </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="gePath_Interpolator"></A>gePath_Interpolator</B></FONT> </P>
+<P>typedef enum{ <BR>
+&nbsp;&nbsp;&nbsp; GE_PATH_INTERPOLATE_LINEAR&nbsp; = 0, <FONT COLOR="#008000">// linear blend for translation or rotation channel </FONT><BR>
+&nbsp;&nbsp;&nbsp; GE_PATH_INTERPOLATE_HERMITE,&nbsp;<FONT COLOR="#008000"> // hermite cubic spline for translation channel </FONT><BR>
+&nbsp;&nbsp;&nbsp; GE_PATH_INTERPOLATE_SLERP,&nbsp;&nbsp; <FONT COLOR="#008000">// spherical-linear blend for rotation channel </FONT><BR>
+&nbsp;&nbsp;&nbsp; GE_PATH_INTERPOLATE_SQUAD,&nbsp;&nbsp; <FONT COLOR="#008000">// higher order blend for rotation channel 'G1' continuity </FONT><BR>
+&nbsp;&nbsp;&nbsp; <FONT COLOR="#00ff00">//GE_PATH_INTEROPLATE_TRIPOD</FONT>,&nbsp;&nbsp;<FONT COLOR="#008000"> // not supported yet. </FONT><BR>
+&nbsp;&nbsp;&nbsp; GE_PATH_INTERPOLATE_HERMITE_ZERO_DERIV = 7 <FONT COLOR="#008000">// hermite cubic with zero derivative at keyframes ('easing' curve) </FONT><BR>
+}gePath_Interpolator;</P>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<B><I><FONT SIZE=5 COLOR="#0000ff">Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Looped);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> with the specified </B><A HREF="gePathIndexed.htm#gePath_Interpolator">gePath_Interpolator</A><B>s for TranslationInterpolation and RotationInterpolation.&nbsp; If Looped is </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> then the path is a looped path in which case the first and last points of the path should be identical.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: creates new gePath. A looping path should have the same first &amp; last point.&nbsp; The path generator will choose arbitrarily between these points for a sample exactly at the end of the loop.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateCopy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> gePath_CreateCopy(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* P);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> as a copy of the specified </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> from the specifed </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> which may be either a binary or ascii path file.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: loads a file&nbsp; (binary or ascii)</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateRef"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> gePath_CreateRef(</B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* P);</B></FONT> </P>
+<B><BLOCKQUOTE>This function increases the reference count for the specifed </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> object by one.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> gePath_Destroy(</B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">** PP);</B></FONT> </P>
+<B><BLOCKQUOTE>This function decreases the reference count for the specified </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> by one.&nbsp; If the reference count reaches zero then all resources for the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> are released.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Return: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: destroys path* PP</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DeleteKeyframe"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> gePath_DeleteKeyframe(</B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> ChannelMask);</B></FONT> </P>
+<B><BLOCKQUOTE>This function deletes the channels specifed by the ChannelMask from the Index indexed keyframe of </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: deletes the nth keyframe</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetKeyframe"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Matrix);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns a transformation matrix in Matrix for specified index Index and channel mask Channel of the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P.&nbsp; The time for the specified index is also return in Time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: retrieves keyframe[index], and it's time</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetKeyframeCount"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> gePath_GetKeyframeCount(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Channel);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the number of keyframes of type Channel defined in </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: retrieves count of keyframes for a specific channel</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetKeyframeIndex"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Time);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the index for the keyframe of type Channel at time Time of </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P.&nbsp; If no keyframe exists for the specifed time and channel, -1 is returned.&nbsp; Note that Channel must be either </B><FONT FACE="Courier New,Courier">GE_PATH_ROTATION_CHANNEL </FONT><B>or</B><FONT FACE="Courier New,Courier"> GE_PATH_TRANSLATION_CHANNEL.</FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the index, or -1 if specifed keyframe does not exist.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: retrieves the index of the keyframe at a specific time for a specific channel.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTimeExtents"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080">* EndTime);</B></FONT> </P>
+<B><BLOCKQUOTE>This function gets the start and end times for the given </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> and no times if there are no keys defined in the path.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: gets the time for the first and last keys in the path (ignoring looping). if there are no keys, return <A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A> if there are keys. </BLOCKQUOTE>
+<B><BLOCKQUOTE>Questions:</B> <BR>
+&nbsp;&nbsp;&nbsp; I said start and end time above, PATH.H says time of first and last frame; are these equivalent?&nbsp; In other words, is there easing before the first frame or after the last frame or does the path simply end?</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="InsertKeyframe"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Matrix);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new keyframe in path P at time T for the channel(s) specified Time as defined by the transform Matrix.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: inserts a keyframe at a specific time.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ModifyKeyframe"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Matrix);</B></FONT> </P>
+<B><BLOCKQUOTE>This function updates the keyframe in path P at index Index for the specified channel(s) as defined by the transform Matrix.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="OffsetTimes"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> TimeOffset);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adjusts the time of all keyframes in path P of type ChannelMask starting with StartingIndex to the last frame by TimeOffset.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: slides all samples in path starting with StartingIndex down by TimeOffset </BLOCKQUOTE>
+<B><BLOCKQUOTE>Questions:</B> <BR>
+&nbsp;&nbsp;&nbsp; Can TimeOffset be negative (in which case it would move the time up)?&nbsp; What affect would it have to move a keyframes time so that it occurs earlier than the previous indexed frame?&nbsp; Are keyframes assigned assumed to be sorted by time?</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Sample"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Matrix);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the transformation Matrix for the path P at time Time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: returns a transform matrix sampled at 'Time'. p is not <FONT COLOR="#0000ff">const</FONT> because information is cached in p for next sample</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SampleChannels"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Translation);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the Rotation and Translation for the path P at time Time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: returns a rotation and a translation for the path at 'Time' p is not <FONT COLOR="#0000ff">const</FONT> because information is cached in p for next sample</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToBinaryFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P out to </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> F in binary format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: dumps a minimal binary image for fastest reading</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> P out to </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> in ascii format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PATH.H: dumps formatted ascii to the file.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePathIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:25:27 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:23 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

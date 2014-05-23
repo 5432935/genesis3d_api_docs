@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>TimerIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>Timer</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: A nice little profiling utility</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\timer.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="TimerIndexed.htm#Start">Start</A>, <A HREF="TimerIndexed.htm#Stop">Stop</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Variables: </B></FONT><A HREF="TimerIndexed.htm#Variables">view</A></P>
+<B><FONT COLOR="#000080"><P>Macros:&nbsp;</B></FONT><A HREF="TimerIndexed.htm#Macros">view</A></P>
+<B><FONT COLOR="#000080"><P>Tutorial: </B></FONT><A HREF="TimerIndexed.htm#Tutorial">view</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Variables"></A>Variables:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>extern FILE * timerFP;</P>
+<P>extern </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> timerCount;</P>
+<P>extern double time_Master;</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="TimerIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Macros"></A>Macros:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>#ifdef DO_TIMER&nbsp;</P>
+</B></FONT><DL>
+<DD>&nbsp;</DD>
+<DD>#pragma message("timer ON")</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_VARS(func)&nbsp;static double time_##func =0.0;&nbsp;static tsc_type tsc_##func##1,tsc_##func##2;</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_P(func)&nbsp;readTSC(tsc_##func##1)</DD>
+<DD>#define TIMER_Q(func)&nbsp;do { readTSC(tsc_##func##2); time_##func += diffTSC(tsc_##func##1,tsc_##func##2); } while(0)</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_REPORT(func)&nbsp;fprintf(timerFP,"%-20s : %1.6f : %2.1f %%\n", (#func) , (time_##func)/(double)timerCount , (time_##func)*100.0/(time_Master) );</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_COUNT()&nbsp;timerCount++</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_START()&nbsp;Timer_Start();</DD>
+<DD>#define TIMER_STOP()&nbsp;Timer_Stop();</DD>
+<DD>&nbsp;</DD>
+</DL>
+<B><FONT COLOR="#000080"><P>#else&nbsp;&nbsp;</P>
+</B></FONT><DL>
+<DD>#pragma message("timer OFF")</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_VARS(func)</DD>
+<DD>#define TIMER_P(func)</DD>
+<DD>#define TIMER_Q(func)</DD>
+<DD>#define TIMER_REPORT(func)</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_COUNT()</DD>
+<DD>&nbsp;</DD>
+<DD>#define TIMER_START()</DD>
+<DD>#define TIMER_STOP()</DD>
+</DL>
+<B><FONT COLOR="#000080"><P>#endif </P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="TimerIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Tutorial"></A>Tutorial:</B></I></FONT> </P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>//example usage:</P>
+</B></FONT><P>&nbsp;</P>
+<CODE><P>TIMER_VARS(test1);</P>
+<P>TIMER_VARS(test2);</P>
+</CODE><P>&nbsp;</P>
+<FONT COLOR="#0000ff"><P>int</FONT><CODE> main(</CODE><FONT COLOR="#0000ff">int</FONT><CODE> argc,</CODE><FONT COLOR="#0000ff"> char</FONT><CODE> *argv[])</P>
+<P>{</P>
+</CODE><FONT COLOR="#0000ff"><P>int</FONT><CODE> i,j;</P>
+<P>&nbsp;&nbsp;timerFP = stdout;</P>
+<P>&nbsp;&nbsp;TIMER_START();</P>
+<P>&nbsp;&nbsp;&nbsp;TIMER_P(test1);</P>
+<P>&nbsp;&nbsp;&nbsp;for(i=0;i&lt;1000;i++)</P>
+<P>&nbsp;&nbsp;{</P>
+<P>&nbsp;&nbsp;&nbsp;TIMER_P(test2);</P>
+<P>&nbsp;&nbsp;&nbsp;j = 99/(i+1);</P>
+<P>&nbsp;&nbsp;&nbsp;TIMER_Q(test2);</P>
+<P>&nbsp;&nbsp;}</P>
+<P>&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;TIMER_Q(test1);</P>
+</CODE><P>&nbsp;</P>
+<CODE><P>&nbsp;TIMER_COUNT();</P>
+<P>&nbsp;TIMER_STOP();</P>
+</CODE><P>&nbsp;</P>
+<CODE><P>&nbsp;TIMER_REPORT(test2);</P>
+<P>&nbsp;TIMER_REPORT(test1);</P>
+</CODE><P>&nbsp;</P>
+<CODE><P>return 0;</P>
+<P>}</P>
+</CODE><B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT><A HREF="TimerIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Start"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Timer_Start</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="TimerIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Stop"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Timer_Stop</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="TimerIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:22:05 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:54 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

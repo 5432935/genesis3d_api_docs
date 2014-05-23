@@ -1,0 +1,572 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geSoundIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geSound</b></font> </p>
+
+<p><font color="#000080"><b>Description: DirectSound wrapper </b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\SOUND.h &amp;
+SOUND3D.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+</p>
+
+<p><font color="#000080"><b>Function: </b></font><a
+href="geSoundIndexed.htm#CreateSoundSystem">CreateSoundSystem</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#DestroySoundSystem">DestroySoundSystem</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#FreeSoundDef">FreeSoundDef</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#LoadSoundDef">LoadSoundDef</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#ModifySound">ModifySound</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#PlaySoundDef">PlaySoundDef</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#SetMasterVolume">SetMasterVolume</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#SoundIsPlaying">SoundIsPlaying</a><font
+color="#000080"><b>, </b></font><a href="geSoundIndexed.htm#StopSound">StopSound</a><font
+color="#000080"><b>, </b></font></p>
+
+<p><font color="#008000" size="5"><strong>geSound3d</strong></font><font
+color="#000080" size="5"><strong> </strong></font><font
+color="#000080"><b>Functions: </b></font><a href="geSoundIndexed.htm#GetConfig">GetConfig</a>,
+<a href="geSoundIndexed.htm#GetConfigIgnoreObstructions">GetConfigIgnoreObstructions</a></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="geSoundIndexed.htm#geSound_System">geSound_System</a>, <a href="geSoundIndexed.htm#geSound_Def">geSound_Def</a>,
+<a href="geSoundIndexed.htm#geSound">geSound</a></p>
+
+<p>Addition for Genesis3D v1.6: <a href="geSoundIndexed.htm#FreeAllChannels">FreeAllChannels</a>,
+<a href="geSoundIndexed.htm#GetDSound">GetDSound</a></p>
+
+<p><font color="#000080"><b>&nbsp;<hr></b></font></p>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font></p>
+
+<p><a name="geSound_System"></a><font color="#800000"><b>geSound_System</b></font></p>
+
+<p>typedef struct geSound_System&nbsp;&nbsp;geSound_System;</p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geSound_Def"><font color="#800000"><b>geSound_Def</b></font></a></p>
+
+<p>typedef struct geSound_Def&nbsp;&nbsp;geSound_Def;</p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geSound"></a><font color="#800000"><b>geSound</b></font></p>
+
+<p>typedef struct geSound&nbsp;&nbsp;geSound;</p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="CreateSoundSystem"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b>&nbsp; </b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geSound_CreateSoundSystem</b></font><font
+color="#000080"><b>(HWND hWnd);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a sound system for the given window
+    handle. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: The <a href="geSoundIndexed.htm#geSound_System">geSound_System</a><b>*
+    .</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GENESIS.H: this function is only
+    available if Windows.h is loaded before GENESIS.H</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="DestroySoundSystem"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b>&nbsp;&nbsp;</b></font><font color="#800000"><b>geSound_DestroySoundSystem</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* Sound);</b></font> </p>
+
+<blockquote>
+    <p>This function shuts down the specified SoundSystem and
+    frees up the resources. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p>&nbsp;</p>
+
+<p><a name="FreeAllChannels"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b>&nbsp;&nbsp;</b></font><b> </b><font
+color="#800000"><b>geSound_FreeAllChannels</b></font><b>(</b><a
+href="geSoundIndexed.htm#geSound_System">geSound_System</a><font color="#000080"><b>*
+SoundS</b></font><b>);</b></p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="FreeSoundDef"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geSound_FreeSoundDef</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a href="geSoundIndexed.htm#geSound_Def">geSound_Def</a><font
+color="#000080"><b>* SoundDef);</b></font> </p>
+
+<blockquote>
+    <p>This function removes a sound definition from the sound
+    system and frees up the resources. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetDSound"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><b>*
+</b><font color="#800000"><b>geSound_GetDSound</b></font><b>(</b><font
+color="#0000FF">void</font><b>);</b></p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: DSOUND object;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="LoadSoundDef"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geSoundIndexed.htm#geSound_Def">geSound_Def</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geSound_LoadSoundDef</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* File);</b></font> </p>
+
+<blockquote>
+    <p>This function loads a sound definition file for use in the
+    sound system.&nbsp; This call must be matched by a
+    FreeSoundDef to avoid memory leaks.&nbsp; I assume the sound
+    definition must be a valid wave file. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: The <a href="geSoundIndexed.htm#geSound_Def">geSound_Def</a>* . </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>Is there any required format for
+    the wave file?&nbsp; Are there any restrictions?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModifySound"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geSound_ModifySound</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a href="geSoundIndexed.htm#geSound">geSound</a><font
+color="#000080"><b>* Sound, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Volume, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Pan, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Frequency);</b></font> </p>
+
+<blockquote>
+    <p>This function provides a facility whereby a playing
+    sound's volume, panning, and the frequency can be changed.
+    The Sound* is that returned by geSound_PlaySoundDef. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    on success, <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    otherwise. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>What does it mean to change a
+    sounds frequency?&nbsp; Does this also change the playback
+    speed?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="PlaySoundDef"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geSoundIndexed.htm#geSound">geSound</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geSound_PlaySoundDef</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a href="geSoundIndexed.htm#geSound_Def">geSound_Def</a><font
+color="#000080"><b>* SoundDef, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Volume, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Pan, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Frequency, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> Loop);</b></font> </p>
+
+<blockquote>
+    <p>This function plays the previously loaded <a
+    href="geSoundIndexed.htm#geSound_Def">geSound_Def</a> with the specified
+    volume, pan, frequency, and optional looping.&nbsp; The
+    returned <a href="geSoundIndexed.htm#geSound">geSound</a>* can be used in calls
+    requiring a reference to the active sound such as
+    geSound_ModifySound. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: The <a href="geSoundIndexed.htm#geSound">geSound</a>*.</p>
+</blockquote>
+
+<blockquote>
+    <p>Note: One tutorial states that:<br>
+    <font color="#000080"><b>Volume</b></font> values range 0.0f
+    - 1.0f<br>
+    <font color="#000080"><b>Pan</b></font> can be set to 0.0f to
+    get sound playing to both speakers<br>
+    <font color="#000080"><b>Frequency</b></font> should be set
+    to 1.0f for regular sound.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetMasterVolume"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geSound_SetMasterVolume</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Volume );</b></font> </p>
+
+<blockquote>
+    <p>This function sets the overall SoundSystem volume level. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    if successful, <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    otherwise.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SoundIsPlaying"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geSound_SoundIsPlaying</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a href="geSoundIndexed.htm#geSound">geSound</a><font
+color="#000080"><b>* Sound);</b></font> </p>
+
+<blockquote>
+    <p>This function tests whether the specified Sound is
+    currently playing. </p>
+</blockquote>
+
+<blockquote>
+    <p>Return: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    is the specified sound is playing, <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="StopSound"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geSound_StopSound</b></font><font
+color="#000080"><b>(</b></font><a href="geSoundIndexed.htm#geSound_System">geSound_System</a><font
+color="#000080"><b>* SoundS, </b></font><a href="geSoundIndexed.htm#geSound">geSound</a><font
+color="#000080"><b>* Sound);</b></font> </p>
+
+<blockquote>
+    <p>This function will halt the currently playing specified
+    sound. This function may fail if the Sound is not currently
+    playing.&nbsp; </p>
+</blockquote>
+
+<blockquote>
+    <p>I believe this would not only stop a looping sound but
+    would stop a single loop sound at whatever point it is
+    called.&nbsp; I also suspect that replaying the sound would
+    start at the beginning of the sound_def not at the stopped
+    point. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetConfig"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geSound3D_GetConfig</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* CameraTransform, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* SoundPos, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Min, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Ds, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Volume, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Pan, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Frequency);</b></font> </p>
+
+<blockquote>
+    <p>This function can be used to compute the volume, pan,
+    frequency for a positional sound relative to the player's
+    position to simulate 3D sound.</p>
+    <p><font color="#000080">The goal of this function is to
+    return <strong>Volume</strong>, <strong>Pan</strong>, and <strong>Frequency</strong>.
+    These can then be used to execute </font><a
+    href="geSoundIndexed.htm#PlaySoundDef"><font color="#000080">geSound_PlaySoundDef</font></a><font
+    color="#000080"><strong>, </strong>so that the sound appears
+    3d i.e. far away sounds are soft, etc.</font></p>
+    <p><font color="#000080"><strong>World</strong>: the World
+    you are using<br>
+    <strong>CameraTransform</strong>: the transform used for
+    rendering (i.e. the camera transform)<br>
+    <strong>SoundPos</strong>: The position of the sound in the
+    world<br>
+    <strong>Min</strong>: Determines how the sound will decay
+    with distance from camera, as follows:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound
+    within Min distance --&gt; full volume<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound
+    further than Max distance (which is set to Min*10) --&gt; 0
+    volume (not heard)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In
+    between, volume is graded such that it is at half intensity
+    when twice Min distance<br>
+    <strong>Ds</strong>: If modeling sound from a moving object
+    (for example, a missle), then <strong>Ds</strong> should be
+    the speed of this object <u>towards the camera</u>. This
+    allows for doppler shifts, changing the frequency of the
+    sound based on specified speed. The units are
+    meters-per-second, with 331 mps being the velocity of sound
+    through air in standard conditions.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+    --&gt; no doppler shift (frequency returned will be 1.0f)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;331
+    --&gt; frequency is doubled (frequency returned will be
+    2.0f). <br>
+    <strong>Volume</strong>: the variable that will received the
+    output of this function. <br>
+    <strong>Pan</strong>: the variable that will received the
+    output of this function.<br>
+    <strong>Frequency: </strong>the variable that will received
+    the output of this function.</font></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing (but does change values of Volume, Pan,
+    Frequency)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetConfigIgnoreObstructions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b>&nbsp;</b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geSound3D_GetConfigIgnoreObstructions</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* MXForm, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* SndPos, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Min, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Ds, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Volume, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Pan, &nbsp;</b></font> <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Frequency);</b></font></p>
+
+<blockquote>
+    <p><font color="#000080">See Notes for </font><a
+    href="geSoundIndexed.htm#GetConfig"><font color="#000080">GetConfig</font></a><font
+    color="#000080"> above. This function differs from </font><a
+    href="geSoundIndexed.htm#GetConfig"><font color="#000080">GetConfig</font></a><font
+    color="#000080"> by allowing sounds to play even if position
+    of sound is not visible. For example, when an explosion
+    occurs around a corner--where you can't see it--do you want
+    the sound to be heard? If yes, use this function. If no, use </font><a
+    href="geSoundIndexed.htm#GetConfig"><font color="#000080">GetConfig</font></a><font
+    color="#000080">. Note: <strong>SoundPos</strong> from </font><a
+    href="geSoundIndexed.htm#GetConfig"><font color="#000080">GetConfig</font></a><font
+    color="#000080"> is renamed <strong>SndPos</strong> here, but
+    it means the same thing.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSoundIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:20:12 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:56 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

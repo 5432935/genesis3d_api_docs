@@ -1,0 +1,594 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>gePhysicsSystemIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>gePhysicsSystem</b></font> </p>
+
+<p><font color="#000080"><b>Description: Rigid body, constraint
+based physics system interface </b></font></p>
+
+<p>Source file:
+&#133;\genesis3d\OpenSource\Source\Physics\PhysicsSystem.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="gePhysicsSystemIndexed.htm#Create">Create</a>, <a href="gePhysicsSystemIndexed.htm#Destroy">Destroy</a>, <a
+href="gePhysicsSystemIndexed.htm#Iterate">Iterate</a>, <a href="gePhysicsSystemIndexed.htm#AddJoint">AddJoint</a>, <a
+href="gePhysicsSystemIndexed.htm#AddObject">AddObject</a>, <a href="gePhysicsSystemIndexed.htm#GetSourceConfigIndex">GetSourceConfigIndex</a>,
+<a href="gePhysicsSystemIndexed.htm#GetPhysobs">GetPhysobs</a>, <a href="gePhysicsSystemIndexed.htm#GetPhysjnts">GetPhysjnts</a>,
+<a href="gePhysicsSystemIndexed.htm#GetNumPhysobs">GetNumPhysobs</a>, <a
+href="gePhysicsSystemIndexed.htm#GetNumPhysjnts">GetNumPhysjnts</a>, <a
+href="gePhysicsSystemIndexed.htm#GetSumOfConstraintDimensions">GetSumOfConstraintDimensions</a></p>
+
+<p><a name="x"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>Types: </b></font><a href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a></p>
+
+<p><font color="#000080"><b>Notes:</b></font> <a href="gePhysicsSystemIndexed.htm#Notes">view</a></p>
+
+<p><font color="#000080"><strong>Sample Code</strong></font>: <a
+href="gePhysicsSystemIndexed.htm#SampleCode">view</a></p>
+
+<p><font color="#000080"><b>Changes for Genesis3D v1.6</b>: Only
+one minor changes to _Iterate (float changed to geFloat)</font></p>
+
+<hr>
+
+<p><a href="gePhysicsSystemIndexed.htm#Notes"><font size="5"><b><i>Types:</i></b></font> </a></p>
+
+<p><a name="gePhysicsSystem"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef struct gePhysicsSystem </b></font><font
+color="#800000"><b>gePhysicsSystem</b></font><font
+color="#000080"><b>;</b></font></p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<blockquote>
+    <p><font color="#000080"><b>&nbsp;</b></font><a
+    href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_Create</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Creates a physics system,
+    this is needed to hold all the physics objects and joint
+    together and allows them to interact in a simulated physics
+    world.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_Destroy</b></font><font
+color="#000080"><b>(</b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>** ppSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Deletes the physics
+    system. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Iterate"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_Iterate</b></font><font
+color="#000080"><b>(</b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* psPtr, </b></font><font color="#0000FF">float</font><font
+color="#000080"><b> Time);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Updates the physics
+    system, the time is a number between 0.0f and 1.0f</font><font
+    color="#FF0000" size="2" face="sans-serif"> [actually should
+    be 0.03f]</font><font size="2" face="sans-serif"> and will
+    control the speed of the physics system. Must be called every
+    time you want the physics simulation to be updated.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Additional Note: [This
+    function contains a] line that reads: <br>
+    <br>
+    if (Time &gt; 0.03f) Time = 0.03f; <br>
+    <br>
+    This means that the Time value for this function is from 0.0f
+    to 0.03f. This leads me to believe that the physics code
+    should be separated from all the other code and updated
+    constantly, maybe even use a separate thread. This is also
+    probably the reason most people say the physics system run
+    slow, because their not updating it constantly to get real
+    time physics. This was probably programmed like this so the
+    user can do collision checking because the physics code
+    doesn't handle it. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Also, the
+    gePhysicsObject_Integrate() function is actually the function
+    that updates the PhysicsObject. The gePhysicsSystem_Iterate()
+    function just loops through all the objects and calls
+    gePhysicsObject_Integrate(). It also cleans up all the odds
+    and ends. Which indicates to me that I shouldn't be calling
+    gePhysicsObject_Integrate() and should just use the
+    gePhysicsSystem_Iterate() function and update it constantly. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">I would highly suggest
+    you look at the source code. It's shed a whole new light on
+    the physics code and it has shown me the proper way to use
+    it. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">(KT Note:) </font><font
+    color="#FF0000" size="2" face="sans-serif">This is the
+    primary function that should be called to &quot;run&quot; the
+    physics system each update cycle.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080" size="2" face="sans-serif">Note: in
+    Genesis3D v1.6 Time is of type geFloat</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="AddJoint"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_AddJoint</b></font><font
+color="#000080"><b>(</b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* psPtr, </b></font><a
+href="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</a><font
+color="#000080"><b>* Joint);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Add a PhysicsJoint to the
+    physics system. If you want the joints to interact in the
+    physics simulation then you must add them to the physics
+    system. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">(KT Note): Joint should
+    be created with </font><a
+    href="gePhysicsJointIndexed.htm#Create"><font size="2"
+    face="sans-serif">gePhysicsJoint_Create</font></a><font
+    size="2" face="sans-serif">.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="AddObject"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_AddObject</b></font><font
+color="#000080"><b>(</b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* psPtr, </b></font><a
+href="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</a><font
+color="#000080"><b>* Object);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Add a PhysicsObject to
+    the physics system. If you want the objects to interact in
+    the physics simulation then you must add them to the physics
+    system.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">(KT Note): Object should
+    be created with </font><a
+    href="gePhysicsObjectIndexed.htm#Create"><font size="2"
+    face="sans-serif">gePhysicsObject_Create</font></a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetSourceConfigIndex"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetSourceConfigIndex</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">I'm not sure but I think
+    this returns a unique number that can be used with the
+    objects and joints to identify that they belong to this
+    specific PhysicsSystem. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">(KT Note): ConfigIndex
+    should be 0 or 1. I don't think this value is used for
+    identity.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetPhysobs"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</a><font
+color="#000080"><b>** </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetPhysobs</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Will return an array of
+    all the PhysicsObjects that have been added to the
+    PhysicsSystem.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetPhysjnts"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</a><font
+color="#000080"><b>** </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetPhysjnts</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Will return an array of
+    all the PhysicsJoints that have been added to the
+    PhysicsSystem. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetNumPhysobs"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetNumPhysobs</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Will return then number
+    of PhysicsObjects currently added to the PhysicsSystem.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetNumPhysjnts"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetNumPhysjnts</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Will return the number of
+    PhysicsJoints currently added to the PhysicsSystem.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetSumOfConstraintDimensions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>gePhysicsSystem_GetSumOfConstraintDimensions</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a><font
+color="#000080"><b>* pSys);</b></font></p>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">Not sure what this does.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="2" face="sans-serif">(KT Note:)
+    SumOfConstraintDimensions = 3 * number of Joints (World and
+    Spherical) added to the system.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Notes:</i></b></font> </p>
+
+<p>The comments of these API functions were made by Jeff on the
+Genesis3D forum. His original post is <a
+href="Physics%20Tutorial%202.htm">here</a>. Kdtop has made
+additional notes (indicated by &quot;KT Note&quot;)</p>
+
+<p>To see definations of terms (such as &quot;applied
+torque&quot;), click <a href="gePhysicsObjectIndexed.htm#Notes">here</a></p>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SampleCode"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Sample Code:</i></b></font> </p>
+
+<p>This code was supplied Jeff on the Genesis3D forum. His
+original post is <a href="Physics%20Tutorial%202.htm">here</a>.
+Kdtop has made some formating changes and added some comments.</p>
+
+<p><font size="2">Here is some sample code on how to implement a
+very simple physics system. It only has one physics object, and
+no forces are applied. The only thing that will move the object
+is gravity. <br>
+<br>
+I wrote this code fast, and cut a lot of it out from another
+program. This is not a full program, it's only intended to give
+you an idea of how to implement physics using G3D. Also, there
+are probably typos and error. <br>
+<br>
+If you need any further explanation, post you questions, and I'll
+try to answer them. <br>
+</font></p>
+
+<pre>gePhysicsSystem*	PS;
+gePhysicsObject*	PO;
+geXForm3d	Xform;
+geExtBox		ExtBox;
+geActor*		Actor;
+BOOL		Running = TRUE;
+DWORD		Timer1 = timeGetTime();
+DWORD		Timer2 = Timer1;
+geVec3d		OldVec,NewVec;
+GE_Collision	Col;
+
+
+<font color="#008000">// Load an actor
+</font>LoadActor(Actor,&quot;Dema.act&quot;);
+
+geXForm3d_SetIdentity(&amp;Xform);
+
+<a href="geActorIndexed.htm#GetDynamicExtBox">geActor_GetDynamicExtBox</a>(Actor,&amp;ExtBox);
+
+<font color="#008000">// Create physics system
+</font>PS = <a href="gePhysicsSystemIndexed.htm#Create">gePhysicsSystem_Create</a>();
+
+<font color="#008000">// Create physics object
+</font>PO = <a href="gePhysicsObjectIndexed.htm#Create">gePhysicsObject_Create</a>(&amp;Xform.Translation,<font
+color="#008000">//the start location</font>
+                            1.0f,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//object mass</font>
+                            GE_TRUE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//IsAffectedByGravity</font>
+                            GE_TRUE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//RespondsToForces</font>
+                            0.00005f,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//LinearDamping value</font>
+                            0.00005f,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//AngularDamping value</font>
+                            &amp;ExtBox.Min,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//Minimum coordinates for bounding box.</font>
+                            &amp;ExtBox.Max,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//Max coordinates for bounding box.</font>
+                            1.0f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//Scale of 1 makes PhysicsSpace to be the same as WorldSpace</font>
+                            );
+
+<font color="#008000">// Add physics object to physics system
+</font><a href="gePhysicsSystemIndexed.htm#AddObject">gePhysicsSystem_AddObject</a>(PS,PO);
+
+<font color="#008000">// Set physics object XForm
+</font><a href="gePhysicsObjectIndexed.htm#SetXForm">gePhysicsObject_SetXForm</a>(PO, &amp;Xform, 0);
+
+<font color="#008000">// physics and rendering loop
+</font>while(Running)  {
+
+<font color="#008000">	// This is used to limit the number of times the physics are updated
+	// The time used will entierly depend on your program
+	// Basiclly this make the physics independent of rendering
+</font>	if ((timeGetTime()-Timer1) &gt; 2)  {
+
+<font color="#008000">		// reset the timer
+</font>		Timer1 = timeGetTime();
+
+<font color="#008000">		// Save the xform's position before updating
+</font>		OldVec = Xform.Translation;
+
+<font color="#008000">		// Update the physics system, the largest number is 0.03f and
+		// it only makes a differance if physics joints are added to the physics system.
+		// This function will call gePhysicsObject_ComputeForces() and
+		// gePhysicsObject_Integrate() for every physics object in the physics system.
+</font>		<a href="gePhysicsSystemIndexed.htm#Iterate">gePhysicsSystem_Iterate</a>(PS,0.03f);
+
+<font color="#008000">		// Get the updated XForm
+</font>		<a
+href="gePhysicsObjectIndexed.htm#GetXFormInEditorSpace">gePhysicsObject_GetXFormInEditorSpace</a>(PO, &amp;Xform, 0);
+
+<font color="#008000">		// save the xform's position after updating
+</font>		NewVec = Xform.Translation;
+
+
+<font color="#008000">		// test if there was a collision
+</font>		if (<a href="geWorldIndexed.htm#Collision">geWorld_Collision</a>(World,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;ExtBox.Min,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;ExtBox.Max,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;OldVec,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;NewVec,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_CONTENTS_SOLID_CLIP,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_COLLIDE_ALL,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0xffffffff,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NULL,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NULL,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;Col
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)  {
+
+<font color="#008000">			// Collision found do something
+</font>			Xform.Translation = Col.Impact;
+
+			<a href="gePhysicsObjectIndexed.htm#SetXForm">gePhysicsObject_SetXForm</a>(PO, &amp;Xform, 0);
+
+		}
+
+
+<font color="#008000">		// Set actors xform
+</font>		<a href="geActorIndexed.htm#ClearPose">geActor_ClearPose</a>(Actor, &amp;Xform);
+
+	}
+
+
+<font color="#008000">	// Limit rendering to 30 FPS
+	// This is needed because physics are slow and when
+	// trying to render every frame the physics slows to a crawl
+</font>	if ((timeGetTime()-Timer2)&gt;34)  {
+
+		Timer2=timeGetTime();
+
+		if (!<a href="geEngineIndexed.htm#BeginFrame">geEngine_BeginFrame</a>(Engine, Camera, GE_TRUE))
+			Running = 0;
+
+		if (!<a href="geEngineIndexed.htm#RenderWorld">geEngine_RenderWorld</a>(Engine, World, Camera, 0.0f))
+			Running = 0;
+
+		if (!<a href="geEngineIndexed.htm#EndFrame">geEngine_EndFrame</a>(Engine))
+			Running = 0;
+	}
+}</pre>
+
+<blockquote>
+    <p><a href="gePhysicsSystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:43:36 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:37 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

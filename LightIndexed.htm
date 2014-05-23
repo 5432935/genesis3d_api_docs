@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>LightIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">Light</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Handles lightmaps, dynamic light, fog, etc</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\World\LIGHT.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="LightIndexed.htm#EngineInit">EngineInit</A>, <A HREF="LightIndexed.htm#EngineShutdown">EngineShutdown</A>, <A HREF="LightIndexed.htm#WorldInit">WorldInit</A>, <A HREF="LightIndexed.htm#WorldShutdown">WorldShutdown</A>, <A HREF="LightIndexed.htm#SetEngine">SetEngine</A>, <A HREF="LightIndexed.htm#SetWorld">SetWorld</A>, <A HREF="LightIndexed.htm#SetGBSP">SetGBSP</A>, <A HREF="LightIndexed.htm#WorldAddLight">WorldAddLight</A>, <A HREF="LightIndexed.htm#WorldRemoveLight">WorldRemoveLight</A>, <A HREF="LightIndexed.htm#SetupLights">SetupLights</A>, <A HREF="LightIndexed.htm#SetAttributes">SetAttributes</A>, <A HREF="LightIndexed.htm#WorldSetLTypeTable">WorldSetLTypeTable</A>, <A HREF="LightIndexed.htm#WorldGetLTypeCurrent">WorldGetLTypeCurrent</A>, <A HREF="LightIndexed.htm#SetupLightmap">SetupLightmap</A>, <A HREF="LightIndexed.htm#GetLightmapRGB">GetLightmapRGB</A>, <A HREF="LightIndexed.htm#GetLightmapRGBBlended">GetLightmapRGBBlended</A>, <A HREF="LightIndexed.htm#FogVerts">FogVerts</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="LightIndexed.htm#Light_DLight">Light_DLight</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="LightIndexed.htm#Light_LightInfo">Light_LightInfo</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="LightIndexed.htm#Constants">view</A></P>
+<B><P>Additions for Genesis3D v1.6:</B>  Type: <A HREF="LightIndexed.htm#light">light</A>,  also types float converted to geFloat</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define MAX_DYNAMIC_LIGHTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Maximum number of moving lights in map</DD>
+<DD>#define MAX_LTYPES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Max number of ltypes</DD>
+<DD>//&nbsp;&nbsp;#define&nbsp;MAX_LMAP_SIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;128</DD>
+<DD>//&nbsp;&nbsp;#define&nbsp;MAX_LMAP_SIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18</DD>
+<DD>#define&nbsp;MAX_LMAP_SIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18</DD>
+</DL>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><DL>
+<DD><A NAME="Light_DLight"></A>Light_DLight</DD>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#geBoolean">geBoolean</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Active;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Is this light in use?<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#GE_RGBA">GE_RGBA</A>&nbsp;&nbsp;&nbsp;&nbsp;Color;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Color of light (0...255.0f)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm___#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Position of this light<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Radius;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Intensity of this light (Radius)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Fixed point color<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FColorR;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FColorG;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FColorB;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#geBoolean">geBoolean</A>&nbsp;CastShadow;<BR>
+} Light_DLight;</DD>
+<DD><A HREF="LightIndexed.htm#Contents">Return to Contents</A></DD>
+</DL>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="Light_LightInfo"></A>Light_LightInfo</P>
+</B></FONT><DL>
+<DD>typedef struct Light_LightInfo {<BR>
+&nbsp;// Intensity tables, for animated styles<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTypeDynamic[MAX_LTYPES];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTypeIntensities[MAX_LTYPES];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#uint8">uint8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTypeIntensities2[MAX_LTYPES];<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTypeTable[MAX_LTYPES][70];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IPos[MAX_LTYPES]; // Ref position in ltype table<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="LightIndexed.htm#Light_DLight">Light_DLight</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DynamicLights[MAX_DYNAMIC_LIGHTS];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm__#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumDynamicLights;<BR>
+} Light_LightInfo;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="light"></A>light</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Note:  This is available on in Genesis3D v1.6</BLOCKQUOTE>
+<BLOCKQUOTE>typedef struct tag_light {<BR>
+     <FONT COLOR="#0000ff">int</FONT>                 light;<BR>
+     <A HREF="BasetypesIndexed.htm_#GE_RGBA">GE_RGBA</A>   color;<BR>
+     <FONT COLOR="#0000ff">int</FONT>                 style;<BR>
+     <A HREF="geVec3dIndexed.htm___#geVec3d">geVec3d</A>       origin;<BR>
+} light;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="EngineInit"></A><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080">* Engine);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="EngineShutdown"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_EngineShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080">* Engine);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldInit"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="WorldShutdown"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_WorldShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetEngine"></A><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080">* Engine);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetWorld"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetGBSP"></A><A HREF="BasetypesIndexed.htm__#geBoolean">geBoolean</A><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">Light_SetGBSP</FONT><FONT COLOR="#000080">(World_BSP* BSP);</P>
+<P>&nbsp;</B></FONT>&nbsp;</P>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldAddLight"></A><A HREF="LightIndexed.htm#Light_DLight">Light_DLight</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">Light_WorldAddLight</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="WorldRemoveLight"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_WorldRemoveLight</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World, </B></FONT><A HREF="LightIndexed.htm#Light_DLight">Light_DLight</A><B><FONT COLOR="#000080">* DLight);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetupLights"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetAttributes"></A><A HREF="BasetypesIndexed.htm__#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> CastShadow);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldSetLTypeTable"></A><A HREF="BasetypesIndexed.htm__#int32">int32</A><B><FONT COLOR="#000080"> LType, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Table);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="WorldGetLTypeCurrent"></A>char</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_WorldGetLTypeCurrent</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BasetypesIndexed.htm__#int32">int32</A><B><FONT COLOR="#000080"> LType);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetupLightmap"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_SetupLightmap</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</A><B><FONT COLOR="#000080">* LInfo, BOOL* Dynamic);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetLightmapRGB"></A><A HREF="BasetypesIndexed.htm_#GE_RGBA">GE_RGBA</A><B><FONT COLOR="#000080">* RGBA);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetLightmapRGBBlended"></A><A HREF="BasetypesIndexed.htm_#GE_RGBA">GE_RGBA</A><B><FONT COLOR="#000080">* RGBA);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="FogVerts"><A NAME="y"></A></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Light_FogVerts</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm__#int32">int32</A><B><FONT COLOR="#000080"> NumVerts);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="LightIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:16:39 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:07 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

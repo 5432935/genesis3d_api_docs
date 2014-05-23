@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geVKFrameIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geVKFrame</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: interpolation for keyframes that contain a vector</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\vkframe.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geVKFrameIndexed.htm#LinearCreate">LinearCreate</A>, <A HREF="geVKFrameIndexed.htm#HermiteCreate">HermiteCreate</A>, <A HREF="geVKFrameIndexed.htm#Insert">Insert</A>, <A HREF="geVKFrameIndexed.htm#Query">Query</A>, <A HREF="geVKFrameIndexed.htm#Modify">Modify</A>, <A HREF="geVKFrameIndexed.htm#LinearInterpolation">LinearInterpolation</A>, <A HREF="geVKFrameIndexed.htm#HermiteInterpolation">HermiteInterpolation</A>, <A HREF="geVKFrameIndexed.htm#HermiteRecompute">HermiteRecompute</A>, <A HREF="geVKFrameIndexed.htm#LinearRead">LinearRead</A>, <A HREF="geVKFrameIndexed.htm#HermiteRead">HermiteRead</A>, <A HREF="geVKFrameIndexed.htm#WriteToFile">WriteToFile</A>, <A HREF="geVKFrameIndexed.htm#CreateFromFile">CreateFromFile</A>, <A HREF="geVKFrameIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A>, <A HREF="geVKFrameIndexed.htm#CreateFromBinaryFile">CreateFromBinaryFile</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A></P>
+<B><FONT COLOR="#000080"><P>Overview:&nbsp;</B></FONT><A HREF="geVKFrameIndexed.htm#Overview">view</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</B></I></FONT> </P><DIR>
+<DIR>
+
+<P>&nbsp;This module handles interpolation for keyframes that contain a vector (a <A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>).&nbsp;This is intended to support Path.c</P>
+<P>&nbsp;<A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A> supplies general support for a time-keyed array, and this supplements that support to include the two specific time-keyed arrays:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp; An array of <A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A> interpolated linearly</P>
+<P>&nbsp; &nbsp;&nbsp;&nbsp;An array of <A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A> interpolated with hermite blending</P>
+<P>&nbsp;These are phycially separated and have different base structures because:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linear blending requires less data.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;future blending might require more data.</P>
+<P>&nbsp;The two types of lists are created with different creation calls, interpolated with different calls, but insertion and queries share a call.</P>
+<P>&nbsp;</P>
+<P>&nbsp;Hermite interpolation requires additional computation after changes are made to the keyframe list. Call geVKFrame_HermiteRecompute() to update the calculations.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<P><A NAME="geVKFrame_InterpolationType"></A>geVKFrame_InterpolationType</P>
+<DL>
+<DD>typedef enum {</DD>
+<DD>&nbsp;&nbsp;&nbsp;VKFRAME_LINEAR,</DD>
+<DD>&nbsp;&nbsp;&nbsp;VKFRAME_HERMITE,</DD>
+<DD>&nbsp;&nbsp;&nbsp;VKFRAME_HERMITE_ZERO_DERIV,</DD>
+<DD>} geVKFrame_InterpolationType;</DD>
+</DL>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="LinearCreate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVKFrame_LinearCreate</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P><DIR>
+
+</B></FONT><P>&nbsp; creates a frame list for linear interpolation</P></DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="HermiteCreate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVKFrame_HermiteCreate</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P><DIR>
+
+</B></FONT><P>&nbsp; creates a frame list for hermite interpolation</P>
+<B><FONT COLOR="#000080"><P>&nbsp;&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+
+<P><hr>
+<A NAME="Insert"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* V,&nbsp;&nbsp;</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KeyList:&nbsp;&nbsp;&nbsp; keyframe list to insert into</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:&nbsp;&nbsp; time of new keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V:&nbsp;&nbsp;&nbsp;&nbsp; vector at new keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index of new key</P>
+<P>PURPOSE:&nbsp; inserts a new keyframe with the given time and vector into the list.</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="Query"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* V);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KeyList:&nbsp;&nbsp; keyframe list</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index: &nbsp;&nbsp;&nbsp;&nbsp; index of frame to return</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time: time of the frame is returned</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vector from the frame is returned</P>
+<P>PURPOSE:&nbsp; returns the vector and the time at keyframe[index] </P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<P><hr>
+<A NAME="Modify"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* V);</P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KeyList: &nbsp;&nbsp; keyframe list</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index: &nbsp;&nbsp;&nbsp;&nbsp; index of frame to change</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V:&nbsp;&nbsp;&nbsp;&nbsp; vector for the key</P>
+<P>PURPOSE:&nbsp; changes the vector at keyframe[index] </P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<P><hr>
+<A NAME="LinearInterpolation"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> T,&nbsp;</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Result);&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KF1: pointer to first keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KF2: pointer to second keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T: &nbsp;&nbsp; 0 &lt;= T &lt;= 1 blending parameter</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result:&nbsp;&nbsp;&nbsp; put the result in here (<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>)</P>
+<P>PURPOSE: Interpolates to get a vector between the two vectors at the two keyframes where T==0 returns the vector for KF1 and T==1 returns the vector for KF2 . Interpolates linearly</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<P><hr>
+<A NAME="HermiteInterpolation"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> T,&nbsp;&nbsp;</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Result);&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KF1: pointer to first keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KF2: pointer to second keyframe</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T: &nbsp;&nbsp; 0 &lt;= T &lt;= 1 blending parameter</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result:&nbsp;&nbsp;&nbsp; put the result in here (<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>)</P>
+<P>PURPOSE: Interpolates to get a vector between the two vectors at the two keyframes where T==0 returns the vector for KF1 and T==1 returns the vector for KF2. Interpolates using 'hermite' blending</P>
+<P>&nbsp;&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<P><hr>
+<A NAME="HermiteRecompute"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* KeyList);&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>ARGUMENTS:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Looped: &nbsp;&nbsp;&nbsp; if keylist has the first key connected to last key</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZeroDerivative: if each key should have a zero derivatives (good for 2 point S curves)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KeyList:&nbsp; list of keys to recompute hermite values for</P>
+<P>PURPOSE: rebuild precomputed data for keyframe list.</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="LinearRead"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geVKFrame);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="HermiteRead"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geVKFrame);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geVKFrame, </B></FONT><A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A><B><FONT COLOR="#000080"> InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Looping);</P>
+</B></FONT><P>Note: #ifdef _BCB, <A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A>* replaces the <FONT COLOR="#0000ff">void</FONT> * for VKFrame type</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A><B><FONT COLOR="#000080">* InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Looping);</P>
+</B></FONT><P>Note: #ifdef _BCB, <FONT COLOR="#0000ff">int</FONT> * replaces <A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A>* for InterpolationType</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="WriteToBinaryFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geVKFrame, </B></FONT><A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A><B><FONT COLOR="#000080"> InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Looping);</P>
+</B></FONT><P>Note: #ifdef _BCB, TKArray* replaces <FONT COLOR="#0000ff">void</FONT> * for geVKFrame</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><hr>
+<A NAME="y"><A NAME="CreateFromBinaryFile"></A></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A><B><FONT COLOR="#000080">* InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Looping);</P>
+</B></FONT><P>Note: #ifdef _BCB, <FONT COLOR="#0000ff">int</FONT> * replaces <A HREF="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</A>* for InterpolationType</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:16:11 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:17 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

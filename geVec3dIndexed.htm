@@ -1,0 +1,916 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geVec3dIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geVec3d</b></font></p>
+
+<p><font color="#000080"><b>Description: 3D Vector interface</b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\Math\VEC3D.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+</p>
+
+<p><font color="#000080"><b>Functions</b></font><font
+color="#800000"><b>:</b></font> <a href="geVec3dIndexed.htm#Add">Add</a>, <a
+href="geVec3dIndexed.htm#AddScaled">AddScaled</a>, <a href="geVec3dIndexed.htm#Clear">Clear</a>, <a
+href="geVec3dIndexed.htm#Compare">Compare</a>, <a href="geVec3dIndexed.htm#Copy">Copy</a>, <a
+href="geVec3dIndexed.htm#CrossProduct">CrossProduct</a>, <a href="geVec3dIndexed.htm#DistanceBetween">DistanceBetween</a>,
+<a href="geVec3dIndexed.htm#DotProduct">DotProduct</a>, <a href="geVec3dIndexed.htm#Get">Get</a>, <a
+href="geVec3dIndexed.htm#GetElement">GetElement</a>, <a href="geVec3dIndexed.htm#Inverse">Inverse </a>,
+<a href="geVec3dIndexed.htm#IsValid">IsValid</a>, <a href="geVec3dIndexed.htm#Length">Length</a>, <a
+href="geVec3dIndexed.htm#LengthSquared">LengthSquared</a>, <a href="geVec3dIndexed.htm#MA">MA</a>, <a
+href="geVec3dIndexed.htm#Normalize">Normalize</a>, <a href="geVec3dIndexed.htm#Scale">Scale</a>, <a
+href="geVec3dIndexed.htm#Set">Set</a>, <a href="geVec3dIndexed.htm#Subtract">Subtract</a></p>
+
+<p><font color="#000080"><strong>Types:</strong></font> <a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a></p>
+
+<p><font color="#000080">Additions for Genesis3D v1.6: <b>None</b></font></p>
+
+<p><font color="#000080"><b>Proposed function: </b></font><a
+href="geVec3dIndexed.htm#Reflect"><font color="#0000FF">geVec3d_Reflect</font></a></p>
+
+<p><font color="#000080"><b>Notes: </b></font><a href="geVec3dIndexed.htm#Notes"><font
+color="#000080"><b>view</b></font></a><font color="#000080"><b> [</b></font>Contents:
+<a href="geVec3dIndexed.htm#Reflect">Reflection</a>, <a href="geVec3dIndexed.htm#DotProductTutorial">Dot
+Product</a> <a href="geVec3dIndexed.htm#MathProps">Mathematical properties</a>]</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geVec3d"></a><font color="#800000"><b>geVec3d</b></font></p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp;<a href="BasetypesIndexed.htm#geFloat">geFloat</a>
+    X, Y, Z; <br>
+    } geVec3d;</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="Add"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Add</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2,&nbsp; </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* VSum);</b></font> </p>
+
+<blockquote>
+    <p>This function adds V1 to V2 returning the result in VSum. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="AddScaled"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_AddScaled</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Scale, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1PlusV2Scaled);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates V1 + V2*Scale returning the
+    result in V1PlusV2Scaled. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Clear"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Clear</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p>This function clears all the elements of V to 0.0f. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Compare"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_Compare</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> tolerance);</b></font> </p>
+
+<blockquote>
+    <p>This function compares V1 to V2, if the difference between
+    any of the elements is more than tolerance, then it returns <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>, otherwise <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the result.</p>
+    <p>Note: <br>
+    Result of <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    --&gt; No Difference<br>
+    Result of <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    --&gt; Difference &gt; tolerance</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Copy"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Copy</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vsrc, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vdst);</b></font> </p>
+
+<blockquote>
+    <p>This function copies Vsrc to Vdst. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="CrossProduct"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_CrossProduct</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* VResult);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the cross product of the two
+    vectors V1 and V2 returning the result in VResult.&nbsp; The
+    cross product of two vectors can be thought of as the vector
+    that is perpendicular to each with a length equal to the area
+    of the parallelogram formed by the two vectors. </p>
+    <p>Returns: nothing.</p>
+    <p><strong>Properties of a cross product vector:</strong></p>
+    <p>For the following discussion, consider the equation <strong>c</strong>
+    = <strong>a</strong> x <strong>b.</strong>&nbsp;&nbsp;The
+    bold variables are vectors, and &quot;x&quot; means cross
+    product, which is sometimes also called a &quot;vector
+    product&quot;. &nbsp;&nbsp;|<strong>a</strong>| means the
+    modulus, or magnitude (length) of a vector.</p>
+    <p>A cross product has the following properties:<br>
+    &nbsp;&nbsp;1. &nbsp;|<strong>c</strong>| = |<strong>a</strong>|
+    * |<strong>b</strong>| * sin (<strong>a</strong>; <strong>b</strong>)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(The
+    magnitude of the resulting vector equals the magnitude of
+    vector <strong>a</strong> times the magnitude of vector <strong>b</strong>
+    times the sine of the angle between these two vectors)<br>
+    &nbsp;&nbsp;2. &nbsp;<strong>c</strong> is perpendicular to
+    the plane containing vectors <strong>a</strong> and <strong>b</strong>.<br>
+    &nbsp;&nbsp;3. &nbsp;<strong>a</strong>, <strong>b</strong>,
+    and <strong>c</strong> for a RIGHT trihedral, that is, the
+    shortest rotation of <strong>a</strong> towards <strong>b</strong>
+    is seen, from the end point of <strong>c</strong> (looking
+    towards the base of <strong>c</strong>), as a
+    counter-clockwise rotation.</p>
+    <p><img src="VECTUT1.gif" width="131" height="101"></p>
+    <p>General properties of a cross product:<br>
+    1.&nbsp;&nbsp;<strong>a</strong> x <strong>a</strong> = 0<br>
+    2.&nbsp;&nbsp;<strong>a</strong> x <strong>b</strong> = -<strong>b</strong>
+    x <strong>a</strong> &nbsp;&nbsp;(the cross product is
+    anticommutative)<br>
+    3. &nbsp;(<strong>a</strong>+<strong>b</strong>) x <strong>c</strong>
+    = <strong>a</strong> x <strong>c</strong> + <strong>b</strong>
+    x <strong>c<br>
+    </strong>4.&nbsp;&nbsp;k<strong>a</strong> x <strong>b</strong>
+    = k(<strong>a</strong> x <strong>b</strong>)</p>
+    <p>The coordinates of the cross product with respect to a
+    Cartesian coordinate system is given as follows:<br>
+    (<strong>A</strong> X <strong>B</strong>)x = AyBz - AzBy<br>
+    (<strong>A</strong> X <strong>B</strong>)y = AzBx - AxBz<br>
+    (<strong>A</strong> X <strong>B</strong>)z = AxBy - AyBx</p>
+</blockquote>
+
+<blockquote>
+    <p><font size="1">(Notes from: Concise Handbook of
+    Mathematics and Physics. Alenitsyn AG. CRC Press. 1997)</font></p>
+    <p><font size="3">(See also notes </font><a href="geVec3dIndexed.htm#MathProps"><font
+    size="3">below</font></a><font size="3">)</font></p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="DistanceBetween"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_DistanceBetween</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the distance between the two
+    points represented by V1 and V2. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the result. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from VEC3D.H: returns length of V1-V2</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="DotProduct"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_DotProduct</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the Dot Product of the two
+    vectors returning the result. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the result.</p>
+    <p>Note: the result is not a vector, thus has no orientation
+    (in contrast to a cross product).</p>
+    <p><strong>Properties of a dot product:</strong></p>
+    <p>For the following discussion, consider the equation c = <strong>a</strong>
+    <font size="1" face="Wingdings">t</font> <strong>b.</strong>&nbsp;&nbsp;The
+    bold variables are vectors, and &quot;<font size="1"
+    face="Wingdings">t</font>&quot; means dot product, also knows
+    as the &quot;scalar or inner product&quot;. &nbsp;&nbsp;|<strong>a</strong>|
+    means the modulus, or magnitude (length) of a vector.</p>
+    <p>For a dot product, the following are true:<br>
+    1.&nbsp;&nbsp;c = <strong>a</strong> <font size="1"
+    face="Wingdings">t</font> <strong>b = </strong>|<strong>a</strong>|
+    * |<strong>b</strong>| * cos (<strong>a</strong>; <strong>b</strong>)
+    &nbsp;&nbsp;&nbsp;(The dot product of two vectors (<strong>a</strong>
+    and <strong>b</strong>) is the magnitude of <strong>a</strong>
+    times the magnitude of <strong>b</strong> times the cosine of
+    the angle between the two vectors.)<br>
+    2.&nbsp;&nbsp;c = <strong>A</strong> <font size="1"
+    face="Wingdings">t</font> <strong>B</strong> = AxBx + AyBy +
+    AzBz</p>
+    <p><font size="1">(Notes from: Concise Handbook of
+    Mathematics and Physics. Alenitsyn AG. CRC Press. 1997)</font></p>
+    <p>See notes for tutorial on one use of dot product: <a
+    href="geVec3dIndexed.htm#DotProductTutorial">view</a></p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a> </p>
+
+<hr>
+
+<p><a name="Get"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Get</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* X, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Z);</b></font> </p>
+
+<blockquote>
+    <p>This function returns the components of the specified
+    vector. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="GetElement"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp;&nbsp;</b></font><font color="#800000"><b>geVec3d_GetElement</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> Index);</b></font> </p>
+
+<blockquote>
+    <p>This function returns the specified (0,1,2) element of the
+    vector V. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the specified element. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><a name="Inverse"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Inverse</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the inverse of the given vector,
+    replacing the original values. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="IsNormalized"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_IsNormalized</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p>This function checks whether the vector V is
+    normalized.&nbsp; In other words whether its length is equal
+    to 1.0f (within a certain tolerance). </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    if the vector is normalized, <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="IsValid"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_IsValid</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p>This function checks each of the elements of V to assure
+    that they are real. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    if the vector is valid, <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Length"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_Length</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the length of the given vector. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the result.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="LengthSquared"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_LengthSquared</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the length of the given vector
+    and squares it.&nbsp; Note that this function should be used
+    whenever the square of the length of a vector is needed as it
+    is actually faster than calculating the length of the vector,
+    much less doing so then squaring it. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the result.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="MA"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_MA</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Scale, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1PlusV2Scaled);</b></font> </p>
+
+<blockquote>
+    <p>This function produces the same result as&nbsp;<font
+    color="#000080"> </font><a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+    color="#000080">_AddScaled</font>. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a>&nbsp;</p>
+</blockquote>
+
+<p><a name="Normalize"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVec3d_Normalize</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1);</b></font> </p>
+
+<blockquote>
+    <p>This function normalizes the vector V1 and returns its
+    original length.&nbsp; Note that the vector value is changed.
+    </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: the original length of the vector.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Scale"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Scale</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* VSrc, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Scale, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* VDst);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates VSrc * Scale and returns the
+    result in VDst. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Set"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Set</b></font><font
+color="#000080"><b>(</b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> X, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Z);</b></font> </p>
+
+<blockquote>
+    <p>This function sets the values of the elements of V. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><br>
+<a name="Subtract"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geVec3d_Subtract</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V2, </b></font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* V1MinusV2);</b></font> </p>
+
+<blockquote>
+    <p>This function computes the difference between V1 and V2
+    returning the resultant vector in V1MinusV2. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><a name="Notes"></a><font color="#0000FF" size="5"><b><i>Notes:</i></b></font>
+</p>
+
+<p><a name="NotesContents"></a>Contents: <a href="geVec3dIndexed.htm#Reflect">Reflection</a>,
+<a href="geVec3dIndexed.htm#DotProductTutorial">Dot Product</a> <a
+href="geVec3dIndexed.htm#MathProps">Mathematical properties</a></p>
+
+<p><a href="geVec3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="Reflect"></a><font color="#0000FF" size="5"><b><i>Reflection
+of a vector:</i></b></font></p>
+
+<p>This is a Proposed Function:&nbsp; </p>
+
+<p><font color="#0000FF">void </font><font color="#804040"><strong>geVec3d_Reflect</strong></font>(<a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font color="#0000FF">* <strong>In</strong></font>,
+<a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font color="#0000FF">* <strong>Norma</strong>l</font>,
+<a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font color="#0000FF">* <strong>Out</strong></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#0000FF"> <strong>Scale</strong></font>)<br>
+<font color="#008000">//Purpose: To reflect an In vector off of a
+plane (defined by Normal), scaled by Scale<br>
+//
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(This
+could be used to bounce a ball off a wall).<br>
+//Input: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>In</strong>: Input
+vector. Does not need to be normalized<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Norma</strong>l:
+A normalized vector from surface to be reflected from.<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Out</strong>:
+The resulting vector<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Scale</strong>:
+A scale factor for resulting output vector. <br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An
+example of use would be to set at 0.75, so that reflected
+velocity loses 25% in reflection.<br>
+//Note: The general formula is: Out = In - 2*Normal*(In dot
+Normal)<br>
+</font>{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="geVec3dIndexed.htm#AddScaled">geVec3d_AddScaled </a>(In,
+Normal, -2*<a href="geVec3dIndexed.htm#DotProduct">geVec3d_DotProduct</a> (In,
+Normal), Out);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="geVec3dIndexed.htm#Scale">geVec3d_Scale</a> (Out,
+Scale, Out);<br>
+}</p>
+
+<p><a href="geVec3dIndexed.htm#NotesContents">Return to Notes Contents</a>
+&nbsp;&nbsp;<a href="geVec3dIndexed.htm#Contents">Return to Main Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="DotProductTutorial"></a><font color="#0000FF"
+size="5"><b><i>Dot Product Notes:</i></b></font></p>
+
+<p><font color="#008000"><strong>Practical application #1: </strong><em><strong>Project
+one vector onto another</strong></em><em>. </em></font></p>
+
+<p>The length of the projection of a vector <strong>R</strong>
+onto a vector <strong>J</strong> is: <br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;geVec3d_DotProduct(&amp;R,
+&amp;J) / geVec3d_Length (&amp;J)</strong></p>
+
+<p>Here's one proof:</p>
+
+<p>The definition for a dot product contains the cosine of the
+angle between the two vectors. <br>
+&nbsp;&nbsp;&nbsp;i.e.:&nbsp;&nbsp;<strong>J</strong> <font
+size="1" face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+* |<strong>R</strong>| * cos (angle)<br>
+We can consider one of the vectors (<strong>J</strong>) to be
+aligned with the X axis. <br>
+Then our second vector (<strong>R</strong>) would then be similar
+to the ray R in the diagram below.<br>
+Angle alpha, in the diagram below, is the angle betwen the
+vectors.<br>
+Note: |<strong>J</strong>| means the length of vector <strong>J</strong><br>
+<img src="VECTUT3.gif" width="192" height="188"><br>
+Cosine is defined as X / R. <br>
+Furthermore X is the projection of R onto the x axis.<br>
+&nbsp;&nbsp;&nbsp;<strong>J</strong> <font size="1"
+face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+* |<strong>R</strong>| * cos
+(alpha)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//The definition of a dot
+product<br>
+&nbsp;&nbsp;&nbsp;cos (alpha) = X / |<strong>R</strong>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//The
+definition of a cosine<br>
+&nbsp;&nbsp;&nbsp;<strong>J</strong> <font size="1"
+face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+* |<strong>R</strong>| * X / |<strong>R</strong>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Substitution<br>
+&nbsp;&nbsp;&nbsp;<strong>J</strong> <font size="1"
+face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+*
+X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Cancelling<br>
+&nbsp;&nbsp;&nbsp;X = <strong>(J</strong> <font size="1"
+face="Wingdings">t</font> <strong>R) / |J|</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Rearrangement<br>
+<br>
+<strong>Thus, the length of the projection of R onto J is: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_DotProduct(&amp;R, &amp;J)
+/ geVec3d_Length (&amp;J)<br>
+</strong><br>
+Note: if <strong>J</strong> happened to be a unit vector (length
+= 1) then dividing by the Length could be avoided.</p>
+
+<p>&nbsp;</p>
+
+<p><font color="#008000"><strong>Practical application #2: </strong><em><strong>Find
+the angle between two vectors.</strong></em></font></p>
+
+<p>The angle between two vectors, <strong>R</strong> and <strong>J</strong>
+is: <strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;acos (geVec3d_DotProduct(&amp;R,
+&amp;J) / (geVec3d_Length (&amp;J) * geVec3d_Length (&amp;R)) )</strong></p>
+
+<p>Here's one proof:</p>
+
+<p>The definition for a dot product contains the cosine of the
+angle between the two vectors. <br>
+&nbsp;&nbsp;&nbsp;i.e.:&nbsp;&nbsp;<strong>J</strong> <font
+size="1" face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+* |<strong>R</strong>| * cos (angle)<br>
+We can consider one of the vectors (<strong>J</strong>) to be
+aligned with the X axis. <br>
+Then our second vector (<strong>R</strong>) would then be similar
+to the ray R in the diagram below.<br>
+Angle alpha, in the diagram below, is the angle betwen the
+vectors<br>
+Note: |<strong>J</strong>| means the length of vector <strong>J</strong><br>
+<img src="VECTUT3.gif" width="192" height="188"></p>
+
+<p>&nbsp;&nbsp;&nbsp;<strong>J</strong> <font size="1"
+face="Wingdings">t</font> <strong>R = </strong>|<strong>J</strong>|
+* |<strong>R</strong>| * cos
+(alpha)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;//The
+definition of a dot product<br>
+&nbsp;&nbsp;&nbsp;cos (alpha) = <strong>(J</strong> <font
+size="1" face="Wingdings">t</font> <strong>R</strong>)<strong> /
+(</strong>|<strong>J</strong>| * |<strong>R</strong>|)
+&nbsp;&nbsp;&nbsp;//Rearrangement<br>
+&nbsp;&nbsp;&nbsp;alpha = arccos ((<strong>J</strong> <font
+size="1" face="Wingdings">t</font> <strong>R</strong>)<strong> / </strong>(|<strong>J</strong>|
+* |<strong>R</strong>|))</p>
+
+<p><strong>Thus, then angle between two vectors, R and J is: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;acos (geVec3d_DotProduct(&amp;R,
+&amp;J) / (geVec3d_Length (&amp;J) * geVec3d_Length (&amp;R)) )</strong></p>
+
+<p>Note: for purposes of speed, programmers may find it faster to
+compare the <em>cosine</em> of alpha to the desired value, rather
+than to calculate the actual value of alpha first, and then test
+it against a desired angle. For example, if one wants the angle
+between the two vectors to be 80 degrees or less, it would be
+faster to test for <strong>if</strong> ((<strong>J</strong> <font
+size="1" face="Wingdings">t</font> <strong>R</strong>)<strong> /
+(</strong>|<strong>J</strong>| * |<strong>R</strong>|) &lt;=
+0.17f). Here the cos(80 degrees) is known to be approx 0.17, so
+it is faster to test this directly.</p>
+
+<p><strong>The cosine of the angle between two vectors, R and J
+is: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;geVec3d_DotProduct(&amp;R, &amp;J)
+/ (geVec3d_Length (&amp;J) * geVec3d_Length (&amp;R)) </strong></p>
+
+<p><a href="geVec3dIndexed.htm#NotesContents">Return to Notes Contents</a>
+&nbsp;&nbsp;<a href="geVec3dIndexed.htm#Contents">Return to Main Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="MathProps"></a><font color="#0000FF" size="5"><b><i>Mathematical
+Properties:</i></b></font></p>
+
+<p><strong>Mathematical properties of vectors</strong></p>
+
+<ul>
+    <li><strong>P</strong> +<strong>Q</strong> = <strong>Q</strong>
+        + <strong>P</strong></li>
+    <li>(<strong>P</strong> + <strong>Q</strong>) + <strong>R</strong>
+        = <strong>P</strong> + (<strong>Q</strong> + <strong>R</strong>)</li>
+    <li>(ab)<strong>P</strong> = a(b<strong>P</strong>)</li>
+    <li>a(<strong>P</strong> +<strong>Q</strong>) = a<strong>P</strong>
+        + a<strong>Q</strong></li>
+    <li>(a+b)<strong>P</strong> = a<strong>P</strong> + b<strong>P</strong></li>
+</ul>
+
+<p><strong>Dot product (&quot;.&quot;) mathematical properties</strong></p>
+
+<ul>
+    <li><strong>P</strong> . <strong>Q</strong> = <strong>Q</strong>
+        . <strong>P</strong></li>
+    <li>a(<strong>P</strong>) <strong>.</strong> <strong>Q</strong>
+        = a(<strong>P</strong> <strong>.</strong> <strong>Q</strong>)</li>
+    <li><strong>P</strong> <strong>.</strong> (<strong>Q</strong>
+        + <strong>R</strong>) = <strong>P</strong> <strong>.</strong>
+        <strong>Q</strong> + <strong>P</strong> <strong>.</strong>
+        <strong>R</strong></li>
+    <li><strong>P</strong> <strong>.</strong> <strong>P</strong>
+        = ||<strong>P</strong>||^2</li>
+    <li>|<strong>P . Q</strong>| &lt;= ||<strong>P</strong>|| ||<strong>Q</strong>||</li>
+</ul>
+
+<p><strong>Cross product (&quot;X&quot;) mathematical properties<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</strong>(see also notes <a
+href="geVec3dIndexed.htm#CrossProduct">above</a>)</p>
+
+<ul>
+    <li><strong>Q</strong> X <strong>P</strong> = -(<strong>P</strong>
+        X <strong>Q</strong>) (i.e. anticommutative property)</li>
+    <li>(a<strong>P</strong>) X <strong>Q</strong> = a(<strong>P</strong>
+        X <strong>Q</strong>)</li>
+    <li><strong>P</strong> X (<strong>Q</strong> +<strong>R</strong>)
+        = <strong>P</strong> X <strong>Q</strong> + <strong>P</strong>
+        X <strong>R</strong></li>
+    <li><strong>P</strong> X <strong>P</strong> = <strong>0</strong>
+        = &lt;0, 0, 0&gt;</li>
+    <li>(<strong>P</strong> X <strong>Q</strong>) <strong>.</strong>
+        <strong>R</strong> = (<strong>R</strong> X <strong>P</strong>)
+        <strong>.</strong> <strong>Q</strong> = (<strong>Q</strong>
+        X <strong>R</strong>) <strong>.</strong> <strong>P</strong></li>
+    <li><strong>P</strong> X (<strong>Q</strong> X <strong>P</strong>)
+        = <strong>P</strong> X <strong>Q</strong> X <strong>P</strong>
+        = (P^2)*<strong>Q</strong> - (<strong>P</strong> . <strong>Q</strong>)<strong>P</strong></li>
+    <li>(<strong>P</strong> X <strong>Q</strong>) X <strong>R</strong>
+        is NOT equal to <strong>P</strong> X (<strong>Q</strong>
+        X <strong>R</strong>) (i.e. not associative)</li>
+</ul>
+
+<p><font color="#000080" size="2">From </font><font
+color="#800000" size="2"><em>Mathematics for 3D Game Programming
+&amp; Computer Graphics</em> by Eric Lengyel (ISBN 1-58450-037-9)</font></p>
+
+<p><a href="geVec3dIndexed.htm#NotesContents">Return to Notes Contents</a>
+&nbsp;&nbsp;<a href="geVec3dIndexed.htm#Contents">Return to Main Contents</a></p>
+
+<p>&nbsp;</p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 13:25:41 Feb 1, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:05 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

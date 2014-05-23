@@ -1,0 +1,612 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DCommonIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">DCommon</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Header file for all driver modules</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\Engine\Drivers\dcommon.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="DCommonIndexed.htm#U8">U8</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#U16">U16</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#U32">U32</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#C8">C8</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#S8">S8</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#S16">S16</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#S32">S32</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</A>, <A HREF="DCommonIndexed.htm#geRDriver_THandleInfo">geRDriver_THandleInfo</A>, <A HREF="DCommonIndexed.htm#DRV_Debug">DRV_Debug</A>, <A HREF="DCommonIndexed.htm#DRV_CacheInfo">DRV_CacheInfo</A>, <A HREF="DCommonIndexed.htm#DRV_Window">DRV_Window</A>, <A HREF="DCommonIndexed.htm#DRV_RGB">DRV_RGB</A>, <A HREF="DCommonIndexed.htm#DRV_Palette">DRV_Palette</A>, <A HREF="DCommonIndexed.htm#DRV_Bitmap">DRV_Bitmap</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</A>, <A HREF="DCommonIndexed.htm#DRV_TexInfo">DRV_TexInfo</A>, <A HREF="DCommonIndexed.htm#DRV_TLVertex">DRV_TLVertex</A>, <A HREF="DCommonIndexed.htm#DRV_DriverHook">DRV_DriverHook</A>, <A HREF="DCommonIndexed.htm#GInfo">GInfo</A>, <A HREF="DCommonIndexed.htm#DRV_EngineSettings">DRV_EngineSettings</A>, <A HREF="DCommonIndexed.htm#BEGIN_MESHES">BEGIN_MESHES</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#BEGIN_MODELS">BEGIN_MODELS</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#BEGIN_SCENE">BEGIN_SCENE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#BEGIN_WORLD">BEGIN_WORLD</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#CREATE_TEXTURE">CREATE_TEXTURE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DESTROY_TEXTURE">DESTROY_TEXTURE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRAW_DECAL">DRAW_DECAL</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_Driver">DRV_Driver</A>, <A HREF="DCommonIndexed.htm#DRV_RENDER_MODE">DRV_RENDER_MODE</A><B><FONT COLOR="#000080">&nbsp;, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_MODES">DRV_ENUM_MODES</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_DRIVER">DRV_ENUM_DRIVER</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_PFORMAT">DRV_ENUM_PFORMAT</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_MODES_CB">DRV_ENUM_MODES_CB</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_DRV_CB">DRV_ENUM_DRV_CB</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_ENUM_PFORMAT_CB">DRV_ENUM_PFORMAT_CB</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_Hook">DRV_Hook</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_INIT">DRV_INIT</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_RESET">DRV_RESET</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_SET_ACTIVE">DRV_SET_ACTIVE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_SET_FOG_ENABLE">DRV_SET_FOG_ENABLE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_SHUTDOWN">DRV_SHUTDOWN</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#DRV_UPDATE_WINDOW">DRV_UPDATE_WINDOW</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#END_MESHES">END_MESHES</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#END_MODELS">END_MODELS</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#END_SCENE">END_SCENE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#END_WORLD">END_WORLD</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#GET_ALPHA">GET_ALPHA</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#GET_GAMMA">GET_GAMMA</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#GET_PALETTE">GET_PALETTE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#LOCK_THANDLE">LOCK_THANDLE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#RENDER_G_POLY">RENDER_G_POLY</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#RENDER_MT_POLY">RENDER_MT_POLY</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#RENDER_W_POLY">RENDER_W_POLY</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#SCREEN_SHOT">SCREEN_SHOT</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#SET_ALPHA">SET_ALPHA</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#SET_GAMMA">SET_GAMMA</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#SETUP_LIGHTMAP_CB">SETUP_LIGHTMAP_CB</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#SET_PALETTE">SET_PALETTE</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#THANDLE_GET_INFO">THANDLE_GET_INFO</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="DCommonIndexed.htm#UNLOCK_THANDLE">UNLOCK_THANDLE</A></P>
+<FONT COLOR="#000080"><P><A NAME="x"></A>Changes for Genesis v1.6:  </FONT><A HREF="DCommonIndexed.htm#DRV_RENDER_POLY_NO_FOG">DRV_RENDER_POLY_NO_FOG</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="DCommonIndexed.htm#Constants">here</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>&nbsp;&nbsp;</P>
+</B></FONT><P>#ifndef WINVER //If not using windows version, then must define some "Windows" types</P>
+<DL>
+<DD>#ifdef STRICT</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef struct HWND__* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">HWND</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef struct HBITMAP__* <B><FONT COLOR="#800000">HBITMAP</B></FONT>;</DD>
+<DD>#else // STRICT</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef <FONT COLOR="#0000ff">void</FONT> * &nbsp;<B><FONT COLOR="#800000">HWND</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef <FONT COLOR="#0000ff">void</FONT> * &nbsp;<B><FONT COLOR="#800000">HBITMAP</B></FONT>;</DD>
+<DD>#endif // STRICT</DD>
+<DD>&nbsp;</DD>
+<DD>#ifndef VOID</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define VOID <FONT COLOR="#0000ff">void</DD>
+</FONT><DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef <FONT COLOR="#0000ff">char</FONT> &nbsp;<B><FONT COLOR="#800000">CHAR</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef short <B><FONT COLOR="#800000">SHORT</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef long &nbsp;<B><FONT COLOR="#800000">LONG</B></FONT>;</DD>
+<DD>#endif</DD>
+<DD>&nbsp;</DD>
+<DD>#ifndef BASETYPES</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define BASETYPES</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef unsigned long &nbsp;&nbsp;<B><FONT COLOR="#800000">ULONG</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef ULONG* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">PULONG</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef unsigned short <B><FONT COLOR="#800000">USHORT</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef USHORT* &nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">PUSHORT</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef unsigned <FONT COLOR="#0000ff">char</FONT> &nbsp;<B><FONT COLOR="#800000">UCHAR</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef UCHAR* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">PUCHAR</B></FONT>;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef <FONT COLOR="#0000ff">char</FONT> * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">PSZ</B></FONT>;</DD>
+<DD>#endif /* !BASETYPES* /</DD>
+<DD>&nbsp;</DD>
+<DD>typedef unsigned long &nbsp;&nbsp;<B><FONT COLOR="#800000">DWORD</B></FONT>;</DD>
+<DD>typedef <FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>;</DD>
+<DD>typedef unsigned <FONT COLOR="#0000ff">char</FONT> &nbsp;&nbsp;<B><FONT COLOR="#800000">BYTE</B></FONT>;</DD>
+<DD>typedef unsigned short <B><FONT COLOR="#800000">WORD</B></FONT>;</DD>
+<DD>typedef <FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">FLOAT</B></FONT>;</DD>
+<DD><A NAME="RECT"></A>typedef struct tagRECT {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LONG left;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LONG top;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LONG right;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LONG bottom;<BR>
+} <B><FONT COLOR="#800000">RECT</B></FONT>;</DD>
+</DL>
+<P>#endif // WINVER</P>
+<P><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A>&nbsp;</P>
+<P>&nbsp;</P>
+<P><A NAME="U8"></A>typedef <A HREF="BasetypesIndexed.htm#uint8">uint8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">U8</B></FONT>; &nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A NAME="U16"></A>typedef <A HREF="BasetypesIndexed.htm#uint16">uint16</A>&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">U16</B></FONT>; &nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P>typedef <A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;&nbsp;<A NAME="U32"><B><FONT COLOR="#800000">U32</A></B></FONT>; &nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A NAME="C8"></A>typedef <FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">C8</B></FONT>; &nbsp;&nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A NAME="S8"></A>typedef <A HREF="BasetypesIndexed.htm#int8">int8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">S8</B></FONT>; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A NAME="S16"></A>typedef <A HREF="BasetypesIndexed.htm#int16">int16</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">S16</B></FONT>; &nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A NAME="S32"></A>typedef <A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#800000">S32</B></FONT>; &nbsp;&nbsp;&nbsp;//only if: #ifndef US_TYPEDEFS</P>
+<P><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="geRDriver_THandle"></A>geRDriver_THandle</P><DIR>
+<DIR>
+
+</B></FONT><P>typedef struct geRDriver_THandle&nbsp;geRDriver_THandle;</P></DIR>
+</DIR>
+
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#800000"><P>&nbsp;</P>
+<P><A NAME="geRDriver_PixelFormat"></A>geRDriver_PixelFormat</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PixelFormat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;&nbsp;&nbsp;&nbsp;&nbsp;// use <A HREF="DCommonIndexed.htm#DriverFormatFlags">THESE</A> flags (<FONT COLOR="#ff0000">I think</FONT>)<BR>
+} geRDriver_PixelFormat;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><FONT COLOR="#800000"><P><A NAME="geRDriver_THandleInfo"></A>geRDriver_THandleInfo</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stride;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ColorKey;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags; //use <A HREF="DCommonIndexed.htm#RDRIVER_THANDLE_HAS_COLORKEY">THIS</A> flag (<FONT COLOR="#ff0000">I think</FONT>)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</A>&nbsp;&nbsp;&nbsp;PixelFormat;<BR>
+} geRDriver_THandleInfo;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><FONT COLOR="#800000"><P><A NAME="DRV_Debug"></A>DRV_Debug</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LMapCount[16][4];&nbsp;&nbsp;&nbsp;&nbsp;// LMap size / MipLevel<BR>
+} DRV_Debug;</DD>
+</DL>
+<P><BR>
+<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<FONT COLOR="#800000"><DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><P><A NAME="DRV_CacheInfo"></A>DRV_CacheInfo</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;CacheFull;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;CacheRemoved;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;CacheFlushes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;TexMisses;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;LMapMisses;<BR>
+} DRV_CacheInfo;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><FONT COLOR="#800000"><P><A NAME="DRV_Window"></A>DRV_Window</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HWND&nbsp;&nbsp;hWnd;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U8">U8</A>* Buffer;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;Width;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;Height;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;PixelPitch;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;BytesPerPixel;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;R_shift;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;G_shift;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;B_shift;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;R_mask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;G_mask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;B_mask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;R_width;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;G_width;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;B_width;<BR>
+} DRV_Window;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_RGB"></A>DRV_RGB</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U8">U8</A> r, g, b;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// RGB components for RGB lightmaps<BR>
+} DRV_RGB;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="DRV_Palette"></A>DRV_Palette</P><DIR>
+<DIR>
+
+</B></FONT><P>typedef&nbsp;<A HREF="DCommonIndexed.htm#DRV_RGB">DRV_RGB</A>&nbsp;DRV_Palette[<A HREF="DCommonIndexed.htm#DRV_PALETTE_ENTRIES">DRV_PALETTE_ENTRIES</A>];</P></DIR>
+</DIR>
+
+<P>&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="DRV_Bitmap"></A>DRV_Bitmap</P><DIR>
+
+</B></FONT><P>// Bitmap hook DRV_Bitmap; into the drivers (engine uses these explicitly as is)</P>
+<DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[32];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Duh, name of bitmap...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Flags (<FONT COLOR="#ff0000">I'm not sure which flag constants to user here</FONT>)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Width of bitmap<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Height of bitmap<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U8">U8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MipLevels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U8">U8</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BitPtr[4];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Pointer to location of bits (up to 4 miplevels)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_RGB">DRV_RGB</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Palette;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Driver sets these in register functions (below)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Id;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Bitmap handle for hardware...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* &nbsp;&nbsp;&nbsp;&nbsp;THandle;<BR>
+} DRV_Bitmap;</DD>
+</DL></DIR>
+
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="DRV_LInfo"></A>DRV_LInfo</P><DIR>
+
+</B></FONT><P>// Lightmap hook into the drivers (Engine uses these exlicitly as is...)</P>
+<P>// Lightmap info</P>
+<DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S16">S16</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width, Height;&nbsp;&nbsp;&nbsp;&nbsp;// lightmap width/height / 16 +1<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MinU, MinV;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Min U,V values<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_RGB">DRV_RGB</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RGBLight[2];&nbsp;&nbsp;&nbsp;&nbsp;// Pointer to RGB light map data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Face;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Face that this map belongs too<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* &nbsp;&nbsp;THandle;<BR>
+} DRV_LInfo;</DD>
+</DL></DIR>
+
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_TexInfo"></A>DRV_TexInfo</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShiftU;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// How much to shift right before draw<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShiftV;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawScaleU;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// How much to scale right before draw<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawScaleV;<BR>
+} DRV_TexInfo;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DD><A NAME="DRV_TLVertex"></A>DRV_TLVertex</DD>
+</DL><DIR>
+
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,y,z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <FONT COLOR="#0000ff">float</FONT> 3d z value<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u,v;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <FONT COLOR="#0000ff">float</FONT> texture coords<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r,g,b,a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Color of point, and Alpha<BR>
+} DRV_TLVertex;</P></DIR>
+
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_DriverHook"></A>DRV_DriverHook</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AppName[512];<BR>
+&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Driver;<BR>
+&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DriverName[512];<BR>
+&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mode;<BR>
+&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ModeName[512];<BR>
+&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width;<BR>
+&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height;<BR>
+&nbsp;HWND&nbsp;&nbsp;&nbsp;&nbsp;hWnd;<BR>
+} DRV_DriverHook;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="GInfo"></A>GInfo</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Texture info below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VecU;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VecV;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexMinsX;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexMinsY;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexWidth;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexHeight;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexShiftX;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexShiftY;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Camera info below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A>&nbsp;&nbsp;CXForm;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPov;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Misc below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XCenter;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YCenter;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XScaleInv;&nbsp;&nbsp;&nbsp;// 1 / XScale<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YScaleInv;&nbsp;&nbsp;&nbsp;// 1 / YScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZScale;&nbsp;&nbsp;&nbsp;&nbsp;// camera z scale<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneNormal;&nbsp;&nbsp;// Face normal<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneDist;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RPlaneNormal;&nbsp;&nbsp;// Rotated Face normal<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pov;<BR>
+} GInfo;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_EngineSettings"></A>DRV_EngineSettings</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;CanSupportFlags;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;PreferenceFlags; //use <A HREF="DCommonIndexed.htm#DRV_PREFERENCES">THESE</A> flags (<FONT COLOR="#ff0000">I think</FONT>)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;Reserved1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#U32">U32</A>&nbsp;&nbsp;&nbsp;Reserved2;<BR>
+} DRV_EngineSettings;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_Driver"></A>DRV_Driver</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT> * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VersionMajor;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VersionMinor;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Error handling hooks set by driver below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastError;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Last error driver made<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT> * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastErrorStr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <A HREF="BasetypesIndexed.htm#NULL">NULL</A> terminated error string&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Enum Modes/Drivers below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_ENUM_DRIVER">DRV_ENUM_DRIVER</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EnumSubDrivers;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_ENUM_MODES">DRV_ENUM_MODES</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EnumModes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_ENUM_PFORMAT">DRV_ENUM_PFORMAT</A>* &nbsp;&nbsp;EnumPixelFormats;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Init/DeInit functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_INIT">DRV_INIT</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Init;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_SHUTDOWN">DRV_SHUTDOWN</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shutdown;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_RESET">DRV_RESET</A>* Reset;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_UPDATE_WINDOW">DRV_UPDATE_WINDOW</A>* UpdateWindow;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_SET_ACTIVE">DRV_SET_ACTIVE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetActive;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Create/Destroy texture functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#CREATE_TEXTURE">CREATE_TEXTURE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_Create;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DESTROY_TEXTURE">DESTROY_TEXTURE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_Destroy;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Texture manipulation functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#LOCK_THANDLE">LOCK_THANDLE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_Lock;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#UNLOCK_THANDLE">UNLOCK_THANDLE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_UnLock;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Palette access functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#SET_PALETTE">SET_PALETTE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_SetPalette;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#GET_PALETTE">GET_PALETTE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_GetPalette;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Palette access functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#SET_ALPHA">SET_ALPHA</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_SetAlpha;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#GET_ALPHA">GET_ALPHA</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THandle_GetAlpha;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#THANDLE_GET_INFO">THANDLE_GET_INFO</A>* &nbsp;&nbsp;THandle_GetInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Scene management functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#BEGIN_SCENE">BEGIN_SCENE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeginScene;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#END_SCENE">END_SCENE</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EndScene;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#BEGIN_WORLD">BEGIN_WORLD</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeginWorld;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#END_WORLD">END_WORLD</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EndWorld;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#BEGIN_MESHES">BEGIN_MESHES</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeginMeshes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#END_MESHES">END_MESHES</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EndMeshes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#BEGIN_MODELS">BEGIN_MODELS</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeginModels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#END_MODELS">END_MODELS</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EndModels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Render functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#RENDER_G_POLY">RENDER_G_POLY</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderGouraudPoly;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#RENDER_W_POLY">RENDER_W_POLY</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderWorldPoly;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#RENDER_MT_POLY">RENDER_MT_POLY</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderMiscTexturePoly;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">//Decal functions below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRAW_DECAL">DRAW_DECAL</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawDecal;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">//misc below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumWorldPixels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumWorldSpans;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#S32">S32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumRenderedPolys;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_CacheInfo">DRV_CacheInfo</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CacheInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#SCREEN_SHOT">SCREEN_SHOT</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ScreenShot;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#SET_GAMMA">SET_GAMMA</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetGamma;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#GET_GAMMA">GET_GAMMA</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GetGamma;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_SET_FOG_ENABLE">DRV_SET_FOG_ENABLE</A>* SetFogEnable;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Driver preferences below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_EngineSettings">DRV_EngineSettings</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EngineSettings;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// The engine supplies these for the drivers misc use (below)<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#SETUP_LIGHTMAP_CB">SETUP_LIGHTMAP_CB</A>* &nbsp;SetupLightmap;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#008000">// Temp hack global below<BR>
+</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#GInfo">GInfo</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GlobalInfo;<BR>
+} DRV_Driver;<BR>
+</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="DRV_RENDER_MODE"></A>DRV_RENDER_MODE</P>
+</B></FONT><DL>
+<DD>typedef enum {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RENDER_NONE,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RENDER_WORLD,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RENDER_MESHES,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RENDER_MODELS<BR>
+} DRV_RENDER_MODE;</DD>
+</DL>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<hr>
+<B><P>Enumeration defines</P>
+<hr>
+</B><P>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <B><FONT COLOR="#800000">DRV_ENUM_MODES_CB</B></FONT>(<A HREF="DCommonIndexed.htm#S32">S32</A> Mode, <FONT COLOR="#0000ff">char</FONT> * ModeName, <A HREF="DCommonIndexed.htm#S32">S32</A> Width, <A HREF="DCommonIndexed.htm#S32">S32</A> Height, <FONT COLOR="#0000ff">void</FONT> * Context);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_ENUM_MODES"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_ENUM_MODES</B></FONT>(<A HREF="DCommonIndexed.htm#S32">S32</A> Driver, <FONT COLOR="#0000ff">char</FONT> * DriverName, <A HREF="DCommonIndexed.htm#DRV_ENUM_MODES_CB">DRV_ENUM_MODES_CB</A>* Cb, <FONT COLOR="#0000ff">void</FONT> * Context);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_ENUM_DRV_CB"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <B><FONT COLOR="#800000">DRV_ENUM_DRV_CB</B></FONT>(<A HREF="DCommonIndexed.htm#S32">S32</A> Driver, <FONT COLOR="#0000ff">char</FONT> * DriverName, <FONT COLOR="#0000ff">void</FONT> * Context);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_ENUM_DRIVER"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_ENUM_DRIVER</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_ENUM_DRV_CB">DRV_ENUM_DRV_CB</A>* Cb, <FONT COLOR="#0000ff">void</FONT> * Context);</P><DIR>
+
+<P>Note: if #ifdef _BCB, then a third parameter, <FONT COLOR="#0000ff">void</FONT> * e, is added. This must to passed with <A HREF="BasetypesIndexed.htm#NULL">NULL</A>... it is a dummy parameter</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+
+<hr>
+<P><A NAME="DRV_ENUM_PFORMAT_CB"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <B><FONT COLOR="#800000">DRV_ENUM_PFORMAT_CB</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</A>* Format, <FONT COLOR="#0000ff">void</FONT> * Context);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_ENUM_PFORMAT"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_ENUM_PFORMAT</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_ENUM_PFORMAT_CB">DRV_ENUM_PFORMAT_CB</A>* Cb, <FONT COLOR="#0000ff">void</FONT> * Context); </P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><P>Create/Destroy/Etc Driver function types</P>
+</B><hr>
+<P><A NAME="DRV_INIT"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_INIT</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_DriverHook">DRV_DriverHook</A>* Hook);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_SHUTDOWN"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_SHUTDOWN</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_RESET"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_RESET</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_UPDATE_WINDOW"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DRV_UPDATE_WINDOW</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_SET_ACTIVE"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> active);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><P>Texture surface function types</P>
+<hr>
+</B><P>typedef <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">CREATE_TEXTURE</B></FONT>(<A HREF="BasetypesIndexed.htm#int32">int32</A> NumMipLevels, <FONT COLOR="#0000ff">const</FONT> <A HREF="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</A>* PixelFormat);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DESTROY_TEXTURE"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">DESTROY_TEXTURE</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="LOCK_THANDLE"></A>typedef <A HREF="BasetypesIndexed.htm#int32">int32</A> MipLevel, <FONT COLOR="#0000ff">void</FONT> ** Data);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="UNLOCK_THANDLE"></A>typedef <A HREF="BasetypesIndexed.htm#int32">int32</A> MipLevel);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SET_PALETTE"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">SET_PALETTE</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle, <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* PalHandle);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GET_PALETTE"></A>typedef <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">GET_PALETTE</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SET_ALPHA"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">SET_ALPHA</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle, <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* PalHandle);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GET_ALPHA"></A>typedef <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">GET_ALPHA</B></FONT>(<A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="y"><A NAME="THANDLE_GET_INFO"></A></A>typedef <A HREF="BasetypesIndexed.htm#int32">int32</A> MipLevel, <A HREF="DCommonIndexed.htm#geRDriver_THandleInfo">geRDriver_THandleInfo</A>* Info);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><P>Scene management function types</P>
+<hr>
+</B><P>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> ClearZ, <A HREF="DCommonIndexed.htm#RECT">RECT</A>* WorldRect);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="END_SCENE"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">END_SCENE</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="BEGIN_WORLD"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">BEGIN_WORLD</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="END_WORLD"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">END_WORLD</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="BEGIN_MESHES"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">BEGIN_MESHES</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="END_MESHES"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">END_MESHES</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="BEGIN_MODELS"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">BEGIN_MODELS</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="END_MODELS"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">END_MODELS</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><P>Render function types</P>
+<hr>
+</B><P>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">RENDER_G_POLY</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_TLVertex">DRV_TLVertex</A>* Pnts, <A HREF="DCommonIndexed.htm#S32">S32</A> NumPoints, <A HREF="DCommonIndexed.htm#U32">U32</A> Flags);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <A HREF="DCommonIndexed.htm#RENDER_FLAGS">THESE</A> for Flags </P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RENDER_W_POLY"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">RENDER_W_POLY</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_TLVertex">DRV_TLVertex</A>* Pnts, <A HREF="DCommonIndexed.htm#S32">S32</A> NumPoints, <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle, <A HREF="DCommonIndexed.htm#DRV_TexInfo">DRV_TexInfo</A>* TexInfo, <A HREF="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</A>* LInfo, <A HREF="DCommonIndexed.htm#U32">U32</A> Flags);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <A HREF="DCommonIndexed.htm#RENDER_FLAGS">THESE</A> for Flags </P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RENDER_MT_POLY"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">RENDER_MT_POLY</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_TLVertex">DRV_TLVertex</A>* Pnts, <A HREF="DCommonIndexed.htm#S32">S32</A> NumPoints, <A HREF="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</A>* THandle, <A HREF="DCommonIndexed.htm#U32">U32</A> Flags); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <A HREF="DCommonIndexed.htm#RENDER_FLAGS">THESE</A> for Flags </P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRAW_DECAL"></A>typedef <A HREF="BasetypesIndexed.htm#int32">int32</A> y);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SCREEN_SHOT"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">SCREEN_SHOT</B></FONT>(<FONT COLOR="#0000ff">const</FONT> <FONT COLOR="#0000ff">char</FONT> * Name);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SET_GAMMA"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">SET_GAMMA</B></FONT>(<FONT COLOR="#0000ff">float</FONT> Gamma);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GET_GAMMA"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <A HREF="DCommonIndexed.htm#DRIVERCC">DRIVERCC</A> <B><FONT COLOR="#800000">GET_GAMMA</B></FONT>(<FONT COLOR="#0000ff">float</FONT> * Gamma);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_SET_FOG_ENABLE"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> Enable, <FONT COLOR="#0000ff">float</FONT> r, <FONT COLOR="#0000ff">float</FONT> g, <FONT COLOR="#0000ff">float</FONT> b, <FONT COLOR="#0000ff">float</FONT> Start, <FONT COLOR="#0000ff">float</FONT> End);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SETUP_LIGHTMAP_CB"></A>typedef <FONT COLOR="#0000ff">void</FONT> <B><FONT COLOR="#800000">SETUP_LIGHTMAP_CB</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</A>* LInfo, <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>* Dynamic);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DRV_Hook"></A>typedef <A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> <B><FONT COLOR="#800000">DRV_Hook</B></FONT>(<A HREF="DCommonIndexed.htm#DRV_Driver">DRV_Driver</A>** Hook);</P>
+<BLOCKQUOTE><A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> <A NAME="DRIVERCC"></A></P>
+<P>&nbsp;</P>
+<P>#define&nbsp;<B><FONT COLOR="#800000">DRIVERCC</B></FONT> _fastcall // (or __fastcall #ifdef _BCB)</P>
+<P>#ifndef __cplusplus</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define DllImport&nbsp;__declspec( dllimport )</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define DllExport&nbsp;__declspec( dllexport )</P>
+<P>#else</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define DllImport&nbsp;extern "C" __declspec( dllimport )</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define DllExport&nbsp;extern "C" __declspec( dllexport )</P>
+<P>#endif</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="DRV_PALETTE_ENTRIES"></A>#define&nbsp;DRV_PALETTE_ENTRIES&nbsp;256</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="RENDER_FLAGS"></A>// Render Flags for ALL render functions</P>
+<P>#define DRV_RENDER_ALPHA&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;// Render function should expect alpha set in vertices</P>
+<P>#define DRV_RENDER_FLUSH&nbsp;&nbsp;(1&lt;&lt;1)&nbsp;// Render function should gaurentee that this render happens NOW</P>
+<P>#define DRV_RENDER_NO_ZMASK&nbsp;&nbsp;(1&lt;&lt;2)&nbsp;// No zbuffering should be performed</P>
+<P>#define DRV_RENDER_NO_ZWRITE&nbsp;(1&lt;&lt;3)&nbsp;// No z writing will be performed</P>
+<P>#define DRV_RENDER_CLAMP_UV&nbsp;&nbsp;(1&lt;&lt;4)&nbsp;// Clamp UV in both directions</P>
+<P>//The following added for Genesis3D 1.6</P>
+<P><A NAME="DRV_RENDER_POLY_NO_FOG"></A>#define DRV_RENDER_POLY_NO_FOG&#9;(1&lt;&lt;5)  // Don't render this poly with fog</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P>#define LMAP_TYPE_LIGHT&nbsp;&nbsp;&nbsp;0</P>
+<P>#define LMAP_TYPE_FOG&nbsp;&nbsp;&nbsp;1</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P>// PolyMode flags&nbsp;(A method to override how polys are drawn for debugging purposes...)</P>
+<P>// Put these in the poly flags!!! They are currently not used right now...</P>
+<P>#define DRV_POLYMODE_NORMAL&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;// Draw as is</P>
+<P>#define DRV_POLYMODE_GOURAUD&nbsp;2&nbsp;&nbsp;&nbsp;// Gouraud only</P>
+<P>#define DRV_POLYMODE_LINES&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;// Outlines only</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P>#define DRV_VERSION_MAJOR&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;// Genesis 1.0</P>
+<P>#define DRV_VERSION_MINOR&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;// &gt;= 3.0 added fog</P>
+<P>#define DRV_VMAJS&nbsp;&nbsp;&nbsp;&nbsp;"100"</P>
+<P>#define DRV_VMINS&nbsp;&nbsp;&nbsp;&nbsp;"3"</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="RDRIVER_THANDLE_HAS_COLORKEY"></A>#define RDRIVER_THANDLE_HAS_COLORKEY&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;// The thandle is using color keying</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="DriverFormatFlags"></A>// DriverFormat flags</P>
+<P>#define RDRIVER_PF_2D_SHIFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0)&nbsp;&nbsp;&nbsp;// Supports being used as a 2d decal surface</P>
+<P>#define RDRIVER_PF_3D_SHIFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)&nbsp;&nbsp;&nbsp;// Supports being used as a 3d poly surface</P>
+<P>#define RDRIVER_PF_LIGHTMAP_SHIFT&nbsp;&nbsp;&nbsp;(2)&nbsp;&nbsp;&nbsp;// Surface is a lightmap surface</P>
+<P>#define RDRIVER_PF_PALETTE_SHIFT&nbsp;&nbsp;&nbsp;(3)&nbsp;&nbsp;&nbsp;// Surface is a palette</P>
+<P>#define RDRIVER_PF_ALPHA_SHIFT&nbsp;&nbsp;&nbsp;&nbsp;(4)&nbsp;&nbsp;&nbsp;// Surface is an alpha map</P>
+<P>#define RDRIVER_PF_OPTIONAL_SHIFT&nbsp;&nbsp;&nbsp;(16)</P>
+<P>#define RDRIVER_PF_HAS_ALPHA_SHIFT&nbsp;&nbsp;&nbsp;(RDRIVER_PF_OPTIONAL_SHIFT + 0)&nbsp;&nbsp;// Surface can take an alpha map</P>
+<P>#define RDRIVER_PF_CAN_DO_COLORKEY_SHIFT&nbsp;(RDRIVER_PF_OPTIONAL_SHIFT + 1)&nbsp;&nbsp;// Surface supports colorkeying</P>
+<P>#define RDRIVER_PF_COMBINE_LIGHTMAP_SHIFT&nbsp;(RDRIVER_PF_OPTIONAL_SHIFT + 2)&nbsp;&nbsp;&nbsp;// Supports being rendered with a lightmap (3d will be set as well)</P>
+<P>#define RDRIVER_PF_2D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_2D_SHIFT)&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_3D_SHIFT)&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_LIGHTMAP&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_LIGHTMAP_SHIFT)&nbsp;&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_COMBINE_LIGHTMAP&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_COMBINE_LIGHTMAP_SHIFT)&nbsp;</P>
+<P>#define RDRIVER_PF_PALETTE&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_PALETTE_SHIFT)&nbsp;&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_ALPHA&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_ALPHA_SHIFT)&nbsp;&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_CAN_DO_COLORKEY&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_CAN_DO_COLORKEY_SHIFT)</P>
+<P>#define RDRIVER_PF_HAS_ALPHA&nbsp;&nbsp;&nbsp;(1&lt;&lt;RDRIVER_PF_HAS_ALPHA_SHIFT)&nbsp;&nbsp;</P>
+<P>#define RDRIVER_PF_MAJOR_MASK&nbsp;&nbsp;&nbsp;((1&lt;&lt;RDRIVER_PF_OPTIONAL_SHIFT)-1)</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P>// What the driver can support as far as texture mapping is concerned</P>
+<P>#define DRV_SUPPORT_ALPHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;// Driver can do alpha blending</P>
+<P>#define DRV_SUPPORT_COLORKEY&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;1)&nbsp;&nbsp;// Driver can do pixel masking</P>
+<P>#define DRV_SUPPORT_GAMMA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;2)&nbsp;&nbsp;// Gamma function works with the driver</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="DRV_PREFERENCES"></A>// A hint to the engine as far as what to turn on and off...</P>
+<P>#define DRV_PREFERENCE_NO_MIRRORS&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;// Engine should NOT render mirrors</P>
+<P>#define DRV_PREFERENCE_SORT_WORLD_FB&nbsp;&nbsp;(1&lt;&lt;1)&nbsp;&nbsp;// Sort world Front to Back</P>
+<P>#define DRV_PREFERENCE_SORT_WORLD_BF&nbsp;&nbsp;(1&lt;&lt;2)&nbsp;&nbsp;// Sort world Back to Front</P>
+<P>#define DRV_PREFERENCE_DRAW_WALPHA_IN_BSP&nbsp;(1&lt;&lt;3)&nbsp;&nbsp;// Draw world alphas in BSP sort</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P>//&nbsp;Error defines set by the driver. These will be in the LastError member of <A HREF="DCommonIndexed.htm#DRV_Driver">DRV_Driver</A></P>
+<P>//&nbsp;structure. LastErrorStr will contain a <A HREF="BasetypesIndexed.htm#NULL">NULL</A> terminated detail error string set by the driver</P>
+<P>#define DRV_ERROR_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;// No error has occured</P>
+<P>#define DRV_ERROR_INVALID_PARMS&nbsp;&nbsp;&nbsp;1&nbsp;// invalid parameters passed</P>
+<P>#define DRV_ERROR_NULL_WINDOW&nbsp;&nbsp;&nbsp;2&nbsp;// Null window supplied</P>
+<P>#define DRV_ERROR_INIT_ERROR&nbsp;&nbsp;&nbsp;3&nbsp;// Error intitializing</P>
+<P>#define DRV_ERROR_INVALID_REGISTER_MODE&nbsp;4&nbsp;// Invalid register mode</P>
+<P>#define DRV_ERROR_NO_MEMORY&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;// Not enough ram</P>
+<P>#define DRV_ERROR_MAX_TEXTURES&nbsp;&nbsp;&nbsp;6&nbsp;// Max texture capacity has been exceeded...</P>
+<P>#define DRV_ERROR_GENERIC&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;// Generic error&nbsp; </P>
+<P>#define DRV_ERROR_UNDEFINED&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;// An undefined error has occured</P>
+<P>#define DRV_ERROR_INVALID_WINDOW_MODE&nbsp;9&nbsp;// Requested window/full not supported</P>
+<P>&nbsp;<A HREF="DCommonIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:13:42 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:33 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

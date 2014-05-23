@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geBody._h</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geBody._h</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: The following is not part of the API, and is for the curious</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\body._h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> <A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geBody_h-Indexed.htm#geBody_Index"><FONT COLOR="#000080">geBody_Index</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_XSkinVertex"><FONT COLOR="#000080">geBody_XSkinVertex</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_Normal"><FONT COLOR="#000080">geBody_Normal</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_Bone"><FONT COLOR="#000080">geBody_Bone</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_Triangle"><FONT COLOR="#000080">geBody_Triangle</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_TriangleList"><FONT COLOR="#000080">geBody_TriangleList</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody_Material"><FONT COLOR="#000080">geBody_Material</FONT></A><FONT COLOR="#000080">, </FONT><A HREF="geBody_h-Indexed.htm#geBody"><FONT COLOR="#000080">geBody</FONT></A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="geBody_h-Indexed.htm#Constants">view</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Constants:</B></I></FONT> </P>
+<P>#define GE_BODY_INDEX_MAX (0xEFFF)</P>
+<P>#define GE_BODY_REALLY_BIG_NUMBER (9e9f) // bigger than any skin point</P>
+<P>#define GE_BODY_HIGHEST_LOD_MASK ( 1 &lt;&lt; GE_BODY_HIGHEST_LOD )</P>
+<P>#define GE_BODY_BBOX_LOD_MASK ( 1 &lt;&lt; GE_BODY_NUMBER_OF_LOD ) // bounding box mask</P>
+<BLOCKQUOTE><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<P><A NAME="geBody_Index"></A>typedef <A HREF="BasetypesIndexed.htm#int16">int16</A> <FONT COLOR="#800000"><STRONG>geBody_Index</FONT></STRONG>;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_XSkinVertex"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_XSkinVertex</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A><FONT COLOR="#0000ff"> </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;XPoint;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XU,XV;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int8">int8</A><FONT COLOR="#0000ff"> </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LevelOfDetailMask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;BoneIndex;<BR>
+} geBody_XSkinVertex;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_Normal"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_Normal</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A><FONT COLOR="#0000ff"> </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int8">int8</A><FONT COLOR="#0000ff"> </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LevelOfDetailMask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;BoneIndex;<BR>
+} geBody_Normal;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_Bone"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_Bone</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A><FONT COLOR="#0000ff"> &nbsp;</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMin;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A><FONT COLOR="#0000ff"> &nbsp;&nbsp;</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMax;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AttachmentMatrix;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;ParentBoneIndex;<BR>
+} geBody_Bone;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_Triangle"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_Triangle</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> VtxIndex[3];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> NormalIndex[3];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> MaterialIndex;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<FONT COLOR="#0000ff">geBody_Index</FONT> FaceNormal;<BR>
+} geBody_Triangle;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_TriangleList"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_TriangleList</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Triangle">geBody_Triangle</A>*&nbsp;&nbsp;&nbsp;FaceArray; // Sorted by MaterialIndex<BR>
+} geBody_TriangleList;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody_Material"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody_Material</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bitmap;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><FONT COLOR="#0000ff"> &nbsp;&nbsp;</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Red,Green,Blue;<BR>
+} geBody_Material;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<P><A NAME="geBody"></A>typedef struct <FONT COLOR="#800000"><STRONG>geBody</FONT></STRONG><BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMin;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">&nbsp;</FONT><A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMax;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XSkinVertexCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_XSkinVertex">geBody_XSkinVertex</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XSkinVertexArray; // Sorted by BoneIndex<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkinNormalCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Normal">geBody_Normal</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkinNormalArray;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoneCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Bone">geBody_Bone</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoneArray;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoneNames;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Index">geBody_Index</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaterialCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_Material">geBody_Material</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaterialArray;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaterialNames; <BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LevelsOfDetail;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody_TriangleList">geBody_TriangleList</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkinFaces[GE_BODY_NUMBER_OF_LOD];<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBody_h-Indexed.htm#geBody">geBody</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IsValid;<BR>
+} geBody;</P>
+<P>This is not part of the API, and is for advanced users and those willing to compile the entire source code</P>
+<P><A HREF="geBody_h-Indexed.htm#Contents">Return to Contents</A></P>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:21:43 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:38 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

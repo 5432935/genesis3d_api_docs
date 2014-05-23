@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DirTreeIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>DirTree</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Directory tree interface</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Vfile\dirtree.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</P>
+</I></FONT><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="DirTreeIndexed.htm#Create">Create</A>, <A HREF="DirTreeIndexed.htm#CreateFromFile">CreateFromFile</A>, <A HREF="DirTreeIndexed.htm#WriteToFile">WriteToFile</A>, <A HREF="DirTreeIndexed.htm#GetSize">GetSize</A>, <A HREF="DirTreeIndexed.htm#Destroy">Destroy</A>, <A HREF="DirTreeIndexed.htm#FindExact">FindExact</A>, <A HREF="DirTreeIndexed.htm#FindPartial">FindPartial</A>, <A HREF="DirTreeIndexed.htm#AddFile">AddFile</A>, <A HREF="DirTreeIndexed.htm#Remove">Remove</A>, <A HREF="DirTreeIndexed.htm#SetFileAttributes">SetFileAttributes</A>, <A HREF="DirTreeIndexed.htm#GetFileAttributes">GetFileAttributes</A>, <A HREF="DirTreeIndexed.htm#SetFileOffset">SetFileOffset</A>, <A HREF="DirTreeIndexed.htm#GetFileOffset">GetFileOffset</A>, <A HREF="DirTreeIndexed.htm#SetFileTime">SetFileTime</A>, <A HREF="DirTreeIndexed.htm#GetFileTime">GetFileTime</A>, <A HREF="DirTreeIndexed.htm#SetFileSize">SetFileSize</A>, <A HREF="DirTreeIndexed.htm#GetFileSize">GetFileSize</A>, <A HREF="DirTreeIndexed.htm#SetFileHints">SetFileHints</A>, <A HREF="DirTreeIndexed.htm#GetFileHints">GetFileHints</A>, <A HREF="DirTreeIndexed.htm#GetName">GetName</A>, <A HREF="DirTreeIndexed.htm#FileExists">FileExists</A>, <A HREF="DirTreeIndexed.htm#CreateFinder">CreateFinder</A>, <A HREF="DirTreeIndexed.htm#DestroyFinder">DestroyFinder</A>, <A HREF="DirTreeIndexed.htm#FinderGetNextFile">FinderGetNextFile</A>, <A HREF="DirTreeIndexed.htm#Dump">Dump</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="DirTreeIndexed.htm#DirTree_Finder">DirTree_Finder</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</I></FONT><FONT COLOR="#000080"><P><A NAME="DirTree"></A>typedef struct DirTree </FONT><FONT COLOR="#800000">DirTree</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P><A NAME="DirTree_Finder"></A>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<B><FONT COLOR="#000080"><P>typedef struct DirTree_Finder </FONT><FONT COLOR="#800000">DirTree_Finder</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<B><FONT COLOR="#000080"><P>&nbsp;&nbsp;</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><BLOCKQUOTE><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromFile"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_CreateFromFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File);</P>
+</B></FONT><BLOCKQUOTE><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetSize"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetSize</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, long* Size);</P>
+</B></FONT><P>Gets the size of data that will be written to disk to persist the tree. This API is NOT efficient.</P>
+<P>&nbsp;<A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="FindExact"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_FindExact</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Path);</P>
+</B></FONT><BLOCKQUOTE><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="FindPartial"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_FindPartial</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Path, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> ** LeftOvers);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="AddFile"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_AddFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Path, </B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> IsDirectory);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="Remove"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_Remove</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* SubTree);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetFileAttributes"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_SetFileAttributes</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><A HREF="geVFileIndexed.htm#Attributes">geVFile_Attributes</A><B><FONT COLOR="#000080"> Attributes);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetFileAttributes"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetFileAttributes</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><A HREF="geVFileIndexed.htm#Attributes">geVFile_Attributes</A><B><FONT COLOR="#000080">* Attributes);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetFileOffset"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_SetFileOffset</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, long Offset);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetFileOffset"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetFileOffset</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, long* Offset);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetFileTime"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_SetFileTime</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#Time">geVFile_Time</A><B><FONT COLOR="#000080">* Time);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetFileTime"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetFileTime</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><A HREF="geVFileIndexed.htm#Time">geVFile_Time</A><B><FONT COLOR="#000080">* Time);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetFileSize"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_SetFileSize</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, long Size);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetFileSize"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetFileSize</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, long* Size);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="SetFileHints"></A><A HREF="geVFileIndexed.htm#Hints">geVFile_Hints</A><B><FONT COLOR="#000080">* Hints);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetFileHints"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetFileHints</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><A HREF="geVFileIndexed.htm#Hints">geVFile_Hints</A><B><FONT COLOR="#000080">* Hints);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="GetName"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_GetName</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Buff, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MaxLen);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="FileExists"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_FileExists</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Path);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="CreateFinder"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">_Finder* </FONT><FONT COLOR="#800000">DirTree_CreateFinder</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Path);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="DestroyFinder"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_DestroyFinder</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree_Finder">DirTree_Finder</A><B><FONT COLOR="#000080">* Finder);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="FinderGetNextFile"></A><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">DirTree_FinderGetNextFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="DirTreeIndexed.htm#DirTree_Finder">DirTree_Finder</A><B><FONT COLOR="#000080">* Finder);</P>
+<P>&nbsp;</B></FONT><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Dump"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DirTree_Dump</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="DirTreeIndexed.htm#DirTree">DirTree</A><B><FONT COLOR="#000080">* Tree);</P>
+</B></FONT><P>Note: Only avail if: #ifdef DEBUG</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="DirTreeIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:05:06 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:52 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

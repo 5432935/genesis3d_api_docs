@@ -1,0 +1,215 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePoseIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">gePose</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Bone hierarchy interface.</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\pose.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePoseIndexed.htm#Create">Create</A>, <A HREF="gePoseIndexed.htm#Destroy">Destroy</A>, <A HREF="gePoseIndexed.htm#AddJoint">AddJoint</A>, <A HREF="gePoseIndexed.htm#GetScale">GetScale</A>, <A HREF="gePoseIndexed.htm#SetScale">SetScale</A>, <A HREF="gePoseIndexed.htm#FindNamedJointIndex">FindNamedJointIndex</A>, <A HREF="gePoseIndexed.htm#GetJointCount">GetJointCount</A>, <A HREF="gePoseIndexed.htm#MatchesMotionExactly">MatchesMotionExactly</A>, <A HREF="gePoseIndexed.htm#Clear">Clear</A>, <A HREF="gePoseIndexed.htm#SetMotion">SetMotion</A>, <A HREF="gePoseIndexed.htm#SetMotionForABone">SetMotionForABone</A>, <A HREF="gePoseIndexed.htm#BlendMotion">BlendMotion</A>, <A HREF="gePoseIndexed.htm#GetJointTransform">GetJointTransform</A>, <A HREF="gePoseIndexed.htm#GetAllJointTransforms">GetAllJointTransforms</A>, <A HREF="gePoseIndexed.htm#GetJointLocalTransform">GetJointLocalTransform</A>, <A HREF="gePoseIndexed.htm#SetJointLocalTransform">SetJointLocalTransform</A>, <A HREF="gePoseIndexed.htm#GetJointAttachment">GetJointAttachment</A>, <A HREF="gePoseIndexed.htm#SetJointAttachment">SetJointAttachment</A>, <A HREF="gePoseIndexed.htm#GetJointName">GetJointName</A>, <A HREF="gePoseIndexed.htm#Attach">Attach</A>, <A HREF="gePoseIndexed.htm#Detach">Detach</A>, <A HREF="gePoseIndexed.htm#ClearCoverage">ClearCoverage</A>, <A HREF="gePoseIndexed.htm#AccumulateCoverage">AccumulateCoverage</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="gePoseIndexed.htm#gePose_BlendingType">gePose_BlendingType</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="gePoseIndexed.htm#GE_POSE_ROOT_JOINT">GE_POSE_ROOT_JOINT</A></P>
+<B><FONT COLOR="#000080"><P>Overview</B></FONT>: <A HREF="gePoseIndexed.htm#Overview">view</A></P>
+<FONT COLOR="#000080"><P>Additions for Genesis3D v1.6: <B>None</P>
+<hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><P>&#9;This object is a hierarchical set of attached joints. The joints can have names.</P>
+<P>&#9;A '<A HREF="gePoseIndexed.htm#gePose">gePose</A>' keeps track of which children joints move in the hierarchy when a parent</P>
+<P>&#9;joint moves. A <A HREF="gePoseIndexed.htm#gePose">gePose</A> also remembers the position transform matrices for each joint.</P>
+<P>&nbsp;</P>
+<P>&#9;The <A HREF="gePoseIndexed.htm#gePose">gePose</A> is set by applying a motion at a specific time. This queries the motion</P>
+<P>&#9;to determine each joint's change and applies them to the hierarchy. Each joint can</P>
+<P>&#9;then be queried for it's world transform (for drawing, etc.)</P>
+<P>&nbsp;</P>
+<P>&#9;Additional motions can modify or be blended into the pose. A motion that describes </P>
+<P>&#9;only a few joint changes can be applied to only those joints, or a motion can be</P>
+<P>&#9;blended with the current pose. </P>
+<P>&nbsp;</P>
+<P>&#9;Something to watch for: since setting the pose by applying a motion is powerful</P>
+<P>&#9;enough to resolve intentionally mismatched motion-pose sets, this can lead to </P>
+<P>&#9;problems if the motion UNintentionally does not match the pose. Use </P>
+<P>&#9;gePose_MatchesgeMotionExactly() to test for an exact name-based match.</P>
+<B><FONT COLOR="#000080"><hr>
+<P>&nbsp;</FONT><I><FONT SIZE=5 COLOR="#0000ff">Constants:</P>
+</I></FONT><FONT COLOR="#000080"><P><A NAME="GE_POSE_ROOT_JOINT"></A>#define GE_POSE_ROOT_JOINT (-1)</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><hr>
+<P>&nbsp;</FONT><I><FONT SIZE=5 COLOR="#0000ff">Types:</P>
+</I></FONT><FONT COLOR="#800000"><DL>
+<DD><A NAME="gePose_BlendingType"></A>gePose_BlendingType</DD>
+</B></FONT><DD>typedef enum {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_POSE_BLEND_LINEAR,</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_POSE_BLEND_HERMITE</DD>
+<DD>} gePose_BlendingType;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+<P><A NAME="gePose"></A>typedef struct gePose </FONT><FONT COLOR="#800000">gePose</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&#9;Creates a new pose with no joints.</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* *PM);</P>
+</B></FONT><P>&#9;Destroys an existing pose.</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="AddJoint"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Attachment, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * JointIndex);</P>
+<P>&nbsp;</B></FONT>&#9;Adds a new joint to a pose.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetScale"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Scale);</P>
+</B></FONT><P>&#9;Retrieves current joint attachment scaling factors</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetScale"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Scale);</P>
+</B></FONT><P>&#9;Scales all joint attachments by component scaling factors in Scale</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="FindNamedJointIndex"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_FindNamedJointIndex</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * JointName, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);</P>
+</B></FONT><P>&#9;Returns the index of a joint named JointName. Returns <A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A> if it is</P>
+<P>&#9;located, and Index is set. Returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> if not, and Index is not changed.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetJointCount"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_GetJointCount</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P);</P>
+</B></FONT><P>&#9;returns the number of joints in the pose</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="MatchesMotionExactly"></A><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Clear"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetMotion"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</P>
+</B></FONT><P>&#9;set the pose according to a motion. Use the motion at time 'Time'.</P>
+<P>&#9;if the motion does not describe motion for all joints, name-based resolution</P>
+<P>&#9;will be used to decide which motion to attach to which joints.</P>
+<P>&#9;joints that are unaffected are unchanged.</P>
+<P>&#9;if Transform is non-<A HREF="BasetypesIndexed.htm#NULL">NULL</A>, it is applied to the Motion</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetMotionForABone"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> BoneIndex);</P>
+</B></FONT><P>&#9;optimization: if this is called, then all pose computations are limited to the BoneIndex'th bone, and</P>
+<P>&#9;it's parents (including the root bone). This is true for all queries until an entire motion is set or blended</P>
+<P>&#9;into the pose.</P>
+<P>&nbsp;&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="BlendMotion"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> BlendAmount, </B></FONT><A HREF="gePoseIndexed.htm#gePose_BlendingType">gePose_BlendingType</A><B><FONT COLOR="#000080"> BlendingType);</P>
+</B></FONT><P>&#9;blend in the pose according to a motion. Use the motion at time 'Time'.</P>
+<P>&#9;the blending is between the 'current' pose and the pose described by the motion.</P>
+<P>&#9;a BlendAmount of 0 will result in the 'current' pose, and a BlendAmount of 1.0</P>
+<P>&#9;will result in the pose according to the new motion.</P>
+<P>&#9;if the motion does not describe motion for all joints, name-based resolution</P>
+<P>&#9;will be used to decide which motion to attach to which joints.</P>
+<P>&#9;joints that are unaffected are unchanged.</P>
+<P>&#9;if Transform is non-<A HREF="BasetypesIndexed.htm#NULL">NULL</A>, it is applied to the Motion prior to blending</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetJointTransform"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</P>
+</B></FONT><P>&#9;get a joint's current transform (relative to world space)</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetAllJointTransforms"></A>const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_GetAllJointTransforms</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P);</P>
+</B></FONT><P>&#9;get the transforms for the entire pose.* TransformArray must not be changed.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetJointLocalTransform"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</P>
+</B></FONT><P>&#9;query a joint's current transform relative to it's attachment to it's parent.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetJointLocalTransform"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</P>
+</B></FONT><P>&#9;adjust a joint's current transform relative to it's attachment to it's parent.</P>
+<P>&#9;this is like setting a mini-motion into this joint only: this will only affect</P>
+<P>&#9;the current pose </P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetJointAttachment"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* AttachmentTransform);</P>
+</B></FONT><P>&#9;query how a joint is attached to it's parent. (it's base attachment)</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetJointAttachment"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* AttachmentTransform);</P>
+</B></FONT><P>&#9;adjust how a joint is attached to it's parent. These changes are permanent: all</P>
+<P>&#9;future pose motions will incorporate this joint's new relation to it's parent* /</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetJointName"></A>const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_GetJointName</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> JointIndex);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Attach"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Attachment);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Detach"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_Detach</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P);</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE>&nbsp;</B></FONT><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><FONT COLOR="#0000ff"><P><A NAME="ClearCoverage"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePose_ClearCoverage</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePoseIndexed.htm#gePose">gePose</A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> ClearTo);</P>
+</B></FONT><P>&#9;a pose can also maintain a record of which joints are touched by a given motion.</P>
+<P>&#9;these funtions set,clear and query the record.</P>
+<P>&#9;ClearCoverage clears the coverage flag for all joints </P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><FONT COLOR="#0000ff"><P><A NAME="y"><A NAME="AccumulateCoverage"></A></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> QueryOnly);</P>
+</B></FONT><P>&#9;AccumulateCoverage returns the number of joints that are not already 'covered' </P>
+<P>&#9;that will be affected by a motion M, </P>
+<P>&#9;if QueryOnly is <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A>, affected joints are tagged as 'covered', otherwise no changes</P>
+<P>&#9;are made to the joint coverage flags.</P>
+<B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePoseIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:49:37 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:30 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

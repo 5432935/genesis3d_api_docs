@@ -1,0 +1,660 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geEntityIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geEntity</b></font> </p>
+
+<p><font color="#000080"><b>Description: EntitySet creation /
+Entity Compiler </b></font></p>
+
+<p>Source file: ...\genesis3d\OpenSource\Entities\ENTITIES.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Core Functions: </b></font><a
+href="geEntityIndexed.htm#geWorld_GetEntitySet">geWorld_GetEntitySet</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetGetNextEntity">EntitySetGetNextEntity</a>,
+<a href="geEntityIndexed.htm#GetUserData">GetUserData</a>, <a href="geEntityIndexed.htm#GetName">GetName</a></p>
+
+<p><font color="#000080"><b>Core Type: </b></font><a
+href="geEntityIndexed.htm#geEntity">geEntity</a></p>
+
+<p><strong>[The following &quot;other&quot; functions and types
+are probably NOT available in the precompiled files]</strong></p>
+
+<p><font color="#000080"><b>Other Functions: </b></font><a
+href="geEntityIndexed.htm#WorldInit">WorldInit</a><font color="#800000"><b>, </b></font><a
+href="geEntityIndexed.htm#WorldShutdown">WorldShutdown</a><font color="#800000"><b>,
+</b></font><a href="geEntityIndexed.htm#Create">Create</a><font color="#800000"><b>,
+</b></font><a href="geEntityIndexed.htm#Destroy">Destroy</a><font color="#800000"><b>,
+</b></font><a href="geEntityIndexed.htm#GetModelNumForKey">GetModelNumForKey</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#AddEpair">AddEpair</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#GetStringForKey">GetStringForKey</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EpairCreate">EpairCreate</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EpairDestroy">EpairDestroy</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#FieldCreate">FieldCreate</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#FieldDestroy">FieldDestroy</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#ClassCreate">ClassCreate</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#ClassDestroy">ClassDestroy</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#ClassAddField">ClassAddField</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#ClassFindFieldByName">ClassFindFieldByName</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetCreate">EntitySetCreate</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetDestroy">EntitySetDestroy</a><font
+color="#800000"><b>, </b></font><a
+href="geEntityIndexed.htm#EntitySetFindClassByName">EntitySetFindClassByName</a><font
+color="#800000"><b>, </b></font><a
+href="geEntityIndexed.htm#EntitySetFindEntityByName">EntitySetFindEntityByName</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetAddEntity">EntitySetAddEntity</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetAddClass">EntitySetAddClass</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#LoadEntitySet">LoadEntitySet</a></p>
+
+<p><font color="#000080"><b>Other Types</b></font>: <a
+href="geEntityIndexed.htm#geEntity_ClassType">geEntity_ClassType</a>, <a
+href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>, <a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>, <a
+href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a><font color="#800000"><b>,
+</b></font><a href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a></p>
+
+<p><font color="#000080">&nbsp;Changes for Genesis3D v1.6:</font>
+<b>None</b></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Notes:</i></b></font> </p>
+
+<p>What are entities? Entities are place-holder entries put into
+the level files (i.e. via Genesis World Editor), to be later
+implemented by the program. And example could be the following
+entity: <strong>ItemHealth1: Origin = 0, 0, 0</strong>. At
+run-time, the program can search for all items, and add them to
+the world as indicated. In this case, it could put a health kit
+at location (0, 0, 0).</p>
+
+<p>The following functions (<a href="geEntityIndexed.htm#geWorld_GetEntitySet">geWorld_GetEntitySet</a><font
+color="#800000"><b>, </b></font><a href="geEntityIndexed.htm#EntitySetGetNextEntity">EntitySetGetNextEntity</a>,
+<a href="geEntityIndexed.htm#GetUserData">GetUserData</a>, <a href="geEntityIndexed.htm#GetName">GetName</a>)
+are defined in &quot;&#133;\genesis3d\include\Genesis.h&quot;.
+The rest of the functions in this file are not included there.
+Instead, they were found in
+&quot;&#133;\genesis3d\OpenSource\Entities\Entities.h&quot;. Thus
+they are probably not required for most interactions with the
+Genesis3D engine. (Indeed, because they are not prefaced with <a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a>, they are
+likely not available in the precompiled library files.)</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geEntity"><font color="#800000"><b>geEntity</b></font></a></p>
+
+<dl>
+    <dd>typedef struct geEntity {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>*
+        &nbsp;&nbsp;&nbsp;Class;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Class data<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>*
+        &nbsp;&nbsp;&nbsp;Epairs;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Parsed epair list from entity string list<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">void</font>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserData;&nbsp;&nbsp;&nbsp;&nbsp;//
+        User structure parsed from entity<br>
+        } geEntity;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geEntity_ClassType"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geEntity_ClassType</b></font></p>
+
+<dl>
+    <dd>typedef&nbsp;enum {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_INT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_FLOAT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_COLOR,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_POINT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_STRING,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_MODEL,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_STRUCT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE_PTR,<br>
+        } geEntity_ClassType;</dd>
+</dl>
+
+<blockquote>
+    <p>&nbsp;<a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geEntity_Field"><font color="#800000"><b>geEntity_Field</b></font></a></p>
+
+<dl>
+    <dd>// Fields within a <a
+        href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a></dd>
+    <dd>typedef struct geEntity_Field {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Name of the field<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeClass;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Atomic class the defines field<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Offset;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Offset in Entity's UserData<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct
+        geEntity_Field*
+        &nbsp;&nbsp;Next;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Next
+        Field list<br>
+        } geEntity_Field;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geEntity_Class"><font color="#800000"><b>geEntity_Class</b></font></a></p>
+
+<dl>
+    <dd>typedef&nbsp;struct geEntity_Class {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Class Name<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_ClassType">geEntity_ClassType</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Type of class<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeSize;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fields;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Fields in this Class<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FieldSize;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Size of all fields<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct <a
+        href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* &nbsp;Next;<br>
+        } geEntity_Class; </dd>
+</dl>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geEntity_Epair"><font color="#800000"><b>geEntity_Epair</b></font></a></p>
+
+<dl>
+    <dd>typedef struct geEntity_Epair {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct <a
+        href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>* Next;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Key;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value;<br>
+        } geEntity_Epair;<br>
+        </dd>
+</dl>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geEntity_EntitySet"><font color="#800000"><b>geEntity_EntitySet</b></font></a></p>
+
+<dl>
+    <dd>typedef struct geEntity_EntitySet {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct <a
+        href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Next entity in this set<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct <a
+        href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current;&nbsp;&nbsp;&nbsp;//
+        Current entity set as an iterator<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OwnsEntities;&nbsp;&nbsp;//
+        <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geEntityIndexed.htm#geEntity">geEntity</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entity;&nbsp;&nbsp;&nbsp;//
+        The entity<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Classes;&nbsp;&nbsp;&nbsp;//
+        List of classes for set<br>
+        } geEntity_EntitySet;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Core Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="geWorld_GetEntitySet"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* <font
+color="#800000"><b>geWorld_GetEntitySet</b></font>(<a
+href="geWorldIndexed.htm#geWorld">geWorld</a>* World, <font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+ClassName);</p>
+
+<p>Searches through all entities located in the current World,
+and returns a pointer to a Set containing those entities whose
+names begin with ClassName.</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* <font color="#800000"><b>geEntity_EntitySetGetNextEntity</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* EntitySet, <a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity); </p>
+
+<p>Returns the next entity that occurs after Entity. To get the
+first entity in the set, make Entity=NULL</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font>* <font color="#800000"><b>geEntity_GetUserData</b></font>(<a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity); </p>
+
+<p>Returns an untyped pointer to the user data for Entity. The
+user must then typecast the pointer to a known type.</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetName"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_GetName</b></font>(<font
+color="#0000FF">const</font> <a href="geEntityIndexed.htm#geEntity">geEntity</a>*
+Entity, <font color="#0000FF">char</font>* Buff, <font
+color="#0000FF">int</font> MaxLen); </p>
+
+<p>Gets the name of the Entity.</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Other Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="WorldInit"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;<font
+color="#800000"><b>Ent_WorldInit</b></font>(<a
+href="geWorldIndexed.htm#geWorld">geWorld</a>* World);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="WorldShutdown"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;&nbsp;<font color="#800000"><b>Ent_WorldShutdown</b></font>(<a
+href="geWorldIndexed.htm#geWorld">geWorld</a>* World);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Create"></a><a href="geEntityIndexed.htm#geEntity">geEntity</a>* <font
+color="#800000"><b>geEntity_Create</b></font>(<font
+color="#0000FF">void</font>);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_Destroy</b></font>(<a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetModelNumForKey"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;<font
+color="#800000"><b>geEntity_GetModelNumForKey</b></font>(<a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity, <font color="#0000FF">const</font>
+<font color="#0000FF">char</font>* Key, <a
+href="BasetypesIndexed.htm#int32">int32</a>* ModelNum);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="AddEpair"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;<font
+color="#800000"><b>geEntity_AddEpair</b></font>(<a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity, <a href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>*
+Epair);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetStringForKey"><font color="#0000FF"></font></a><font
+color="#0000FF">const</font> <font color="#0000FF">char</font>* <font
+color="#800000"><b>geEntity_GetStringForKey</b></font>(<font
+color="#0000FF">const</font> <a href="geEntityIndexed.htm#geEntity">geEntity</a>*
+Entity, <font color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Key);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EpairCreate"></a><a name="EpairCreate"></a><a
+href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>* <font color="#800000"><b>geEntity_EpairCreate</b></font>(<font
+color="#0000FF">void</font>);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EpairDestroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_EpairDestroy</b></font>(<a
+href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>* Epair);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FieldCreate"></a><a
+href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>* <font
+color="#800000"><b>geEntity_FieldCreate</b></font>(<font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Name, <a href="BasetypesIndexed.htm#int32">int32</a> Offset, <a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* TypeClass);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FieldDestroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_FieldDestroy</b></font>(<a
+href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>*
+Field);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ClassCreate"></a><a href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>*
+<font color="#800000"><b>geEntity_ClassCreate</b></font>(<a
+href="geEntityIndexed.htm#geEntity_ClassType">geEntity_ClassType</a> Type, <font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Name, <a href="BasetypesIndexed.htm#int32">int32</a> TypeSize);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ClassDestroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_ClassDestroy</b></font>(<a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* Class);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ClassAddField"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;<font
+color="#800000"><b>geEntity_ClassAddField</b></font>(<a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* Class, <a
+href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>* Field);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ClassFindFieldByName"></a><a href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>*
+<font color="#800000"><b>geEntity_ClassFindFieldByName</b></font>(<a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* Class, <font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Name);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetCreate"></a><a href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>*
+<font color="#800000"><b>geEntity_EntitySetCreate</b></font>(<font
+color="#0000FF">void</font>);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetDestroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font>&nbsp;<font color="#800000"><b>geEntity_EntitySetDestroy</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* EntitySet);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetFindClassByName"></a><a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* <font color="#800000"><b>geEntity_EntitySetFindClassByName</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* Set, <font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Name);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetFindEntityByName"></a><a href="geEntityIndexed.htm#geEntity">geEntity</a>*
+<font color="#800000"><b>geEntity_EntitySetFindEntityByName</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* EntitySet, <font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+Name);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetAddEntity"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <font
+color="#800000"><b>geEntity_EntitySetAddEntity</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* EntitySet, <a
+href="geEntityIndexed.htm#geEntity">geEntity</a>* Entity);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EntitySetAddClass"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;<font
+color="#800000"><b>geEntity_EntitySetAddClass</b></font>(<a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>* EntitySet, <a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>* Class);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="y"></a><a href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>*
+<font color="#800000"><b>LoadEntitySet</b></font>(<font
+color="#0000FF">const</font> <font color="#0000FF">char</font>*
+EntityData, <a href="BasetypesIndexed.htm#int32">int32</a>
+EntityDataSize);</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geEntityIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p>&nbsp; </p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:33:57 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:55 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

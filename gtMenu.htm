@@ -1,0 +1,990 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GTest Menu"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>gtMenu</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>Menu.h</b></font> <font
+color="#008000" size="6"><b>&amp; MenuItem.h</b></font></p>
+
+<p><font color="#000080"><b>Description: The following is code
+from GTest, and not part of the original Genesis3d engine</b></font></p>
+
+<p>Source file: &#133;\genesis3d\src\MENU.H and Source file:
+&#133;\genesis3d\src\MENUITEM.H</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Types:&nbsp;</b></font><a
+href="gtMenu.htm#Menu_T"><font color="#0000FF"><strong>Menu_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a href="gtMenu.htm#MenuItem_T"><font
+color="#0000FF"><strong>MenuItem_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#Menu_ItemType"><font color="#0000FF"><strong>Menu_ItemType</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemText_T"><font color="#0000FF"><strong>MenuItemText_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemSlider_T"><font color="#0000FF"><strong>MenuItemSlider_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemField_T"><font color="#0000FF"><strong>MenuItemField_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemString_T"><font color="#0000FF"><strong>MenuItemString_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemGraphic_T"><font color="#0000FF"><strong>MenuItemGraphic_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemToggle_T"><font color="#0000FF"><strong>MenuItemToggle_T</strong></font></a><font
+color="#0000FF"><strong>, </strong></font><a
+href="gtMenu.htm#MenuItemChecked_T"><font color="#0000FF"><strong>MenuItemChecked_T</strong></font></a></p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="gtMenu.htm#AddItem"><font color="#800000"><strong><u>AddItem</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#Create"><font color="#800000"><strong><u>Create</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#Destroy"><font color="#800000"><strong><u>Destroy</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#Draw"><font color="#800000"><strong><u>Draw</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#FlagField"><font
+color="#800000"><strong><u>FlagField</u></strong></font></a><font
+color="#000080">,</font><font color="#800000"><strong> </strong></font><a
+href="gtMenu.htm#FlagString"><font color="#800000"><strong><u>FlagString</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#GetCheckedData"><font
+color="#800000"><strong><u>GetCheckedData</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#GetIdentifier"><font
+color="#800000"><strong><u>GetIdentifier</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#GetSliderPercent"><font
+color="#800000"><strong><u>GetSliderPercent</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#GetStringText"><font
+color="#800000"><strong><u>GetStringText</u></strong></font></a><font
+color="#000080">,</font><font color="#800000"><strong> </strong></font><a
+href="gtMenu.htm#Key"><font color="#800000"><strong><u>Key</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#SetFieldText"><font
+color="#800000"><strong><u>SetFieldText</u></strong></font></a><font
+color="#800000"><strong> </strong></font><a
+href="gtMenu.htm#SetSliderPercent"><font color="#800000"><strong><u>SetSliderPercent</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#SetSliderText"><font
+color="#800000"><strong><u>SetSliderText</u></strong></font></a><font
+color="#000080">,</font><font color="#800000"><strong> </strong></font><a
+href="gtMenu.htm#SetStringText"><font color="#800000"><strong><u>SetStringText</u></strong></font></a><font
+color="#000080">, </font><a href="gtMenu.htm#ToggleItem"><font
+color="#800000"><strong><u>ToggleItem</u></strong></font></a></p>
+
+<p><font color="#000080"><b>Notes:&nbsp;</b></font><a
+href="gtMenu.htm#Notes">view</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Constants:</i></b></font>
+</p>
+
+<p><a name="MENUITEM_MAX_CHECKED_LABEL"></a>#define <font
+color="#0000FF">MENUITEM_MAX_CHECKED_LABEL</font> (100)</p>
+
+<p><a name="MENU_MAXSTRINGSIZE"></a>#define <font color="#0000FF">MENU_MAXSTRINGSIZE</font>
+64</p>
+
+<p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="Menu_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>Menu_T</strong></font></p>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/SystemIndexed.htm#geEngine">geEngine</a>*
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engine;
+    <font color="#008000">// engine in which menu will be drawn<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width;
+    <font color="#008000">// menu width<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top,Bottom;
+    <font color="#008000">// menu top and bottom (bottom-top =
+    height)<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ItemWidth,
+    ItemHeight; <font color="#008000">// dimensions of all menu
+    items<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,
+    y; <font color="#008000">// menu location<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ItemCount;
+    <font color="#008000">// how many items are in the menu<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identifier;
+    <font color="#008000">// numeric menu identifier<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="gtMenu.htm#MenuItem_T">MenuItem_T</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Head; <font color="#008000">// head of the menu<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="gtMenu.htm#MenuItem_T">MenuItem_T</a>
+    *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current; <font
+    color="#008000">// current active menu item<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MinimumSelectedY;
+    <font color="#008000">// minimum allowed y value for top of
+    selected menu item<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaximumSelectedY;
+    <font color="#008000">// maximum allowed y value for bottom
+    of selected menu item<br>
+    </font>} Menu_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItem_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItem_T</strong></font></p>
+
+<blockquote>
+    <p><strong>generic menu item</strong><br>
+    typedef struct <strong>tag_MenuItem_T</strong> {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">// adjacent
+    menu items<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;struct <a href="gtMenu.htm#MenuItem_T">tag_MenuItem_T</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;struct <a href="gtMenu.htm#MenuItem_T">tag_MenuItem_T</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prev;<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">// data<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identifier;
+    <font color="#008000">// unique menu item identifier<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="gtMenu.htm#Menu_ItemType">Menu_ItemType</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ItemType;
+    <font color="#008000">// what type of item it is<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaxWidth;
+    <font color="#008000">// max item width<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaxHeight;
+    <font color="#008000">// max item height<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">void</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data;
+    <font color="#008000">// item data<br>
+    </font>} MenuItem_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="Menu_ItemType"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>Menu_ItemType</strong></font></p>
+
+<blockquote>
+    <p><strong>Supported menu items.</strong><br>
+    typedef enum {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemText = 0,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemGraphic,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemSlider,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemField,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemString,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemToggle,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Menu_ItemChecked<br>
+    } Menu_ItemType;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="MenuItemText_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemText_T</strong></font></p>
+
+<blockquote>
+    <p><strong>Text menu item.</strong><br>
+    typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text;
+    <font color="#008000">// text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextLength;
+    <font color="#008000">// length of text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;&nbsp;NormalFont; <font color="#008000">//
+    regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;&nbsp;SelectFont; <font color="#008000">//
+    selected font<br>
+    </font>} MenuItemText_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemSlider_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemSlider_T</strong></font></p>
+
+<blockquote>
+    <p><strong>Slider menu item.</strong><br>
+    typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text;
+    <font color="#008000">// text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextLength;
+    <font color="#008000">// length of text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;NormalFont; <font color="#008000">// regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;SelectFont; <font color="#008000">// selected
+    font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a>*&nbsp;&nbsp;Range;
+    <font color="#008000">// slider range art<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a>*&nbsp;&nbsp;Bar;
+    <font color="#008000">// slider bar art<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slack; <font
+    color="#008000">// amount of dead pixels in slider range art<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent;
+    <font color="#008000">// what percentage slider is at<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Increment;
+    <font color="#008000">// increment amount<br>
+    </font>} MenuItemSlider_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemField_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemField_T</strong></font></p>
+
+<blockquote>
+    <p><strong>Field menu item.</strong><br>
+    typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FieldName;
+    <font color="#008000">// field name text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FieldNameLength;
+    <font color="#008000">// length of field name text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FieldTextData[<a
+    href="gtMenu.htm#MENU_MAXSTRINGSIZE">MENU_MAXSTRINGSIZE</a>]; <font
+    color="#008000">// data text<br>
+    </font>&nbsp;&nbsp;&nbsp; <a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FieldTextDataLength;
+    <font color="#008000">// length of data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;&nbsp;NormalFont; <font color="#008000">//
+    regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;&nbsp;SelectFont; <font color="#008000">//
+    selected font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#geBoolean"><font
+    color="#000080">geBoolean</font></a> &nbsp;AwaitingChange; <font
+    color="#008000">// field is awaiting input flag<br>
+    </font>} MenuItemField_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemString_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemString_T</strong></font></p>
+
+<blockquote>
+    <p><strong>String menu item.</strong><br>
+    typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringLabel;
+    <font color="#008000">// string label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringLabelLength;
+    <font color="#008000">// length of string label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringData[<a
+    href="gtMenu.htm#MENU_MAXSTRINGSIZE">MENU_MAXSTRINGSIZE</a>]; <font
+    color="#008000">// string data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringDataLength;
+    <font color="#008000">// length of string data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;NormalFont; <font color="#008000">// regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;SelectFont; <font color="#008000">// selected
+    font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#geBoolean"><font
+    color="#000080">geBoolean</font></a> AwaitingInput; <font
+    color="#008000">// string is awaiting input flag<br>
+    </font>} MenuItemString_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemGraphic_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemGraphic_T</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">// Graphic menu item.<br>
+    </font>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a>*&nbsp;&nbsp;&nbsp;Art;
+    <font color="#008000">// graphic art<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,
+    y; <font color="#008000">// graphic location<br>
+    </font>} MenuItemGraphic_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemToggle_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemToggle_T</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">// Toggle menu item.<br>
+    </font>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleLabel;
+    <font color="#008000">// toggle label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleLabelLength;
+    <font color="#008000">// length of toggle label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleData1[<a
+    href="gtMenu.htm#MENU_MAXSTRINGSIZE">MENU_MAXSTRINGSIZE</a>]; <font
+    color="#008000">// toggle data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleData1Length;
+    <font color="#008000">// length of toggle data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleData2[<a
+    href="gtMenu.htm#MENU_MAXSTRINGSIZE">MENU_MAXSTRINGSIZE</a>]; <font
+    color="#008000">// toggle data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToggleData2Length;
+    <font color="#008000">// length of toggle data text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;NormalFont; <font color="#008000">// regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;SelectFont; <font color="#008000">// selected
+    font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActiveItem;
+    <font color="#008000">// currently active item<br>
+    </font>} MenuItemToggle_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="MenuItemChecked_T"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>MenuItemChecked_T</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">// Checked menu item.</font></p>
+</blockquote>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Label[<a
+    href="gtMenu.htm#MENUITEM_MAX_CHECKED_LABEL">MENUITEM_MAX_CHECKED_LABEL</a>];
+    <font color="#008000">// label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LabelLength;
+    <font color="#008000">// length of label text<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;NormalFont; <font color="#008000">// regular font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a href="GTest%20Custom/gtText.htm#FontType">FontType</a>
+    &nbsp;&nbsp;SelectFont; <font color="#008000">// selected
+    font<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActiveItem;
+    <font color="#008000">// currently active item<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LabelPosition;
+    <font color="#008000">// left edge of label text ('check' is
+    to the left)<br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#int32">int32</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserData;
+    <font color="#008000">// misc data.<br>
+    </font>} MenuItemChecked_T;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<p>&nbsp;</p>
+
+<p><a name="AddItem"></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a><font color="#000080"><b>&nbsp;
+</b></font><font color="#800000"><strong>Menu_AddItem</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="gtMenu.htm#Menu_ItemType"><font color="#000080">Menu_ItemType</font></a><font
+color="#000080"> <strong>ItemType</strong>, </font><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, void* <strong>Data</strong>
+); </font></p>
+
+<blockquote>
+    <p><strong>Add an item to a menu.</strong></p>
+    <p>Creates an internal linked list <a href="gtMenu.htm#MenuItem_T"><font
+    color="#000000">MenuItem_T</font></a><font color="#000000">
+    that stores information for Item.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to add
+    item to<br>
+    <strong>ItemType</strong>: what type of item to add<br>
+    <strong>Identifier</strong>: user specified unique item
+    identifier. Used for referencing menu item.<br>
+    <strong>Data</strong>: item data. This should be a pointer to
+    one of the following data structures, and should correspond
+    to the type specified in ItemType parameter: </font><a
+    href="gtMenu.htm#MenuItemText_T"><font color="#0000FF">MenuItemText_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemSlider_T"><font
+    color="#0000FF">MenuItemSlider_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemField_T"><font
+    color="#0000FF">MenuItemField_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemString_T"><font
+    color="#0000FF">MenuItemString_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemGraphic_T"><font
+    color="#0000FF">MenuItemGraphic_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemToggle_T"><font
+    color="#0000FF">MenuItemToggle_T</font></a><font
+    color="#0000FF">, </font><a href="gtMenu.htm#MenuItemChecked_T"><font
+    color="#0000FF">MenuItemChecked_T</font></a></p>
+    <p><font color="#000000"><strong>Note</strong>: based on
+    GMenu code, I believe that the information in Data is copied
+    to memory managed by Menu. Also, bitmaps associated with
+    various types of menu items (i.e. the graphic for a slider
+    bar) should be loaded, added to engine, and linked to the
+    Data parameter prior to calling this function.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Create"></a><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* </font><font color="#800000"><strong>Menu_Create</strong></font><font
+color="#000080"> (</font><a href="GTest%20Custom/SystemIndexed.htm#geEngine">geEngine</a><font
+color="#000080">* <strong>Engine</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Width</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Top</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Bottom</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>x</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>y</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Create a new menu.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Engine</strong>: engine in
+    which menu exists<br>
+    <strong>Width</strong>: menu width<br>
+    <strong>Top</strong>: top of menu<br>
+    <strong>Bottom</strong>: bottom of menu (bottom-top = menu
+    height)<br>
+    <strong>x</strong>: x position<br>
+    <strong>y</strong>: y position<br>
+    <strong>Identifier</strong>: A user specified unique menu
+    identifier. Used for referencing menu.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_Destroy</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">** <strong>Menu</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Destroy a menu.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    destroy</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Draw"></a><a href="BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a><font color="#000080"><b>&nbsp;
+</b></font><font color="#800000"><strong>Menu_Draw</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu </strong>); </font></p>
+
+<blockquote>
+    <p><strong>Draw a new menu.</strong></p>
+    <p>This must be called after each frame world rendering. Will
+    draw the passed menu to the screen.</p>
+    <p><strong>Return</strong>: GE_TRUE if successful</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to draw</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FlagField"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_FlagField</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b><strong>Flag</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Marks a field for change.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: field to be marked for change<br>
+    <strong>Flag</strong>: new setting</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FlagString"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_FlagString</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp;</b><strong>Flag</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Marks a string item for change or no change.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: string to be marked for change<br>
+    <strong>Flag</strong>: new setting</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetCheckedData"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b> </b></font><font color="#800000"><strong>Menu_GetCheckedData</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080">* <strong>UserData </strong>); </font></p>
+
+<blockquote>
+    <p><strong>Get extra data associated with menu item </strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: check item we want to get info
+    from,<br>
+    <strong>UserData</strong>: store the data here</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetIdentifier"></a><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> </font><font color="#800000"><strong>Menu_GetIdentifier</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Gets a menu's identifier.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu whose
+    identifier we want</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetSliderPercent"><font color="#000080"></font></a><font
+color="#000080">float </font><font color="#800000"><strong>Menu_GetSliderPercent</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Get what percentage a slider is set at.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: slider whose percentage we want</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetStringText"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_GetStringText</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><font
+color="#0000FF">char</font><font color="#000080">* <strong>NewText</strong>
+); </font></p>
+
+<blockquote>
+    <p><strong>Get a string items data.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: field whose text we want to set<br>
+    <strong>NewText</strong>: text to set in string data</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Key"><font color="#000080"></font></a><font
+color="#000080">int32 </font><font color="#800000"><strong>Menu_Key</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Key</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Pass a keystroke to a menu.</strong></p>
+    <p>Handles arrow key keystrokes, and will move between menu
+    elements, switch to submenus, adjust slider bars etc.</p>
+    <p><strong>Returns</strong>: returns id of currently selected
+    item</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    receive the keystroke<br>
+    <strong>Key</strong>: input keystroke</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFieldText"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_SetFieldText</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><font
+color="#0000FF">char</font><font color="#000080">* <strong>NewText</strong>
+); </font></p>
+
+<blockquote>
+    <p><strong>Sets a fields text data.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>; menu to
+    search through<br>
+    <strong>Identifier</strong>: slider whose percentage we want<br>
+    <strong>NewText</strong>: text to set in field text data</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetSliderPercent"><font color="#000080"></font></a><font
+color="#000080">float </font><font color="#800000"><strong>Menu_SetSliderPercent</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, float <strong>Percent</strong>);</font></p>
+
+<blockquote>
+    <p><strong>Set what percentage</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: slider whose percentage we want
+    to set<br>
+    <strong>Percent</strong>: new value</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetSliderText"><font color="#000080"></font></a><font
+color="#000080">float </font><font color="#800000"><strong>Menu_SetSliderText</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><font
+color="#0000FF">char</font><font color="#000080">* <strong>NewText</strong>);
+</font></p>
+
+<blockquote>
+    <p><strong>Change Slider Text</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: slider whose text we want to set<br>
+    <strong>NewText</strong>: new text </font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetStringText"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_SetStringText</strong></font><font
+color="#000080"> (</font><a href="gtMenu.htm#Menu_T"><font color="#000080">Menu_T</font></a><font
+color="#000080">* <strong>Menu</strong>, </font><a
+href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong>, </font><font
+color="#0000FF">char</font><font color="#000080">* <strong>NewText</strong>
+); </font></p>
+
+<blockquote>
+    <p><strong>Sets a string items data.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: field whose text we want to set<br>
+    <strong>NewText</strong>: text to set in string data</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ToggleItem"></a><a
+href="BasetypesIndexed.htm#geBoolean"><font color="#000080">geBoolean</font></a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><strong>Menu_ToggleItem
+</strong></font><font color="#000080">(</font><a href="gtMenu.htm#Menu_T"><font
+color="#000080">Menu_T</font></a><font color="#000080">* <strong>Menu</strong>,
+</font><a href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> <strong>Identifier</strong> ); </font></p>
+
+<blockquote>
+    <p><strong>Toggle a menu item.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Menu</strong>: menu to
+    search through<br>
+    <strong>Identifier</strong>: toggle to be toggled</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Notes:</i></b></font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtMenu.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p>&nbsp;</p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:41:42 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:41 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

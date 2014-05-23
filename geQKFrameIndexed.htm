@@ -1,0 +1,199 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geQKFrameIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geQKFrame</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Quaternion keyframe interface.</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\QKFrame.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geQKFrameIndexed.htm#LinearCreate">LinearCreate</A>, <A HREF="geQKFrameIndexed.htm#SlerpCreate">SlerpCreate</A>, <A HREF="geQKFrameIndexed.htm#SquadCreate">SquadCreate</A>, <A HREF="geQKFrameIndexed.htm#Insert">Insert</A>, <A HREF="geQKFrameIndexed.htm#Query">Query</A>, <A HREF="geQKFrameIndexed.htm#Modify">Modify</A>, <A HREF="geQKFrameIndexed.htm#LinearInterpolation">LinearInterpolation</A>, <A HREF="geQKFrameIndexed.htm#SlerpInterpolation">SlerpInterpolation</A>, <A HREF="geQKFrameIndexed.htm#SquadInterpolation">SquadInterpolation</A>, <A HREF="geQKFrameIndexed.htm#SquadRecompute">SquadRecompute</A>, <A HREF="geQKFrameIndexed.htm#SlerpRecompute">SlerpRecompute</A>, <A HREF="geQKFrameIndexed.htm#LinearRead">LinearRead</A>, <A HREF="geQKFrameIndexed.htm#SlerpRead">SlerpRead</A>, <A HREF="geQKFrameIndexed.htm#SquadRead">SquadRead</A>, <A HREF="geQKFrameIndexed.htm#CreateFromBinaryFile">CreateFromBinaryFile</A>, <A HREF="geQKFrameIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A>, <A HREF="geQKFrameIndexed.htm#CreateFromFile">CreateFromFile</A>, <A HREF="geQKFrameIndexed.htm#WriteToFile">WriteToFile</A>, <A HREF="geQKFrameIndexed.htm#WriteToFile">WriteToFile</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A></P>
+<B><FONT COLOR="#000080"><P>Notes: </B></FONT><A HREF="geQKFrameIndexed.htm#Notes">view</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6:<B> None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><DL>
+<DD><A NAME="geQKFrame_InterpolationType"></A>geQKFrame_InterpolationType</DD>
+</B></FONT><DD>typedef enum {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QKFRAME_LINEAR,</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QKFRAME_SLERP,</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QKFRAME_SQUAD</DD>
+<DD>} geQKFrame_InterpolationType;</DD>
+</DL>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="LinearCreate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geQKFrame_LinearCreate</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>NOTES:</P>
+<P>Creates a frame list for linear interpolation</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SlerpCreate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geQKFrame_SlerpCreate</FONT><FONT COLOR="#000080">();</P>
+</B></FONT><P>NOTES:</P>
+<P>Creates a frame list for spherical linear interpolation&#9;</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SquadCreate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geQKFrame_SquadCreate</FONT><FONT COLOR="#000080">();</P>
+</B></FONT><P>NOTES:</P>
+<P>Creates a frame list for spherical linear interpolation&#9;</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Insert"></A>&nbsp;<A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B><FONT COLOR="#000080">* Q, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);&#9;</P>
+</B></FONT><P>ARGUMENTS:</P>
+<P>KeyList is keyframe list to insert into</P>
+<P>Time is time of new keyframe</P>
+<P>Q is quaternion at new keyframe</P>
+<P>Index is index of new frame</P>
+<P>NOTES:</P>
+<P>Inserts a new keyframe with the given time and vector into the list.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Query"></A>&nbsp;<FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B><FONT COLOR="#000080">* V);&#9;&#9;</P>
+</B></FONT><P>ARGUMENTS:</P>
+<P>KeyList is keyframe list</P>
+<P>Index is index of frame to return</P>
+<P>Time is time of the frame is returned</P>
+<P>V is vector from the frame is returned</P>
+<P>NOTES:</P>
+<P>Returns the vector and the time at keyframe[index] </P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Modify"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B><FONT COLOR="#000080">* Q);</P>
+</B></FONT><P>ARGUMENTS</P>
+<P>KeyList is keyframe list</P>
+<P>Index is index of frame to change</P>
+<P>Q is vector for the new key</P>
+<P>NOTES</P>
+<P>Modifies a vector at keyframe[index]</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="LinearInterpolation"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> T, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Result);</P>
+</B></FONT><P>ARGUMENTS</P>
+<P>KF1 is pointer to first keyframe</P>
+<P>KF2 is pointer to second keyframe</P>
+<P>T is blending parameter, 0 &lt;= T &lt;= 1 </P>
+<P>Result holds results</P>
+<P>NOTES</P>
+<P>Interpolates to get a vector between the two vectors at the two keyframes where T==0 returns the vector for KF1 and T==1 returns the vector for KF2 interpolates linearly</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SlerpInterpolation"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> T, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Result);</P>
+</B></FONT><P>ARGUMENTS:</P>
+<P>KF1 is pointer to first keyframe</P>
+<P>KF2 is pointer to second keyframe</P>
+<P>T is blending parameter, 0 &lt;= T &lt;= 1 </P>
+<P>Result holds results</P>
+<P>NOTES:</P>
+<P>Interpolates to get a vector between the two vectors at the two keyframes where T==0 returns the vector for KF1 and T==1 returns the vector for KF2 interpolates using spherical linear blending</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SquadInterpolation"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> T, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Result); </P>
+</B></FONT><P>ARGUMENTS</P>
+<P>KF1 is pointer to first keyframe</P>
+<P>KF2 is pointer to second keyframe</P>
+<P>T is blending parameter, 0 &lt;= T &lt;= 1 </P>
+<P>Result holds results</P>
+<P>NOTES</P>
+<P>Interpolates to get a vector between the two vectors at the two keyframes where T==0 returns the vector for KF1 and T==1 returns the vector for KF2 interpolates using spherical quadratic blending</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SquadRecompute"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* KeyList);</P>
+</B></FONT><P>NOTES</P>
+<P>Looped indicates if keylist has the first key connected to last key</P>
+<P>Rebuild precomputed data for keyframe list.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SlerpRecompute"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* KeyList);&#9;</P>
+</B></FONT><P>ARGUMENTS</P>
+<P>KeyList: list of keys to recompute hermite values for</P>
+<P>NOTES:</P>
+<P>Rebuild precomputed data for keyframe list.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="LinearRead"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geQKFrame);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SlerpRead"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geQKFrame);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SquadRead"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geQKFrame);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromBinaryFile"></A>&nbsp;<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Looping);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToBinaryFile"></A><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* KeyList, </B></FONT><A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A><B><FONT COLOR="#000080"> InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Looping);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A><B><FONT COLOR="#000080">* InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Looping);</P>
+</B></FONT><P>(Note: if being compiled for Borland C compiler, then <A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A>* type is replaced with <FONT COLOR="#0000ff">int</FONT> *)</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * geQKFrame, </B></FONT><A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A><B><FONT COLOR="#000080"> InterpolationType, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Looping);</P>
+</B></FONT><P>&nbsp;</P>
+<P>Note: if being compiled for Borland C Compiler, then the following function is defined instead of above</P>
+<P><A NAME="y"><A NAME="WriteToFile"></A></A><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A>* <B><FONT COLOR="#000080">KeyList</B></FONT>, <A HREF="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</A> <B><FONT COLOR="#000080">InterpolationType</B></FONT>, <FONT COLOR="#0000ff">int</FONT> <B><FONT COLOR="#000080">Looping</B></FONT>);</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Notes"></A>Notes:</B></I></FONT> </P>
+<P>This module handles interpolation for keyframes that contain a quaternion.</P>
+<P>This is intended to support Path.c</P>
+<P>geTKArray supplies general support for a time-keyed array, and this supplements that support to include the specific time-keyed arrays:</P>
+<P>  An array of geQuaternion interpolated linearly<BR>
+  An array of geQuaternion with spherical linear interpolation (SLERP)<BR>
+  An array of geQuaternion with spherical quadrangle interpolation (SQUAD) as defined by: Advanced Animation and Rendering Techniques by Alan Watt and Mark Watt</P>
+<P>These are phycially separated and have different base structures because the different interpolation techniques requre different additional data.</P>
+<P>The two lists are created with different creation calls, interpolated with different calls, but insertion and queries share a call.</P>
+<P>Quadrangle interpolation requires additional computation after changes are made to the keyframe list.  Call geQKFrame_SquadRecompute() to update the calculations.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geQKFrameIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+</BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:48:58 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:36 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

@@ -1,0 +1,1050 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geCameraIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geCamera</b></font> </p>
+
+<p><font color="#000080"><b>Description:
+Creation/Transformation/projection code for a camera </b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\CAMERA.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:
+</i></b></font></p>
+
+<p><font color="#000080"><b>Functions:</b></font> <a
+href="geCameraIndexed.htm#ConvertWorldSpaceToCameraSpace">ConvertWorldSpaceToCameraSpace</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#Create">Create</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#Destroy">Destroy</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetClippingRect">GetClippingRect</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetWorldSpaceVisXForm">GetWorldSpaceVisXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetWorldSpaceXForm">GetWorldSpaceXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetZScale">GetZScale</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#Project">Project</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#ScreenPointToWorld">ScreenPointToWorld</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#SetAttributes">SetAttributes</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#SetWorldSpaceVisXForm">SetWorldSpaceVisXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#SetWorldSpaceXForm">SetWorldSpaceXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#SetZScale">SetZScale</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#Transform">Transform</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#TransformAndProject">TransformAndProject</a><font
+color="#000080"><b>, </b></font><a
+href="geCameraIndexed.htm#TransformAndProjectArray">TransformAndProjectArray</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#TransformAndProjectL">TransformAndProjectL</a><font
+color="#000080"><b>, </b></font><a
+href="geCameraIndexed.htm#TransformAndProjectLArray">TransformAndProjectLArray</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#TransformArray">TransformArray</a></p>
+
+<p><font color="#000080"><b>Types:</b></font><font
+color="#0000FF" size="5"><b><i> </i></b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a></p>
+
+<p><font color="#000080"><b>Additions with Genesis v1.6</b>: </font><a
+href="geCameraIndexed.htm#FillDriverInfo">FillDriverInfo</a><font color="#000080"><b>,
+</b></font><a href="geCameraIndexed.htm#GetCameraSpaceVisXForm">GetCameraSpaceVisXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetCameraSpaceXForm">GetCameraSpaceXForm</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetFarClipPlane">GetFarClipPlane</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetPov">GetPov</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetVisPov">GetVisPov</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetViewAngleXSinCos">GetViewAngleXSinCos</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetViewAngleYSinCos">GetViewAngleYSinCos</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetWidthHeight">GetWidthHeight</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#ProjectAndClamp">ProjectAndClamp</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#ProjectZ">ProjectZ</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#SetFarClipPlane">SetFarClipPlane</a><font
+color="#000080"><b>, </b></font><a href="geCameraIndexed.htm#GetScale">GetScale</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geCamera"></a><font color="#800000"><b>geCamera</b> </font></p>
+
+<p><font face="Courier New,Courier">typedef struct geCamera
+geCamera;</font></p>
+
+<blockquote>
+    <p><b>This object represents a viewport into a </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> and is used
+    to specify the view to be rendered.</b></p>
+</blockquote>
+
+<dir>
+    <li>NOTE: The contents of this structure have been
+        intentionally left out of the interface, by the designers
+        of this module. Think of this as a handle only.<blockquote>
+            <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="ConvertWorldSpaceToCameraSpace"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_ConvertWorldSpaceToCameraSpace</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* WXForm, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* CXForm);</b></font> </p>
+
+<blockquote>
+    <p><b>This function converts a world-space transform WXForm
+    to a camera-space transform and returns it as CXForm.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_Create</b></font><font
+color="#000080"><b>(</b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Fov, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geRect">geRect</a><font
+color="#000080"><b>* Rect);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> object
+    with a field-of-visions (in radians) of Fov and a rendering
+    rectangle of Rect in screen coordinates.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_Destroy</b></font><font
+color="#000080"><b>(</b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* *pCamera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function decreases the reference count of </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> pCamera by one.&nbsp; If the
+    reference count goes to zero all of its resources are freed.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FillDriverInfo"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_FillDriverInfo</b></font>(<a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <font color="#000080"><b>Camera</b></font>);</p>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetCameraSpaceXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font>
+<a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetCameraSpaceXForm</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font color="#000080"><b>* Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetCameraSpaceVisXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font>
+<a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetCameraSpaceVisXForm</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font color="#000080"><b>* Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetClippingRect"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetClippingRect</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#geRect">geRect</a><font
+color="#000080"><b>* Rect);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the clipping rectangle for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera in Rect.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetFarClipPlane"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetFarClipPlane</b></font>(<a
+href="geCameraIndexed.htm#geCamera"><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font>geCamera</a>* <font
+color="#000080"><b>Camera</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>Enable</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>ZFar</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetPov"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font>
+<a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetPov</b></font>(<a href="geCameraIndexed.htm#geCamera"><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font>geCamera</a>*
+<font color="#000080"><b>Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetScale"></a><a href="BasetypesIndexed.htm#geFloat">geFloat</a>
+<a href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetScale</b></font>(<a
+href="geCameraIndexed.htm#geCamera"><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font>geCamera</a>* <font
+color="#000080"><b>Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetViewAngleXSinCos"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetViewAngleXSinCos</b></font>(<a
+href="geCameraIndexed.htm#geCamera"><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font>geCamera</a>* <font
+color="#000080"><b>Camera</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>SinAngle</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>CosAngle</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetVisPov"></a><font color="#0000FF">const</font> <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetVisPov</b></font>(<a
+href="geCameraIndexed.htm#geCamera"><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font>geCamera</a>* <font
+color="#000080"><b>Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetViewAngleYSinCos"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geCamera_GetViewAngleYSinCos</b></font>(<a
+href="geCameraIndexed.htm#geCamera"><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font>geCamera</a>* <font
+color="#000080"><b>Camera</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>SinAngle</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>CosAngle</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetWidthHeight"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetWidthHeight</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <font color="#000080"><b>Camera</b></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>Width</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>Height</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetWorldSpaceVisXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetWorldSpaceVisXForm</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the the vis transform of </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera.&nbsp; The vis
+    transform can be set separately from the camera's actual
+    position to allow for positioning of the camera
+    &quot;outside&quot; of the world geometry.&nbsp; Vis
+    calculations must be made from &quot;inside&quot; the world
+    geometry.&nbsp; So, by placing the the vis transform at an
+    appropriate location &quot;inside&quot; the world geometry it
+    is possible to generate a rendering with a camera positioned
+    &quot;outside&quot; of the world geometry.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the transform.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetWorldSpaceXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetWorldSpaceXForm</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current transform for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the transform.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetZScale"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_GetZScale</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the Z scale settting for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera.&nbsp; </b><font
+    color="#FF0000"><b>As far as I can tell so far, this seems to
+    affect Z-buffering.&nbsp; Decreasing the ZScale supposedly
+    can help eliminate z-buffering problems on actor
+    animations.&nbsp; I suspect it would degrade performance
+    however.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Project"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_Project</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* PointInCameraSpace, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* ProjectedPoint);</b></font> </p>
+
+<blockquote>
+    <p><b>This function projects the point PointInCameraSpace of </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera into screen-space and
+    returns the result in ProjeectPoint.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ProjectAndClamp"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_ProjectAndClamp</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <font color="#000080"><b>Camera</b></font>,
+<font color="#0000FF">const</font> <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>PointInCameraSpace</b></font>, <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>ProjectedPoint</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3d v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ProjectZ"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_ProjectZ</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <font color="#000080"><b>Camera</b></font>,
+<font color="#0000FF">const</font> <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>PointInCameraSpace</b></font>, <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>ProjectedPoint</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3d v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ScreenPointToWorld"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_ScreenPointToWorld</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+ScreenX, </b></font><a href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"><b> ScreenY, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vector);</b></font> </p>
+
+<blockquote>
+    <p><b>This function converts a point in screen-space (X,Y,Z)
+    for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera into a
+    point in world-space Vector.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing. </b>(However, output of function is
+    put into Vector)</p>
+    <p><font color="#008000"><b>Notes: </b><strong>ScreenX</strong>
+    and <strong>ScreenY</strong> are relative to rendering screen
+    with (0,0) at top left corner. If screen is rendered in
+    window mode, then these &quot;screen&quot; coordinates are
+    really a client coordinates.</font></p>
+    <p><font color="#008000"><strong>Notes: Vector</strong> is a
+    vector that points in the direction indicated by <strong>ScreenX</strong>
+    and <strong>ScreenY</strong>. One application for this might
+    be that the user selects a desired object with a mouse
+    cursor. Imagine, in 3d space, a line from the camera towards
+    the object the user is trying to select. Because the engine
+    is projecting a 3d space (the world or level) onto a 2d space
+    (the screen), it will be impossible for this function to
+    determine exactly which 3d point is wanted along this
+    line-of-site line. Thus this function simply returns a short
+    vector pointing in the correct direction. Extending this
+    vector/line while checking for collisions will be required to
+    find the actual object.</font></p>
+    <p><font color="#008000"><strong>Notes</strong>: The vector
+    is intended to be relative to the camera's position.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetAttributes"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_SetAttributes</b></font><font
+color="#000080"><b>(</b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Fov, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geRect">geRect</a><font
+color="#000080"><b>* Rect);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the field-of-view Fov and screen
+    rectangle Rect of </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFarClipPlane"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_SetFarClipPlane</b></font>(<a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <b>Camera</b>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <font
+color="#000080"><b>Enable</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>ZFar</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetWorldSpaceVisXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_SetWorldSpaceVisXForm</b></font><font
+color="#000080"><b>(</b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* XForm);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the vis transform for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera to XForm.&nbsp; The
+    vis transform can be set separately from the camera's actual
+    position to allow for positioning of the camera
+    &quot;outside&quot; of the world geometry.&nbsp; Vis
+    calculations must be made from &quot;inside&quot; the world
+    geometry.&nbsp; So, by placing the the vis transform at an
+    appropriate location &quot;inside&quot; the world geometry it
+    is possible to generate a rendering with a camera positioned
+    &quot;outside&quot; of the world geometry.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetWorldSpaceXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_SetWorldSpaceXForm</b></font><font
+color="#000080"><b>(</b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* XForm);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the transform for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera to XForm.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetZScale"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_SetZScale</b></font><font
+color="#000080"><b>(</b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> ZScale);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the Z scale setting for geCamer
+    Camera to ZScale.&nbsp; </b><font color="#FF0000"><b>As far
+    as I can tell so far, this seems to affect Z-buffering.&nbsp;
+    Decreasing the ZScale supposedly can help eliminate
+    z-buffering problems on actor animations.&nbsp; I suspect it
+    would degrade performance however.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Transform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_Transform</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* WorldSpacePoint, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* CameraSpacePoint);</b></font> </p>
+
+<blockquote>
+    <p><b>This function transforms world-space point
+    WorldSpacePoint into a camera-space point for </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera returning the result
+    in CameraSpacePoint.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformAndProject"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_TransformAndProject</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Point, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* ProjectedPoint);</b></font> </p>
+
+<blockquote>
+    <p><b>// project from *WORLD* space to projected space<br>
+    // projected space is not right-handed.<br>
+    // projection is onto x-y plane x is right, y is down, z is
+    in</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>This function transforms world-space point Point into a
+    projected-space point for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera returning the result in ProjectedPoint.&nbsp;
+    Projected-space is a right-handed space relative to the </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> with +X to the right, +Y in
+    the camera up direction, and +Z in the camera in direction. </b><font
+    color="#FF0000"><b>(I may have the definition of +Z reversed
+    here.)</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformAndProjectArray"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_TransformAndProjectArray</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* WorldSpacePointPtr, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* ProjectedSpacePointPtr, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> count);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function transforms an array count of world-space
+    points in the array at WorldSpacePointPtr into
+    projected-space points for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera returning the result in an array at
+    ProjectedSpacePointPtr.&nbsp; See </b><a
+    href="geCameraIndexed.htm#TransformAndProject">geCamera_TransformAndProject</a><b>
+    for more details.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformAndProjectL"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_TransformAndProjectL</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* Point, </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* ProjectedPoint);</b></font> </p>
+
+<blockquote>
+    <p><b>// project from *WORLD* space to projected space<br>
+    // projected space is not right-handed.<br>
+    // projection is onto x-y plane x is right, y is down, z is
+    in</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>This function transforms a world-space lit point Point
+    into a projected-space lit point for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera returning the result
+    in </b><a href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><b>
+    ProjectedPoint.&nbsp;</b><font color="#FF0000"><b> I'm not
+    sure what the logic is in having separate definitions for </b></font><a
+    href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+    color="#FF0000"><b> and </b></font><a
+    href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><font
+    color="#FF0000"><b>.&nbsp; They appear to be completely
+    interchangeable except for the capitalization of (x,y,z).</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformAndProjectLArray"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_TransformAndProjectLArray</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* WorldSpacePointPtr, </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* ProjectedSpacePointPtr, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> count);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function transforms an array of count world-space
+    lit points in the array at WorldSpacePointPtr into an a array
+    of projected-space lit points for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera returning the result in </b><a
+    href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><b>
+    array ProjectedSpacePointPtr.&nbsp;</b><font color="#FF0000"><b>
+    I'm not sure what the logic is in having separate definitions
+    for </b></font><a href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+    color="#FF0000"><b> and </b></font><a
+    href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><font
+    color="#FF0000"><b>.&nbsp; They appear to be completely
+    interchangeable except for the capitalization of (x,y,z).</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformArray"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geCamera_TransformArray</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* WorldSpacePointPtr, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* CameraSpacePointPtr, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> count);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function transforms an array of count world-space
+    points in array WorldSpacePointPtr into an array of
+    camera-space points for </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera returning the result in CameraSpacePointPtr.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geCameraIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p>&nbsp; </p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:17:54 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:43 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

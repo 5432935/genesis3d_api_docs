@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>NetPlayIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>NetPlay</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: DirectPlay wrapper</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\NETPLAY.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="NetPlayIndexed.htm#DoDPError">DoDPError</A>, <A HREF="NetPlayIndexed.htm#InitNetPlay">InitNetPlay</A>, <A HREF="NetPlayIndexed.htm#NetPlayEnumSession">NetPlayEnumSession</A>, <A HREF="NetPlayIndexed.htm#NetPlayJoinSession">NetPlayJoinSession</A>, <A HREF="NetPlayIndexed.htm#NetPlayCreateSession">NetPlayCreateSession</A>, <A HREF="NetPlayIndexed.htm#NetPlayCreatePlayer">NetPlayCreatePlayer</A>, <A HREF="NetPlayIndexed.htm#NetPlayDestroyPlayer">NetPlayDestroyPlayer</A>, <A HREF="NetPlayIndexed.htm#NetPlaySend">NetPlaySend</A>, <A HREF="NetPlayIndexed.htm#NetPlayReceive">NetPlayReceive</A>, <A HREF="NetPlayIndexed.htm#DeInitNetPlay">DeInitNetPlay</A>, <A HREF="NetPlayIndexed.htm#CPrintfC">CPrintfC</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="NetPlayIndexed.htm#SP_DESC">SP_DESC</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="NetPlayIndexed.htm#SESSION_DESC">SESSION_DESC</A></P>
+<B><FONT COLOR="#000080"><P>Constants: </B></FONT><A HREF="NetPlayIndexed.htm#Constants">view</A><B><FONT COLOR="#000080">&nbsp;</P>
+<P>Variables: </B></FONT><A HREF="NetPlayIndexed.htm#Variables">view</A></P>
+<FONT COLOR="#000080"><P>Additions to Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define NETPLAY_OPEN_CREATE&nbsp;&nbsp;1</DD>
+<DD>#define NETPLAY_OPEN_JOIN&nbsp;&nbsp;2</DD>
+</DL>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><DL>
+<DD><A NAME="SP_DESC"></A>SP_DESC</DD>
+</B></FONT><DD>typedef struct {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desc[200];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Description of Service provider</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;GUID&nbsp;&nbsp;&nbsp;Guid;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Global Service Provider GUID</DD>
+<DD>} SP_DESC;</DD>
+</DL><DIR>
+<DIR>
+
+<P><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P></DIR>
+</DIR>
+
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="SESSION_DESC"></A>SESSION_DESC</P>
+</B></FONT><DL>
+<DD>typedef struct {</DD>
+<DD>&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SessionName[200];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Description of Service provider</DD>
+<DD>&nbsp;GUID&nbsp;&nbsp;&nbsp;Guid;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Global Service Provider GUID</DD>
+<DD>} SESSION_DESC;</DD>
+</DL><DIR>
+<DIR>
+
+<P><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P></DIR>
+</DIR>
+
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Variables"></A>Variables:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><P>extern&nbsp;<A HREF="NetPlayIndexed.htm#SP_DESC">SP_DESC</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GlobalSP;&nbsp;&nbsp;&nbsp;// Global info about the sp</P>
+<P>extern <A HREF="NetPlayIndexed.htm#SESSION_DESC">SESSION_DESC</A>*&nbsp;&nbsp;&nbsp;GlobalSession;&nbsp;&nbsp;// Global sessions availible</P>
+<P>extern&nbsp;LPGUID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;glpGuid;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="DoDPError"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">DoDPError</FONT><FONT COLOR="#000080">(HRESULT Hr);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="InitNetPlay"></A>BOOL </FONT><FONT COLOR="#800000">InitNetPlay</FONT><FONT COLOR="#000080">(LPGUID lpGuid);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayEnumSession"></A>BOOL </FONT><FONT COLOR="#800000">NetPlayEnumSession</FONT><FONT COLOR="#000080">(LPSTR IPAdress, </B></FONT><A HREF="NetPlayIndexed.htm#SESSION_DESC">SESSION_DESC</A><B><FONT COLOR="#000080">** SessionList, DWORD* SessionNum);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayJoinSession"></A>BOOL </FONT><FONT COLOR="#800000">NetPlayJoinSession</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="NetPlayIndexed.htm#SESSION_DESC">SESSION_DESC</A><B><FONT COLOR="#000080">* SessionList);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayCreateSession"></A>BOOL </FONT><FONT COLOR="#800000">NetPlayCreateSession</FONT><FONT COLOR="#000080">(LPSTR SessionName, DWORD MaxPlayers);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayCreatePlayer"></A>BOOL </FONT><FONT COLOR="#800000">NetPlayCreatePlayer</FONT><FONT COLOR="#000080">(LPDPID lppidID, LPTSTR lptszPlayerName, HANDLE hEvent, LPVOID lpData, DWORD dwDataSize, </B></FONT><A HREF="BasetypesIndexed.htm_#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> ServerPlayer);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayDestroyPlayer"></A>BOOL </FONT><FONT COLOR="#800000">NetPlayDestroyPlayer</FONT><FONT COLOR="#000080">(DPID pid);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlaySend"></A>HRESULT </FONT><FONT COLOR="#800000">NetPlaySend</FONT><FONT COLOR="#000080">(DPID idFrom, DPID idTo, DWORD dwFlags, LPVOID lpData, DWORD dwDataSize);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NetPlayReceive"></A>HRESULT </FONT><FONT COLOR="#800000">NetPlayReceive</FONT><FONT COLOR="#000080">(LPDPID lpidFrom, LPDPID lpidTo, DWORD dwFlags, LPVOID lpData, LPDWORD lpdwDataSize);</P>
+<P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="DeInitNetPlay"></A>BOOL </FONT><FONT COLOR="#800000">DeInitNetPlay</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CPrintfC"></A>BOOL&nbsp;AFX_</FONT><FONT COLOR="#800000">CPrintfC</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> *String);</P>
+</B></FONT><P>// HACK!!!! Function is in Engine.cpp (So NetPlay.C can call it...)</P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="NetPlayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:24:10 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:24 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

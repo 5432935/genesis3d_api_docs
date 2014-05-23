@@ -1,0 +1,341 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GTest Text"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>gtText</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>Text.h</b></font> </p>
+
+<p><font color="#000080"><b>Description: The following is code
+from GTest, and not part of the original Genesis3d engine</b></font></p>
+
+<p>Source file: &#133;\genesis3d\src\TEXT.H </p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+<a name="x"></a></p>
+
+<p><font color="#000080"><b>Globals: </b></font><a
+href="gtText.htm#Globals"><font color="#000080">view</font></a></p>
+
+<p><font color="#000080"><b>Constants: </b></font><a
+href="gtText.htm#Constants"><font color="#000080">view</font></a></p>
+
+<p><font color="#000080"><b>Types: </b></font><a href="gtText.htm#FontType"><font
+color="#000080">FontType</font></a><font color="#000080">, </font><a
+href="gtText.htm#FontStyle"><font color="#000080">FontStyle</font></a></p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="gtText.htm#Text_Create"><font color="#000080"><strong>Create</strong></font></a><font
+color="#000080"><strong>, </strong></font><a href="gtText.htm#Text_Destroy"><font
+color="#000080"><strong>Destroy</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtText.htm#Text_GetHeight"><font color="#000080"><strong>GetHeight</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtText.htm#Text_GetWidth"><font color="#000080"><strong>GetWidth</strong></font></a><font
+color="#000080"><strong>, </strong></font><a href="gtText.htm#Text_Out"><font
+color="#000080"><strong>Text_Out</strong></font></a></p>
+
+<p><font color="#000080"><b>Notes:&nbsp;</b></font><a
+href="gtText.htm#Notes">view</a> (none currently)</p>
+
+<hr>
+
+<p><a name="Globals"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Global Variables:</i></b></font> </p>
+
+<p><a name="Dir"><font color="#0000FF"></font></a><font
+color="#0000FF">static char* &nbsp;&nbsp;<strong>Dir </strong>=
+&quot;Bmp\\&quot;; </font><font color="#008000">// where font
+decals are found</font><font color="#0000FF"><br>
+</font><a name="Ext"><font color="#0000FF"></font></a><font
+color="#0000FF">static char* <strong>&nbsp;&nbsp;Ext </strong>=
+&quot;.Bmp&quot;; </font><font color="#008000">// exetension of
+decal files<br>
+</font><a name="Fonts"><font color="#0000FF"></font></a><a
+href="gtText.htm#Font_Type"><font color="#0000FF">Font_Type</font></a><font
+color="#0000FF"> <strong>&nbsp;&nbsp;&nbsp;Fonts</strong>[</font><a
+href="gtText.htm#MAX_FONTS"><font color="#0000FF">MAX_FONTS</font></a><font
+color="#0000FF">]; </font><font color="#008000">// font list</font><font
+color="#0000FF"><br>
+</font><a href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"> </font><font color="#0000FF"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontLookup</strong>[</font><a
+href="gtText.htm#MAX_SUPPORTED_CHARS"><font color="#0000FF">MAX_SUPPORTED_CHARS</font></a><font
+color="#0000FF">]; </font><font color="#008000">// character
+lookup table</font><font color="#0000FF"><br>
+</font><a name="FontNames"><font color="#0000FF"></font></a><font
+color="#0000FF">static char &nbsp;&nbsp;&nbsp;&nbsp;<strong>FontNames</strong>[</font><a
+href="gtText.htm#MAX_FONTS"><font color="#0000FF">MAX_FONTS</font></a><font
+color="#0000FF">][100] = </font><font color="#008000">// font
+names</font><font color="#0000FF"><br>
+&nbsp;&nbsp;{<br>
+</font><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SFont1&quot;,
+</font><font color="#008000">//this is the standard font</font><font
+color="#000000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SFont2&quot;, </font><font
+color="#008000">//this is a highlighted font</font><font
+color="#000000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Console\\640x480\\font&quot;</font><font
+color="#0000FF"> </font><font color="#008000">//this is a small
+console font</font><font color="#0000FF"><br>
+&nbsp;&nbsp;};<br>
+</font></p>
+
+<blockquote>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Constants"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Constants:</i></b></font> </p>
+
+<blockquote>
+    <p><a name="MAX_SUPPORTED_CHARS"><font color="#0000FF"></font></a><font
+    color="#0000FF">#define MAX_SUPPORTED_CHARS </font><font
+    color="#000000">128</font></p>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="FontType"></a><font color="#800000"><strong>FontType</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">Available fonts</font><br>
+    typedef enum {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Font_Default = 0,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Font_DefaultSelect,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Font_Small,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a name="MAX_FONTS"><font
+    color="#0000FF"></font></a><font color="#0000FF">MAX_FONTS</font><br>
+    } FontType;</p>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="FontStyle"></a><font color="#800000"><strong>FontStyle</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">Output styles</font><br>
+    typedef enum {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Style_Center = 0,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Style_LeftJustify,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Style_RightJustify,<br>
+    } FontStyle;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="Font_Type"><font color="#800000"><strong></strong></font></a><font
+color="#800000"><strong>Font_Type</strong></font></p>
+
+<blockquote>
+    <p><font color="#008000">Font struct</font><br>
+    typedef struct {<br>
+    <font color="#0000FF">&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+    href="geBitmapIndexed.htm#geBitmap"><font color="#0000FF">geBitmap</font></a><font
+    color="#0000FF">*&nbsp;&nbsp;Bitmap;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#int32"><font color="#0000FF">int32</font></a><font
+    color="#0000FF">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontWidth;
+    </font><font color="#008000">//default is 16, or 8 for
+    Font_Small</font><font color="#0000FF"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#int32"><font color="#0000FF">int32</font></a><font
+    color="#0000FF">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontHeight;
+    </font><font color="#008000">//default is 16 for all fonts</font><font
+    color="#0000FF"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#int32"><font color="#0000FF">int32</font></a><font
+    color="#0000FF">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddWidth;
+    </font><font color="#008000">// default is 13, or 7 for
+    Font_Small</font><font color="#0000FF"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#int32"><font color="#0000FF">int32</font></a><font
+    color="#0000FF">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddHeight;
+    </font><font color="#008000">// default is 21, or 18 for
+    Font_Small</font><font color="#0000FF"><br>
+    </font>} Font_Type;<br>
+    </p>
+</blockquote>
+
+<hr>
+
+<p><a name="Functions"></a><font color="#0000FF" size="5"><b><i>Functions:</i></b></font></p>
+
+<p><font color="#0000FF" size="5"><b><i></i></b></font>&nbsp;</p>
+
+<p><a name="Text_Create"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>Text_Create</strong></font>(<a
+href="GTest%20Custom/SystemIndexed.htm#geEngine">geEngine</a>* <font
+color="#000080"><strong>SaveEngine</strong></font> ); </p>
+
+<blockquote>
+    <p><strong>Create everything required for text output.</strong></p>
+    <p>Uses names in global variables <a href="gtText.htm#Dir"><font
+    color="#000000"><strong>Dir</strong></font></a><font
+    color="#000000"><strong>, </strong></font><a
+    href="gtText.htm#FontNames"><font color="#000000"><strong>FontNames[]</strong></font></a><font
+    color="#000000"><strong>, </strong></font><a href="gtText.htm#Ext"><font
+    color="#000000"><strong>Ext </strong></font></a><font
+    color="#000000">to open graphic font files. Information about
+    opened fonts is stored in global </font><a href="gtText.htm#Fonts"><font
+    color="#000000"><strong>Fonts[]</strong></font></a><font
+    color="#000000">. Note: if user specifies a different graphic
+    font file for use, then Font[].FontWidth and
+    Font[].FontHeight must be manual reset. Sets transparency
+    color index value for font to be index 255.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>SaveEngine</strong>: engine
+    used for output, which gets saved</font></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Text_Destroy"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>Text_Destroy</strong></font>(void
+); // no parameters</p>
+
+<blockquote>
+    <p><strong>Free everything</strong><br>
+    </p>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Text_GetWidth"></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#int32">int32</a>
+<font color="#800000"><strong>Text_GetWidth</strong></font>(<a
+href="gtText.htm#FontType"><font color="#000080">FontType</font></a><font
+color="#000080"> <strong>Font</strong></font> ); </p>
+
+<blockquote>
+    <p><strong>Get the width of a font</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Font</strong>: font whose
+    width we want</font></p>
+    <blockquote>
+        <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+    </blockquote>
+</blockquote>
+
+<hr>
+
+<p><a name="Text_GetHeight"></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#int32">int32</a>
+<font color="#800000"><strong>Text_GetHeight</strong></font>(<a
+href="gtText.htm#FontType"><font color="#000080">FontType</font></a> <font
+color="#000080"><strong>Font</strong></font> ); </p>
+
+<blockquote>
+    <p><strong>Get the height of a font</strong></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Font</strong>: font whose
+    height we want</font></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Text_Out"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>Text_Out</strong></font>(<font
+color="#000080">char* <strong>Text</strong>, </font><a
+href="gtText.htm#FontType"><font color="#000080">FontType</font></a><font
+color="#000080"> <strong>Font</strong>, </font><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#int32"><font
+color="#000080">int32</font></a><font color="#000080"> <strong>x</strong>,
+</font><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#int32"><font
+color="#000080">int32</font></a><font color="#000080"> <strong>y</strong>,
+</font><a href="gtText.htm#FontStyle"><font color="#000080">FontStyle</font></a><font
+color="#000080"> <strong>Style</strong> </font>); </p>
+
+<blockquote>
+    <p><strong>Output a text string.</strong></p>
+    <p>Uses loaded bitmap fonts to put <strong>Text</strong> to
+    screen, starting at <strong>x</strong>, <strong>y</strong>,
+    in specified Style.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Text</strong>: string to
+    output<br>
+    <strong>Font</strong>: font to use<br>
+    <strong>x</strong>: x location<br>
+    <strong>y</strong>: y location<br>
+    <strong>Style</strong>: output style</font></p>
+    <blockquote>
+        <p><a href="gtText.htm#Contents">Return to Contents</a></p>
+    </blockquote>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"></a><font color="#0000FF" size="5"><b><i>Notes:</i></b></font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:26:01 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:55 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

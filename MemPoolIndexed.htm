@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>MemPoolIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>MemPool</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Fixed size block memory allocator interface</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Support\mempool.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="MemPoolIndexed.htm#Create">Create</A>, <A HREF="MemPoolIndexed.htm#Extend">Extend</A>, <A HREF="MemPoolIndexed.htm#Destroy">Destroy</A>, <A HREF="MemPoolIndexed.htm#Reset">Reset</A>, <A HREF="MemPoolIndexed.htm#GetHunk">GetHunk</A>, <A HREF="MemPoolIndexed.htm#FreeHunk">FreeHunk</A>, <A HREF="MemPoolIndexed.htm#IsValid">IsValid</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A></P>
+<B><FONT COLOR="#000080"><P>Notes: </B></FONT><A HREF="MemPoolIndexed.htm#Notes">view</A></P>
+<FONT COLOR="#000080"><P>Additions to Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Notes"></A>Notes:</P>
+</B></I></FONT><P>(From mempool.c)</P>
+<P><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A> is a 'root' level object (eg. 'list' uses us). We sit only above 'Ram' in the heirarchy</P>
+<P>MemPool </P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is a system for fast Resetting &amp; Freeing of nodes; for use in tree structures </P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;Requires no traversing for freeing</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Does auto-extending of memory space in case you use more space than expected or if you don't know how much you will need</P>
+<P>HunkLength is forced to be a multiple of 4</P>
+<P>&nbsp;</P>
+<P>(from mempool.h)</P>
+<P>NOTEZ: MemPool_Get clears the memory block to zeros</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+<P><A NAME="MemPool"></A>typedef struct MemPool </FONT><FONT COLOR="#800000">MemPool</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Create"></A>extern </B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">MemPool_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> HunkLength,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> NumHunks,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> AutoExtendNumItems);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Extend"></A>extern </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">MemPool_Extend</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* Pool,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> NumHunks);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Destroy"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">MemPool_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">** pPool);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Reset"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">MemPool_Reset</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* Pool);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="GetHunk"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * </FONT><FONT COLOR="#800000">MemPool_GetHunk</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* Pool);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="FreeHunk"></A>extern </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">MemPool_FreeHunk</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* Pool,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Hunk);</P>
+</B></FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="y"></A>extern </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">MemPool_IsValid</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="MemPoolIndexed.htm#MemPool">MemPool</A><B><FONT COLOR="#000080">* Pool);</P>
+<P>Note: only available if: #ifdef _DEBUG</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="MemPoolIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:24:37 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:21 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

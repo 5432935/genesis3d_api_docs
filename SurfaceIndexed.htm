@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>SurfaceIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>Surface</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Creates the surfaces for a BSP from the GFX data</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\World\SURFACE.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="SurfaceIndexed.htm#EngineInit">EngineInit</A>, <A HREF="SurfaceIndexed.htm#EngineShutdown">EngineShutdown</A>, <A HREF="SurfaceIndexed.htm#SetEngine">SetEngine</A>, <A HREF="SurfaceIndexed.htm#SetWorld">SetWorld</A>, <A HREF="SurfaceIndexed.htm#SetGBSP">SetGBSP</A>, <A HREF="SurfaceIndexed.htm#WorldInit">WorldInit</A>, <A HREF="SurfaceIndexed.htm#WorldShutdown">WorldShutdown</A>, <A HREF="SurfaceIndexed.htm#InSurfBoundingBox">InSurfBoundingBox</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types:</B></FONT> <A HREF="SurfaceIndexed.htm#Surf_SurfInfo">Surf_SurfInfo</A>, <A HREF="SurfaceIndexed.htm#Surf_TexVert">Surf_TexVert</A>, <A HREF="SurfaceIndexed.htm#Surf_LVertex">Surf_LVertex</A>, <A HREF="SurfaceIndexed.htm#Surf_TLVertex">Surf_TLVertex</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</P>
+<P>Changes for Genesis3D v1.6:</B> type float converted to geFloat</P>
+</FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Surface info carries extra info about a face thats not in </B></FONT><A HREF="geBSPIndexed.htm_#GFX_Face">GFX_Face</A><B><FONT COLOR="#000080"> (File format face)</P>
+</FONT><FONT COLOR="#800000"><P><A NAME="Surf_SurfInfo">Surf_SurfInfo</A></P>
+</B></FONT><DL>
+<DD>typedef struct Surf_SurfInfo {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</A>&nbsp;LInfo;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// For RDriver use only...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T2WVecs[2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexOrg;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VMins;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VMaxs;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisFrame;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XStep;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Lightmap step values (1:21:10 fixed)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YStep;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShiftU;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShiftV;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumLTypes;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Number of lightmap types this face has...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DLightFrame;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// == Globals-&gt;CurFrame if dlighted<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DLights;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Bit set for each DLight<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm_#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Surface Flags (NOTE - This is not the flags from the utilities)<BR>
+&nbsp;} Surf_SurfInfo;<BR>
+</DD>
+<DT><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></DT>
+</DL>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Surf_TexVert">Surf_TexVert</A></P>
+</B></FONT><DL>
+<DD>typedef struct Surf_TexVert {<BR>
+&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u, v;<BR>
+&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r, g, b, a;<BR>
+} Surf_TexVert;<BR>
+</DD>
+<DT><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></DT>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="Surf_LVertex">Surf_LVertex</A></DT>
+</B></FONT><DD>// Lit vertex</DD>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X, Y, Z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 3d vertex<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u, v;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Uv's<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r, g, b, a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// color<BR>
+} Surf_LVertex;</DD>
+<DT><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></DT>
+<DT>&nbsp;</DT>
+<B><FONT COLOR="#800000"><DD><A NAME="Surf_TLVertex">Surf_TLVertex</A></DD>
+</B></FONT><DD>// Transformed Lit vertex</DD>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x, y, z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// screen points<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u, v;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Uv's<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r, g, b, a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// color<BR>
+} Surf_TLVertex;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Constants:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>&nbsp;//&nbsp;Surface Flags</P>
+</B></FONT><DL>
+<DD>#define&nbsp;&nbsp;SURFINFO_TRANS&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;// Surface is transparent</DD>
+<DD>#define&nbsp;&nbsp;SURFINFO_LTYPED&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;1)&nbsp;&nbsp;// This surface has more than one ltype</DD>
+<DD>#define&nbsp;&nbsp;SURFINFO_LIGHTMAP&nbsp;&nbsp;&nbsp;(1&lt;&lt;2)&nbsp;&nbsp;// This surface has a lightmap</DD>
+<DD>#define&nbsp;&nbsp;SURFINFO_WAVY&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;3)&nbsp;&nbsp;// This surface is a wavy surface</DD>
+</DL>
+<P>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="EngineInit"></A><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080"> *Engine);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="EngineShutdown"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Surf_EngineShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080"> *Engine);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetEngine"></A><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080"> *Engine);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetWorld"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080"> *World);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetGBSP"></A><A HREF="BasetypesIndexed.htm_#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Surf_SetGBSP</FONT><FONT COLOR="#000080">(World_BSP *BSP);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldInit"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080"> *World);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="WorldShutdown"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Surf_WorldShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080"> *World);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="y"></A>BOOL </FONT><FONT COLOR="#800000">Surf_InSurfBoundingBox</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="SurfaceIndexed.htm#Surf_SurfInfo">Surf_SurfInfo</A><B><FONT COLOR="#000080"> *Surf, </B></FONT><A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A><B><FONT COLOR="#000080"> *Pos, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> Box);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="SurfaceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:25:47 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:46 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

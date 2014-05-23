@@ -1,0 +1,401 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>CSNetworkIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>CSNetwork</P>
+</FONT><FONT COLOR="#000080"><P>Description: Client/Server network code</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\CSNetMgr.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="CSNetworkIndexed.htm#Create">Create</A>, <A HREF="CSNetworkIndexed.htm#Destroy">Destroy</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="CSNetworkIndexed.htm#GetServerID">GetServerID</A>, <A HREF="CSNetworkIndexed.htm#GetOurID">GetOurID</A>, <A HREF="CSNetworkIndexed.htm#GetAllPlayerID">GetAllPlayerID</A>, <A HREF="CSNetworkIndexed.htm#ReceiveFromServer">ReceiveFromServer</A>, <A HREF="CSNetworkIndexed.htm#ReceiveFromClient">ReceiveFromClient</A>, <A HREF="CSNetworkIndexed.htm#ReceiveSystemMessage">ReceiveSystemMessage</A>, <A HREF="CSNetworkIndexed.htm#ReceiveAllMessages">ReceiveAllMessages</A>, <A HREF="CSNetworkIndexed.htm#WeAreTheServer">WeAreTheServer</A>, <A HREF="CSNetworkIndexed.htm#StartSession">StartSession</A>, <A HREF="CSNetworkIndexed.htm#StopSession">StopSession</A>, <A HREF="CSNetworkIndexed.htm#SendToServer">SendToServer</A>, <A HREF="CSNetworkIndexed.htm#SendToClient">SendToClient</A>, <A HREF="CSNetworkIndexed.htm#FindSession">FindSession</A>, <A HREF="CSNetworkIndexed.htm#JoinSession">JoinSession</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetID">geCSNetMgr_NetID</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetMsgType">geCSNetMgr_NetMsgType</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetClient">geCSNetMgr_NetClient</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetSession">geCSNetMgr_NetSession</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="CSNetworkIndexed.htm#Constants">view</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis v1.6: <B>None</P>
+</B><STRONG><P>Notes: </FONT></STRONG><A HREF="CSNetworkIndexed.htm#Notes"><FONT COLOR="#000080">view</FONT></A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><P>#define MAX_CLIENT_NAME 256</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</I></FONT><FONT COLOR="#000080"><P><A NAME="geCSNetMgr"></A>typedef struct geCSNetMgr </FONT><FONT COLOR="#800000">geCSNetMgr</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="geCSNetMgr_NetID"></A>&nbsp;typedef </B></FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_NetID</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE>A 32-bit number gets assigned to each client (Not an IP?) </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geCSNetMgr_NetMsgType"></A>geCSNetMgr_NetMsgType</P>
+</FONT><FONT COLOR="#000080"><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Types for messages received from GE_ReceiveSystemMessage</P>
+</B></FONT><BLOCKQUOTE>Comment : Anything you send directly is a NET_MSG_USER packet. The send functions will ask you only for a destination, data size and a pointer to the data you want to xmit.&nbsp; A client who makes a successful call to geCSNetMgr_JoinSession will apparently generate a NET_MSG_CREATE_CLIENT. The data of a NET_MSG_CREATE_CLIENT will contain only the geCSNetMgr_NetClient struct for the client who just joined the session. A NET_MSG_DESTROY_CLIENT may come from the act of a client destroying its NetManager object</BLOCKQUOTE>
+<DL>
+<DD>typedef enum {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_NONE, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// No msg</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_USER,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// User message</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_CREATE_CLIENT, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// A new client has joined in</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_DESTROY_CLIENT, &nbsp;&nbsp;&nbsp;&nbsp;// An existing client has left</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_HOST, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// We are the server now</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_SESSIONLOST, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Connection was lost</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NET_MSG_SERVER_ID, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Internal, for hand shaking process</DD>
+<DD>} geCSNetMgr_NetMsgType;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geCSNetMgr_NetClient"></A>geCSNetMgr_NetClient</P>
+</B></FONT><DL>
+<DD>typedef struct {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[MAX_CLIENT_NAME];</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetID">geCSNetMgr_NetID</A>&nbsp;&nbsp;&nbsp;&nbsp;Id;</DD>
+<DD>} geCSNetMgr_NetClient;</DD>
+<DT>&nbsp;</DT>
+<DT>This object is used to identify clients in various function calls. </DT>
+</DL>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geCSNetMgr_NetSession"></A>geCSNetMgr_NetSession</P>
+</B></FONT><DL>
+<DD>// Windows.h must be included previously for this api to be exposed.</DD>
+<DD>typedef struct geCSNetMgr_NetSession {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SessionName[200]; // Description of Service provider</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guid; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Service Provider GUID</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#pragma message("define a geGUID?.. wouldn't need a windows dependency here...")</DD>
+<DD>} geCSNetMgr_NetSession;</DD>
+</DL>
+<P>Servers can have only one session. The act of starting a session is the act of starting a server</P>
+<BLOCKQUOTE>&nbsp;<B><FONT COLOR="#000080">&nbsp;</B></FONT><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><BLOCKQUOTE>Returns a Net Manager object. You have to have one (and only one) before you do anything with the Net API. Most of the other functions take the NetManager object as a parameter.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">** ppM);</P>
+</B></FONT><BLOCKQUOTE>Pass in the address of a pointer that points to a Net Manager. I guess it's ** because it assumes that the Net Manager pointer is the only copy you have. NULL or not, after this call, dereferenceing this pointer would be a bad idea.&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetServerID"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_GetServerID</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<P>Returns &nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>Returns the NetManager assigned ID of the server. I'm not too sure what good it will do you however. Clients don't need it to transmit to the server.</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetOurID"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_GetOurID</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Returns the NetManager assigned ID for the caller. I'm also not too sure what good this will do you</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetAllPlayerID"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_GetAllPlayerID</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M);</P>
+</B></FONT><P>Not called by GTest. It is not clear who the return NetID will represent. If the intent is the cycle thru ID's by calling <BR>
+iteratively how do you tell it to start from the start of the list instead of from the last call. Maybe you just save the <BR>
+first return value and wait for a subsequent return to match it? &lt;shrug&gt;</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ReceiveFromServer"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** Data);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Type</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address to an uninitalized geCSNetMgr_NetMsgType. Anything that was sent by one of&nbsp; the two SEND functions above will result in Type being filled with the value NET_MSG_USER when it is received with this function.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Size</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address to an uninitalized int. It will be filled with the size of received data.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Data</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address of an uninitialized uint8 pointer. The pointer will come back pointing to the received data. Make a copy or process the data in short order.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Returns false if there is no message waiting in the receive buffers</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ReceiveFromClient"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** Data);</P>
+</B></FONT><P>&nbsp;</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Type</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address to an uninitalized geCSNetMgr_NetMsgType.&nbsp; Anything that was sent by one of the two SEND functions above will result in Type being filled with the value NET_MSG_USER when it is received by the server.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>IdClient</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address of an uninitialized geCSNetMgr_NetID. It will be filled with the NetID representing&nbsp; the client who sent the message.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Size</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address to an uninitalized int. It will be filled with the size of received data .</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>Data</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address of an uninitialized uint8 pointer. The pointer will come back pointing to the received data. Make a copy or process the data in short order.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Returns false if there is no message waiting in the receive buffers</TD>
+</TR>
+</TABLE>
+
+<P>Comments: I have not attempted to have a client try to use this to get data that another client sent directly to it using SendToClient. It might be considered too far off the client server paradigm, and not supported. <BR>
+&nbsp;</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ReceiveSystemMessage"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_ReceiveSystemMessage</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetID">geCSNetMgr_NetID</A><B><FONT COLOR="#000080"> IdFor, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetMsgType">geCSNetMgr_NetMsgType</A><B><FONT COLOR="#000080">* Type, </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetClient">geCSNetMgr_NetClient</A><B><FONT COLOR="#000080">* Client);</P>
+</B></FONT><P>Not called in GTest. Not too sure what this guy is for. </P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ReceiveAllMessages"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** Data);</P>
+</B></FONT><P>Not called in GTest. Not too sure what this guy is for. </P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WeAreTheServer"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_WeAreTheServer</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M);</P>
+</B></FONT><P>Not called by GTest. It might send out a NET_MSG_HOST msg to everybody it knows about. Lots of questions here: Does each client know about all the other clients? Does it work if the old server still has a valid session going? (i.e. rogue call). Does it work if the old server has already gone down in flames?</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="StartSession"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_StartSession</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * SessionName, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * PlayerName );</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="84%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<STRONG><P>SessionName&nbsp;&nbsp;&nbsp;&nbsp;</STRONG></TD>
+<TD WIDTH="84%" VALIGN="MIDDLE">
+<P>This string will be made available to clients who find the session on this server.</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<STRONG><P>PlayerName</STRONG></TD>
+<TD WIDTH="84%" VALIGN="MIDDLE">
+<P>All servers have a local client. This is the name to be associated with that client.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<P>Returns</TD>
+<TD WIDTH="84%" VALIGN="MIDDLE">
+<P>Returns false if there is some kind of problem.&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>Comments: Calling this function is the act of starting a server. It is important to realize that one client will also be created for the server and will automatically join the newly created session. This client will work exactly like a normal one.</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="StopSession"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_StopSession</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="19%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="81%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="81%" VALIGN="MIDDLE">
+<P>Return false on a problem. (No active session?)</TD>
+</TR>
+</TABLE>
+
+<P>Comments: This shuts down the server.</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SendToServer"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> DataSize);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<STRONG><P>Guaranteed&nbsp;&nbsp;</STRONG></TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>I guess the client will demand somekind of ACK from the server. Haven't tried it.</TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<STRONG><P>Data</STRONG></TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>A pointer to a blob of data you wish to pass along to the server. A struct perhaps, or maybe some data you concatenated together with memcpy. However you put it together, you will be responsible taking the data back apart when you write the receiving server code.</TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<STRONG><P>DataSize</STRONG></TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>The length of the above data.</TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD WIDTH="92%" VALIGN="MIDDLE">
+<P>Returns false if it can't send it. Also, perhaps, if it was sent guaranteed but not ACK'ed by server, but again I have not tried it.</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SendToClient"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> DataSize);</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>To</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>The geCSNetMgr_NetID number that was assigned to the client you want to transmit to. For now at least, this parameter seems to be ignored.<U> All </U>connected clients will receive any message sent with this function.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>Guaranteed&nbsp;&nbsp;&nbsp;&nbsp;</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>I guess the server will demand somekind of ACK from the client&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>Data</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>A pointer to a blob of data you wish to pass along to a client. A struct perhaps, or maybe some data you concatenated together with memcpy. However you put it together, you will be responsible taking the data back apart when you write the receiving client code.</TD>
+</TR>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>DataSize</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>The length of the above data.</TD>
+</TR>
+<TR><TD WIDTH="9%" VALIGN="MIDDLE">
+<STRONG><P>Returns&nbsp;&nbsp;&nbsp;&nbsp;</STRONG></TD>
+<TD WIDTH="91%" VALIGN="MIDDLE">
+<P>Returns false if it can't send it. Also, perhaps, if it was sent guaranteed but not ACK'ed by client, but I have not tried it.</TD>
+</TR>
+</TABLE>
+
+<P>Questions: can a client send to another client with this? Can a client get another clients ..._NetID?</P>
+<P>Comments: For the server, the "To" parameter is ignored right now. *All* connected clients will receive any data transmitted <BR>
+via this function. This may well change next beta.</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="FindSession"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* SessionNum );</P>
+<P>// Windows.h must be included previously for this api to be exposed.</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>IPAddress</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>The address of the server you are querying about a session. Pass a NULL to get a special SessionList value.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>SessionList</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address of an unintialized _NetSession pointer. The pointer will come back pointing to the start of an array of&nbsp; _NetSession structs. If you specified an IPAddress the array will contain only the one element for that server. (Assuming it is a running server) If you passed a NULL you will get an array of sessions; one for each running server on your LAN. If your not on a LAN you will likely get no elements at all.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<STRONG><P>SessionNum</STRONG></TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Pass the address of an unintialized int. It will come back containing the number of sessions in the above array.</TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="MIDDLE">
+<P>Returns</TD>
+<TD WIDTH="93%" VALIGN="MIDDLE">
+<P>Returns GE_FALSE if the server didn't have a session or there was no server at that IPAddress.</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="JoinSession"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geCSNetMgr_JoinSession</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="CSNetworkIndexed.htm#geCSNetMgr_NetSession">geCSNetMgr_NetSession</A><B><FONT COLOR="#000080">* Session);</P>
+<P>// Windows.h must be included previously for this api to be exposed.</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=623>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<STRONG><P>M</STRONG></TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Should point to your NetManager object;&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<STRONG><P>Name</STRONG></TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Your in-game name.&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<STRONG><P>Session</STRONG></TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Pass the address of any one of the geCSNetMgr_NetSession structs you got from geCSNetMgr_FindSession&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="MIDDLE">
+<P>Returns&nbsp;&nbsp;&nbsp;<STRONG>&nbsp;&nbsp;</STRONG></TD>
+<TD WIDTH="89%" VALIGN="MIDDLE">
+<P>Returns GE_FALSE if you are unable to join the session for some reason.</TD>
+</TR>
+</TABLE>
+
+<P>Comments: This call in essence opens a communications path between the server that has the specified session, and the calling client. After this call, this client and the server will be able to use the various types of Send and Receive functions (see below) to talk to one another.</P>
+<BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Notes"></A>Notes:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+<P>KDTOP Note: I have taken this excellent documentation by Royce Pipkins from the World of Genesis web page. Below are his original notes...</P>
+</B></FONT><H2>This documentation was not written by Eclipse. It was written by <A HREF="mailto:Royce.Pipkins@worldnet.att.net">Royce Pipkins</A> . That means that it may very well contain <U>serious</U> errors. Please don't flood Eclipse with questions about this stuff (chances are they haven't even seen this), wait for them to come out with official documentation. Thanks.</H2>
+<B><P>In the mean-time please feel welcome to try out the limited documemtation I assembled while trying to make a Minimum NetPlay Application. (Source to be put-up soon.)</B>&nbsp;&nbsp; <A HREF="mailto:Royce.Pipkins@worldnet.att.net"><B>Feedback</B></A><B> is welcome.</P>
+</B><BLOCKQUOTE><A HREF="CSNetworkIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:20:55 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:53 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

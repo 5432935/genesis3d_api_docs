@@ -1,0 +1,546 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geVFileIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geVFile</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Virtual file interface</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\VFile\vfile.h<A NAME="Contents"></A></P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Contents:</P>
+</I></FONT><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geVFileIndexed.htm#AddPath">AddPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Close">Close</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="geVFileIndexed.htm#CreateFinder">CreateFinder</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#DeleteFile">DeleteFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#DestroyFinder">DestroyFinder</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#EOF">EOF</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="geVFileIndexed.htm#FileExists">FileExists</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#FinderGetNextFile">FinderGetNextFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#FinderGetProperties">FinderGetProperties</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#GetContext">GetContext</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#GetProperties">GetProperties</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#GetS">GetS</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Open">Open</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">OpenNewSystem</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Printf">Printf</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Read">Read</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#RenameFile">RenameFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Seek">Seek</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#SetAttributes">SetAttributes</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#SetHints">SetHints</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#SetSize">SetSize</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#SetTime">SetTime</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Size">Size</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Tell">Tell</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#TimeToWin32FileTime">TimeToWin32FileTime</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#UpdateContext">UpdateContext</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Write">Write</A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Attributes">geVFile_Attributes</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Hints">geVFile_Hints</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#MemoryContext">geVFile_MemoryContext</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Properties">geVFile_Properties</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#Time">geVFile_Time</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</A></P>
+<B><FONT COLOR="#000080"><P>Macros: </B></FONT><A HREF="geVFileIndexed.htm#GE_VFILE_ATTRIB_READONLY">GE_VFILE_ATTRIB_READONLY</A>, <A HREF="geVFileIndexed.htm#GE_VFILE_ATTRIB_DIRECTORY">GE_VFILE_ATTRIB_DIRECTORY</A><FONT FACE="Courier New">,</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_UPDATE">GE_VFILE_OPEN_UPDATE</A><FONT FACE="Courier New">,</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">,</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">,</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_TYPE_DOS">GE_VFILE_TYPE_DOS</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_TYPE_MEMORY">GE_VFILE_TYPE_MEMORY</A><FONT FACE="Courier New">,</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_TYPE_VIRTUAL">GE_VFILE_TYPE_VIRTUAL</A><FONT FACE="Courier New"> </P>
+</FONT><B><FONT COLOR="#000080"><P>Tutorial: </B></FONT><A HREF="geVFileIndexed.htm#TutorialTOC">Table of Contents</A> </P>
+<FONT COLOR="#000080"><P>Additions for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</I></FONT><FONT COLOR="#800000"><P><A NAME="geVFile"></A>geVFile</P><DIR>
+<DIR>
+
+</B></FONT><P>typedef struct geVFile <FONT COLOR="#800000">geVFile</FONT>;</P></DIR>
+</DIR>
+
+<P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="Attributes"></A>geVFile_Attributes</FONT><FONT COLOR="#000080">;</B></FONT> </P><DIR>
+<DIR>
+
+<P>typedef unsigned <FONT COLOR="#0000ff">int</FONT> <FONT COLOR="#800000">geVFile_Attributes</FONT><FONT COLOR="#000080">;</FONT> </P></DIR>
+</DIR>
+
+<P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="Finder"></A>geVFile_Finder</B> </P><DIR>
+<DIR>
+
+</FONT><P>typedef struct geVFile_Finder <FONT COLOR="#800000">geVFile_Finder</FONT>;</P></DIR>
+</DIR>
+
+<P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="Hints"></A>geVFile_Hints</P>
+</B></FONT><BLOCKQUOTE>typedef struct geVFile_Hints { <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> * &nbsp;  HintData; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;         HintDataLength; <BR>
+} geVFile_Hints;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<A NAME="MemoryContext"></A><B><FONT COLOR="#800000">geVFile_MemoryContext</P>
+</B></FONT><BLOCKQUOTE>typedef struct geVFile_MemoryContext{ <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> * Data; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;      DataLength; <BR>
+} geVFile_MemoryContext;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<A NAME="Properties"></A><B><FONT COLOR="#800000">geVFile_Properties</P>
+</B></FONT><BLOCKQUOTE>typedef struct geVFile_Properties{ <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geVFileIndexed.htm#Time">geVFile_Time</A>&nbsp;&nbsp;&nbsp;      Time; <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geVFileIndexed.htm#Attributes">geVFile_Attributes</A>&nbsp; AttributeFlags; <BR>
+&nbsp;&nbsp;&nbsp; long&nbsp;&nbsp;&nbsp;&nbsp;                   Size; <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geVFileIndexed.htm#Hints">geVFile_Hints</A>&nbsp;&nbsp;&nbsp;      Hints; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;                    Name[1024]; <BR>
+} geVFile_Properties;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<A NAME="Time"></A><B><FONT COLOR="#800000">geVFile_Time</P>
+</B></FONT><BLOCKQUOTE>typedef struct geVFile_Time{ <BR>
+&nbsp;&nbsp;&nbsp; unsigned long Time1; <BR>
+&nbsp;&nbsp;&nbsp; unsigned long Time2; <BR>
+} geVFile_Time;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<A NAME="TypeIdentifier"></A><B><FONT COLOR="#800000">geVFile_TypeIdentifier</P><DIR>
+<DIR>
+
+</B></FONT><P>typedef <FONT COLOR="#0000ff">int</FONT> <FONT COLOR="#800000">geVFile_TypeIdentifier</P></DIR>
+</DIR>
+
+</FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Macros:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>GE_VFILE_ATTRIB_…</B></FONT> </P>
+<BLOCKQUOTE><A NAME="GE_VFILE_ATTRIB_READONLY"></A></BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>#define GE_VFILE_ATTRIB_READONLY 0x00000001</FONT> <BR>
+<A NAME="GE_VFILE_ATTRIB_DIRECTORY"></A><FONT FACE="Courier New">#define GE_VFILE_ATTRIB_DIRECTORY 0x00000002</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<B><FONT COLOR="#000080">GE_VFILE_OPEN_…</B></FONT> </P>
+<BLOCKQUOTE><A NAME="GE_VFILE_OPEN_READONLY"></A></BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>#define GE_VFILE_OPEN_READONLY&nbsp; 0x00000001</FONT> <BR>
+<A NAME="GE_VFILE_OPEN_UPDATE"></A><FONT FACE="Courier New">#define GE_VFILE_OPEN_UPDATE&nbsp;&nbsp; 0x00000002</FONT> <BR>
+<A NAME="GE_VFILE_OPEN_CREATE"></A><FONT FACE="Courier New">#define GE_VFILE_OPEN_CREATE&nbsp; 0x00000004</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE><A NAME="GE_VFILE_OPEN_DIRECTORY"></A>#define GE_VFILE_OPEN_DIRECTORY&nbsp; 0x00000008</FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H:&nbsp; First three flags are mutually exclusive.&nbsp; Combining them will result in failure returns for both geVFile_OpenNewSystem and geVFile_Open.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<B><FONT COLOR="#000080">GE_VFILE_SEEK (<A NAME="Whence"></A>actually, geVFile_Whence)</B></FONT> </P>
+<FONT FACE="Courier New"><BLOCKQUOTE>typedef enum{</FONT> <BR>
+<A NAME="GE_VFILE_SEEKCUR"></A><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; GE_VFILE_SEEKCUR = 0,</FONT> <BR>
+<A NAME="GE_VFILE_SEEKEND"></A><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; GE_VFILE_SEEKEND = 1,</FONT> <BR>
+<A NAME="GE_VFILE_SEEKSET"></A><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; GE_VFILE_SEEKSET = 2</FONT> <BR>
+<FONT FACE="Courier New">} geVFile_Whence;</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P><BR>
+<B><FONT COLOR="#000080">GE_VFILE_TYPE_…</B></FONT> </P>
+<FONT FACE="Courier New"><BLOCKQUOTE><A NAME="GE_VFILE_TYPE_DOS"></A>#define GE_VFILE_TYPE_DOS&nbsp;&nbsp;&nbsp;&nbsp; ( (</FONT><A HREF="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</A><FONT FACE="Courier New">) 1L )</FONT> <BR>
+<A NAME="GE_VFILE_TYPE_MEMORY"></A><FONT FACE="Courier New">#define GE_VFILE_TYPE_MEMORY ( (</FONT><A HREF="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</A><FONT FACE="Courier New">) 2L )</FONT> <BR>
+<A NAME="GE_VFILE_TYPE_VIRTUAL"></A><FONT FACE="Courier New">#define GE_VFILE_TYPE_VIRTUAL ( (</FONT><A HREF="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</A><FONT FACE="Courier New">) 3L )</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P>&nbsp;<A NAME="AddPath"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Append);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adds the path associated with FS2 to FS1's path list either at the end (if Append == </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B>).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> would indicate an internal error in Genesis3D.)</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H:&nbsp; Appends (or prepends) the path associated with FS2 into FS1.&nbsp; Append== <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> causes the FS2 to be searched BEFORE FS1.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Close"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Close </FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File);</B></FONT> </P>
+<B><BLOCKQUOTE>This function closes the </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> File previously opened by a call to </B><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><B> or </B><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><B> and frees up the resources.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: closes and destroys the File.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="CreateFinder"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_CreateFinder</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FileSystem, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * FileSpec);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates and returns a </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B> object to be utilized by the </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B>Get functions.&nbsp; The </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B> utilizes FileSystem as its root and FileSpec as the search specifier.&nbsp; This call should be accompanied by an eventual </B><A HREF="geVFileIndexed.htm#DestroyFinder">geVFile_DestroyFinder</A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B>* created.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Creates a finder object from which you can get iterated file names. This is findfirst/findnext functionality.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="DeleteFile"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_DeleteFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * FileName);</B></FONT> </P>
+<B><BLOCKQUOTE>This function deletes the file specified by FileName from the FS filesystem.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Deletes a file within a file system.&nbsp; Returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="DestroyFinder"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_DestroyFinder</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B><FONT COLOR="#000080">* Finder);</B></FONT> </P>
+<B><BLOCKQUOTE>This function destroys the </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B> Finder created by a previous call to </B><A HREF="geVFileIndexed.htm#CreateFinder">geVFile_CreateFinder</A><B> freeing up its resources.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Destroys a Finder object.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="EOF"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_EOF </FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File);</B></FONT> </P>
+<B><BLOCKQUOTE>This function test whether we have reached the End-of-File for File.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="FileExists"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_FileExists</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * FileName);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks to see if the file specified by FileName exists in the file system FS.&nbsp; Only the path is checked, no searchlists are used.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> otherwise. Does not do any searching (?)</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="FinderGetNextFile"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_FinderGetNextFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B><FONT COLOR="#000080">* Finder);</B></FONT> </P>
+<B><BLOCKQUOTE>This function iterates to the next file under the </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B> system.&nbsp; The actual file is accessed through </B><A HREF="geVFileIndexed.htm#FinderGetProperties">geVFile_FinderGetProperties</A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Tracks to the next file in the finder directory.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="FinderGetProperties"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_FinderGetProperties</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B><FONT COLOR="#000080">* Finder, </B></FONT><A HREF="geVFileIndexed.htm#Properties">geVFile_Properties</A><B><FONT COLOR="#000080">* Properties);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the properties for the current </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> pointed to by the </B><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><B> Finder in Properties.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Gets the file properties from a <A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A>.&nbsp; You cannot set properties for a file through a finder.&nbsp; You have to set the properties through a <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetContext"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_GetContext</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the "outer context" in which the file File was opened.&nbsp; This is currently only used by memory files and would return the address of the memory.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H:&nbsp; Returns the outer context in which File was opened.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetProperties"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_GetProperties</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><A HREF="geVFileIndexed.htm#Properties">geVFile_Properties</A><B><FONT COLOR="#000080">* Properties);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the properties of the </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> File in Properties.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetS"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_GetS</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Buff, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MaxLen);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns up to MaxLen chars from File in Buff.&nbsp; This is intended to provide fgets functionality for geVFiles.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Open"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Open</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name, unsigned </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> OpenModeFlags);</B></FONT> </P>
+<B><BLOCKQUOTE>This function opens the file specified by Name from the file system specified by FS with the OpenModeFlags and returns it.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the opened file.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="OpenNewSystem"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_OpenNewSystem</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><A HREF="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</A><B><FONT COLOR="#000080"> FileSystemType, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Context, unsigned </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> OpenModeFlags);</B></FONT> </P>
+<B><BLOCKQUOTE>This function opens/creates the file specified by Name and FileSystemType in the file system FS using the mode of OpenModeFlags.&nbsp; The Context argument is only used by certain file types currently only represented by memory files.&nbsp; For memory files Context would be the pointer to the memory to used/accessed.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> created.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H:&nbsp; Opens a file / file system.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Printf"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Printf</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Format, ...);</B></FONT> </P>
+<B><BLOCKQUOTE>This function provides printf capability to geVFiles.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Read"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Read</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Buff, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Count);</B></FONT> </P>
+<B><BLOCKQUOTE>This function reads Count bytes from File into the the buffer Buff.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="RenameFile"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile"><FONT COLOR="#800000">geVFile</FONT></A><B><FONT COLOR="#800000">_RenameFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * FileName, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * NewName);</B></FONT> </P>
+<B><BLOCKQUOTE>This function renames the file specified by FileName in the file system FS to NewName.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H:&nbsp; Renames a file within a file system.&nbsp; Returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Seek"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Seek</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> where, </B></FONT><A HREF="geVFileIndexed.htm#Whence">geVFile_Whence</A><B><FONT COLOR="#000080"> Whence);</B></FONT> </P>
+<B><BLOCKQUOTE>This function "seeks" to where in relation to Whence in file File.&nbsp; Whence is one of</B> <BR>
+&nbsp; </BLOCKQUOTE>
+<TABLE BORDER CELLSPACING=1 WIDTH=620>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<B><FONT FACE="Courier New"><P>GE_VFILE_SEEKCUR</B></FONT></TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<B><P>where</B> is relative to the current file pointer</TD>
+</TR>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<B><FONT FACE="Courier New"><P>GE_VFILE_SEEKEND</B></FONT></TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<B><P>where</B> is relative to the end of the file</TD>
+</TR>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<B><FONT FACE="Courier New"><P>GE_VFILE_SEEKSET</B></FONT></TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<B><P>where</B> is relative to the beginning of the file</TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Courier New"><BLOCKQUOTE>Returns: </B></FONT><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B><FONT FACE="Courier New"> otherwise.</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetAttributes"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_SetAttributes</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><A HREF="geVFileIndexed.htm#Attributes">geVFile_Attributes</A><B><FONT COLOR="#000080"> Attributes);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets to attributes of File to Attributes.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetHints"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_SetHints</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#Hints">geVFile_Hints</A><B><FONT COLOR="#000080">* Hints);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the hint data for File to Hints. <FONT COLOR="#ff0000">This API is currently unsupported but will eventually apply to virtual files.</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B><FONT COLOR="#ff0000"> in all cases.</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetSize"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_SetSize</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, long Size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the size of File to Size.&nbsp; Any data beyond the new size is unrecoverable.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetTime"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_SetTime</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#Time">geVFile_Time</A><B><FONT COLOR="#000080">* Time);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the time of File to Time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Size"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Size</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, long* Size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function retrieves the current size of the file File in Size.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Tell"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Tell</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, long* Position);</B></FONT> </P>
+<B><BLOCKQUOTE>This function retrieves the current position of File's file pointer and returns it in Position.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="TimeToWin32FileTime"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_TimeToWin32FileTime</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVFileIndexed.htm#Time">geVFile_Time</A><B><FONT COLOR="#000080">* , LPFILETIME Win32FileTime);</B></FONT> </P>
+<B><BLOCKQUOTE>This function converts a geVFileTime to a Win32 FILETIME structure. <FONT COLOR="#ff0000">Windows.h must be included before VFILE.H for this API to be supported.</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from VFILE.H: Converts a <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> time to a Win32 FILETIME structure.&nbsp; This API is the way to get the file time into a format to do standardized date/time operations on.&nbsp; We do not provide date/time operations natively.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="UpdateContext"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_UpdateContext</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* FS, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Context, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> ContextSize);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the current context of FS in Context where ContextSize is the size of Context.&nbsp; This functionality is currently only implemented for memory files and it returns a pointer to the current memory buffer.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Write"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geVFile_Write</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* File, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Buff, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Count);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes Count bytes from Buff to File.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Tutorial:</P>
+</FONT><FONT SIZE=4 COLOR="#0000ff"><P><A NAME="TutorialTOC"></A>Tutorial Table of Contents</P>
+</B></I></FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#Summary">Summary</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Overview">Overview</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Directories">Directories</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#VirtualFiles">Virtual Files</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#MemoryFiles">Memory Files</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#SearchPaths">Search Paths</A> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Finders">Finders</A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#FileTimes">File Times</A> </BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Main Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#ff0000"><P>(Note: This was copied directly from the official Genesis3D Api Reference)</B></FONT> </P>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE><A NAME="Summary">Summary</A></B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#geVFile">geVFile</A> is a file I/O subsystem designed to encapsulate and extend regular OS file operations. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE><A NAME="Overview">Overview</A></B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>The <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> system is intended to be used to abstract away normal file operations to allow other subsystems to read data from arbitrary sources. Included in this system is support for normal DOS files, memory files, virtual file systems and complex search paths. A memory file is a file which does its I/O operations to a block of memory, with no corresponding DOS file on disk. A virtual file system is a file which contains multiple files, potentially in a hierachy. A search path is a sequence of places to search for files to be opened. </BLOCKQUOTE>
+<BLOCKQUOTE>One of the attributes of a <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> is whether or not it is a directory. A file which is a directory can support Open operations, but not Read/Write operations. A file which is not a directory can support Read/Write operations, but not Open operations. This concept is key to understanding when you can use geVFiles for certain operations below. You may notice that we use the term file system from time to time, instead of file or <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>. In general, we do this when referring to a file handle whose attributes indicate that it is a directory, and hence can support Open operations. </BLOCKQUOTE>
+<BLOCKQUOTE>Two APIs exist for opening files. These are geVFile_OpenNewSystem, and geVFile_Open.We have diverged from the normal pattern of having Create/Destroy functions for <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> because we did not wish to move too far from the classical model of file APIs, as these are comfortable to most developers. The difference between geVFile_OpenNewSystem and geVFile_Open is that geVFile_OpenNewSystem allows you to create a file without a prior existing <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>, and also to specify the base system which is used for operations on the data. geVFileOpen requires that you pass in a valid <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> to open the file from. To explain this better, we will go into a little depth on both functions here. Following this will be a walk through of the simplest way to obtain file handles, and then more complex, but more powerful ways. </BLOCKQUOTE>
+<BLOCKQUOTE>The <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> system has a mechanism for registering new file system access functions. The access functions define all possible APIs that the file system is capable of: open/close, read/write, seek, attributes etc. Each file system API (FSAPI) set allows you to access data from different media types (e.g. DOS vs memory). We have implemented three basic sets of file system access functions: <BR>
+&nbsp; </BLOCKQUOTE>
+<P ALIGN="RIGHT"><TABLE BORDER CELLSPACING=1 WIDTH=620>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<B><P>API</B></TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<B><P>Capability</B></TD>
+</TR>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<P>GE_VFILE_TYPE_DOS</TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<P>Supports access to DOS files and directories. <BR>
+Both Open and Read/Write operations are supported.</TD>
+</TR>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<P>GE_VFILE_TYPE_MEMORY</TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<P>Supports access to blocks of memory as files. <BR>
+Both Read and Write operations are supported, <BR>
+but Open operations are not (You cannot pass <BR>
+a memory file to geVFile_Open).</TD>
+</TR>
+<TR><TD WIDTH="26%" VALIGN="MIDDLE">
+<P>GE_VFILE_TYPE_VIRTUAL</TD>
+<TD WIDTH="74%" VALIGN="MIDDLE">
+<P>Supports access to virtual file systems, <BR>
+which are collections of individual files embedded <BR>
+within a single, monolithic file. Both Open, and <BR>
+Read/Write operations are supported, with some restrictions.</TD>
+</TR>
+</TABLE>
+</P>
+
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A> allows you to specify the base FSAPI used to perform operations on data, and the source of that data, in addition to the normal file access flags. A file that has been opened with <A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A> accesses that FSAPI for every file operation requested on the resulting <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A> does not allow you to pass the FSAPI in explicitly. Instead, you pass it in implicitly by passing in a <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> object. <A HREF="geVFileIndexed.htm#Open">geVFile_Open</A> will then use the FSAPI in the passed <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> to perform the actual open operation. This is very powerful, as will be demonstrated below. </BLOCKQUOTE>
+<BLOCKQUOTE>The APIs can be approached in steps, so we will discuss the easiest way (and the least powerful) first. The simple way to open a file (DOS only) with <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>: </BLOCKQUOTE><DIR>
+
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> <BR>
+<FONT FACE="Courier New">File = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, GE_VFILE_OPEN_READONLY);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>The file handle created above can be used for the familiar file operations supported on individual files, such as Read, Seek and Close. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A> is the method that you use to close a file and to destroy the <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> object. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE><DIR>
+
+<BLOCKQUOTE>&nbsp;<A NAME="Directories"></A></BLOCKQUOTE></DIR>
+</DIR>
+
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>Directories</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Directories are simply files that contain other files. They are useful as an abstract concept because they permit us to define directories in places that are not quite the same as the conventional DOS directory structure. This permits the developer to write code which operates on files in directories, and replace the low level file system without having to change the high level code relying on that file system. Here is an example of how to open a DOS directory, and then open files from within that directory. Later, in the Virtual Files section, we will show you how this concept can be expanded to allow you to open files from a virtual file system without having to change much of your application code. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><FONT FACE="Courier New"> OpenSomeFile(</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* Directory{</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; File = </FONT><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><FONT FACE="Courier New">(Directory, "test.txt", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; if (File){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; // Do something here</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New">(File);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return </FONT><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><FONT FACE="Courier New">;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; }</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; return </FONT><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><FONT FACE="Courier New">;</FONT> <BR>
+<FONT FACE="Courier New">}</FONT> </BLOCKQUOTE>
+<FONT COLOR="#0000ff"><BLOCKQUOTE>void</FONT><FONT FACE="Courier New"> main(</FONT><FONT COLOR="#0000ff">void</FONT><FONT FACE="Courier New">){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* Directory;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; Directory = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; if (OpenSomeFile(Directory) == </FONT><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><FONT FACE="Courier New">)</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Success\n");</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; else</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Failure\n");</FONT> <BR>
+<FONT FACE="Courier New">}</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A NAME="VirtualFiles"></A></BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>Virtual Files</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Virtual files are single files that contain a complete directory structure, and the contents of multiple other files. They are sometimes referred to as collection files. Other parts of the industry might refer to these as PAK files. This file system defines operations on these types of files that make them completely transparent to the calling application. One purpose of the virtual file is to permit you to package up your application data into single files, and distribute that composite file as opposed to many smaller files. Runtime access to your data is extremely efficient. </BLOCKQUOTE>
+<BLOCKQUOTE>In the next release of the engine, virtual file systems will be used to enable streaming operations on data to be made more efficient. </BLOCKQUOTE>
+<BLOCKQUOTE>Virtual files are created by opening a file with read/write access, and then opening a new file system with the type <A HREF="geVFileIndexed.htm#GE_VFILE_TYPE_VIRTUAL">GE_VFILE_TYPE_VIRTUAL</A>, with the first file as the FS parameter. The file that is returned from this operation will be a directory. You can open files in it, either for read-only access, or for creation. When you do write operations to the files that you create within a virtual file system, those operations are forwarded on to the base file system used to create the virtual file system. When the virtual file system is closed, a directory is written to the base file system. When you reopen the virtual file system on the base file, the directory will be read, and used to locate the data that was written to the base file in the first place. The application code need not concern itself with these operations - as far as the client is concerned, the virtual file system just looks like a directory. </BLOCKQUOTE>
+<BLOCKQUOTE>There are two ways to create virtual file systems. The first is more generic, and will work for any combination of file systems. The second is a sugar coated version which permits simple access to DOS files as virtual files. For the examples below, please refer to the definition of OpenSomeFile in the Directories example above. </BLOCKQUOTE>
+<FONT COLOR="#0000ff"><BLOCKQUOTE>void</FONT><FONT FACE="Courier New"> main(</FONT><FONT COLOR="#0000ff">void</FONT><FONT FACE="Courier New">){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* BaseFile;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* VFS;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>// Create the virtual file system</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; BaseFile = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, "c:\\myapp\\foo.vfs", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; VFS = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(BaseFile, </FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; File = </FONT><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><FONT FACE="Courier New">(VFS, "test.txt", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Write">geVFile_Write</A><FONT FACE="Courier New">(File, "Hello!", 6);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New">(File);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New"> (VFS);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New"> (BaseFile);</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>// Now reopen the virtual file system.&nbsp; For this example, we'll show the shortcut</FONT> <BR>
+<FONT FACE="Courier New">// syntax for opening a VFS. In the shortcut, a DOS base file is created for you.</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; VFS = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">,</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; OpenSomeFile(VFS);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New">(VFS);</FONT> <BR>
+<FONT FACE="Courier New">}</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>Note that is perfectly OK to create directories inside a VFS. You do this just as if you were creating a directory under any file system. The VFS will maintain the hierarchy for you: </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* Directory;</FONT> <BR>
+<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>Directory = </FONT><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><FONT FACE="Courier New">(VFS, "MyNewDirectory", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">File = </FONT><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><FONT FACE="Courier New">(Directory, "AnotherFile.txt", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>In the example above AnotherFile.txt is created within a virtual directory MyNewDirectory. If the VFS is a virtual file system, all read/write operations on AnotherFile.txt are forwarded on to the base file used to create the VFS. The VFS parameter used to create the Directory does not have to be a virtual file system. It could just be a DOS directory, in which case, you will create a directory on your disk. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A NAME="MemoryFiles"></A></BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>Memory Files</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Memory files are files that have all their data in memory, not on any disk file. They can be created from an existing block of memory for read-only operations, or they can be created with no block of memory for write operations. They are useful for processing data that is embedded in your application as raw bytes. They also have applications for sending formatted data from one machine to another. </BLOCKQUOTE>
+<BLOCKQUOTE>To create a memory file, you have to set up a memory file context to point to the data that you want to operate on. The context is passed into <A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A>, and a normal <A HREF="geVFileIndexed.htm#geVFile">geVFile</A> pointer is returned. This pointer is suitable for read/write operations only. It can be used as the base file for a virtual file system, which allows you to embed virtual file systems in your application data if you so choose. This can be useful for reading application data out of a binary resource in your executeable image, for example. </BLOCKQUOTE>
+<BLOCKQUOTE>In the first example below, we open a memory file on an existing block of memory, and read from it. In the second example, we create a memory file for writing, passing no block of memory. </BLOCKQUOTE>
+<FONT COLOR="#0000ff"><BLOCKQUOTE>void</FONT><FONT FACE="Courier New"> main(</FONT><FONT COLOR="#0000ff">void</FONT><FONT FACE="Courier New">){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#MemoryContext">geVFile_MemoryContext</A><FONT FACE="Courier New"> Context;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">char</FONT><FONT FACE="Courier New"> * Data = "This is a test";</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">char</FONT><FONT FACE="Courier New"> Buff[5];</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; Context.Data = Data;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Context.DataLength = strlen(Data) + 1;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; File = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, &amp;Context, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Read">geVFile_Read</A><FONT FACE="Courier New">(File, Buff, sizeof(Buff));</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New">(File);</FONT> <BR>
+<FONT FACE="Courier New">}</FONT> </BLOCKQUOTE>
+<FONT COLOR="#0000ff"><BLOCKQUOTE>void</FONT><FONT FACE="Courier New"> main(</FONT><FONT COLOR="#0000ff">void</FONT><FONT FACE="Courier New">){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* File;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#MemoryContext">geVFile_MemoryContext</A><FONT FACE="Courier New"> Context;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>&nbsp;&nbsp;&nbsp; Context.Data = </FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Context.DataLength = 0;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; File = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, &amp;Context, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_CREATE">GE_VFILE_OPEN_CREATE</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Printf">geVFile_Printf</A><FONT FACE="Courier New">(File, "Some formatted data: %p", &amp;Context);</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>//&nbsp; We want to be able to get back the data that we've written:</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#UpdateContext">geVFile_UpdateContext</A><FONT FACE="Courier New">(File, &amp;Context);</FONT> <BR>
+<FONT FACE="Courier New">//&nbsp; Now Context.Data points to the entire bulk of the file data,</FONT> <BR>
+<FONT FACE="Courier New">//&nbsp; and Context.DataLength is the size of that block.</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;</FONT><A HREF="geVFileIndexed.htm#Close">geVFile_Close</A><FONT FACE="Courier New">(File);</FONT> <BR>
+}</BLOCKQUOTE>
+<BLOCKQUOTE>In the second example above, we used the function <A HREF="geVFileIndexed.htm#UpdateContext">geVFile_UpdateContext</A><FONT FACE="Courier New"> </FONT>to retrieve file system specific information. For Memory Files, you can retrieve a pointer to the current block of memory representing the file, along with its size. This pointer is valid only until the next operation on that file. You must treat the pointer as <FONT COLOR="#0000ff">const</FONT>. This API was added specifically to permit you to obtain the data from a memory file efficiently. It will also be used in the future to allow the client to obtain more specific information about particular file systems. In short, it's a back door. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A NAME="SearchPaths"></A></BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>Search Paths</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Search paths are a way of chaining multiple file systems together to allow open and search operations that fail on one file system to be retried on other file systems before potentially returning failure. Search paths were created with two goals in mind. First, it is desireable for users to be able to override file definitions with data of their own (for texture replacement, or patches, for example). Second, it is useful, from a configurable installation standpoint, to be able to have some files installed on your hard disk, some on a CDROM, and not have to change the application code to deal with arbitrary file location configurations. Search paths can make this easy. </BLOCKQUOTE>
+<BLOCKQUOTE>For the first case, suppose that you have your application data in a virtual file, including textures for some backdrops. Now suppose that you want to allow the user to override your backdrop textures with texture files of their own. Here is one way to accomplish this: </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* VFS;</FONT> <BR>
+<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* Directory;</FONT> <BR>
+<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* TextureDirectory;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>VFS = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">,</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">Directory = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_TYPE_DOS">GE_VFILE_TYPE_DOS</A><FONT FACE="Courier New">, "c:\\myapp\\UserTextures",</FONT><BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">TextureDirectory = </FONT><A HREF="geVFileIndexed.htm#Open">geVFile_Open</A><FONT FACE="Courier New">(VFS, "Textures", </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> <BR>
+<A HREF="geVFileIndexed.htm#AddPath">geVFile_AddPath</A><FONT FACE="Courier New">(TextureDirectory, Directory, </FONT><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><FONT FACE="Courier New">);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>In the example code above, we create a virtual directory from a virtual file that contains all our application data. We also open a true DOS directory, and add it as an alternative directory to look for files in. The <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> parameter to <A HREF="geVFileIndexed.htm#AddPath">geVFile_AddPath</A> makes the DOS directory become the first directory to be searched, followed by the virtual directory. If the application opens foo.bmp from TextureDirectory, the DOS directory c:\myapp\UserTextures will be searched first for the file. If the file is found there, it will be opened from there. If the file is not found there, then the virtual directory will be searched. Hence the user can override the definition of foo.bmp in your virtual file by placing foo.bmp in the UserTextures directory. This gives you very fine control over what the user can override, without having to change your underlying application code very much at all. You just set up the initial directories at application startup, and pass them around to your subsystems, which are oblivious to the indirections. </BLOCKQUOTE>
+<BLOCKQUOTE>For the second case, suppose that you have a minimal install option which installs a few files to the local hard disk, but leaves most behind on a CD, and you want the application code to be able to deal with this easily. Here is how you could set this up. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* ApplicationDirectory;</FONT> <BR>
+<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><FONT FACE="Courier New">* CDDirectory;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>ApplicationDirectory = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_UPDATE">GE_VFILE_OPEN_UPDATE</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> <BR>
+<FONT FACE="Courier New">CDDirectory = </FONT><A HREF="geVFileIndexed.htm#OpenNewSystem">geVFile_OpenNewSystem</A><FONT FACE="Courier New">(</FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><FONT FACE="Courier New">, </FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_READONLY">GE_VFILE_OPEN_READONLY</A><FONT FACE="Courier New">|</FONT><A HREF="geVFileIndexed.htm#GE_VFILE_OPEN_DIRECTORY">GE_VFILE_OPEN_DIRECTORY</A><FONT FACE="Courier New">);</FONT> <BR>
+<A HREF="geVFileIndexed.htm#AddPath">geVFile_AddPath</A><FONT FACE="Courier New">(ApplicationDirectory, CDDirectory, </FONT><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><FONT FACE="Courier New">);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>Now, open operations on ApplicationDirectory will look first in the local DOS directory, and then on the CD. All the application has to do is pass around ApplicationDirectory, and files will be opened from the correct locations for any install configuration. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A NAME="Finders"></A></BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>Finders</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Finders are objects that you use to locate files within a file system. They can also be used to iterate the files in a file system. You use them just as you would the findfirst and findnext functions under the RTL, with a slight change to the iteration sequence. </BLOCKQUOTE>
+<BLOCKQUOTE>You create a finder with <A HREF="geVFileIndexed.htm#CreateFinder">geVFile_CreateFinder</A>, passing it a <A HREF="geVFileIndexed.htm#geVFile">geVFile</A>, which must be a directory, and a file spec to search for. To get to the first file in the finder, call geVFile_FinderGetNextFile. You can get to subsequent files by calling <A HREF="geVFileIndexed.htm#FinderGetNextFile">geVFile_FinderGetNextFile</A> again. This makes the application code a little easier for iterating files: </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Finder">geVFile_Finder</A><FONT FACE="Courier New">* Finder;</FONT> </BLOCKQUOTE>
+<FONT FACE="Courier New"><BLOCKQUOTE>Finder = </FONT><A HREF="geVFileIndexed.htm#CreateFinder">geVFile_CreateFinder</A><FONT FACE="Courier New">(Directory, "*.*");</FONT> <BR>
+<FONT FACE="Courier New">while (</FONT><A HREF="geVFileIndexed.htm#FinderGetNextFile">geVFile_FinderGetNextFile</A><FONT FACE="Courier New">(Finder) == </FONT><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><FONT FACE="Courier New">){</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#Properties">geVFile_Properties</A><FONT FACE="Courier New"> Properties;</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; </FONT><A HREF="geVFileIndexed.htm#FinderGetProperties">geVFile_FinderGetProperties</A><FONT FACE="Courier New">(Finder, &amp;Properties);</FONT> <BR>
+<FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; printf(Properties.Name);</FONT> <BR>
+<FONT FACE="Courier New">}</FONT> <BR>
+<A HREF="geVFileIndexed.htm#DestroyFinder">geVFile_DestroyFinder</A><FONT FACE="Courier New">(Finder);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A NAME="FileTimes"></A></BLOCKQUOTE>
+<B><FONT SIZE=4 COLOR="#000080"><BLOCKQUOTE>File Times</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>File times are an issue because we did not wish to reinvent the wheel for time/date APIs. Because of this, we provide access to file times in the APIs, but provide no means for interpreting these values. Instead, we have included a single API - geVFile_TimeToWin32FileTime - which you can use to convert the internal file times to a format that can be handled by the Win32 API for manipulating file times. This was done to avoid the need for a largely redundant API set that has limited value. If you wish to break out components of a file's time, convert it to Win32 format, and use the Win32 APIs.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#TutorialTOC">Return to Tutorial Table of Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVFileIndexed.htm#Contents">Return to Main Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><BLOCKQUOTE>End of Tutorial</BLOCKQUOTE></B></I></FONT></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:44:09 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:08 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

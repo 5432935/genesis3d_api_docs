@@ -1,0 +1,402 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>ListIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>List</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: List/Link/Node Primitives</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\list.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="ListIndexed.htm#Start">Start</A>, <A HREF="ListIndexed.htm#Stop">Stop</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#Push">Push</A>, <A HREF="ListIndexed.htm#Pop">Pop</A>, <A HREF="ListIndexed.htm#Peek">Peek</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#AddTail">AddTail</A>, <A HREF="ListIndexed.htm#AddHead">AddHead</A>, <A HREF="ListIndexed.htm#CutHead">CutHead</A>, <A HREF="ListIndexed.htm#CutTail">CutTail</A>, <A HREF="ListIndexed.htm#PeekHead">PeekHead</A>, <A HREF="ListIndexed.htm#PeekTail">PeekTail</A>, <A HREF="ListIndexed.htm#Next">Next</A>, <A HREF="ListIndexed.htm#Prev">Prev</A>, <A HREF="ListIndexed.htm#CutNode">CutNode</A>, <A HREF="ListIndexed.htm#DeleteNode">DeleteNode</A>, <A HREF="ListIndexed.htm#FreeNode">FreeNode</A>, <A HREF="ListIndexed.htm#NodeData">NodeData</A>, <A HREF="ListIndexed.htm#Find">Find</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#Func">Func</A>, <A HREF="ListIndexed.htm#Func">Func</A>, <A HREF="ListIndexed.htm#Extend">Extend</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#Add">Add</A>, <A HREF="ListIndexed.htm#CutMax">CutMax</A>, <A HREF="ListIndexed.htm#CutMin">CutMin</A>, <A HREF="ListIndexed.htm#CutKey">CutKey</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#AddTail">AddTail</A>, <A HREF="ListIndexed.htm#AddHead">AddHead</A>, <A HREF="ListIndexed.htm#CutMax">CutMax</A>, <A HREF="ListIndexed.htm#CutMin">CutMin</A>, <A HREF="ListIndexed.htm#CutKey">CutKey</A>, <A HREF="ListIndexed.htm#PeekMax">PeekMax</A>, <A HREF="ListIndexed.htm#PeekMin">PeekMin</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#Add">Add</A>, <A HREF="ListIndexed.htm#CutMax">CutMax</A>, <A HREF="ListIndexed.htm#CutMin">CutMin</A>, <A HREF="ListIndexed.htm#CutKey">CutKey</A>, <A HREF="ListIndexed.htm#Grow">Grow</A>, <A HREF="ListIndexed.htm#Create">Create</A>, <A HREF="ListIndexed.htm#Destroy">Destroy</A>, <A HREF="ListIndexed.htm#Add">Add</A>, <A HREF="ListIndexed.htm#DeleteNode">DeleteNode</A>, <A HREF="ListIndexed.htm#Get">Get</A>, <A HREF="ListIndexed.htm#WalkNext">WalkNext</A>, <A HREF="ListIndexed.htm#NumMembers">NumMembers</A>, <A HREF="ListIndexed.htm#SetData">SetData</A>, <A HREF="ListIndexed.htm#GetData">GetData</A>, <A HREF="ListIndexed.htm#Key">Key</A>, <A HREF="ListIndexed.htm#Data">Data</A>, <A HREF="ListIndexed.htm#StringToKey">StringToKey</A>, <A HREF="ListIndexed.htm#CutHead">CutHead</A>, <A HREF="ListIndexed.htm#CutTail">CutTail</A>, <A HREF="ListIndexed.htm#ListLen">ListLen</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="ListIndexed.htm#List">List</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#Link">Link</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#RadixList">RadixList</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#RadixLN">RadixLN</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#RadixLink">RadixLink</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#Hash">Hash</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#HashNode">HashNode</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#LinkNode">LinkNode</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="ListIndexed.htm#Stack">Stack</A><B><FONT COLOR="#800000">&nbsp;</P>
+</FONT><FONT COLOR="#000080"><P>Macros:&nbsp;</B></FONT><A HREF="ListIndexed.htm#Macros">view</A></P>
+<B><FONT COLOR="#000080"><P>Overview:</B></FONT> <A HREF="ListIndexed.htm#Overview">view</A>&nbsp;</P>
+<FONT COLOR="#000080"><P>Additions to Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</P>
+</B></I></FONT><P>Note: you must wrap any calls to this module with List_Start() and List_Stop()</P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>Example--Iterate on a list via :</P>
+</B></FONT><CODE><P>List* pNode;</P>
+<P>List* pList;</P>
+<P>for( pNode = List_Next(pList); pNode != pList; pNode = List_Next(pNode) )</P>
+<P>{</P>
+<P>&nbsp;&nbsp;//do stuff to pNode</P>
+<P>}</P>
+</CODE><B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>Example of LN_Walk use:</P>
+</B></FONT><FONT COLOR="#0000ff"><P>void</FONT><CODE> doStuffOnAllNodes(LinkNode* pList)</P>
+<P>{</P>
+<P>&nbsp;&nbsp;LinkNode* pNode;</P>
+<P>&nbsp;&nbsp;LN_Walk(pNode,pList) {</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;doStuff(pNode);</P>
+<P>&nbsp;&nbsp;}</P>
+<P>}</P>
+</CODE><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Macros"></A>Macros:</B></I></FONT> </P>
+<P>#define LISTCALL&nbsp;__fastcall</P>
+<P>#define zLN_InitList(List)&nbsp;&nbsp;&nbsp;do { (List)-&gt;Next = List; (List)-&gt;Prev = List; } while(0)</P>
+<P>#define zLN_Cut(Node)&nbsp;&nbsp;&nbsp;&nbsp;do { (Node)-&gt;Prev-&gt;Next = (Node)-&gt;Next; (Node)-&gt;Next-&gt;Prev = (Node)-&gt;Prev; zLN_InitList(Node); } while(0)</P>
+<P>#define zLN_Fix(Node)&nbsp;&nbsp;&nbsp;&nbsp;do { (Node)-&gt;Prev-&gt;Next = Node; (Node)-&gt;Next-&gt;Prev = Node; } while(0)</P>
+<P>#define zLN_AddAfter(Node,List)&nbsp;&nbsp;do { (Node)-&gt;Prev = List; (Node)-&gt;Next = (List)-&gt;Next; LN_Fix(Node); } while(0)</P>
+<P>#define zLN_AddBefore(Node,List)&nbsp;do { (Node)-&gt;Next = List; (Node)-&gt;Prev = (List)-&gt;Prev; LN_Fix(Node); } while(0)</P>
+<P>#define zLN_Walk_Editting(Node,List,Holder)&nbsp;for( Node = (List)-&gt;Next; (Node) != (List) &amp;&amp; ((Holder) = (Node)-&gt;Next) != <A HREF="BasetypesIndexed.htm#NULL">NULL</A> ; Node = Holder )</P>
+<P>#define zLN_Walk(Node,List)&nbsp;&nbsp;&nbsp;for( Node = (List)-&gt;Next; (Node) != (List) ; Node = (Node)-&gt;Next )</P>
+<P>#define zLN_EmptyList(List)&nbsp;&nbsp;&nbsp;( (List)-&gt;Next == (List) )</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<P>#define LN_InitList(List)&nbsp;&nbsp;&nbsp;zLN_InitList((LinkNode* )List)</P>
+<P>#define LN_Cut(Node)&nbsp;&nbsp;&nbsp;&nbsp;zLN_Cut((LinkNode* )Node)</P>
+<P>#define LN_Fix(Node)&nbsp;&nbsp;&nbsp;&nbsp;zLN_Fix((LinkNode* )Node)</P>
+<P>#define LN_AddAfter(Node,List)&nbsp;&nbsp;zLN_AddAfter((LinkNode* )Node,(LinkNode* )List)</P>
+<P>#define LN_AddBefore(Node,List)&nbsp;&nbsp;zLN_AddBefore((LinkNode* )Node,(LinkNode* )List)</P>
+<P>#define LN_Walk(Node,List)&nbsp;&nbsp;&nbsp;zLN_Walk((LinkNode* )Node,(LinkNode* )List)</P>
+<P>#define LN_Walk_Editting(Node,List,Holder)&nbsp;&nbsp;&nbsp;zLN_Walk_Editting((LinkNode* )Node,(LinkNode* )List,((LinkNode* )Holder))</P>
+<P>#define LN_EmptyList(List)&nbsp;&nbsp;&nbsp;zLN_EmptyList((LinkNode* )List)</P>
+<P>#define LN_Prev(Node)&nbsp;&nbsp;&nbsp;&nbsp;(<FONT COLOR="#0000ff">void</FONT> * )(((LinkNode* )Node)-&gt;Prev)</P>
+<P>#define LN_Next(Node)&nbsp;&nbsp;&nbsp;&nbsp;(<FONT COLOR="#0000ff">void</FONT> * )(((LinkNode* )Node)-&gt;Next)</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<P>#define LN_Null(node)&nbsp;LN_InitList(node)</P>
+<P>#define LN_AddHead(list,node)&nbsp;LN_AddAfter(node,list)</P>
+<P>#define LN_AddTail(list,node)&nbsp;LN_AddBefore(node,list)</P>
+<P>#define LN_IsEmpty&nbsp;LN_EmptyList</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P>#ifdef _DEBUG</P>
+</B></FONT><P>&nbsp;#define Stack_Push&nbsp;Stack_Push_Func</P>
+<P>#define Stack_Pop&nbsp;Stack_Pop_Func</P>
+<B><FONT COLOR="#000080"><P>&nbsp;#else</P>
+</B></FONT><P>#define Stack_Push(pStack,Data)&nbsp;*((pStack)-&gt;Head)++ = (<FONT COLOR="#0000ff">void</FONT> * )(Data), ( (pStack)-&gt;Head != (pStack)-&gt;End ) || Stack_Extend(pStack)</P>
+<P>#define Stack_Pop(pStack)&nbsp;&nbsp;( ((pStack)-&gt;Head == (pStack)-&gt;Buffer) ? <A HREF="BasetypesIndexed.htm#NULL">NULL</A> :* ( -- ((pStack)-&gt;Head) ) )</P>
+<B><FONT COLOR="#000080"><P>#endif</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</B></I></FONT><P>NOTE: For most of the types below, the contents of these structures have been intentionally left out of the interface, by the designers of this module. Think of them as a handle only.&nbsp;</P>
+<B><FONT COLOR="#000080"><P><A NAME="List"></A>typedef struct List </FONT><FONT COLOR="#800000">List</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P>typedef struct Stack </FONT><FONT COLOR="#800000">Stack</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="Link"></A>typedef struct Link </FONT><FONT COLOR="#800000">Link</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P>typedef struct LinkNode </FONT><FONT COLOR="#800000">LinkNode</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="RadixList"></A>typedef struct RadixList </FONT><FONT COLOR="#800000">RadixList</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="RadixLN"></A>typedef struct RadixLN </FONT><FONT COLOR="#800000">RadixLN</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="RadixLink"></A>typedef struct RadixLink </FONT><FONT COLOR="#800000">RadixLink</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="Hash"></A>typedef struct Hash </FONT><FONT COLOR="#800000">Hash</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="HashNode"></A>typedef struct HashNode </FONT><FONT COLOR="#800000">HashNode</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="LinkNode"></A>LinkNode</P>
+</B></FONT><DL>
+<DD>struct LinkNode {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LinkNode* &nbsp;&nbsp;Next;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LinkNode* &nbsp;&nbsp;Prev;</DD>
+<DD>}; </DD>
+</DL>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Stack"></A>Stack&nbsp;</P>
+</B></FONT><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Note: this struct is exposed only in release mode! Don't look into it! Only defined if: #ifndef _DEBUG</P>
+<DL>
+<DD>struct Stack {</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> ** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffer;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> ** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> ** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head;</DD>
+<DD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;members;</DD>
+<DD>};</DD>
+</DL>
+<B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Start"></A>&nbsp;</B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">List_Start</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>You must call this before calling any other function in this module</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Stop"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">List_Stop</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>After working with functions in this module, you must end with a call to this.</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern Link* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Link_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">Link_Destroy</FONT><FONT COLOR="#000080">(Link* pLink);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Push"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">Link_Push</FONT><FONT COLOR="#000080">(Link* pLink,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Pop"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Link_Pop</FONT><FONT COLOR="#000080">(Link* pLink);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Peek"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Link_Peek</FONT><FONT COLOR="#000080">(Link* pLink);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern List* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_Destroy</FONT><FONT COLOR="#000080">(List* pList);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern List* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_AddTail</FONT><FONT COLOR="#000080">(List* pList,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern List* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_AddHead</FONT><FONT COLOR="#000080">(List* pList,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_CutHead</FONT><FONT COLOR="#000080">(List* pList);</P>
+</B></FONT><P>Returns a pointer to the node created(?)</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_CutTail</FONT><FONT COLOR="#000080">(List* pList);</P>
+</B></FONT><P>Returns a pointer to the node created(?)</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="PeekHead"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_PeekHead</FONT><FONT COLOR="#000080">(List* pList);</P>
+</B></FONT><P>Returns a pointer to the node created (?)</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="PeekTail"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_PeekTail</FONT><FONT COLOR="#000080">(List* pList);</P>
+</B></FONT><P>Returns a pointer to the node created(?)</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Next"></A>extern List* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_Next</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Prev"></A>extern List* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_Prev</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutNode"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_CutNode</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_DeleteNode</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="FreeNode"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_FreeNode</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="NodeData"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL </FONT><FONT COLOR="#800000">List_NodeData</FONT><FONT COLOR="#000080">(List* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Find"></A>extern List* &nbsp;</FONT><FONT COLOR="#800000">List_Find</FONT><FONT COLOR="#000080">(List* pList,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern Stack* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Stack_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Stack_Destroy</FONT><FONT COLOR="#000080">(Stack* pStack);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> &nbsp;LISTCALL Stack_</FONT><FONT COLOR="#800000">Push_Func</FONT><FONT COLOR="#000080">(Stack* pStack,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Func"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;LISTCALL Stack_</FONT><FONT COLOR="#800000">Pop_Func</FONT><FONT COLOR="#000080">(Stack* pStack);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Extend"></A>extern </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> &nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">Stack_Extend</FONT><FONT COLOR="#000080">(Stack* pStack);&nbsp;</P>
+</B></FONT><P>Returns new length</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern RadixList* </FONT><FONT COLOR="#800000">RadixList_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> RadixListMax);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">RadixList_Destroy</FONT><FONT COLOR="#000080">(RadixList* pRadixList);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern List* </FONT><FONT COLOR="#800000">RadixList_Add</FONT><FONT COLOR="#000080">(RadixList* pRadixList,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;Returns a pointer to the node created</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * </FONT><FONT COLOR="#800000">RadixList_CutMax</FONT><FONT COLOR="#000080">(RadixList* pRadixList,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMaxKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * </FONT><FONT COLOR="#800000">RadixList_CutMin</FONT><FONT COLOR="#000080">(RadixList* pRadixList,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMinKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * </FONT><FONT COLOR="#800000">RadixList_CutKey</FONT><FONT COLOR="#000080">(RadixList* pRadixList,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern RadixLN* </FONT><FONT COLOR="#800000">RadixLN_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> RadixLNMax);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">RadixLN_Destroy</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="AddTail"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">RadixLN_AddTail</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,LinkNode* LN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="AddHead"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">RadixLN_AddHead</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,LinkNode* LN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern LinkNode* </FONT><FONT COLOR="#800000">RadixLN_CutMax</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMaxKey);</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern LinkNode* </FONT><FONT COLOR="#800000">RadixLN_CutMin</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMinKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern LinkNode* </FONT><FONT COLOR="#800000">RadixLN_CutKey</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="PeekMax"></A>extern LinkNode* </FONT><FONT COLOR="#800000">RadixLN_PeekMax</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMaxKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="PeekMin"></A>extern LinkNode* </FONT><FONT COLOR="#800000">RadixLN_PeekMin</FONT><FONT COLOR="#000080">(RadixLN* pRadixLN,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMinKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern&nbsp;&nbsp;&nbsp;RadixLink* </FONT><FONT COLOR="#800000">RadixLink_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> RadixLinkMax);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">RadixLink_Destroy</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">RadixLink_Add</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink,</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * Data,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutMax"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;</FONT><FONT COLOR="#800000">RadixLink_CutMax</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMaxKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutMin"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;</FONT><FONT COLOR="#800000">RadixLink_CutMin</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> * pMinKey);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutKey"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * &nbsp;</FONT><FONT COLOR="#800000">RadixLink_CutKey</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Key);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Grow"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">RadixLink_Grow</FONT><FONT COLOR="#000080">(RadixLink* pRadixLink,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> NewMax);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Create"></A>extern Hash* &nbsp;</FONT><FONT COLOR="#800000">Hash_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Destroy"></A>extern </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Hash_Destroy</FONT><FONT COLOR="#000080">(Hash* pHash);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Add"></A>HashNode* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Hash_Add</FONT><FONT COLOR="#000080">(Hash* pHash,</B></FONT> <A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="DeleteNode"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">Hash_DeleteNode</FONT><FONT COLOR="#000080">(Hash* pHash,HashNode* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Get"></A>HashNode* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Hash_Get</FONT><FONT COLOR="#000080">(Hash* pHash,</B></FONT> <A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">* pData);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// pdata is optional</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="WalkNext"></A>HashNode* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">Hash_WalkNext</FONT><FONT COLOR="#000080">(Hash* pHash,HashNode* pCur);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//use pCur == </B></FONT><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B><FONT COLOR="#000080"> to start walking</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="NumMembers"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">&nbsp;&nbsp;LISTCALL </FONT><FONT COLOR="#800000">Hash_NumMembers</FONT><FONT COLOR="#000080">(Hash* pHash);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetData"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">HashNode_SetData</FONT><FONT COLOR="#000080">(HashNode* pNode,</B></FONT> <A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Data);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetData"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">HashNode_GetData</FONT><FONT COLOR="#000080">(HashNode* pNode,</B></FONT> <A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">* pData);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Key"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">HashNode_Key</FONT><FONT COLOR="#000080">(HashNode* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Data"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">HashNode_Data</FONT><FONT COLOR="#000080">(HashNode* pNode);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="StringToKey"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">Hash_StringToKey</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutHead"></A>LinkNode* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">LN_CutHead</FONT><FONT COLOR="#000080">(LinkNode* pList);</P>
+</B></FONT><BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="CutTail"></A>LinkNode* &nbsp;LISTCALL </FONT><FONT COLOR="#800000">LN_CutTail</FONT><FONT COLOR="#000080">(LinkNode* pList);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="y"></A>int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">LN_ListLen</FONT><FONT COLOR="#000080">(LinkNode* pList);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="ListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:45:57 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:11 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

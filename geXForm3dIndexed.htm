@@ -1,0 +1,2219 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geXForm3dIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geXForm3d</b></font> </p>
+
+<p><font color="#000080"><b>Description: 3D transform interface</b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\Math\XFORM3D.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:
+</i></b></font></p>
+
+<p><font color="#000080"><b>Functions: </b></font><a href="geXForm3dIndexed.htm#Copy">Copy</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#GetEulerAngles">GetEulerAngles</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#GetIn">GetIn</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#GetLeft">GetLeft</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#GetTranspose">GetTranspose</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#GetUp">GetUp</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#IsOrthogonal">IsOrthogonal</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#IsOrthonormal">IsOrthonormal</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#IsValid">IsValid</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Mirror">Mirror</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Multiply">Multiply</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Orthonormalize">Orthonormalize</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Rotate">Rotate</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#RotateX">RotateX</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#RotateY">RotateY</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#RotateZ">RotateZ</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetEulerAngles">SetEulerAngles</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetFromLeftUpIn">SetFromLeftUpIn</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetIdentity">SetIdentity</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetScaling">SetScaling</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetTranslation">SetTranslation</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetXRotation">SetXRotation</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetYRotation">SetYRotation</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#SetZRotation">SetZRotation</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Scale">Scale</a><font
+color="#000080">, </font><a href="geXForm3dIndexed.htm#Transform">Transform</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#TransformArray">TransformArray</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#Translate">Translate</a><font
+color="#000080"><b>, </b></font><a href="geXForm3dIndexed.htm#TransposeTransform">TransposeTransform</a></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a></p>
+
+<p><font color="#000080"><b>Macros: </b></font><a
+href="geXForm3dIndexed.htm#GEXFORM3D_MINIMUM_SCALE">GEXFORM3D_MINIMUM_SCALE</a></p>
+
+<p><font color="#000080"><strong>Tutorial, Notes</strong></font>:
+<a href="geXForm3dIndexed.htm#Tutorial">view</a> [Contents: <a href="geXForm3dIndexed.htm#XFormTut">What
+is a Transformation matrix?</a>, <a href="geXForm3dIndexed.htm#CodeSnipet">Code
+snipet</a>, <a href="geXForm3dIndexed.htm#XFormNotes">Notes</a>, <a href="geXForm3dIndexed.htm#MathProps">Mathematical
+Properties,</a> <a href="geXForm3dIndexed.htm#RotateAboutVector"><font
+color="#000080">RotateAboutVector</font></a><font color="#000080">,
+</font><a href="geXForm3dIndexed.htm#RotateAboutIn">RotateAboutIn</a>, <a
+href="geXForm3dIndexed.htm#RotateAboutLeft">RotateAboutLeft</a>, <a
+href="geXForm3dIndexed.htm#RotateAboutUp">RotateAboutUp</a>, <a
+href="geXForm3dIndexed.htm#RotateTowardsPoint">RotateTowardsPoint</a> ]</p>
+
+<p><font color="#000080"><strong>Proposed Functions: </strong></font><a
+href="geXForm3dIndexed.htm#RotateAboutVector"><font color="#0000FF">RotateAboutVector</font></a><font
+color="#0000FF">, </font><a href="geXForm3dIndexed.htm#RotateAboutIn"><font
+color="#0000FF">RotateAboutIn</font></a><font color="#0000FF">, </font><a
+href="geXForm3dIndexed.htm#RotateAboutLeft"><font color="#0000FF">RotateAboutLeft</font></a><font
+color="#0000FF">, </font><a href="geXForm3dIndexed.htm#RotateAboutUp"><font
+color="#0000FF">RotateAboutUp</font></a><font color="#0000FF">, </font><a
+href="geXForm3dIndexed.htm#RotateTowardsPoint"><font color="#0000FF">RotateTowardsPoint</font></a></p>
+
+<p><font color="#000080"><b>Addition for Genesis3D v1.6</b>:
+types float converted to geFloat, </font><a href="geXForm3dIndexed.htm#IsIdentity"><font
+color="#000080">IsIdentity</font></a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geXForm3d"></a><font color="#800000"><b>geXForm3d</b>
+</font></p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a> AX, AY, AZ;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">//
+    e[0][0],e[0][1],e[0][2]</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a> BX, BY, BZ;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">//
+    e[1][0],e[1][1],e[1][2]</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a> CX, CY, CZ;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">//
+    e[2][0],e[2][1],e[2][2]</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>
+    Translation; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+    color="#008000">// e[0][3],e[1][3],e[2][3]</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">// 0,0,0,1</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+    color="#008000">// e[3][0],e[3][1],e[3][2]</font><br>
+    } geXForm3d;</p>
+</blockquote>
+
+<blockquote>
+    <p>This is a struct composed of 9 floats and a <a
+    href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>.&nbsp; This
+    structure represents a 4x4 transformation matrix. <br>
+    <font color="#000080">Notes: This &quot;represents&quot; a
+    4x4 matrix (with the bottom row always [0, 0, 0, 1]) because
+    that is how all the calculations in the code act. It is not
+    possible to change the bottom row, and it not a true 4x4
+    matrix.</font></p>
+    <p>&nbsp; <a name="MatrixVars"></a></p>
+</blockquote>
+
+<table border="1" cellspacing="1" width="500" bgcolor="#C0C0C0">
+    <tr>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>AX</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>AY</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>AZ</strong></font></p>
+        </td>
+        <td width="35%"><p align="center">(<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a> <font
+        color="#000080"><strong>Translation</strong></font>).X</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>BX</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>BY</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>BZ</strong></font></p>
+        </td>
+        <td width="35%"><p align="center">(<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a> <font
+        color="#000080"><strong>Translation</strong></font>).Y</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>CX</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>CY</strong></font></p>
+        </td>
+        <td width="19%"><p align="center"><a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+        color="#000080"><strong>CZ</strong></font></p>
+        </td>
+        <td width="35%"><p align="center">(<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a> <font
+        color="#000080"><strong>Translation</strong></font>).Z</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="19%"><p align="center"><font color="#000080">0.0f</font></p>
+        </td>
+        <td width="19%"><p align="center"><font color="#000080">0.0f</font></p>
+        </td>
+        <td width="19%"><p align="center"><font color="#000080">0.0f</font></p>
+        </td>
+        <td width="35%"><p align="center"><font color="#000080">1.0f</font></p>
+        </td>
+    </tr>
+</table>
+
+<blockquote>
+    <p>This represents a right-handed transform.</p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GEXFORM3D.H: The Euler angles are
+    subsequent rotations by Angles-Z around the Z axis, then by
+    Angles-Y around the Y axis, in the newly rotate coordinates
+    then by Angles-X around the X axis.&nbsp;&nbsp;<b> &quot;</b>Left,Up,In&quot;
+    are just the basis vectors in the new coordinate space. You
+    can get them by multiplying the unit bases into the
+    transforms.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<font color="#0000FF" size="5"><b><i>Macros:</i></b></font> </p>
+
+<p><a name="GEXFORM3D_MINIMUM_SCALE"></a><font color="#000080"><b>#define
+GEXFORM3D_MINIMUM_SCALE (0.00001f)</b></font> </p>
+
+<blockquote>
+    <p><b>This apparently represents the minimum logical scale
+    value.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font></p>
+
+<hr>
+
+<p><a name="Copy"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Copy(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* Src, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* Dst);</b></font>
+</p>
+
+<blockquote>
+    <p>This function copies Src to Dst. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GEXFORM3D.H: copies Src to Dst.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetEulerAngles"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_GetEulerAngles(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Angles);</b></font> </p>
+
+<blockquote>
+    <p>This function computes the Euler Angles of M returning the
+    result in Angles.&nbsp; The Euler Angles of a XForm is
+    defined as the Angles that when applied in Z, then Y, then X
+    order would produce the same rotational transform as the
+    XForm. &nbsp;&nbsp;<font color="#000080">(Returned angles are
+    in radians.)</font></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GEXFORM3D.H: Finds Euler angles from
+    M and puts them into Angles</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetIn"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_GetIn(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>*
+M,&nbsp; </b></font><a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* In);</b></font> </p>
+
+<blockquote>
+    <p>This function returns the vector which is composed of
+    (-AZ, -BZ, -CZ) from the matrix M. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GEXFORM3D.H: Gets a vector that is
+    'in' in the frame of reference of M (facing -Z) </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">An &quot;in&quot; vector points
+    &quot;into&quot; the scene or &quot;forward&quot; relative to
+    the current XForm configuration's frame reference.</font></p>
+    <p><font color="#000080"><strong>More detailed Notes:</strong><br>
+    Every matrix has an orientation, and a corresponding set of
+    three vectors that define the principle axes of this
+    orientation. These three axes may be found by (using the
+    variables as </font><a href="geXForm3dIndexed.htm#MatrixVars"><font
+    color="#000080">defined above</font></a><font color="#000080">)
+    the following three column vectors &lt;AX, BX, CX&gt;,
+    &lt;AY, BY, ZY&gt;, &lt;AZ, BZ, CZ&gt;. (Note AX would be x
+    componant, BX as y componant, CX as z componant--and so on
+    for each of these three vectors.) This function returns
+    -&lt;AZ, BZ, CZ&gt;.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetLeft"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_GetLeft(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Left);</b></font> </p>
+
+<blockquote>
+    <p>This function returns the vector which is composed of
+    (-AX, -BX, -CX) from the matrix M. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GEXFORM3D.H: Gets a vector that is
+    'left' in the frame of reference of M (facing -Z) (sic! that
+    should be facing -X, I think)</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">A &quot;left&quot; vector is one
+    that points to the left, relative to the current XForm
+    configuration's frame of reference.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>More detailed Notes:</strong><br>
+    Every matrix has an orientation, and a corresponding set of
+    three vectors that define the principle axes of this
+    orientation. These three axes may be found by (using the
+    variables as </font><a href="geXForm3dIndexed.htm#MatrixVars"><font
+    color="#000080">defined above</font></a><font color="#000080">)
+    the following three column vectors &lt;AX, BX, CX&gt;,
+    &lt;AY, BY, ZY&gt;, &lt;AZ, BZ, CZ&gt;. (Note AX would be x
+    componant, BX as y componant, CX as z componant--and so on
+    for each of these three vectors.) This function returns
+    -&lt;AX, BX, CX&gt;.</font></p>
+    <p><br>
+    <a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><hr>
+<a name="GetTranspose"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_GetTranspose(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>*
+MTranspose);</b></font> </p>
+
+<blockquote>
+    <p>This function calculates the Transpose of M returning the
+    result in MTranspose. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Gets the Transpose
+    transform of M (M^T). Transpose of a matrix is the switch of
+    the rows and columns. The transpose is useful because it is
+    rapidly computed and is equal to the inverse transform for
+    orthonormal transforms. [inverse is (M')&nbsp; where M*M' =
+    Identity ]</p>
+    <p><a name="TransposeNotes"></a><font color="#000080"><strong>More
+    detailed Notes:<br>
+    </strong>If the matrix is orthogonal, then the inverse is
+    equal to the transpose.</font></p>
+    <p><font color="#000080">Example of use of a matrix inverse
+    (M') would be as follows: Imagine you had a table-actor which
+    is positioned in the world by matrix <strong>M1</strong>. Now
+    suppose that a weapon-actor (positioned by by matrix <strong>M2)
+    </strong>is dropped onto this table, and you now want to
+    relate the weapon's transform to the tables's. That way, the
+    weapon will &quot;stick&quot; to the table as the table is
+    moved around. The calculation of M2 * M1' = <strong>M3</strong>
+    will give matrix for the weapon positioned on the table when
+    the table is at the origin (i.e. when its matrix is at
+    identity). So to calculate where the weapon should be when
+    the table is moved around via M1, use M2 = M3 * M1. This
+    first transform the weapon from identity to its relative
+    position on the table (via M3). Then it is positioned the the
+    site of the table via M1.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetUp"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_GetUp(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Up);</b></font> </p>
+
+<blockquote>
+    <p>This function returns the vector which is composed of (AY,
+    BY, CY) from the matrix M. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Gets a vector that is 'up'
+    in the frame of reference of M (facing -Z) (sic! that should
+    be facing +Y, I think)</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">A &quot;up&quot; vector is one that
+    points to the up, relative to the current XForm
+    configuration's frame of reference.</font></p>
+    <p><font color="#000080"><strong>More detailed Notes:</strong><br>
+    Every matrix has an orientation, and a corresponding set of
+    three vectors that define the principle axes of this
+    orientation. These three axes may be found by (using the
+    variables as </font><a href="geXForm3dIndexed.htm#MatrixVars"><font
+    color="#000080">defined above</font></a><font color="#000080">)
+    the following three column vectors &lt;AX, BX, CX&gt;,
+    &lt;AY, BY, ZY&gt;, &lt;AZ, BZ, CZ&gt;. (Note AX would be x
+    componant, BX as y componant, CX as z componant--and so on
+    for each of these three vectors.) This function returns
+    &lt;AY, BY, ZY&gt;.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsIdentity"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_IsIdentity</b>(</font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M</b>);</font></p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p>Returns GE_TRUE if M is an identity matrix </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsOrthogonal"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_IsOrthogonal(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M);</b></font>
+</p>
+
+<blockquote>
+    <p>This function tests whether the Matrix M's column vectors
+    are orthogonal.&nbsp; This tells us whether the transform
+    would impart shearing. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    of M's column vectors are orthogonal, <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise. </p>
+</blockquote>
+
+<blockquote>
+    <p><a name="OrthogonalNotes"></a><font color="#000080"><strong>More
+    detailed Notes:</strong><br>
+    Every matrix has an orientation, and a corresponding set of
+    three vectors that define the principle axes of this
+    orientation. These three axes may be found by (using the
+    variables as </font><a href="geXForm3dIndexed.htm#MatrixVars"><font
+    color="#000080">defined above</font></a><font color="#000080">)
+    the following three column vectors &lt;AX, BX, CX&gt;,
+    &lt;AY, BY, ZY&gt;, &lt;AZ, BZ, CZ&gt;. (Note AX would be x
+    componant, BX as y componant, CX as z componant--and so on
+    for each of these three vectors.) If each of these three
+    vectors form right angles with each other (i.e. are
+    &quot;linearly independent&quot;), then the vectors are said
+    to be <em>orthogonal</em>. If the vectors are also of unit
+    length (i.e. are normalized), then the vectors are said to be
+    <em>orthonormal</em>. For a <u>matrix</u> to be a orthogonal,
+    the column vectors must be orthonormal (not just orthogonal).
+    </font></p>
+    <p><font color="#000080"><strong>Application:</strong> Why
+    would one want to know if a matrix is orthogonal? An
+    orthogonal matrix will preserve lengths and angles when used
+    to transform vectors. Also, it is one such that its inverse
+    is the same as its transpose, so use of </font><a
+    href="geXForm3dIndexed.htm#GetTranspose"><font color="#000080">GetTranspose</font></a><font
+    color="#000080"> and </font><a href="geXForm3dIndexed.htm#TransposeTransform"><font
+    color="#000080">TransposeTransform</font></a><font
+    color="#000080"> give meaningful results (</font><a
+    href="geXForm3dIndexed.htm#TransposeNotes"><font color="#000080">see notes there</font></a><font
+    color="#000080">). Note: in this library, use </font><a
+    href="geXForm3dIndexed.htm#IsOrthonormal"><font color="#000080">IsOrthonormal</font></a><font
+    color="#000080"> to test for an orthogonal matrix.</font></p>
+    <p><font color="#000080"><strong>Terminology Note</strong>:
+    This function performs a different task than the name
+    suggests. It determines whether its <u>column vectors</u> are
+    orthogonal, not whether the matrix itself is orthogonal.
+    Furthermore, the code comments in Genesis3D are </font><font
+    color="#800000">inconsistent with the actual code:</font></p>
+</blockquote>
+
+<blockquote>
+    <blockquote>
+        <p><font color="#008000">// returns GE_TRUE if M is
+        orthogonal<br>
+        // (row1 cross row2 = row3 &amp; col1 cross col2 = col3)<br>
+        // * does not check for right-handed convention *</font></p>
+    </blockquote>
+    <p><font color="#000080">The Genesis3D code itself only
+    checks for (Col1 cross Col2) to be parallel to Col3. The
+    comment should read:</font></p>
+    <blockquote>
+        <p><font color="#008000">// returns GE_TRUE if M's column
+        vectors are orthogonal<br>
+        // i.e. Normalized (col1 cross col2) = Normalized (col3)<br>
+        // * does not check for right-handed convention *</font></p>
+    </blockquote>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Pratical note</strong>:
+    Unless the matrix is directly constructed using the
+    structoral componants of a </font><a href="geXForm3dIndexed.htm#geXForm3d"><font
+    color="#000080">geXForm3d</font></a><font color="#000080">,
+    or by using three vectors that are not truly linearly
+    independant with the function </font><a
+    href="geXForm3dIndexed.htm#SetFromLeftUpIn"><font color="#000080">SetFromLeftUpIn</font></a><font
+    color="#000080">, then matrices will generally be orthogonal
+    (and, in fact, </font><a href="geXForm3dIndexed.htm#IsOrthonormal"><font
+    color="#000080">orthonormal</font></a><font color="#000080">).
+    Using </font><a href="geXForm3dIndexed.htm#SetScaling"><font color="#000080">SetScaling</font></a><font
+    color="#000080"> or </font><a href="geXForm3dIndexed.htm#Scale"><font
+    color="#000080">Scale</font></a><font color="#000080"> will
+    cause a matrix to not be mathematically orthogonal.</font></p>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsOrthonormal"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_IsOrthonormal(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M);</b></font>
+</p>
+
+<blockquote>
+    <p>This function tests whether the Matrix M's column vectors
+    are orthonormal (and whether the matrix is mathematically
+    orthogonal).&nbsp; This tells us whether the transform would
+    impart scaling or shearing. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    of M's column vectors are orthonormal, <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise. </p>
+    <p><a name="OrthogonalNotes"></a><font color="#000080"><strong>More
+    detailed Notes:</strong><br>
+    Every matrix has an orientation, and a corresponding set of
+    three vectors that define the principle axes of this
+    orientation. These three axes may be found by (using the
+    variables as </font><a href="geXForm3dIndexed.htm#MatrixVars"><font
+    color="#000080">defined above</font></a><font color="#000080">)
+    the following three column vectors &lt;AX, BX, CX&gt;,
+    &lt;AY, BY, ZY&gt;, &lt;AZ, BZ, CZ&gt;. (Note AX would be x
+    componant, BX as y componant, CX as z componant--and so on
+    for each of these three vectors.) If each of these three
+    vectors form right angles with each other (i.e. are
+    &quot;linearly independent&quot;), then the vectors are said
+    to be <em>orthogonal</em>. If the vectors are also of unit
+    length (i.e. are normalized), then the vectors are said to be
+    <em>orthonormal</em>. For a <u>matrix</u> to be a orthogonal,
+    the column vectors must be orthonormal (not just orthogonal).
+    </font></p>
+    <p><font color="#000080"><strong>Application:</strong> Why
+    would one want to know if a matrix is orthogonal? An
+    orthogonal matrix will preserve lengths and angles when used
+    to transform vectors. Also, it is one such that its inverse
+    is the same as its transpose, so use of </font><a
+    href="geXForm3dIndexed.htm#GetTranspose"><font color="#000080">GetTranspose</font></a><font
+    color="#000080"> and </font><a href="geXForm3dIndexed.htm#TransposeTransform"><font
+    color="#000080">TransposeTransform</font></a><font
+    color="#000080"> give meaningful results (</font><a
+    href="geXForm3dIndexed.htm#TransposeNotes"><font color="#000080">see notes there</font></a><font
+    color="#000080">). Note: in this library, use this function (</font><a
+    href="geXForm3dIndexed.htm#IsOrthonormal"><font color="#000080">IsOrthonormal</font></a><font
+    color="#000080">) to test for an orthogonal matrix (not </font><a
+    href="geXForm3dIndexed.htm#IsOrthogonal"><font color="#000080">IsOrthogonal</font></a><font
+    color="#000080">).</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><strong>Terminology Note:</strong>
+    This function performs a different task than the name
+    suggests. It determines whether its <u>column vectors</u> are
+    orthonormal, and as such really determines whether the matrix
+    is mathematically <em>orthogonal</em>. The comments in the
+    Genesis3D code are </font><font color="#800000">inconsistent
+    with the code</font><font color="#000080">.</font></p>
+    <blockquote>
+        <p><font color="#008000">// returns GE_TRUE if M is
+        orthonormal <br>
+        // (if the rows and columns are all normalized (transform
+        has no scaling or shearing)<br>
+        // and is orthogonal (row1 cross row2 = row3 &amp; col1
+        cross col2 = col3)</font></p>
+    </blockquote>
+    <p><font color="#000080">To keep the comments consistant with
+    the code, it should read:</font></p>
+    <blockquote>
+        <p><font color="#008000">// returns GE_TRUE if M is
+        orthogonal<br>
+        // (if the transform has no scaling or shearing)<br>
+        // if (col1 cross col2) = col3</font></p>
+    </blockquote>
+    <p><font color="#000080">The Genesis3D code only requires
+    that (Col1 cross Col2) = Col3. In the rare condition that
+    Col1, Col2, and Col3 were scaled by a scalars <em>a</em>, <em>b</em>,
+    and <em>a*b</em>, then the matrix would still be incorrectly
+    classified as orthonormal by this function. </font></p>
+    <p><font color="#000080"><strong>Pratical note</strong>:
+    Unless the matrix is directly constructed using the
+    structoral componants of a </font><a href="geXForm3dIndexed.htm#geXForm3d"><font
+    color="#000080">geXForm3d</font></a><font color="#000080">,
+    or by using three vectors that are not truly linearly
+    independant (or are not normalized) with the function </font><a
+    href="geXForm3dIndexed.htm#SetFromLeftUpIn"><font color="#000080">SetFromLeftUpIn</font></a><font
+    color="#000080">, then matrices will generally be
+    orthonormal. Using </font><a href="geXForm3dIndexed.htm#SetScaling"><font
+    color="#000080">SetScaling</font></a><font color="#000080">
+    or </font><a href="geXForm3dIndexed.htm#Scale"><font color="#000080">Scale</font></a><font
+    color="#000080"> will cause a matrix to not be mathematically
+    orthogonal.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsValid"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_IsValid(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M);</b></font>
+</p>
+
+<blockquote>
+    <p>This function tests that M is non-<a
+    href="BasetypesIndexed.htm#NULL">NULL</a> and all of its
+    components are real values. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    if M is valid, <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    otherwise. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: returns <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if M is
+    'valid'.&nbsp; 'valid' means that M is non <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, and there are no
+    NAN's in the matrix.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Mirror(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b>&nbsp; </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* Source,
+</b></font><font color="#0000FF">const</font><font
+color="#000080"><b>&nbsp; </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* PlaneNormal, </b></font><font
+color="#0000FF">float</font><font color="#000080"><b>&nbsp;
+PlaneDist, </b></font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Dest);</b></font> </p>
+
+<blockquote>
+    <p>This function takes a transform matrix Source and
+    &quot;mirrors&quot; is about the plane with the normal
+    PlaneNormal that is PlaneDist from the origin. The result is
+    returned in Dest. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Mirrors a XForm3d about a
+    plane.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Multiply"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Multiply(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M1, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M2, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>*
+MProduct);</b></font> </p>
+
+<blockquote>
+    <p>This function multiplies the two matrices M1 and M2
+    returning the result in MProduct.&nbsp; This can be used to
+    apply the transform of M2 onto the M1 transformation. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: MProduct = matrix multiply
+    of M1*M2. Concatenates the transformation in the M2 matrix
+    onto the transformation in M1.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Orthonormalize"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Orthonormalize(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M);</b></font>
+</p>
+
+<blockquote>
+    <p>This function orthonormalizes the matrix M and returns the
+    result in M replacing the original value.&nbsp;
+    Orthonormalizing a matrix removes and scaling or other
+    distortions from the transformation. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Essentially removes
+    scaling (or other distortions) from an orthogonal (or nearly
+    orthogonal) matrix. Returns a right-handed matrix.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Rotate"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Rotate(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Result);</b></font> </p>
+
+<blockquote>
+    <p>This function takes the vector V and rotates it by the
+    transform M returning the result in Result.&nbsp; No
+    translation is performed. </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This rotates about the origin
+    (0, 0, 0). If the XForm is not currently at the origin, then
+    rotation will result in the XForm &quot;orbiting&quot; the
+    origin. Also, the geXForm3d <b>M</b> is NOT set to identity
+    first. </font></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Result is Matrix M* Vector
+    V:&nbsp; V Rotated by M (no translation).</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RotateX"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_RotateX(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function rotates the transform M by RadianAngle
+    radians about the X axis and returns the result in M
+    replacing the original value. </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This rotates about the origin
+    (0, 0, 0). If the XForm is not currently at the origin, then
+    rotation will result in the XForm &quot;orbiting&quot; the
+    origin. Also, the geXForm3d <b>M</b> is NOT set to identity
+    first. To first set transform to identity, and then rotatate,
+    use </font><a href="geXForm3dIndexed.htm#SetXRotation">geXForm3d_SetRotationX</a></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp; from XFORM3D.H: Rotates M by RadianAngle about X
+    axis and applies the rotation to the existing contents of M.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RotateY"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_RotateY(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function rotates the transform M by RadianAngle
+    radians about the Y axis and returns the result in M
+    replacing the original value. </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This rotates about the origin
+    (0, 0, 0). If the XForm is not currently at the origin, then
+    rotation will result in the XForm &quot;orbiting&quot; the
+    origin. Also, the geXForm3d <b>M</b> is NOT set to identity
+    first. To first set transform to identity, and then rotatate,
+    use </font><a href="geXForm3dIndexed.htm#SetYRotation"><font color="#000080">geXForm3d_SetRotationY</font></a></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Rotates M by RadianAngle
+    about Y axis and applies the rotation to the existing
+    contents of M.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RotateZ"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_RotateZ(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function rotates the transform M by RadianAngle
+    radians about the Z axis and returns the result in M
+    replacing the original value. </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This rotates about the origin
+    (0, 0, 0). If the XForm is not currently at the origin, then
+    rotation will result in the XForm &quot;orbiting&quot; the
+    origin. Also, the geXForm3d <b>M</b> is NOT set to identity
+    first. To first set transform to identity, and then rotatate,
+    use </font><a href="geXForm3dIndexed.htm#SetZRotation"><font color="#000080">geXForm3d_SetRotationZ</font></a></p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Rotates M by RadianAngle
+    about Z axis and applies the rotation to the existing
+    contents of M.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Scale"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Scale(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> x, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> z);</b></font> </p>
+
+<blockquote>
+    <p>This function scales the transform M by the vector defined
+    by (x,y,z) returning the result in M replacing the original
+    contents. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Scales M by x,y,z. Applies
+    the scale to the existing contents of M.</p>
+    <p><font color="#000080">See also </font><a
+    href="geXForm3dIndexed.htm#SetScaling"><font color="#000080">SetScaling</font></a><font
+    color="#000080"> function.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetEulerAngles"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetEulerAngles(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Angles);</b></font> </p>
+
+<blockquote>
+    <p>This function can be used to set the rotational part of
+    the transform M by the Euler angles in Angles. Any existing
+    transformation in M is lost. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Applies Euler angles to
+    build M.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFromLeftUpIn"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetFromLeftUpIn(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Left, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Up, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* In);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform utilizing the
+    orthonormal vectors in Left, Up, and In and returns the
+    result in M replacing the existing transformation.
+    Translation is set to &lt;0, 0, 0&gt;</p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Builds an <a
+    href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a> from
+    orthonormal Left, Up and In vectors. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetIdentity"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetIdentity(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M);</b></font>
+</p>
+
+<blockquote>
+    <p>This function returns the Identity matrix in M, replacing
+    its original contents. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets M to an identity
+    matrix (clears it).</p>
+    <p><font color="#000080">An identity matrix is in the form:</font></p>
+    <blockquote>
+        <p><font color="#000080">|<strong>1, 0, 0,</strong> 0|<br>
+        |<strong>0, 1, 0,</strong> 0|<br>
+        |<strong>0, 0, 1,</strong> 0|<br>
+        </font><font color="#C0C0C0">|0, 0, 0, 1|</font></p>
+    </blockquote>
+    <p><font color="#000080">And has the properties that any
+    vector (or point) multiplied by this matrix will remain
+    unchanged. Note, the matrix translation is set to &lt;0, 0,
+    0&gt;</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Setting the matrix to Identity
+    essentially &quot;clears&quot; it, and any actor or camera
+    using this will be positioned at the origin (with no
+    rotation).</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetScaling"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetScaling(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> x, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> z);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform matrix M that produces
+    the scaling (x,y,z).&nbsp; The contents of M are replaced. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets up a transform that
+    scales by x,y,z. All existing contents of M are replaced.</p>
+    <p><font color="#000080">The scaling matrix result is in the
+    form:</font></p>
+    <blockquote>
+        <p><font color="#000080">|<strong>x, 0, 0,</strong> 0|<br>
+        |<strong>0, y, 0,</strong> 0|<br>
+        |<strong>0, 0, z,</strong> 0|<br>
+        </font><font color="#C0C0C0">|0, 0, 0, 1|</font></p>
+    </blockquote>
+    <p><font color="#000080">See also </font><a href="geXForm3dIndexed.htm#Scale"><font
+    color="#000080">Scale</font></a><font color="#000080">
+    function.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetTranslation"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetTranslation(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> x, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> z);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform matrix M that produces
+    the translation (x,y,z).&nbsp; The contents of M are
+    replaced. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets up a transform that
+    translates x,y,z. All existing contents of M are replaced.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">This clears the matrix first. If you
+    want to keep the current XForm, but simply translate it
+    further, use </font><a href="geXForm3dIndexed.htm#Translate">geXForm3d_Translate</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetXRotation"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetXRotation(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform matrix M that produces a
+    rotation of RadianAngle radians about the X axis.&nbsp; The
+    contents of M are replaced. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets up a transform that
+    rotates RadianAngle about X axis. All existing contents of M
+    are replaced.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This clears the matrix first.
+    If you want to keep the current XForm, but simply rotate it
+    further, use </font><a href="geXForm3dIndexed.htm#RotateX">geXForm3d_RotateX</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetYRotation"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetYRotation(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform matrix M that produces a
+    rotation of RadianAngle radians about the Y axis.&nbsp; The
+    contents of M are replaced. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets up a transform that
+    rotates RadianAngle about Y axis. All existing contents of M
+    are replaced.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This clears the matrix first.
+    If you want to keep the current XForm, but simply rotate it
+    further, use </font><a href="geXForm3dIndexed.htm#RotateY">geXForm3d_RotateY</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetZRotation"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_SetZRotation(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> RadianAngle);</b></font> </p>
+
+<blockquote>
+    <p>This function creates a transform matrix M that produces a
+    rotation of RadianAngle radians about the Z axis.&nbsp; The
+    contents of M are replaced. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Sets up a transform that
+    rotates RadianAngle about Z axis. All existing contents of M
+    are replaced.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This clears the matrix first.
+    If you want to keep the current XForm, but simply rotate it
+    further, use </font><a href="geXForm3dIndexed.htm#RotateZ">geXForm3d_RotateZ</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Transform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Transform(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Result);</b></font> </p>
+
+<blockquote>
+    <p>This function transforms a vector V by the transform M
+    returning the result in Result. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Result is Matrix M* Vector
+    V:&nbsp; V Tranformed by M.</p>
+    <p><font color="#000080">Note: Transforming a vector means
+    applying the matrix to the vector to achieve a result. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransformArray"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_TransformArray(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* XForm, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Source, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Dest, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+Count);</b></font> </p>
+
+<blockquote>
+    <p>This function transforms the array of Count vectors in
+    Source by the transform M returning the result in the array
+    Dest. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Translate"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_Translate(</b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M,</b></font>
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> x, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> z);</b></font> </p>
+
+<blockquote>
+    <p>This function translates the transform M by (x,y,z)
+    returning the result in M. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Translates M by x,y,z.
+    Applies the translation to the existing contents of M.</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">This will &quot;move the
+    transform&quot; to a position specified by (x, y, z)</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="TransposeTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geXForm3d_TransposeTransform(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080"><b>* M, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Result);</b></font> </p>
+
+<blockquote>
+    <p>This function transforms a vector V by the transpose of
+    the transform M returning the result in Result. </p>
+</blockquote>
+
+<blockquote>
+    <p>Returns: nothing. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from XFORM3D.H: Applies the transpose
+    transform of M to V.&nbsp; Result = (M^T)* V. </p>
+    <p><font color="#000080">See </font><a href="geXForm3dIndexed.htm#GetTranspose"><font
+    color="#000080">GetTranspose</font></a><font color="#000080">
+    notes on the use of a matrix transpose.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Tutorial"></a><font color="#0000FF" size="5"><b><i>Tutorial:</i></b></font>
+</p>
+
+<p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>Contents: <a href="geXForm3dIndexed.htm#XFormTut">What is a Transformation matrix?</a>,
+<a href="geXForm3dIndexed.htm#CodeSnipet">Code snipet</a>, <a href="geXForm3dIndexed.htm#XFormNotes">Notes</a>,
+<a href="geXForm3dIndexed.htm#MathProps">Mathematical Properties,</a> <a
+href="geXForm3dIndexed.htm#RotateAboutVector"><font color="#000080">RotateAboutVector</font></a><font
+color="#000080">, </font><a href="geXForm3dIndexed.htm#RotateAboutIn">RotateAboutIn</a>,
+<a href="geXForm3dIndexed.htm#RotateAboutLeft">RotateAboutLeft</a>, <a
+href="geXForm3dIndexed.htm#RotateAboutUp">RotateAboutUp</a>, <a
+href="geXForm3dIndexed.htm#RotateTowardsPoint">RotateTowardsPoint</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="XFormTut"></a><font color="#000080"><strong>What IS a
+transformation matrix? </strong></font></p>
+
+<p><font color="#000080">This was a difficult concept for me to
+grasp at first, so let me explain my understanding (and as
+always, thanks goes to Seven and his ProjectZ for getting me
+started.)</font></p>
+
+<p><font color="#000080">I primarily use a matrix for positioning
+my actors in my game. An actor is composed of many polygons (the
+actor Dema, for example, has approximately 800 ploygons.) And
+each of these is typically defined by 3 vertices (or points). As
+an actor runs around in a game, the engine must quickly get all
+those points recalculated to their corrrect location and
+rotation. So, how is this done? The answer is, through a
+transformation matrix.</font></p>
+
+<p><font color="#000080">I think of a transform matrix as a
+&quot;black box&quot; forumla. The initial points that define the
+actor's polygons are located near the origin (0, 0, 0). After
+applying the matrix, the points are in their correct location.
+Raw data goes in, correctly calculated data comes out. </font></p>
+
+<p><font color="#000080">So each time I want my actor to be in an
+a different location or orientation, I need to set up a new
+matrix. So the matrix really defines and determines my actor's
+location. To move an actor, I am really moving the matrix.</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a></p>
+
+<p><a href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table
+of contents</font></a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="CodeSnipet"></a><font color="#000080"><strong>Here is
+an example code snipet:</strong></font></p>
+
+<p><font color="#008000">//define some needed variables.</font><font
+color="#000080"><br>
+</font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>
+&nbsp;&nbsp;&nbsp;XForm;<br>
+<a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos;<br>
+<a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angles;<br>
+<a href="geActorIndexed.htm#geActor">geActor</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyActor;</p>
+
+<p>SetActorPosition (Pos); &nbsp;&nbsp;&nbsp;&nbsp;<font
+color="#008000">//This would be some function to get the Pos
+variable set to our actor's position</font><br>
+SetActorAngles (Angles);&nbsp;&nbsp;<font color="#008000">//This
+would be some function to get the Angles variable set to our
+actor's orientation</font><br>
+GetMyActorPointer (MyActor); <font color="#008000">&nbsp;//Some
+actor that sets MyActor appropriately</font></p>
+
+<p><font color="#008000">//Initiate (clear) the xform matrix</font><br>
+<a href="geXForm3dIndexed.htm#SetIdentity">geXForm3d_SetIdentity</a>(&amp;XForm);</p>
+
+<p><font color="#008000">//Rotate the actor in 3 planes to set
+correct orientation<br>
+</font><a href="geXForm3dIndexed.htm#RotateX">geXForm3d_RotateX</a>(&amp;XForm,
+Angles.X);<br>
+<a href="geXForm3dIndexed.htm#RotateY">geXForm3d_RotateY</a>(&amp;XForm, Angles.Y);<br>
+<a href="geXForm3dIndexed.htm#RotateZ">geXForm3d_RotateZ</a>(&amp;XForm, Angles.Z);</p>
+
+<p><font color="#008000">//Now translate the actor into position<br>
+</font><a href="geXForm3dIndexed.htm#Translate">geXForm3d_Translate</a>(&amp;XForm,
+Pos.X, Pos.Y, Pos.Z);</p>
+
+<p><font color="#008000">//Now put move the actor to our desired
+location and orientation</font><br>
+<a href="geActorIndexed.htm#ClearPose">geActor_ClearPose </a>(MyActor,
+&amp;XForm);<br>
+<font color="#008000">//Note: in a real program, I would use</font>
+<a href="geActorIndexed.htm#SetPose">geActor_SetPose</a> <font
+color="#008000">to also change the animation</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p>&nbsp;</p>
+
+<p><font color="#000080">//-----------------------------------------------------------------------------</font></p>
+
+<p><a name="XFormNotes"></a><font color="#000080"><strong>Transform
+Notes:</strong></font></p>
+
+<p><font color="#000080">I. &nbsp;&nbsp;&nbsp;&nbsp;All rotations
+are made about the origin (point 0,0,0). If your transform is not
+at the origin, then the rotation will appear to &quot;orbit&quot;
+the origin. To effect a rotation when not at the origin, first
+translate the transform back to the origin, apply the rotations,
+then translate it back to the desired location. The method
+applied in the code above (and in many tutorials) is to first
+clear the transform (set it to the origin), then apply needed
+rotations, then translate it to appropriate position--in that
+order.</font></p>
+
+<p><font color="#000080">II.&nbsp;&nbsp;&nbsp;&nbsp;The order of
+rotation order is important: Rotating X, Y, then Z will produce a
+different result than rotating Z, Y, X or Y, Z, X etc. Thus while
+(x, y, z) coordinates, in a Cartesian system, specifies a
+specific point regardless of which axis is changed first, the
+same is NOT true for applying x, y, and z rotations to a matrix. </font></p>
+
+<p><font color="#000080">III.&nbsp;&nbsp;The X, Y, Z axises used
+for transform rotations are GLOBAL, not relative to the current
+matrix orientation. <u>For example</u>: Suppose you have an actor
+standing at the origin with an Identity (cleared) matrix. An X
+rotation from this position would lay the actor forward onto the
+floor on its abdomen, while a Y rotation from this initial
+position would spin the actor around the axis of its spine (i.e.
+turn left or right), and a Z rotation from the initial position
+would cause the actor to lean over to one side. Suppose we choose
+to start with the X rotation, leaving the actor on its abdomen.
+Now let's consider a subsequent Y rotation. This will spin the
+actor around the global Y axis, in a plane parallel to the floor
+and around its umbilicus--not around its spine (which was on the
+Y axis initially). Thus the Y axis for a Y rotation is not
+relative to the actor's (meaning the matrix's, really) current
+orientation, but rather, it is always the global X, Y, or Z
+coordinates defined by the surrounding world.</font></p>
+
+<p><font color="#000080">IV.&nbsp;&nbsp;In many applications, the
+camera's and actor's orientation is simply set by changing
+Angles.Y to determine left/right gaze, and Angles.X to determine
+up/down gaze. Important points for this to work include: 1)
+Applying the X rotation first, while the matrix is still at
+Identity (meaning that it has been cleared, so that the X axis
+extends to the left and right) 2) applying the Y rotation after
+the X rotation, and 3) having an Angles.Z that is 0.0f, or
+ensuring that the Z rotation is done last. Note the effect of the
+Z rotation will vary, based on the Y rotation.</font></p>
+
+<p align="center"><font color="#000080"><img src="AXIS2.gif"
+width="345" height="154"> </font></p>
+
+<p><font color="#000080">V. &nbsp;Note that all angles required
+for these functions are in <u>radians</u>. Whereas <i>degrees</i>
+range 0 to 360, <i>radians</i> range from 0 to 2*pi. The
+circumference of a unit circle (i.e. with a radius of 1.0) is
+2*pi. So mathmeticians have chosen this scale for their angle
+units--calling them radians. The 360 degree range originated with
+the Sumerian's zodiac, I believe.</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><a name="MathProps"></a><font color="#000080"><strong>Transform
+Mathematical Properties:</strong></font></p>
+
+<p><a name="MathRef"></a><font color="#000080">The following
+notes are from </font><font color="#800000"><em>Mathematics for
+3D Game Programming &amp; Computer Graphics</em> by Eric Lengyel
+(ISBN 1-58450-037-9)</font></p>
+
+<p><font color="#000080">Given any two scalars <em>a</em> and <em>b</em>
+and any three <em>n</em> x <em>m</em> matrices <strong>F</strong>,
+<strong>G</strong>, and <strong>H</strong>, the following
+properties hold.</font></p>
+
+<ul>
+    <li><font color="#000080">a(b<strong>F</strong>) = (ab)<strong>F</strong>
+        (associative property)</font></li>
+    <li><font color="#000080">(a+b)<strong>F</strong> = a<strong>F</strong>
+        + b<strong>F</strong> --(note: this library does not use
+        matrix addition.)</font></li>
+    <li><font color="#000080">(a<strong>F</strong>)<strong>G</strong>
+        = a(<strong>FG</strong>) (associative property)</font></li>
+    <li><font color="#000080">(<strong>FG</strong>)<strong>H</strong>
+        = <strong>F</strong>(<strong>GH</strong>) (associative
+        property)</font></li>
+    <li><font color="#000080">(<strong>FG</strong>)<strong>&quot;</strong>
+        = <strong>G&quot;T&quot;</strong> </font><font
+        color="#008000">[note: <strong>&quot;</strong> here means
+        transpose, note the order reversal]</font></li>
+    <li><font color="#000080">(<strong>FG</strong>)<strong>'</strong>
+        = <strong>G'T'</strong> </font><font color="#008000">[note:
+        <strong>'</strong> here means inverse, note the order
+        reversal]</font></li>
+    <li><font color="#000080"><strong>F'F</strong> = <strong>FF'</strong>
+        = <strong>I</strong> </font><font color="#008000">[note: <strong>'</strong>
+        here means inverse, and <strong>I</strong> means identity
+        matrix]</font></li>
+    <li><font color="#000080">Matrix multiplication is NOT
+        communatitive: <strong>FG</strong> not equal to <strong>GF</strong></font></li>
+</ul>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#0000FF" size="5"><b><i>Proposed Functions</i></b></font></p>
+
+<p><font color="#000080">Note: These have been tested, and they
+work. For usual movement, the techniques described above (in
+section IV) may be faster.</font></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="RotateAboutVector"></a><font color="#000080"><strong>Rotation
+Method #1. </strong></font><font color="#000080" size="2"><strong>(Method
+#2 is </strong></font><a href="geXForm3dIndexed.htm#Method2"><font color="#000080"
+size="2"><strong>here</strong></font></a><font color="#000080"
+size="2"><strong>)</strong></font></p>
+
+<p><font color="#0000FF">void</font><font color="#000000"> </font><font
+color="#000080"><strong>geXForm3d_RotateAboutVector</strong></font><font
+color="#000000"> (</font><a href="geXForm3dIndexed.htm#geXForm3d"><font
+color="#000000">geXForm3d</font></a><font color="#000000">* </font><font
+color="#0000FF"><strong>M</strong></font><font color="#000000">, </font><a
+href="geVec3dIndexed.htm#geVec3d"><font color="#000000">geVec3d</font></a><font
+color="#000000">* </font><font color="#0000FF"><strong>Vector</strong></font><font
+color="#000000">, </font><a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><font color="#0000FF"><strong>RadianAngle</strong></font><font
+color="#000000">)<br>
+</font><font color="#008000">//Proposed function (not now part of
+Genesis 3D)<br>
+//Purpose: Rotate the XForm about Vector by RadianAngles
+angle--even if it is not at the origin)<br>
+//&nbsp;&nbsp;Input: M -- The transformation matrix that is to be
+rotated. It need not be at origin<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector
+-- The axis of rotation about which to rotate M<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RadianAngle
+-- the amount of rotation.<br>
+//&nbsp;&nbsp;Output: M is changed to reflect new rotation<br>
+</font><font color="#000000">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geVec3dIndexed.htm#geVec3d"><font color="#000000">geVec3d</font></a><font
+color="#000000"> Pos, Axis;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geVec3dIndexed.htm#geVec3d"><font color="#000000">geVec3d</font></a><font
+color="#000000"> Origin = {0 , 0, 0};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geQuaternionIndexed.htm#geQuaternion"><font color="#000000">geQuaternion
+</font></a><font color="#000000">Q;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geXForm3dIndexed.htm#geXForm3d"><font color="#000000">geXForm3d</font></a><font
+color="#000000"> QMatrix;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos = M-&gt;Translation;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M-&gt;Translation = Origin;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Axis = *Vector;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geVec3dIndexed.htm#Normalize"><font color="#000000">geVec3d_Normalize</font></a><font
+color="#000000"> (&amp;Axis);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geQuaternionIndexed.htm#SetFromAxisAngle"><font
+color="#000000">geQuaternion_SetFromAxisAngle</font></a><font
+color="#000000"> (&amp;Q, &amp;Axis, RadianAngle);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geQuaternionIndexed.htm#ToMatrix"><font color="#000000">geQuaternion_ToMatrix</font></a><font
+color="#000000"> (&amp;Q, &amp;QMatrix);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a
+href="geXForm3dIndexed.htm#Multiply"><font color="#000000">geXForm3d_Multiply</font></a><font
+color="#000000"> (M, &amp;QMatrix, M);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//now translate back to initial
+position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M-&gt;Translation = Pos;<br>
+}</font></p>
+
+<p><font color="#008000">Comment: The mixing of quaternions and
+matrices appears at times to introduce small errors, which grow
+if called cyclically . For example, I wrote an application that
+repeatedly did the following:</font></p>
+
+<ul>
+    <li><font color="#008000">Get an XForm M's left vector</font></li>
+    <li><font color="#008000">Call RotateAboutVector (M, left,
+        0.01)</font></li>
+    <li><font color="#008000">Repeat all steps above.</font></li>
+</ul>
+
+<p><font color="#008000">I found that at some rotation axis
+angles, the left vector would wobble and wander. A fix for this
+problem is to save the desired axis of rotation for reuse, and
+only recalculating it when it is likely to have changed and not
+obtaining it each cycle. I don't want to make too big a deal out
+of this, but it gave me confusing results at first. Thus a better
+algorithm for the above would be:</font></p>
+
+<ul>
+    <li><font color="#008000">Get an XForm M's left vector</font></li>
+    <li><font color="#008000">Store left as Axis</font></li>
+    <li><font color="#008000">Call RotateAboutVector (M, Axis,
+        0.01)</font></li>
+    <li><font color="#008000">Repeat just RotateAboutVector</font></li>
+</ul>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="Method2"><font color="#000080"><strong></strong></font></a><font
+color="#000080"><strong>Rotation Method #2 </strong></font><font
+color="#000080" size="2"><strong>(Method #1 is </strong></font><a
+href="geXForm3dIndexed.htm#RotateAboutVector"><font color="#000080" size="2"><strong>here</strong></font></a><font
+color="#000080" size="2"><strong>)</strong></font><font
+color="#000080"><strong><br>
+</strong>After the above was written, I found the following
+forumula in a </font><a href="geXForm3dIndexed.htm#MathRef"><font color="#000080">reference</font></a><font
+color="#000080"> that will also rotate a matrix about an
+arbitrary axis. C = cos (angle), S = sin (angle), A = the vector
+specifying the axis of rotation. The following table represents
+the matrix that will effect the rotation.</font></p>
+
+<table border="0">
+    <tr>
+        <td>&nbsp;</td>
+        <td bgcolor="#C0C0C0">C + A.x*A.x*(1-C)</td>
+        <td bgcolor="#C0C0C0">A.x*A.y*(1-C) - A.z*S</td>
+        <td bgcolor="#C0C0C0">A.x*A.z*(1-C) + A.y*S</td>
+    </tr>
+    <tr>
+        <td>Matrix for Rotation about A= </td>
+        <td bgcolor="#C0C0C0">A.x*A.y*(1-C) + A.z*S</td>
+        <td bgcolor="#C0C0C0">C + A.y*A.y*(1-C)</td>
+        <td bgcolor="#C0C0C0">A.y*A.z*(1-C) - A.x*S</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td bgcolor="#C0C0C0">A.x*A.z*(1-C) - A.y*S</td>
+        <td bgcolor="#C0C0C0">A.y*A.z*(1-C) + A.x*S</td>
+        <td bgcolor="#C0C0C0">C + A.z*A.z*(1-C)</td>
+    </tr>
+</table>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="RotateAboutIn"></a><font color="#000080">void <strong>geXForm3d_RotateAboutIn</strong>
+(</font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080">*
+<strong>M</strong>, </font><a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"> <strong>RadianAngle</strong>)<br>
+</font><font color="#008000">//Proposed function (not now part of
+Genesis 3D)<br>
+//Purpose: This would rotate the XForm about the XForm's In
+vector--even if it is not at the origin)</font></p>
+
+<p><font color="#008000">//Note: This function is older and not
+as versitile as </font><a href="geXForm3dIndexed.htm#RotateAboutVector"><font
+color="#000080">geXForm3d_RotateAboutVector</font></a><font
+color="#008000"><br>
+</font><font color="#000080">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d Angles, Pos;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos = M-&gt;Translation;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate (M, -Pos.X,
+-Pos.Y, -Pos.Z); </font><font color="#008000">//Translate the
+Xform back to the origin</font><font color="#000080"><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_GetEulerAngles (M,
+&amp;Angles); </font><font color="#008000">//Remember how to get
+back to the Xform's initial orientation.</font><font
+color="#000080"><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_SetIdentity (M);</font><font
+color="#008000"> //clear the XForm</font><font color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateZ (M,
+-RadianAngle); </font><font color="#008000">//the In vector is
+the same as the -Z axis when the XForm is at Identity</font><font
+color="#000080"><br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Now
+add back the initial rotations<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateZ
+(M, Angles.Z); </font><font color="#008000">//must apply
+rotations in the order for Euler angles restoration</font><font
+color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateY (M, Angles.Y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateX (M, Angles.X);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//now
+translate back to initial position<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate
+(M, Pos.X, Pos.Y, Pos.Z);<br>
+}</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="RotateAboutUp"></a><font color="#000080">void <strong>geXForm3d_RotateAboutUp</strong>
+(</font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080">*
+<strong>M</strong>, </font><a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"> <strong>RadianAngle</strong>)<br>
+</font><font color="#008000">//Proposed function (not now part of
+Genesis 3D)<br>
+//Purpose: This would rotate the XForm about the XForm's Up
+vector--even if it is not at the origin)</font></p>
+
+<p><font color="#008000">//Note: This function is older and not
+as versitile as </font><a href="geXForm3dIndexed.htm#RotateAboutVector"><font
+color="#000080">geXForm3d_RotateAboutVector</font></a><font
+color="#008000"><br>
+</font><font color="#000080">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d Angles, Pos;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos = M-&gt;Translation;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate (M, -Pos.X,
+-Pos.Y, -Pos.Z);</font><font color="#008000"> //Translate the
+Xform back to the origin</font><font color="#000080"><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_GetEulerAngles (M,
+&amp;Angles); </font><font color="#008000">//Remember how to get
+back to the Xform's initial orientation.</font><font
+color="#000080"><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_SetIdentity (M); </font><font
+color="#008000">//clear the XForm</font><font color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateY (M, RadianAngle);</font><font
+color="#008000"> //the Up vector is the same as the Y axis when
+the XForm is at Identity<br>
+</font><font color="#000080"><br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Now
+add back the initial rotations<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateZ
+(M, Angles.Z); </font><font color="#008000">//must apply
+rotations in the order for Euler angles restoration</font><font
+color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateY (M, Angles.Y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateX (M, Angles.X);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">//now
+translate back to initial position</font><font color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate (M, Pos.X,
+Pos.Y, Pos.Z);<br>
+}</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="RotateAboutLeft"></a><font color="#000080">void <strong>geXForm3d_RotateAboutLeft
+</strong>(</font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080">* <strong>M</strong>, </font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"> <strong>RadianAngle</strong>)<br>
+</font><font color="#008000">//Proposed function (not now part of
+Genesis 3D)<br>
+//Purpose: This would rotate the XForm about the XForm's Left
+vector--even if it is not at the origin)</font></p>
+
+<p><font color="#008000">//Note: This function is older and not
+as versitile as </font><a href="geXForm3dIndexed.htm#RotateAboutVector"><font
+color="#000080">geXForm3d_RotateAboutVector</font></a><font
+color="#008000"><br>
+</font><font color="#000080">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d Angles, Pos;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos = M-&gt;Translation;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate (M, -Pos.X,
+-Pos.Y, -Pos.Z);</font><font color="#008000"> //Translate the
+Xform back to the origin<br>
+</font><font color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_GetEulerAngles (M,
+&amp;Angles); </font><font color="#008000">//Remember how to get
+back to the Xform's initial orientation.<br>
+</font><font color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_SetIdentity (M); //clear
+the XForm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateX (M,
+-RadianAngle); </font><font color="#008000">//the Left vector is
+the same as the -X axis when the XForm is at Identity</font><font
+color="#000080"><br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Now
+add back the initial rotations<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateZ
+(M, Angles.Z); </font><font color="#008000">//must apply
+rotations in the order for Euler angles restoration</font><font
+color="#000080"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateY (M, Angles.Y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_RotateX (M, Angles.X);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//now
+translate back to initial position<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_Translate
+(M, Pos.X, Pos.Y, Pos.Z);<br>
+}</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><a name="RotateTowardsPoint"></a><font color="#000080">void <strong>geXForm3d_RotateTowardsPoint</strong>
+(</font><a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font color="#000080">*
+<strong>M</strong>, </font><a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080">* <strong>Point</strong>, </font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080">* <strong>RefUp</strong>)<br>
+</font><font color="#800000">//Note: This function has NOT yet
+been tested.<br>
+</font><font color="#008000">//Proposed function (not now part of
+Genesis 3D)<br>
+//Purpose: Rotate the geXForm M such that it is orientated
+towards the point given by the Point's {x, y, z}<br>
+//Inputs:<br>
+// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M: XForm to change. This need
+not be at the origin. If XForm is away from<br>
+//
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;origin,
+then the XForm will rotate at its current location.<br>
+// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point: The point (in world
+space) to orient towards.<br>
+// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RefUp: This is a vector that
+points in the general upward direction<br>
+//
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This
+is to keep the transform upright while facing the desired point<br>
+//
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example
+RefUp vector: {0, 1, 0}<br>
+//Output:<br>
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Result is put back into M.
+Original contents are replaced with result.<br>
+</font><font color="#000080">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d Pos, In, Left, Up;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geBoolean AtOrigin;<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If
+invalid inputs, then return without changing M<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if
+((!M) || (!Point) || (!RefUp)) return;<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Store
+the XForm M's current position<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos =
+M-&gt;Translation;<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Is
+the XForm M already at the origin?<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AtOrigin
+= ((Pos.X ==0) &amp;&amp; (Pos.Y == 0) &amp;&amp; (Pos.Z == 0));<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If
+not at origin, then translate to origin.<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if
+(!AtOrigin) geXForm3d_Translate (M, 0, 0, 0);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Create
+In vector by subtracting Pos from Point, then normalize<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_Subtract
+(Point, &amp;Pos, &amp;In);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_Normalize (&amp;In);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Find
+Left vector as normal from plane containing In and RefUp<br>
+</font><font color="#400000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//NOTE:
+I will need to check whether I need to negate this or not (i.e.
+is it really a &quot;right&quot; vector?)<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_CrossProduct
+(&amp;In, RefUp, &amp;Left);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_Normalize (&amp;Left);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Find
+Up vector as normal from plane containing In and left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Because In and Left are
+perpendicular, normalized vectors -&gt; no need to normalize Up<br>
+</font><font color="#400000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//NOTE:
+I will need to check whether I need to negate this or not (i.e.
+is it really a &quot;down&quot; vector?)<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geVec3d_CrossProduct
+(&amp;In, &amp;Left, &amp;Up);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Now
+set orientation from In, Up, and Left;<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geXForm3d_SetFromLeftUpIn
+(M, &amp;Left, &amp;Up, &amp;In);<br>
+<br>
+</font><font color="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If
+it wasn't originally at origin, then translate back to it
+original location.<br>
+</font><font color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if
+(!AtOrigin) geXForm3d_Translate (M, Pos.X, Pos.Y, Pos.Z);<br>
+<br>
+}</font></p>
+
+<p><a href="geXForm3dIndexed.htm#Tutorial"><font color="#000080">Return to Tutorial
+table of contents</font></a><font color="#000080"> or </font><a
+href="geXForm3dIndexed.htm#Contents"><font color="#000080">Return to Main table of
+contents</font></a></p>
+
+<p><font color="#000080">//===============================================================================</font></p>
+
+<p><font color="#000080">These comments (for better or for worse)
+are from Kdtop. I also added a few comments in the function
+explainations above, all of which are marked in blue.</font></p>
+
+<p>&nbsp;</p>
+
+<p><a href="geXForm3dIndexed.htm#Contents">Return to Contents</a></p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 18:01:39 Jan 29, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:24 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

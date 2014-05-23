@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>TraceIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">Trace</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: BSP collision detection code</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\World\TRACE.h </P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="TraceIndexed.htm#GEWorldCollision">GEWorldCollision</A>, <A HREF="TraceIndexed.htm#WorldCollisionBNode">WorldCollisionBNode</A>, <A HREF="TraceIndexed.htm#WorldCollisionExact">WorldCollisionExact</A>, <A HREF="TraceIndexed.htm#WorldCollisionExact2">WorldCollisionExact2</A>, <A HREF="TraceIndexed.htm#MiscCollision">MiscCollision</A>, <A HREF="TraceIndexed.htm#MiscCollision2">MiscCollision2</A>, <A HREF="TraceIndexed.htm#WorldCollisionBBox">WorldCollisionBBox</A>, <A HREF="TraceIndexed.htm#TestModelMove">TestModelMove</A>, <A HREF="TraceIndexed.htm#ModelCollision">ModelCollision</A>, <A HREF="TraceIndexed.htm#InverseTreeFromBox">InverseTreeFromBox</A>, <A HREF="TraceIndexed.htm#GetContents">GetContents</A>, <A HREF="TraceIndexed.htm#GetMoveBox">GetMoveBox</A>, <A HREF="TraceIndexed.htm#SetupIntersect">SetupIntersect</A>, <A HREF="TraceIndexed.htm#IntersectWorldBSP">IntersectWorldBSP</A>, <A HREF="TraceIndexed.htm#BoxOnPlaneSide">BoxOnPlaneSide</A>, <A HREF="TraceIndexed.htm#BBoxInVisibleLeaf">BBoxInVisibleLeaf</A><A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="TraceIndexed.htm#constants">view</A></P>
+<B><FONT COLOR="#000080"><P>Addition for Genesis3D v1.6:</B> </FONT><A HREF="TraceIndexed.htm#GetTexureName"><FONT COLOR="#000080">GetTexureName</FONT></A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define&nbsp;PSIDE_FRONT&nbsp;&nbsp;&nbsp;1</DD>
+<DD>#define&nbsp;PSIDE_BACK&nbsp;&nbsp;&nbsp;2</DD>
+<DD>#define&nbsp;PSIDE_BOTH&nbsp;&nbsp;&nbsp;(PSIDE_FRONT|PSIDE_BACK)</DD>
+<DD>#define&nbsp;PSIDE_FACING&nbsp;&nbsp;4</DD>
+</DL>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="GEWorldCollision"></A><A HREF="geWorldIndexed.htm#GE_Collision">GE_Collision</A><B><FONT COLOR="#000080">* Col);</P><DIR>
+<DIR>
+
+</B></FONT><P>Notes:</P>
+<P><A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;Contents,&nbsp;&nbsp;&nbsp;// Contents to collide with</P>
+<P><A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;CollideFlags,&nbsp;&nbsp;// GE_COLLIDE_ALL, etc...</P>
+<P><A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;UserFlags,&nbsp;&nbsp;&nbsp;// Flags to mask against actors</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldCollisionBNode"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* Side);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldCollisionExact"></A><A HREF="geWorldIndexed.htm#GE_Collision">GE_Collision</A><B><FONT COLOR="#000080">CB* CollisionCB, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Context);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldCollisionExact2"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* Side);</P>
+<P>// Internal only/ does not chek meshes/ returns index numbers into bsp structures for models</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="MiscCollision"></A><A HREF="geBSPIndexed.htm#GFX_Plane">GFX_Plane</A><B><FONT COLOR="#000080">* P);</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="MiscCollision2"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* P);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldCollisionBBox"></A><A HREF="geWorldIndexed.htm#GE_Collision">GE_Collision</A><B><FONT COLOR="#000080">CB* CollisionCB, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * Context);</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="TestModelMove"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Out);</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ModelCollision"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">&nbsp;&nbsp;* ImpactPoint);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="InverseTreeFromBox"></A><A HREF="geBSPIndexed.htm#GFX_Plane">GFX_Plane</A><B><FONT COLOR="#000080">* Planes);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetContents"></A><A HREF="geWorldIndexed.htm#GE_Contents">GE_Contents</A><B><FONT COLOR="#000080">* Contents);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTexureName"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Maxs, </FONT><FONT COLOR="#0000ff">char* </FONT><FONT COLOR="#000080">TexName);</P>
+</B><P>Added for Genesis3D v1.6</P>
+<B><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetMoveBox"></A>void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">Trace_GetMoveBox</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* OMaxs);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetupIntersect"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">Trace_SetupIntersect</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="IntersectWorldBSP"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080"> Node);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="BoxOnPlaneSide"></A><A HREF="geBSPIndexed.htm#GFX_Plane">GFX_Plane</A><B><FONT COLOR="#000080">* Plane);</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="y"><A NAME="BBoxInVisibleLeaf"></A></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Maxs);</P>
+<P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="TraceIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:07:03 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:09 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

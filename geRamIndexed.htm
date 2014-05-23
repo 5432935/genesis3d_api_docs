@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geRamIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geRam</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Replacement for malloc, realloc and free</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Support\RAM.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions:</B></FONT> <A HREF="geRamIndexed.htm#AddAllocation">AddAllocation</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#Allocate">Allocate</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#AllocateClear">AllocateClear</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#EnableCriticalCallback">EnableCriticalCallback</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#Free_">Free_</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#Realloc">Realloc</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#ReportAllocations">ReportAllocations</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geRamIndexed.htm#SetCriticalCallback">SetCriticalCallback</A><A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Macro: </B></FONT><A HREF="geRamIndexed.htm#GE_RAM_ALLOCATE_ARRAY">GE_RAM_ALLOCATE_ARRAY</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geRamIndexed.htm#GE_RAM_ALLOCATE_STRUCT">GE_RAM_ALLOCATE_STRUCT</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geRamIndexed.htm#GE_RAM_REALLOC_ARRAY">GE_RAM_REALLOC_ARRAY</A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geRamIndexed.htm#geRam_CriticalCallbackFunction">geRam_CriticalCallbackFunction</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6:</FONT> <B>None</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Macros:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="GE_RAM_ALLOCATE_ARRAY"></A>GE_RAM_ALLOCATE_ARRAY</FONT><FONT COLOR="#000080">(type, count);</B></FONT> </P>
+<B><BLOCKQUOTE>This is a convenience macro that calls geRam_Allocate to allocate ram for an array of count size of type items.&nbsp; A pointer is returned to the allocated memory and is pre-cast to the correct type.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a pointer to the allocated memory, or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> on failure.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="GE_RAM_ALLOCATE_STRUCT"></A>GE_RAM_ALLOCATE_STRUCT</FONT><FONT COLOR="#000080">(type);</B></FONT> </P>
+<B><BLOCKQUOTE>This is a convenience macro that calls geRam_Allocate to allocate ram for a structure of type type and pre-casts the returned pointer to type.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a pointer to the allocated memory or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> on failure.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="GE_RAM_REALLOC_ARRAY"></A>GE_RAM_REALLOC_ARRAY</FONT><FONT COLOR="#000080">(ptr,type,count);</B></FONT> </P>
+<B><BLOCKQUOTE>This is a convenience macro that calls geRam_Realloc to adjust the memory pool to accomodate an array of count items of type type at the address ptr.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a pre-cast ptr to the allocated memory.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="geRam_CriticalCallbackFunction"></A>geRam_CriticalCallbackFunction</B></FONT> </P>
+<B><BLOCKQUOTE>This is the type of a callback function that can be set using geRam_SetCriticalCallback() to be called when geRam_Allocate is unable to allocate the requested memory.</B> </BLOCKQUOTE>
+<FONT FACE="Courier New,Courier"><BLOCKQUOTE>typedef </FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier"> (*geRam_CriticalCallbackFunction)(</FONT><FONT COLOR="#0000ff"> void</FONT><FONT FACE="Courier New,Courier">);</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="AddAllocation"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function can be used by programs that use some other memory allocation method but would like to let geRam keep track of statistics of memory usage.&nbsp; n is the number of allocations to add (or subtract) and size is the amount of memory to add (or subtract).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Allocate"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function allocates the size bytes of memory an returns a pointer to it.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a pointer to the allocated memory, </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> on error.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: Allocate memory of the given size.&nbsp; In debug mode, the memory is filled with 0xA5, and we keep track of the amount of memory allocated.&nbsp; Also, in debug mode, we track where the memory was allocated and can optionally provide a report of allocated blocks.&nbsp; See geRam_ReportAllocations. <BR>
+&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="AllocateClear"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function allocates size bytes of memory, clears it to 0 and returns a pointer to it.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a pointer to the allocated memory, or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> on failure.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: allocate the ram &amp; clear it. (calloc)</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="EnableCriticalCallback"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geRam_EnableCriticalCallback</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> add);</B></FONT> </P>
+<B><BLOCKQUOTE>This function increments an internal counter by add (which may be negative).&nbsp; If the internal counter is greater than 0 and a critical callback function has been set with geRamSetCriticalCallback(), then that function is called if a memory allocation request fails.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the current counter value after add is applied.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: increments or decrements a counter.&nbsp; If the counter is 0 the critical callback function (if set) is called for a failed memory allocation.&nbsp; Add is added to the current counter value.&nbsp; The new counter value is returned. <BR>
+&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="_"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geRam_Free_</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff"> void</FONT><B><FONT COLOR="#000080"> * ptr);</B></FONT> </P>
+<B><BLOCKQUOTE>This function releases memory previously allocated at* ptr.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: Free an allocated memory block.</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="IsValidPtr"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geRam_IsValidPtr</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * ptr);</B></FONT> </P>
+<B><BLOCKQUOTE>This function tests whether ptr is a valid non-</B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> pointer using information created by geRam_Allocate.&nbsp; This function is only available in debug builds.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Realloc"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> newsize);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adjusts the size of a previously allocated block of memory at ptr to newsize.&nbsp; If ptr is </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B>, a new memory block is allocated.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: A pointer to the adjusted memory pool, or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> on failure.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: Reallocate memory.&nbsp; This function supports shrinking and expanding blocks, and will also act like ram_allocate if the pointer passed to it is <A HREF="BasetypesIndexed.htm#NULL">NULL</A>. It won't, however, free the memory if you pass it a 0 size.</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ReportAllocations"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geRam_ReportAllocations</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</B></FONT> </P>
+<B><BLOCKQUOTE>This function can be called just before exitting to report on any non-freed memory to aid in detecting memory leaks.&nbsp; This function is only available in debug builds <FONT COLOR="#ff0000">(I think)</FONT>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="y"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><A HREF="geRamIndexed.htm#geRam_CriticalCallbackFunction">geRam_CriticalCallbackFunction</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geRam_SetCriticalCallback</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geRamIndexed.htm#geRam_CriticalCallbackFunction">geRam_CriticalCallbackFunction</A><B><FONT COLOR="#000080"> callback);</B></FONT> </P>
+<B><BLOCKQUOTE>This function is used to set the critical callback function that will be called if geRam_Allocate() is unable to allocate the requested memory.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: a ptr to the set callback function.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from RAM.H: Set the critical callback function.&nbsp; ram_allocate will call the critical callback function if it's unable to allocate memory.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geRamIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:29:18 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:53 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

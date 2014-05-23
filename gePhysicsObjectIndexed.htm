@@ -1,0 +1,491 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePhysicsObjectIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>gePhysicsObject</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Constrained rigid body interface</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\Physics\PhysicsObject.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePhysicsObjectIndexed.htm#Create">Create</A>, <A HREF="gePhysicsObjectIndexed.htm#Destroy">Destroy</A>, <A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameForce">ApplyGlobalFrameForce</A>, <A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameImpulse">ApplyGlobalFrameImpulse</A>, <A HREF="gePhysicsObjectIndexed.htm#ComputeForces">ComputeForces</A>, <A HREF="gePhysicsObjectIndexed.htm#Integrate">Integrate</A>, <A HREF="gePhysicsObjectIndexed.htm#GetMass">GetMass</A>, <A HREF="gePhysicsObjectIndexed.htm#SetMass">SetMass</A>, <A HREF="gePhysicsObjectIndexed.htm#GetOneOverMass">GetOneOverMass</A>, <A HREF="gePhysicsObjectIndexed.htm#GetXForm">GetXForm</A>, <A HREF="gePhysicsObjectIndexed.htm#SetXForm">SetXForm</A>, <A HREF="gePhysicsObjectIndexed.htm#GetXFormInEditorSpace">GetXFormInEditorSpace</A>, <A HREF="gePhysicsObjectIndexed.htm#GetOriginalLocation">GetOriginalLocation</A>, <A HREF="gePhysicsObjectIndexed.htm#SetOriginalLocation">SetOriginalLocation</A>, <A HREF="gePhysicsObjectIndexed.htm#GetLocation">GetLocation</A>, <A HREF="gePhysicsObjectIndexed.htm#GetLocationInEditorSpace">GetLocationInEditorSpace</A>, <A HREF="gePhysicsObjectIndexed.htm#GetLinearVelocity">GetLinearVelocity</A>, <A HREF="gePhysicsObjectIndexed.htm#SetLinearVelocity">SetLinearVelocity</A>, <A HREF="gePhysicsObjectIndexed.htm#GetAngularVelocity">GetAngularVelocity</A>, <A HREF="gePhysicsObjectIndexed.htm#SetAngularVelocity">SetAngularVelocity</A>, <A HREF="gePhysicsObjectIndexed.htm#GetForce">GetForce</A>, <A HREF="gePhysicsObjectIndexed.htm#SetForce">SetForce</A>, <A HREF="gePhysicsObjectIndexed.htm#GetTorque">GetTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#SetTorque">SetTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#GetAppliedForce">GetAppliedForce</A>, <A HREF="gePhysicsObjectIndexed.htm#SetAppliedForce">SetAppliedForce</A>, <A HREF="gePhysicsObjectIndexed.htm#GetAppliedTorque">GetAppliedTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#SetAppliedTorque">SetAppliedTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#ClearForce">ClearForce</A>, <A HREF="gePhysicsObjectIndexed.htm#ClearTorque">ClearTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#ClearAppliedForce">ClearAppliedForce</A>, <A HREF="gePhysicsObjectIndexed.htm#ClearAppliedTorque">ClearAppliedTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#IncForce">IncForce</A>, <A HREF="gePhysicsObjectIndexed.htm#IncTorque">IncTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#IncAppliedForce">IncAppliedForce</A>, <A HREF="gePhysicsObjectIndexed.htm#IncAppliedTorque">IncAppliedTorque</A>, <A HREF="gePhysicsObjectIndexed.htm#GetOrientation">GetOrientation</A>, <A HREF="gePhysicsObjectIndexed.htm#SetOrientation">SetOrientation</A>, <A HREF="gePhysicsObjectIndexed.htm#GetInertiaTensor">GetInertiaTensor</A>, <A HREF="gePhysicsObjectIndexed.htm#GetInertiaTensorInverse">GetInertiaTensorInverse</A>, <A HREF="gePhysicsObjectIndexed.htm#GetInertiaTensorInPhysicsSpace">GetInertiaTensorInPhysicsSpace</A>, <A HREF="gePhysicsObjectIndexed.htm#GetInertiaTensorInverseInPhysicsSpace">GetInertiaTensorInverseInPhysicsSpace</A>, <A HREF="gePhysicsObjectIndexed.htm#IsAffectedByGravity">IsAffectedByGravity</A>, <A HREF="gePhysicsObjectIndexed.htm#SetIsAffectedByGravity">SetIsAffectedByGravity</A>, <A HREF="gePhysicsObjectIndexed.htm#RespondsToForces">RespondsToForces</A>, <A HREF="gePhysicsObjectIndexed.htm#SetRespondsToForces">SetRespondsToForces</A>, <A HREF="gePhysicsObjectIndexed.htm#GetLinearDamping">GetLinearDamping</A>, <A HREF="gePhysicsObjectIndexed.htm#SetLinearDamping">SetLinearDamping</A>, <A HREF="gePhysicsObjectIndexed.htm#GetAngularDamping">GetAngularDamping</A>, <A HREF="gePhysicsObjectIndexed.htm#SetAngularDamping">SetAngularDamping</A>, <A HREF="gePhysicsObjectIndexed.htm#SetActiveConfig">SetActiveConfig</A>, <A HREF="gePhysicsObjectIndexed.htm#GetActiveConfig">GetActiveConfig</A>, <A HREF="gePhysicsObjectIndexed.htm#SetPhysicsScale">SetPhysicsScale</A>, <A HREF="gePhysicsObjectIndexed.htm#GetPhysicsScale">GetPhysicsScale</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A></P>
+<B><FONT COLOR="#000080"><P>Constants:</B></FONT> <A HREF="gePhysicsObjectIndexed.htm#Constants">view</A></P>
+<B><FONT COLOR="#000080"><P>Notes:</B></FONT> <A HREF="gePhysicsObjectIndexed.htm#Notes">view</A></P>
+<B><FONT COLOR="#000080"><P>Change for Genesis3D v1.6</B>: types float have been changed to geFloat</P>
+</FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P><A NAME="gePhysicsObject"></A>typedef struct gePhysicsObject </FONT><FONT COLOR="#800000">gePhysicsObject</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<P><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<P>#define <FONT COLOR="#800000"><STRONG>PHYSICSOBJECT_GRAVITY</FONT></STRONG> (-3.9f)</P>
+<P>(KT Note:) This is the gravity constant that may be applied to objects. Its value makes me think that calculations are done with English units (i.e. the gravity is in feet/second^2).</P>
+<P><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<BLOCKQUOTE><A NAME="Create"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Maxs, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> physicsScale);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Creates a PhysicsObject. Use the Xform from this object to move your cameras, actors, particles, ... </BLOCKQUOTE>
+<STRONG><BLOCKQUOTE>StartLocation</STRONG>, the position of the object <BR>
+<STRONG>mass</STRONG>, the mass of the object<BR>
+<STRONG>AffectedByGravity</STRONG>, True is you want the object to be affected by gravity, False if you don't <BR>
+<STRONG>RespondsToForces</STRONG>, True if you want the object to be affected by forces, False if you don't <BR>
+<STRONG>linearDamping</STRONG>, </FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">this is the amount to reduce linear velocities by during each calculation cycle.<BR>
+</FONT><FONT FACE="sans-serif" SIZE=2><STRONG>angularDamping</STRONG>, </FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">this is the amount to reduce rotational velocities by during each calculation cycle.<BR>
+</FONT><FONT FACE="sans-serif" SIZE=2><STRONG>Mins</STRONG>, Mimumum coordinates for bounding box. <BR>
+<STRONG>Maxs</STRONG>, Maxumum coordinates for bounding box <BR>
+<STRONG>physicsScale</STRONG>, Scales all forces and values that affect this object. use the </FONT><A HREF="gePhysicsObjectIndexed.htm#GetXFormInEditorSpace">GetXFormInEditorSpace()</A><FONT FACE="sans-serif" SIZE=2> and </FONT><A HREF="gePhysicsObjectIndexed.htm#GetLocationInEditorSpace">GetLocationInEditorSpace()</A><FONT FACE="sans-serif" SIZE=2> to see the affects of the scaling. </BLOCKQUOTE>
+<BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Destroy"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">** pPhysob);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Destroys the physics object</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ApplyGlobalFrameForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> isAppliedForce, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>I'm not sure but I think this applies a constant force to the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code): "Apply force in global frame with changes taking effect on next iteration of gePhysicsObject's owner"<BR>
+<STRONG>pod</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: the linear force vector to apply<BR>
+<STRONG>radiusVector</STRONG>: The following formula used is: object Torque += radiusVector CrossProduct force. Thus, I believe that one should image the base of the radiusVector to be at the center of the physics object, and the tip of this vector will be (the offset of) the location that force is applied. Thus a linear force, applied off center, can create a torque (rotation) of the object. <BR>
+<STRONG>isAppliedForce</STRONG>: True if the force is to be an "applied force". <BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ApplyGlobalFrameImpulse"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pRadVec, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>I'm not sure but I think this applies a constant impulse to the object </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code): "Apply impulse in global frame with immediate change in velocities"</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ComputeForces"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_ComputeForces</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pod, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>I think this will compute and combine all the forces that are applied to the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code): "// add damping ... // clear force and torque accumulators... // add gravity // add forces" </BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Integrate"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_Integrate</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pod, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> deltaTime, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SourceConfigIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>I think this is the update time for the object. I used it and the lower the time is the slower the object moves in relationship to the entire physics system. A number between 0.0f and 1.0f. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code):</FONT><FONT FACE="sans-serif" SIZE=1 COLOR="#000080"> "</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">// Integrate a gePhysicsObject's equations of motion by time step deltaTime" <BR>
+Users shouldn't need to call this function directly. Just call </FONT><A HREF="gePhysicsSystemIndexed.htm#Iterate"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">gePhysicsSystem_Interate</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, which will then call this function.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetMass"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetMass</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the mass of the object </BLOCKQUOTE>
+<BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetMass"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_SetMass</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> mass);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the mass of the object </BLOCKQUOTE>
+<BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetOneOverMass"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetOneOverMass</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns 1/mass.</BLOCKQUOTE>
+<BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetXForm"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* xform, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the Xform of the object </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>xform</STRONG>: where desired XForm is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetXForm"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* xform, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Set the Xform of the object </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>xform</STRONG>: where desired XForm is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetXFormInEditorSpace"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* xform, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns a scaled Xform of the object, It's scale is determined by the physicsScale value in the </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2>gePhysicsObject_Create()</FONT></A><FONT FACE="sans-serif" SIZE=2> function or the </FONT><A HREF="gePhysicsObjectIndexed.htm#SetPhysicsScale"><FONT FACE="sans-serif" SIZE=2>SetPhysicsScale()</FONT></A><FONT FACE="sans-serif" SIZE=2> function. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>xform</STRONG>: where desired XForm is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetOriginalLocation"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* loc);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Not sure what it returns but if I had to guess, I would think you must first set the location using the function below and it will return those parameter. Useful for collision detection? </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>OriginalLocation = StartLocation, scaled by PhysicsScale (both as specified during </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">gePhysicsObject_Create</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">).</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetOriginalLocation"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* loc);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Sets OriginalLocation variable of gePhysicsObject structure. <BR>
+Note that this value is not scaled by PhysicsScale, as would be done during </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">gePhysicsObject_Create</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">.</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetLocation"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080"> *Location, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the location of the object.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code:) "// get gePhysicsObject's location in Physics space (xlation and olocation are in Physics space units)"<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetLocationInEditorSpace"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* loc, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the scaled location of the object. It's scale is determined by the physicsScale value in the gePhysicsObject_Create() function or the SetPhysicsScale() function. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From the source code:) "// get gePhysicsObject's location in editor(world) space"<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetLinearVelocity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* vel, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the linear velocity of the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>vel</STRONG>: where desired geVec3d linear velocity of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetLinearVelocity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* vel, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the linear velocity of the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>vel</STRONG>: where desired geVec3d linear velocity of the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetAngularVelocity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* vel, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Return the angular velocity of the object. Basically the speed at which the object is rotating. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>vel</STRONG>: where desired geVec3d Angular velocity of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetAngularVelocity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* vel, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Set the angular velocity of the object. Basically the speed at which the object is rotating. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>vel</STRONG>: where desired geVec3d Angular velocity of the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* force, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the force on the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d force of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* force, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the force applied to the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d force applied to the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torque, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Return the torque applied to the object. Basically the force that causes the object to spin. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d torque of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torque, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the torque applied to the object. Basically the force that causes the object to spin. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d torque applied to the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetAppliedForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* force, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the force that is applied to an object that collides with this object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Note: No collision detection is effected from this function<BR>
+This returns AppliedForce variable from the gePhysicsObject structure. <BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d applied linear force of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetAppliedForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* force, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the force that is applied to an object that collides with this object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Note: No collision detection is effected from this function<BR>
+AppliedForce is used during </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, where it is added to the force of the object.<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>force</STRONG>: where desired geVec3d linear force to be applied to the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetAppliedTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torque, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the torque that is applied to an object that collides with this object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Note: No collision detection is effected from this function<BR>
+This returns AppliedTorque variable from the gePhysicsObject structure. <BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>torque</STRONG>: where desired geVec3d torque force of the object is to be copied to.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetAppliedTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torque, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the torque that is applied to an object that collides with this object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Note: No collision detection is effected from this function<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>torque</STRONG>: where desired geVec3d applied torque to be applied to the object is to be copied from.<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ClearForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_ClearForce</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Removes the force from an object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ClearTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_ClearTorque</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Removes the torque from an object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ClearAppliedForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_ClearAppliedForce</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Removes the applied force from an object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="ClearAppliedTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_ClearAppliedTorque</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Removes the applied torque from an object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="IncForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* forceInc, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Adds the given forceInc to the current force.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>forceInc</STRONG>: force to inc by<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="IncTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torqueInc, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Adds the given torqueInc to the current torque. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>torqueInc</STRONG>: torque to inc by<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="IncAppliedForce"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* forceInc, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Adds the given forceInc to the current appliedForce. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>forceInc</STRONG>: applied force to inc by<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="IncAppliedTorque"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* torqueInc, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Adds the given torqueInc to the current AppliedTorque. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>torqueInc</STRONG>: applied torque to inc by<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetOrientation"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B><FONT COLOR="#000080">* orient, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the orientation of the object in quaternion form.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>orient</STRONG>: geQuaternion to copy to<BR>
+<STRONG>configIndex</STRONG>: must be 0 or </BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetOrientation"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B><FONT COLOR="#000080">* orient, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Sets the orientation of the object from quaternion form. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>orient</STRONG>: geQuaternion to copy from<BR>
+<STRONG>configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetInertiaTensor"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* iTensor);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Don't know what a inertia tensor is.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>(From source code): "// get inertia tensor and inverse in body (local unrotated) space"<BR>
+Inertia tensor is used in </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> and </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameImpulse"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameImpulse</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, so probably has to do with inertia<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>iTensorInv</STRONG>: ?</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetInertiaTensorInverse"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* iTensorInv);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Don't know what a inertia tensor is. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Inertia tensor inverse is used in </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> and </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameImpulse"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameImpulse</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, so probably has to do with inertia.<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>iTensorInv</STRONG>: ?</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetInertiaTensorInPhysicsSpace"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* pITensor, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Don't know what a inertia tensor is.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Inertia tensor is used in </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> and </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameImpulse"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameImpulse</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, so probably has to do with inertia.<BR>
+Probably returns results in Physics space units, rather than in editor(world) space units<BR>
+<STRONG>pPhysob</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>pITensor</STRONG>: ?<STRONG><BR>
+configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetInertiaTensorInverseInPhysicsSpace"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* pITensorInv, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Don't know what a inertia tensor is. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Inertia tensor inverse is used in </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> and </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameImpulse"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameImpulse</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">, so probably has to do with inertia.<BR>
+Probably returns results in Physics space units, rather than in editor(world) space units<BR>
+<STRONG>pPhysob</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>pITensor</STRONG>Inv: ?<STRONG><BR>
+configIndex</STRONG>: must be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="IsAffectedByGravity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_IsAffectedByGravity</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns true if the object is affected by gravity, false if it is not.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>This is initially set during </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">creation</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> of the object<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetIsAffectedByGravity"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> flag);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Set to true if the object is affected by gravity, false if it is not. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>flag</STRONG>: true or false.</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="RespondsToForces"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_RespondsToForces</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns true if the object is affected by forces, false if it is not. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>This is initially set during </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">creation</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> of the object<BR>
+<STRONG>po</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetRespondsToForces"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> flag);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Set to true if the object is affected by forces, false if it is not. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>flag</STRONG>: true or false.</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetLinearDamping"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetLinearDamping</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the linear damping</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetLinearDamping"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_SetLinearDamping</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> linearDamping);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Sets <FONT FACE="sans-serif" SIZE=2>the linear damping </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>linearDamping</STRONG>: should be 0.0f to 1.0f</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetAngularDamping"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetAngularDamping</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>Returns the angular damping</BLOCKQUOTE>
+<STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetAngularDamping"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_SetAngularDamping</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* po, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> angularDamping);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Sets <FONT FACE="sans-serif" SIZE=2>the angular damping </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>po</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>angularDamping</STRONG>: should be 0.0f to 1.0f</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetActiveConfig"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_SetActiveConfig</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pPhysob, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> configIndex);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Objects can have more than one config this will set which one it is using. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>pPhysob</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>configIndex</STRONG>: should be 0 or 1</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="GetActiveConfig"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetActiveConfig</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pPhysob);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Objects can have more than one config this will return which one it is using. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>pPhysob</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="SetPhysicsScale"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_SetPhysicsScale</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pPhysob, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> scale);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Scales all forces and values that affect this object. use the </FONT><A HREF="gePhysicsObjectIndexed.htm#GetXFormInEditorSpace"><FONT FACE="sans-serif" SIZE=2>GetXFormInEditorSpace()</FONT></A><FONT FACE="sans-serif" SIZE=2> and </FONT><A HREF="gePhysicsObjectIndexed.htm#GetLocationInEditorSpace"><FONT FACE="sans-serif" SIZE=2>GetLocationInEditorSpace()</FONT></A><FONT FACE="sans-serif" SIZE=2> to see the affects of the scaling. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><STRONG><BLOCKQUOTE>pPhysob</STRONG>: The relevent PhysicsObject<BR>
+<STRONG>scale</STRONG>: any number.</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="y"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsObject_GetPhysicsScale</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* pPhysob);</BLOCKQUOTE>
+</B></FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Returns the scale of the object. </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>This is initially set during </FONT><A HREF="gePhysicsObjectIndexed.htm#Create"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">creation</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> of object<BR>
+<STRONG>pPhysob</STRONG>: The relevent PhysicsObject</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>Note: In Genesis3D v1.6 all float types have been converted to geFloat</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents"><FONT FACE="sans-serif" SIZE=2>Return to Contents</FONT></A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Notes"></A></BLOCKQUOTE>
+<B><I><FONT FACE="sans-serif" SIZE=5 COLOR="#0000ff"><BLOCKQUOTE>Notes:</B></I> </BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2><BLOCKQUOTE>The comments of these functions were made by Jeff on the Genesis3D forum. His original post is </FONT><A HREF="Physics%20Tutorial%202.htm"><FONT FACE="sans-serif" SIZE=2>here</FONT></A><FONT FACE="sans-serif" SIZE=2>. Kdtop has made additional notes (indicated by </FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">color blue</FONT><FONT FACE="sans-serif" SIZE=2>)</BLOCKQUOTE>
+</FONT><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"><BLOCKQUOTE>This module handles the following aspects of object physics: application of forces and torques, inertia, linear and rotational velocities, translation. It does not handle any collisions, or calculate reflections off a wall (for example).</BLOCKQUOTE>
+<B><U><BLOCKQUOTE>The following terms are used in this module<BR>
+config</B></U>: Objects can have more than one config. This will determine which one it is using. Perhaps an application of this would be to use a different set of physics constants in water versus air.<BR>
+<B><U>linear force</B></U>: The force that keeps an object moving in a straight line<BR>
+<B><U>angular force</B></U>: The force that keeps an object spinning<BR>
+<B><U>torque</B></U>: a rotational force. essentially same as angular force<BR>
+<B><U>applied force</B></U>: An applied force is added to the object's force each time </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> is called (i.e. a constant force). A regular force is zeroed out after additions, but not so with an applied force. AppliedForce is affected as follows: </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameForce"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameForce</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> will add specifed Force to AppliedForce if boolean IsAppliedForce is true. </FONT><A HREF="gePhysicsObjectIndexed.htm#IncAppliedForce"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">IncAppliedForce</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> will also increment AppliedForce<BR>
+<B><U>applied torque</B></U>: An applied torque is added to the object's torque each time </FONT><A HREF="gePhysicsObjectIndexed.htm#ComputeForces"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ComputeForces</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> is called (i.e. a constant force). A regular torque is zeroed out after additions, but not so with an applied torque. AppliedTorque is affected as follows: </FONT><A HREF="gePhysicsObjectIndexed.htm#ApplyGlobalFrameForce"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080">ApplyGlobalFrameForce</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> will add specifed Torque to AppliedForce if boolean IsAppliedForce is true.</FONT><A HREF="gePhysicsObjectIndexed.htm#IncAppliedTorque"><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> IncAppliedTorque</FONT></A><FONT FACE="sans-serif" SIZE=2 COLOR="#000080"> will also increment AppliedTorque. <BR>
+<B><U>damping</U>: </B>The amount to decrease object velocities by each cycle (to simulate friction)</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePhysicsObjectIndexed.htm#Contents"><FONT FACE="sans-serif" SIZE=2>Return to Contents</FONT></A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:14:11 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:29 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

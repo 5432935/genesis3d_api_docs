@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePhysicsJointIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>gePhysicsJoint</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Rigid body joint interface</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Physics\PhysicsJoint.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePhysicsJointIndexed.htm#Create">Create</A>, <A HREF="gePhysicsJointIndexed.htm#Destroy">Destroy</A>, <A HREF="gePhysicsJointIndexed.htm#GetType">GetType</A>, <A HREF="gePhysicsJointIndexed.htm#GetLocationA">GetLocationA</A>, <A HREF="gePhysicsJointIndexed.htm#GetLocationB">GetLocationB</A>, <A HREF="gePhysicsJointIndexed.htm#SetLocationA">SetLocationA</A>, <A HREF="gePhysicsJointIndexed.htm#SetLocationB">SetLocationB</A>, <A HREF="gePhysicsJointIndexed.htm#GetLocationAInWorldSpace">GetLocationAInWorldSpace</A>, <A HREF="gePhysicsJointIndexed.htm#GetLocationBInWorldSpace">GetLocationBInWorldSpace</A>, <A HREF="gePhysicsJointIndexed.htm#SetLocationAInWorldSpace">SetLocationAInWorldSpace</A>, <A HREF="gePhysicsJointIndexed.htm#SetLocationBInWorldSpace">SetLocationBInWorldSpace</A>, <A HREF="gePhysicsJointIndexed.htm#GetObject1">GetObject1</A>, <A HREF="gePhysicsJointIndexed.htm#GetObject2">GetObject2</A>, <A HREF="gePhysicsJointIndexed.htm#GetAssemblyRate">GetAssemblyRate</A>, <A HREF="gePhysicsJointIndexed.htm#SetAssemblyRate">SetAssemblyRate</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint_Kind">gePhysicsJoint_Kind</A>, <A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A></P>
+<P>Additions for Genesis3D v1.6: <B><FONT COLOR="#000080">None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<FONT COLOR="#800000"><STRONG><BLOCKQUOTE><A NAME="gePhysicsJoint_Kind"></A>gePhysicsJoint_Kind</BLOCKQUOTE>
+</FONT></STRONG><DL>
+<DD>typedef enum {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;JT_WORLD = 0,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;JT_SPHERICAL,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;JT_PTTOPATH,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;JT_PTTOSURFACE<BR>
+} gePhysicsJoint_Kind;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<FONT COLOR="#800000"><STRONG><BLOCKQUOTE><A NAME="gePhysicsJoint"></A>gePhysicsJoint</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>typedef struct gePhysicsJoint <FONT COLOR="#800000">gePhysicsJoint</FONT>;</BLOCKQUOTE>
+</STRONG><BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<BLOCKQUOTE><A NAME="Create"></A><A HREF="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</A><B><FONT COLOR="#000080">* PS2, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> physicsScale);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Creates a joint between two gePhysicsObjects</BLOCKQUOTE>
+<STRONG><BLOCKQUOTE>Kind</STRONG>: Should be JT_WORLD (a joint between PS1 and world) or JT_SPHERICAL (a joint between PS1 and PS2)<BR>
+<STRONG>Location</STRONG>: the location of the joint.<BR>
+<STRONG>assemblyRate</STRONG>: not sure what this is, or what value it should be. Is used in <A HREF="gePhysicsSystemIndexed.htm#Iterate">gePhysicsSystem_Iterate</A> for calculation of joint movement.<BR>
+<STRONG>PS1</STRONG>: the first object connected by the new joint. Must not be NULL.<BR>
+<STRONG>PS2</STRONG>: the second object connected by the new joint. Not used (thus may be NULL) if Kind=JT_WORLD.<BR>
+<STRONG>physicsScale</STRONG>: used to scale Location into an internal physicsSpaceLocation.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">** ppPhysjnt);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Destroys a joint</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetType"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_GetType</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">* pPhysjnt);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Returns the type of the joint</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetLocationA"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>LocationA is the location of PS1, as specified during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetLocationB"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>This is the location of PS2, as specified during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>. If joint Kind was JT_WORLD, then LocationB will be equal to the location of the joint itself, as specifed during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="SetLocationA"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will set LocationA. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationA">GetLocationA</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="SetLocationB"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will set LocationB. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationB">GetLocationB</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetLocationAInWorldSpace"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Gets LocationA in WorldSpace. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationA">GetLocationA</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetLocationBInWorldSpace"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will get LocationB in WorldSpace. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationB">GetLocationB</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="SetLocationAInWorldSpace"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Sets LocationA in WorldSpace. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationA">GetLocationA</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="SetLocationBInWorldSpace"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* pLoc);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Sets LocationB in WorldSpace. See notes in <A HREF="gePhysicsJointIndexed.htm#GetLocationB">GetLocationB</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetObject1"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_GetObject1</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">* pPhysjnt);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will return first Object (PS1) as specified during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetObject2"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_GetObject2</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">* pPhysjnt);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will return second Object (PS2) as specified during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="GetAssemblyRate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_GetAssemblyRate</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">* pPhysjnt);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will get assemblyRate. Not sure how this is used. Was initially specified during <A HREF="gePhysicsJointIndexed.htm#Create">Create</A>.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="SetAssemblyRate"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePhysicsJoint_SetAssemblyRate</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</A><B><FONT COLOR="#000080">* pPhysjnt, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> assemblyRate);</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>Will set assemblyRate. Not sure how this is used, or what value range should be.</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;<A HREF="gePhysicsJointIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:19:41 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:27 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geDriverIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geDriver</B></FONT> </P>
+<B><P>Description: Takes care of some of the driver work. </P>
+</B><P>Source file: ...\genesis3d\OpenSource\Engine\System.h<BR>
+&nbsp;&nbsp;Note: Interface for several mode &amp; driver functions are in ...\genesis3d\OpenSource\Genesis.h (though implementation is in System.c)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And declaration of Mesh types is in ...\genesis3d\OpenSource\PTRTYPES.</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geDriverIndexed.htm#GetName">GetName</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geDriverIndexed.htm#GetNextMode">GetNextMode</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geDriverIndexed.htm#ModeGetName">ModeGetName</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geDriverIndexed.htm#ModeGetWidthHeight">ModeGetWidthHeight</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geDriverIndexed.htm#SystemGetNextDriver">SystemGetNextDriver</A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geDriverIndexed.htm#geEngine_FrameState">geEngine_FrameState</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Sys_String">Sys_String</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Sys_FontInfo">Sys_FontInfo</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Sys_CPUInfo">Sys_CPUInfo</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#geDriver">geDriver</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Sys_DriverInfo">Sys_DriverInfo</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Sys_DebugInfo">Sys_DebugInfo</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#geEngine_WorldList">geEngine_WorldList</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geDriverIndexed.htm#Mesh_MeshInfo">Mesh_MeshInfo</A><B>, </B><A HREF="geDriverIndexed.htm#Mesh_MeshDef">Mesh_MeshDef</A><B>, </B><A HREF="geDriverIndexed.htm#Mesh_RenderQ">Mesh_RenderQ</A></P>
+<FONT COLOR="#000080"><STRONG><P>Constants</FONT></STRONG>: <A HREF="geDriverIndexed.htm#Constants">view</A></P>
+<FONT COLOR="#000080"><P>Additions to Genesis3D v1.6: </FONT><B>None</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="geEngine_FrameState"></A>geEngine_FrameState</P>
+</B></FONT><P>typedef enum {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FrameState_None = 0,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FrameState_Begin,<BR>
+} geEngine_FrameState;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Sys_String"></A>Sys_String</P>
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,y;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[MAX_CLIENT_STRING_LEN];<BR>
+}&nbsp;Sys_String;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Sys_FontInfo"></A>Sys_FontInfo</P>
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontBitmap;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontLUT1[256];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#Sys_String">Sys_String</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClientStrings[MAX_CLIENT_STRINGS];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumStrings;<BR>
+} Sys_FontInfo;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Sys_CPUInfo"></A>Sys_CPUInfo</P>
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Freq;<BR>
+} Sys_CPUInfo;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="geDriver_Mode"></A>geDriver_Mode</P>
+</B></FONT><P>typedef struct geDriver_Mode {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Id;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Driver assigned mode id<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[DRV_MODE_STR_SIZE];&nbsp;&nbsp;// Driver assigned mode name<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Mode width<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Mode height<BR>
+} geDriver_Mode;</P>
+<BLOCKQUOTE>&nbsp;<A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geDriver"></A>geDriver</P>
+</B></FONT><P>typedef struct geDriver {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Id;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Driver assigned Id<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[DRV_STR_SIZE];&nbsp;&nbsp;&nbsp;// Driver assigned name<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileName[256];&nbsp;&nbsp;&nbsp;&nbsp;// FileName of driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A>&nbsp;&nbsp;&nbsp;Modes[MAX_DRIVER_MODES];&nbsp;// Modes for this driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumModes;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Num modes for this driver<BR>
+} geDriver;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="Sys_DriverInfo"></A>Sys_DriverInfo</P>
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Info the enuming fills in<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geDriver">geDriver</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubDrivers[MAX_SUB_DRIVERS];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumSubDrivers;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char* </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurFileName;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Data for current driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A> if a driver and mode has been initialized<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HINSTANCE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DriverHandle;&nbsp;&nbsp;// CurrentDriver Handle (for DLL)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geDriver">geDriver</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurDriver;&nbsp;&nbsp;&nbsp;// Current driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A>*&nbsp;&nbsp;CurMode;&nbsp;&nbsp;&nbsp;// Current mode<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_Driver">DRV_Driver</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RDriver;&nbsp;&nbsp;&nbsp;// Current driver function hook<BR>
+} Sys_DriverInfo;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="Sys_DebugInfo"></A>Sys_DebugInfo</P>
+</B></FONT><P>typedef struct {</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TraversedPolys;&nbsp;&nbsp;// Total Polys traversed<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentPolys;&nbsp;&nbsp;&nbsp;// Total Polys sent to driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderedPolys;&nbsp;&nbsp;// Total Rendered polys reported by driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumModels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumMirrors;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef&nbsp;MESHES<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;NumMeshes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumActors;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumDLights;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumFog;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LMap1;&nbsp;&nbsp;&nbsp;&nbsp;// Lmaps gone through first pass (reg light)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LMap2;&nbsp;&nbsp;&nbsp;&nbsp;// LMaps gone through 2nd pass (fog)<BR>
+} Sys_DebugInfo;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geEngine_WorldList"></A>geEngine_WorldList</P>
+</B></FONT><P>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geWorldIndexed.htm#geWorld">geWorld</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RefCount;<BR>
+&nbsp;} geEngine_WorldList;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geEngine"></A>geEngine&nbsp;</P>
+</B></FONT><P>// System globals initialized by module it belongs to...<BR>
+typedef struct geEngine {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;System info<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#Sys_DriverInfo">Sys_DriverInfo</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DriverInfo;&nbsp;&nbsp;&nbsp;// Info about current driver (this should be enumed)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#Sys_CPUInfo">Sys_CPUInfo</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPUInfo;&nbsp;&nbsp;&nbsp;// Info about the Cpu<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#Sys_DebugInfo">Sys_DebugInfo</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DebugInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LARGE_INTEGER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentTic;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#Sys_FontInfo">Sys_FontInfo</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FontInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="gePolyIndexed.htm#User_Info">User_Info</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserInfo;&nbsp;&nbsp;&nbsp;// Client loaded resources, etc...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HWND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hWnd;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AppName[200];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Global LUT's<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int16">int16</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WaveTable[20];&nbsp;&nbsp;// Global Wave table (for wavy effects, pumping, etc)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int16">int16</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WaveDir[20];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Global info that modules need to render world<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<A HREF="geWorldIndexed.htm#geWorld">geWorld</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World;&nbsp;&nbsp;&nbsp;&nbsp;// The global World<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geEngine_WorldList">geEngine_WorldList</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WorldList[ENGINE_MAX_WORLDS];&nbsp;&nbsp;// Current list of worlds renderable by the engine<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumWorlds;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Number of active worlds in world list<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geWorldIndexed.htm#geWorld">geWorld</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Worlds[ENGINE_MAX_WORLDS];&nbsp;&nbsp;// Linear array of worlds contained in WorldList<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Light module info<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StyleLUT1[64][256];&nbsp;// Style intensity table (StyleLUT1[Intensity][Number]);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A> if needs to be updated with Driver<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DisplayFrameRateCounter; // Whether or not to display the FPS string<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char* </FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DriverDirectory;&nbsp;// Path to load driver DLLs from<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AttachedBitmaps;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HasPixelFormat[ENGINE_PF_COUNT];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</A> &nbsp;&nbsp;PixelFormats[ENGINE_PF_COUNT];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentGamma;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BitmapGamma;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogEnable;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogR;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogG;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogB;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogStart;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogEnd;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geDriverIndexed.htm#geEngine_FrameState">geEngine_FrameState</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FrameState;<BR>
+&nbsp;} geEngine;</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<STRONG><P><A NAME="Mesh_MeshInfo"></A>typedef struct Mesh_MeshInfo <FONT COLOR="#800000">Mesh_MeshInfo</FONT></STRONG>;<BR>
+NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<STRONG><P><A NAME="Mesh_MeshDef"></A>typedef struct Mesh_MeshDef <FONT COLOR="#800000">Mesh_MeshDef</FONT></STRONG>;<BR>
+NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<STRONG><P><A NAME="Mesh_RenderQ"></A>typedef struct Mesh_RenderQ <FONT COLOR="#800000">Mesh_RenderQ</FONT></STRONG>;<BR>
+NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>&nbsp;</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define&nbsp;&nbsp;MAX_SUB_DRIVERS&nbsp;&nbsp;&nbsp;&nbsp;12</DD>
+<DD>#define&nbsp;&nbsp;MAX_DRIVER_MODES&nbsp;&nbsp;&nbsp;32</DD>
+<DD>#define&nbsp;&nbsp;DRV_STR_SIZE&nbsp;&nbsp;&nbsp;&nbsp;512</DD>
+<DD>#define&nbsp;&nbsp;DRV_MODE_STR_SIZE&nbsp;&nbsp;&nbsp;512</DD>
+<DD>#define MAX_CLIENT_STRING_LEN&nbsp;80</DD>
+<DD>#define MAX_CLIENT_STRINGS&nbsp;&nbsp;20</DD>
+<DD>&nbsp;</DD>
+<DD>#define ENGINE_PF_WORLD&nbsp;&nbsp;&nbsp;(0)<BR>
+#define ENGINE_PF_LIGHTMAP&nbsp;&nbsp;(1)<BR>
+#define ENGINE_PF_USER&nbsp;&nbsp;&nbsp;(2)<BR>
+#define ENGINE_PF_USER_ALPHA&nbsp;(3)<BR>
+#define ENGINE_PF_DECAL&nbsp;&nbsp;&nbsp;(4)<BR>
+#define ENGINE_PF_PALETTE&nbsp;&nbsp;(5)<BR>
+#define ENGINE_PF_ALPHA_CHANNEL&nbsp;(6)<BR>
+#define ENGINE_PF_COUNT&nbsp;&nbsp;&nbsp;(7)</DD>
+<DD>&nbsp;</DD>
+<DD>#define ENGINE_MAX_WORLDS&nbsp;&nbsp;8</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Macros:</B></I></FONT> </P>
+<P>#define&nbsp;&nbsp;VectorToSUB(a, b) (* (((<FONT COLOR="#0000ff"> float* </FONT>)&amp;a) + b) )</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="GetName"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geDriver_GetName</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geDriver">geDriver</A><B><FONT COLOR="#000080">* Driver, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char** </FONT><B><FONT COLOR="#000080">Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the name for the specified driver.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns:&nbsp; </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> on success.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetNextMode"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">geDriver_GetNextMode</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geDriver">geDriver</A><B><FONT COLOR="#000080">* Driver, </B></FONT><A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A><B><FONT COLOR="#000080">* Start);</B></FONT> </P>
+<B><BLOCKQUOTE>This function iterates through the list of modes for the specified driver.&nbsp; If* Start == </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B>, it starts at the beginning of the list.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: The geDriver_mode* .</B> <BR>
+&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ModeGetName"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#800000"><STRONG>geDriver_ModeGetName</FONT></STRONG><B><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</A><B><FONT COLOR="#000080">* Mode, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char** </FONT><B><FONT COLOR="#000080">Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the name for the specified DriverMode.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns:&nbsp; </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> on success.</B> <BR>
+&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="ModeGetWidthHeight"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* Height);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the Width and Height for the specified DriverMode.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns:&nbsp; </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> on success.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SystemGetNextDriver"></A><A HREF="BasetypesIndexed.htm#geDriver_System">geDriver_System</A><B><FONT COLOR="#000080">* DriverSystem, </B></FONT><A HREF="geDriverIndexed.htm#geDriver">geDriver</A><B><FONT COLOR="#000080">* Start);</B></FONT> </P>
+<B><BLOCKQUOTE>This function iterates through the list of driver for the specified DriverSystem.&nbsp; If* Start == </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B>, it starts at the beginning of the list.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: The </B><A HREF="geDriverIndexed.htm#geDriver">geDriver</A><B>* .</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<STRONG><P>geEngine* <FONT COLOR="#800000">Sys_EngineCreate</FONT>(HWND hWnd, const char* AppName, const char* DriverDirectory, uint32 Version);</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#800000"><STRONG>Sys_ShutdownDriver</FONT>(geEngine* Engine);</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<STRONG><P>void <FONT COLOR="#800000">Sys_EngineFree</FONT>(geEngine* Engine);<BR>
+</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<STRONG><P>Mesh_RenderQ* <FONT COLOR="#800000">Sys_WorldAddMesh</FONT>(geWorld* World, Mesh_MeshDef* MeshDef, int32 Flags);<BR>
+</STRONG>#ifdef MESHES</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<STRONG><P>Mesh_MeshDef* <FONT COLOR="#800000">Sys_WorldCreateMesh</FONT>(geWorld* World, const char* BitmapPath, const char* FileName);<BR>
+</STRONG>#ifdef MESHES</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<STRONG><P>void <FONT COLOR="#800000">Sys_WorldFreeMesh</FONT>(geWorld* World, Mesh_MeshDef* MeshDef);<BR>
+</STRONG>#ifdef MESHES<BR>
+</P>
+<BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P>// Misc system<BR>
+<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#800000"><STRONG>Sys_GetCPUFreq</FONT>(Sys_CPUInfo* Info);</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#800000"><STRONG>Sys_EnginePrint</FONT>(geEngine* Engine, int32 x, int32 y, char* String);</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#800000"><STRONG>Sys_EngineResetDecorators</FONT>(geEngine* Engine);</P>
+</STRONG><BLOCKQUOTE><A HREF="geDriverIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:35:48 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:58 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

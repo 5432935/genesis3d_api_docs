@@ -1,0 +1,244 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geFontIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geFont</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Bitmapped font support interface</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Font\font.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geFontIndexed.htm#CreateRef">CreateRef</A>, <A HREF="geFontIndexed.htm#Destroy">Destroy</A>, <A HREF="geFontIndexed.htm#AddCharacters">AddCharacters</A>, <A HREF="geFontIndexed.htm#DestroyBitmapBuffer">DestroyBitmapBuffer</A>, <A HREF="geFontIndexed.htm#AddBitmapBuffer">AddBitmapBuffer</A>, <A HREF="geFontIndexed.htm#DrawText">DrawText</A>, <A HREF="geFontIndexed.htm#DrawTextToBitmap">DrawTextToBitmap</A>, <A HREF="geFontIndexed.htm#GetStringPixelWidth">GetStringPixelWidth</A>, <A HREF="geFontIndexed.htm#GetBuffer">GetBuffer</A>, <A HREF="geFontIndexed.htm#GetCharMap">GetCharMap</A>, <A HREF="geFontIndexed.htm#EnableAntialiasing">EnableAntialiasing</A>, <A HREF="geFontIndexed.htm#IsAntialiased">IsAntialiased</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="geFontIndexed.htm#Constants">view</A></P>
+<B><FONT COLOR="#000080"><P>Overview: </B></FONT><A HREF="geFontIndexed.htm#Overview">view</A></P>
+<FONT COLOR="#000080"><P>Additions in Genesis3D v1.6:</FONT> <B>None</P>
+</B><BLOCKQUOTE><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</B></I></FONT> </P><DIR>
+<DIR>
+
+<P>This implementation supports any TrueType fonts provided by Windows</P>
+<P>To use this API:</P>
+<P>1. Call geFont_CreateFont().<BR>
+2. (Optionally) geFont_AddCharacters().<BR>
+3. Otherwise, IF you intend to use geFont_DrawText(), call geFont_AddBitmapBuffer().<BR>
+4. Between geEngine_BeginFrame() and geEngine_EndFrame(), and after geEngine_RenderWorld(),<BR>
+call geFont_DrawText(). You may call geFont_DrawTextToBitmap() anytime, though.<BR>
+5. When finished, geFont_Destroy().<B><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</P>
+</B></I></FONT><P>These are bit flags for geFont_DrawText(). </P>
+<P>Currently only _WORDWRAP is implemented, and without it, the function will still wrap, just not on word boundaries.</P>
+<P>Note that these will fail for non ascii fonts.</P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#000080"><P>&nbsp;#define GE_FONT_WORDWRAP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00000002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</B></FONT>//&nbsp;wrap on word boundaries</P>
+<P>&nbsp;</P>
+<FONT COLOR="#ff0000"><P>// The following codes are not implemented, and their use will cause an assert.</P>
+</FONT><B><FONT COLOR="#000080"><P>#define GE_FONT_WRAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</B></FONT>// wrap to fit inside the drawing rect</P>
+<P>//<B> GE_FONT_JUST_RETURN_FIT</B> causes return of number of characters that fit in drawing rectangle, WITHOUT drawing anything.</P>
+<B><FONT COLOR="#000080"><P>#define GE_FONT_JUST_RETURN_FIT &nbsp;0x00000004 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </P>
+<P>#define GE_FONT_JUSTIFY_RIGHT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00000008</P>
+<P>#define GE_FONT_JUSTIFY_CENTER &nbsp;&nbsp;&nbsp;&nbsp;0x00000010</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<P>&nbsp;<B><I><FONT SIZE=5 COLOR="#0000ff">Types:</P>
+</I></FONT><FONT COLOR="#000080"><P><A NAME="geFont"></A>typedef struct geFont </FONT><FONT COLOR="#800000">geFont</FONT><FONT COLOR="#000080">; </P>
+</B></FONT><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"This is an opaque structure header, an instance of a font"</P><DIR>
+
+<P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<BLOCKQUOTE><hr>
+<P><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> antialiased) ;</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>Creates a font, and returns a pointer to it.</P>
+<P>Pass in the string name of the TrueType font (case sensitive), and the height in pixels.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>fontNameString</B></FONT> - <FONT COLOR="#0000ff">char</FONT> pointer to a string containing the case sensitive name of the font.</P>
+<B><FONT COLOR="#000080"><P>fontSize</B></FONT> - the pixel height of the requested font.</P>
+<B><P>RETURNS</B>: On success, pointer to the newly created font. On failure, <A HREF="BasetypesIndexed.htm#NULL">NULL</A>.</P>
+<B><P>NOTE</B>: the new font set has NO actual characters in it at first. You must add characters</P>
+<P>to it with the _AddCharacters() function before you can use the font.</P>
+<P>NOTE: all fonts start out with a grayscale palette, with the range 0 to 128.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="CreateRef"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_CreateRef</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">** font);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>Destroys a font.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font </B></FONT>- pointer to the font to be destroyed.</P>
+<B><P>RETURNS:</B> nothing.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="AddCharacters"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_AddCharacters</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font, unsigned </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> leastIndex, unsigned </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> mostIndex);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>Adds a set of characters to the font defined by the ascii range passed in (leastIndex and mostIndex, inclusive).</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font </B></FONT>- pointer to the font to add characters to.</P>
+<B><FONT COLOR="#000080"><P>e</B></FONT> - pointer to a valid <A HREF="geDriverIndexed.htm#geEngine">geEngine</A>. <FONT COLOR="#ff0000">(this is apparently no longer required)</P>
+</FONT><B><FONT COLOR="#000080"><P>leastIndex </B></FONT>and <B><FONT COLOR="#000080">mostIndex</B></FONT> - the ASCII range of characters to add.</P>
+<B><FONT COLOR="#000080"><P>cellBuffer </B></FONT>- an allocated hunk of ram to temproarily store the character image <FONT COLOR="#ff0000">(this is apparently no longer required)</P>
+</FONT><B><FONT COLOR="#000080"><P>bufferSize </B></FONT>- length of the above buffer <FONT COLOR="#ff0000">(this is apparently no longer required)</P>
+</FONT><B><P>RETURNS</B>: <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure</P>
+<B><P>NOTES</B>: This is the function that actually uses the Win32 GetGlyphOutline() function to draw the character onto a <A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A>, which can be blitted to the screen.</P></DIR>
+</DIR>
+
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+<P><A NAME="DestroyBitmapBuffer"></A></B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_DestroyBitmapBuffer</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font );</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>Destroys any valid "scratch-pad" buffer attached to the <A HREF="geFontIndexed.htm#geFont">geFont</A>.</P>
+<B><P>ARGUMENTS</B>: font - pointer to the <A HREF="geFontIndexed.htm#geFont">geFont</A>.</P>
+<B><P>NOTES</B>: You'll rarely need to call this function; it's called by geFont_Destroy() anyway.</P>
+<P>Calling this function with a <A HREF="geFontIndexed.htm#geFont">geFont</A> that has no initialized buffer doesn't hurt anything.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="AddBitmapBuffer"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> height);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>Adds a <A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A> to the <A HREF="geFontIndexed.htm#geFont">geFont</A>, to be used as a temporary "scratch-pad". This is required for using geFont_DrawText() when no characters have been added.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font </B></FONT>- pointer to the <A HREF="geFontIndexed.htm#geFont">geFont</A> to add a buffer to.</P>
+<B><FONT COLOR="#000080"><P>width </B></FONT>and <B><FONT COLOR="#000080">height </B></FONT>- the size of the buffer to create. Make sure this size is &gt;= the biggest rectagle of text you'll want to write to the screen using this <A HREF="geFontIndexed.htm#geFont">geFont</A></P>
+<P>and DrawText().</P>
+<B><P>RETURNS</B>: <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure&nbsp;</P>
+<B><P>NOTES</B>: You don't need to call this function IF you _AddCharacters() to this <A HREF="geFontIndexed.htm#geFont">geFont</A>.</P>
+<P>You call this function for each <A HREF="geFontIndexed.htm#geFont">geFont</A> you need to use. <A HREF="geFontIndexed.htm#geFont">geFont</A>'s don't share buffers.</P>
+<P>if you call this function on a <A HREF="geFontIndexed.htm#geFont">geFont</A> that already has a valid buffer, the buffer is</P>
+<P>destroyed, and replaced by the new one.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="DrawText"></A><A HREF="BasetypesIndexed.htm#GE_Rect">GE_Rect</A><B><FONT COLOR="#000080">* clipRect);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>This is the function you put between geEngine_BeginFrame() and _EndFrame(), the function that draws text to the screen.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font</B></FONT> - pointer to the font to draw with. IF the font has NO characters in it (added by geFont_AddCharacters() ) then a different, more windows-intensive way is used to draw out the characters.</P>
+<B><FONT COLOR="#000080"><P>textString </B></FONT>- pointer to the text string to output to the screen.</P>
+<B><FONT COLOR="#000080"><P>Rect </B></FONT>- screen rectangle to place the text within.</P>
+<B><FONT COLOR="#000080"><P>Color </B></FONT>- RGB color the text should be.</P>
+<B><FONT COLOR="#000080"><P>flags</B></FONT> - a bitfield of GE_FONT_ values.</P>
+<B><FONT COLOR="#000080"><P>clipRect</B></FONT> - pointer to a screen rectangle to clip the text to. MAY BE <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, in which case the text is only clipped by the boundaries of the screen.</P>
+<B><P>RETURNS</B>: <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure&nbsp;</P>
+<B><P>NOTES</B>: Assuming you've added characters to the font, characters which have NOT been added WILL cause an assert if you try to draw them. </P>
+<P>Only GE_FONTSET_WORDWRAP <FONT COLOR="#ff0000">(actually, GE_FONT_WORDWRAP)</FONT> is meaningfull right now. Using any other flags will cause an assert.</P>
+<P>As stated above, you can use an entirely different way of creating a string, by making a font with no characters in it. This jumps through Windows DIB hoops, and draws the text in a non-anti-aliased, but (hopefully) more unicode-tolerant way (DrawText() ).</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="DrawTextToBitmap"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* targetBitmap);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>This is the function you put between geEngine_BeginFrame() and _EndFrame(), the function that draws text to the screen.</P>
+<B><P>ARGUMENTS</B>:</P>
+<B><FONT COLOR="#000080"><P>font</B></FONT> - pointer to the font to draw with. IF the font has NO characters in it (added by geFont_AddCharacters() ) then a different, more windows-intensive way is used to draw out the characters.</P>
+<B><FONT COLOR="#000080"><P>textString </B></FONT>- pointer to the text string to output to the screen.</P>
+<B><FONT COLOR="#000080"><P>Rect </B></FONT>- screen rectangle to place the text within.</P>
+<B><FONT COLOR="#000080"><P>Color </B></FONT>- RGB color the text should be.</P>
+<B><FONT COLOR="#000080"><P>flags</B></FONT> - a bitfield of GE_FONT_ values.</P>
+<B><FONT COLOR="#000080"><P>clipRect</B></FONT> - pointer to a screen rectangle to clip the text to. MAY BE <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, in which case the text is only clipped by the boundaries of the screen.</P>
+<B><FONT COLOR="#000080"><P>targetBitmap</B></FONT> - pointer to a target bitmap to draw the text into. MAY NOT BE <A HREF="BasetypesIndexed.htm#GE_PI">GE_PI</A>XELFORMAT_8BIT.</P>
+<B><P>RETURNS</B>: <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> on failure&nbsp;</P>
+<B><P>NOTES</B>: Assuming you've added characters to the font, characters which have NOT been added WILL cause an assert if you try to draw them. </P>
+<P>Only GE_FONTSET_WORDWRAP <FONT COLOR="#ff0000">(actually, GE_FONT_WORDWRAP) </FONT>is meaningfull right now. Using any other flags will cause an assert.</P>
+<P>As stated above, you can use an entirely different way of creating a string, by making a font with no characters in it. This jumps through Windows DIB hoops, and draws the text in a non-anti-aliased, but (hopefully) more unicode-tolerant way (DrawText() ).</P>
+<P>The <B><FONT COLOR="#000080">Color </B></FONT>argument is will be used to modify the existing palette of the targetBitmap passed in. Therefore, you won't be able to _DrawTextToBitmap() a red piece of text, then a green piece, then a blue piece. You'll end up with three lines of blue text</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="GetStringPixelWidth"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_GetStringPixelWidth </FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * textString);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>These two functions return the pixel width and height of the string passed in.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font </B></FONT>- pointer to the font to draw with.</P>
+<B><FONT COLOR="#000080"><P>textString </B></FONT>- pointer to the text string to output to the screen.</P>
+<B><P>RETURNS: </B>On success: a positive value in pixels. IF the text passed in contains characters which haven't been added to the font yet, BUT other characters HAVE been added, the function asserts. On failure: -1.</P>
+<B><P>NOTES</B>: These two functions assume no text wrapping!</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="GetBuffer"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_GetBuffer</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font);</P><DIR>
+<DIR>
+
+</FONT><P>PURPOSE: </B>This function returns a pointer to the drawing buffer contained by the font.</P>
+<B><P>ARGUMENTS:</P>
+<FONT COLOR="#000080"><P>font </B></FONT>- pointer to the font.</P>
+<B><P>RETURNS</B>: A valid pointer to a <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, signifying that the buffer wasn't initialized.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</DIR>
+
+<P><A NAME="GetCharMap"></A><A HREF="BasetypesIndexed.htm#int32">int32</A><B><FONT COLOR="#000080">* offsetY);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<P><A NAME="EnableAntialiasing"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> anti); </P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<P><A NAME="y"><A NAME="IsAntialiased"></A></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geFont_IsAntialiased</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFontIndexed.htm#geFont">geFont</A><B><FONT COLOR="#000080">* font);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geFontIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:23:29 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:07 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

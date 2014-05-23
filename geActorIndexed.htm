@@ -1,0 +1,3285 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geActorIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geActor</b></font> </p>
+
+<p><font color="#000080"><b>Description: Actor interface</b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\Actor\actor.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font></p>
+
+<p><b>Functions: </b><a href="geActorIndexed.htm#AnimationCue">AnimationCue</a>, <a
+href="geActorIndexed.htm#AnimationNudge">AnimationNudge</a>, <a
+href="geActorIndexed.htm#AnimationRemoveLastCue">AnimationRemoveLastCue</a>, <a
+href="geActorIndexed.htm#AnimationStep">AnimationStep</a>, <a
+href="geActorIndexed.htm#AnimationStepBoneOptimized">AnimationStepBoneOptimized</a>,
+<a href="geActorIndexed.htm#AnimationTestStep">AnimationTestStep</a>, <a
+href="geActorIndexed.htm#AnimationTestStepBoneOptimized">AnimationTestStepBoneOptimized</a>,
+<a href="geActorIndexed.htm#BlendPose">BlendPose</a>, <a href="geActorIndexed.htm#ClearPose">ClearPose</a>,
+<a href="geActorIndexed.htm#GetAnimationEvent">GetAnimationEvent</a>, <a
+href="geActorIndexed.htm#GetBoneAttachment">GetBoneAttachment</a>, <a
+href="geActorIndexed.htm#GetBoneBoundingBox">GetBoneBoundingBox</a>, <a
+href="geActorIndexed.htm#GetBoneExtBox">GetBoneExtBox</a>, <a
+href="geActorIndexed.htm#GetBoneTransform">GetBoneTransform</a>, <a
+href="geActorIndexed.htm#GetCount">GetCount</a>, <a href="geActorIndexed.htm#GetDynamicExtBox">GetDynamicExtBox</a>,
+<a href="geActorIndexed.htm#GetExtBox">GetExtBox</a>, <a href="geActorIndexed.htm#GetLightingOptions">GetLightingOptions</a>,
+<a href="geActorIndexed.htm#GetMaterial">GetMaterial</a>, <a
+href="geActorIndexed.htm#GetMaterialCount">GetMaterialCount</a>, <a
+href="geActorIndexed.htm#GetMotionByIndex">GetMotionByIndex</a>, <a
+href="geActorIndexed.htm#GetMotionByName">GetMotionByName</a>, <a
+href="geActorIndexed.htm#GetMotionCount">GetMotionCount</a>, <a
+href="geActorIndexed.htm#GetMotionName">GetMotionName</a>, <a
+href="geActorIndexed.htm#GetRenderHintExtBox">GetRenderHintExtBox</a>, <a
+href="geActorIndexed.htm#GetUserData">GetUserData</a>, <a href="geActorIndexed.htm#SetBoneAttachment">SetBoneAttachment</a>,
+<a href="geActorIndexed.htm#SetScale">SetScale</a>, <a href="geActorIndexed.htm#SetExtBox">SetExtBox</a>,
+<a href="geActorIndexed.htm#SetLightingOptions">SetLightingOptions</a>, <a
+href="geActorIndexed.htm#SetMaterial">SetMaterial</a>, <a href="geActorIndexed.htm#SetPose">SetPose</a>,
+<a href="geActorIndexed.htm#SetRenderHintExtBox">SetRenderHintExtBox</a>, <a
+href="geActorIndexed.htm#SetShadow">SetShadow</a>, <a href="geActorIndexed.htm#SetUserData">SetUserData</a></p>
+
+<p><font color="#000080"><b>Private API Functions </b></font><font
+color="#000080" size="2"><b><i>(available in API, but best
+reserved for advanced applications)</i></b></font><font
+color="#000080"><b>: </b></font><a href="geActorIndexed.htm#AddMotion">AddMotion</a>,
+<a href="geActorIndexed.htm#Attach">Attach</a>, <a href="geActorIndexed.htm#Create">Create</a>, <a
+href="geActorIndexed.htm#CreateRef">CreateRef</a>, <a href="geActorIndexed.htm#DefCreate">DefCreate</a>,
+<a href="geActorIndexed.htm#DefCreateFromFile">DefCreateFromFile</a>, <a
+href="geActorIndexed.htm#DefCreateRef">DefCreateRef</a>, <a href="geActorIndexed.htm#DefDestroy">DefDestroy</a>,
+<a href="geActorIndexed.htm#DefHasBoneNamed">DefHasBoneNamed</a>, <a
+href="geActorIndexed.htm#DefIsValid">DefIsValid</a>, <a href="geActorIndexed.htm#DefWriteToFile">DefWriteToFile</a>,
+<a href="geActorIndexed.htm#Destroy">Destroy</a>, <a href="geActorIndexed.htm#Detach">Detach</a>, <a
+href="geActorIndexed.htm#GetActorDef">GetActorDef</a>, <a href="geActorIndexed.htm#GetBody">GetBody</a>,
+<a href="geActorIndexed.htm#IsValid">IsValid</a>, <a href="geActorIndexed.htm#Render">Render</a>, <a
+href="geActorIndexed.htm#RenderPrep">RenderPrep</a>, <a
+href="geActorIndexed.htm#RenderThroughFrustum">RenderThroughFrustum</a>, <a
+href="geActorIndexed.htm#SetBlendingType">SetBlendingType</a>, <a href="geActorIndexed.htm#SetBody">SetBody</a>,</p>
+
+<p><font color="#000080"><b>Types: </b></font><a href="geActorIndexed.htm#geActor">geActor</a>,
+<a href="geActorIndexed.htm#geActor_Def">geActor_Def</a>, <a
+href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a></p>
+
+<p><b>Addition for Genesis3D v1.6</b>: <a href="geActorIndexed.htm#GetAlpha">GetAlpha</a>,
+<a href="geActorIndexed.htm#GetBoneCount">GetBoneCount</a> <a
+href="geActorIndexed.htm#GetBoneExtBoxByIndex">GetBoneExtBoxByIndex</a>, <a
+href="geActorIndexed.htm#GetBoneTransformByIndex">GetBoneTransformByIndex</a>, <a
+href="geActorIndexed.htm#GetEnvironOptions">GeEnvironOptions</a>, <a
+href="geActorIndexed.htm#GetNonWorldExtBox">GetNonWorldExtBox</a>, <a
+href="geActorIndexed.htm#GetPosition">GetPosition</a>, <a
+href="geActorIndexed.htm#GetStaticLightingOptions">GetStaticLightingOptions</a>, <a
+href="geActorIndexed.htm#SetAlpha">SetAlpha</a>, <a href="geActorIndexed.htm#SetEnvironOptions">SetEnvironOptions</a>,
+<a href="geActorIndexed.htm#SetStaticLightingOptions">SetStaticLightingOptions</a> </p>
+
+<p><font color="#000080"><b>Genesis3D v1.6 Private API Functions </b></font><font
+color="#000080" size="2"><b><i>(available in API, but best
+reserved for advanced applications)</i></b></font><font
+color="#000080"><b>: </b></font><a href="geActorIndexed.htm#DestroyDirect">DestroyDirect</a>,
+<a href="geActorIndexed.htm#GetEnvironOptions">GetEnvironOptions</a>,<font
+color="#800000"><b> </b></font><a href="geActorIndexed.htm#SetEnvironOptions">SetEnvironOptions</a>,</p>
+
+<p><font color="#000080"><b>Notes</b></font>: <a href="geActorIndexed.htm#Notes">view</a></p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geActor"></a><font color="#800000"><b>geActor</b></font><font
+color="#000080"><b>;</b></font> </p>
+
+<blockquote>
+    <p><b>A geActor is created from a </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>.&nbsp;
+    Before the actor and can rendered or posed, </b><a
+    href="geActorIndexed.htm#RenderPrep">geActor_RenderPrep</a><b> must be called
+    on it.&nbsp; There are two way to use an Actor.&nbsp; The
+    first method involves controlling the Actor directly with </b><a
+    href="geActorIndexed.htm#SetPose">SetPose</a><b> and and </b><a
+    href="geActorIndexed.htm#BlendPose">BlendPose</a><b>.&nbsp; The second method
+    is to use the animation cuing API to add time based animation
+    cues.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H:&nbsp;&nbsp; A geActor is an
+    instance of an actor definition.&nbsp; The definition is used
+    for the geometry, but all additional settings, such as the
+    bone pose, lighting information, and cuing information is
+    unique for a geActor.</p>
+</blockquote>
+
+<blockquote>
+    <p><strong>For the curious, the following is private and not
+    part of the API.</strong></p>
+</blockquote>
+
+<dl>
+    <dd>typedef struct geActor { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RefCount
+        // this is the number of owners. <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="gePuppetIndexed.htm#gePuppet">gePuppet</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Puppet;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="gePoseIndexed.htm#gePose">gePose</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pose;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a>&nbsp;BlendingType;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="geActorIndexed.htm#geActor_Def">geActor_Def</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActorDefinition
+        // actor definition this is an instance of <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geMotionIndexed.htm#geMotion">geMotion</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CueMotion;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMinCorner;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxMaxCorner;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoundingBoxCenterBoneIndex;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StepBoneIndex//
+        used for single-bone motion optimization.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">void</font>
+        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserData;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderHintExtBox;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderHintExtBoxCenterBoneIndex;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderHintExtBoxEnabled;<br>
+        } geActor;</dd>
+</dl>
+
+<p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geActor_Def"><font color="#800000"><b>geActor_Def</b></font></a><font
+color="#000080"><b>;</b></font> </p>
+
+<blockquote>
+    <p><b>A geActor_Def can either be loaded from a file or
+    created from scratch by setting the </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> of the
+    geActor_Def and adding geMotions to it.&nbsp; The </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> and geMotions
+    of the geActor_Def are owned by the geActor_Def after this
+    and will be destroyed when the actor definition is
+    destroyed.]</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: A geActor_Def embodies the
+    geometry (polygon, and bone information), and a library of
+    motions that can be applied to that geometry.&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><strong>For the curious, the following is private and not
+    part of the API.</strong></p>
+</blockquote>
+
+<dl>
+    <dd>typedef struct geActor_Def {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyIndexed.htm#geBody">geBody</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Body;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVFileIndexed.htm#geVFile">geVFile</a>*&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextureFileContext;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MotionCount;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geMotionIndexed.htm#geMotion">geMotion</a>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MotionArray;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RefCount&nbsp;&nbsp;&nbsp;&nbsp;//
+        this is the number of owners.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="geActorIndexed.htm#geActor_Def">geActor_Def</a>*
+        ValidityCheck;<br>
+        } geActor_Def;</dd>
+</dl>
+
+<p>&nbsp;<a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geActor_BlendingType"></a><font color="#800000"><b>geActor_BlendingType</b></font><font
+color="#000080"><b>;</b></font> </p>
+
+<blockquote>
+    <p>typedef enum{ <br>
+    &nbsp; GE_ACTOR_BLEND_LINEAR,&nbsp;&nbsp;&nbsp;&nbsp;<font
+    size="2">// Treats the blending amount as a linear value <br>
+    </font>&nbsp; GE_ACTOR_BLEND_HERMITE&nbsp;&nbsp;&nbsp;<font
+    size="2">// Applies a parametric smoothing curve to the
+    blending amount <br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+    size="2">// so that a linear change in BlendAmount parameters
+    will <br>
+    </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+    size="2">// result in a smooth (non-linear) change in
+    blending. <br>
+    </font>} geActor_BlendingType;</p>
+</blockquote>
+
+<p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geEnvironmentOptions"></a><font color="#800000"><b>geEnvironmentOptions</b></font></p>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;<a href="geActorIndexed.htm#geBoolean">geBoolean</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;UseEnvironmentMapping; <br>
+    &nbsp;&nbsp;<a href="geActorIndexed.htm#geBoolean">geBoolean</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;Supercede; <br>
+    &nbsp;&nbsp;<a href="geActorIndexed.htm#geFloat">geFloat</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PercentEnvironment;<br>
+    &nbsp;&nbsp;<a href="geActorIndexed.htm#geFloat">geFloat</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PercentMaterial;
+    <br>
+    &nbsp;&nbsp;<a href="geActorIndexed.htm#geFloat">geFloat</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PercentPuppet;<br>
+    } geEnvironmentOptions;</p>
+    <p><strong>See notes in </strong><a href="geActorIndexed.htm#SetEnvironOptions"><strong>geActor_SetEnvironOptions</strong></a><strong>
+    for description.</strong></p>
+</blockquote>
+
+<p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+
+<blockquote>
+    <blockquote>
+        <p>&nbsp;</p>
+    </blockquote>
+</blockquote>
+
+<hr>
+
+<p><br>
+<font color="#0000FF" size="5"><b><i>Functions:</i></b></font> </p>
+
+<p>&nbsp;</p>
+
+<p><a name="AddMotion"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AddMotion</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition, </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* M, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * Index);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> M to </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition and
+    returns the newly created motion library index Index.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Adds a <a
+    href="geMotionIndexed.htm#geMotion">geMotion</a> to the Actor
+    Definition's library.&nbsp; The ActorDefinition becomes
+    responsible for its destruction. returns the library index to
+    the new <a href="geMotionIndexed.htm#geMotion">geMotion</a>.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationCue"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationCue</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* Motion, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> TimeScaleFactor, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> TimeIntoMotion, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> BlendTime, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> BlendFromAmount, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> BlendToAmount, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* MotionTransform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function cues up </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> Motion
+    for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A.&nbsp; The cued motion starts playing at offset
+    TimeIntoMotion from the start of the motion and plays out at
+    a time scale of TimeScaleFactor.&nbsp; The motion is blended
+    with other active motions over BlendTime starting from
+    BlendFromAmount and finishing with BlendToAmount.&nbsp; The </b><a
+    href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><b>
+    MotionTransform is applied to the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> as a
+    local transform and maybe </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> for no
+    transform.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.&nbsp; </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    indicates incomplete initialization of the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Animation Cuing API: high
+    level Actor animation:&nbsp; The principle is that motions
+    can be applied to an actor and the actor will keep track of
+    which motions are currently appropriate.&nbsp; Call
+    _AnimationStep() to compute a new pose for an elapsed time
+    interval.&nbsp; The new pose will take into account all
+    motions that are 'currently' cued up to be set or blended.
+    cue up a new motion.&nbsp; The motion begins at the current
+    time.&nbsp; The motion can be blended in or out over time and
+    time scaled.&nbsp; If the return value is <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>, the
+    animation was not cued up (failure implies Actor is
+    incompletely initialized).</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationNudge"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationNudge</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Offset);</b></font> </p>
+
+<blockquote>
+    <p><b>This function applies the </b><a
+    href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><b> Offset
+    as an offset to </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: applies an 'immediate'
+    offset to the animated actor</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationRemoveLastCue"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationRemoveLastCue</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes the last applied AnimationCue
+    from </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A.&nbsp; Subsequent application removes earlier cues.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if a cue is removed, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b> if there
+    are no more cues to be removed.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: removes the last animation
+    cue that was cued up.&nbsp; Can be called repeatedly to
+    successively remove older and older cues.&nbsp; Returns <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> when a cue
+    was removed, <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    if there are no cues to remove.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationStep"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationStep</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> DeltaTime);</b></font> </p>
+
+<blockquote>
+    <p><b>This function &quot;steps&quot; the time for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A by
+    DeltaTime and reposes the actor in response to all applicable
+    animation cues.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    if the Actor is incompletely initialized.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: applies a time step to actor
+    A.&nbsp; re-poses the actor according to all currently
+    applicable Animation Cues. (failure implies Actor is
+    incompletely initialized)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationStepBoneOptimized"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationStepBoneOptimized</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> DeltaTime, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function steps the time for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A by
+    DeltaTime only for the bone indicated by BoneName and its
+    parents and reposes the actor appropriately.&nbsp; If </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> is passed for*
+    BoneName then only the &quot;root&quot; bone is affected.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: optimized version of
+    geActor_AnimationStep.&nbsp; Limits calculations to the bone
+    named BoneName, and it's parents.&nbsp; BoneName will be
+    correctly computed, but the other bones will be wrong.&nbsp;
+    This is useful for moving and animating an actor that is not
+    actually visible.&nbsp; Rendering and queries will be
+    'optimized' until the actor is given any pose or animation
+    that doesn't go through geActor_AnimationStepBoneOptimized()
+    or geActor_AnimationTestStepBoneOptimized().&nbsp; BoneName
+    can be <a href="BasetypesIndexed.htm#NULL">NULL</a> to
+    compute only 'root' bone.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationTestStep"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationTestStep</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> DeltaTime);</b></font> </p>
+
+<blockquote>
+    <p><b>This function steps the time for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A by
+    DeltaTime and reposes the actor in response to all applicable
+    animation cues; but, the time step is only temporary and
+    future geActor_Animation*Step* calls will not take any* Test*
+    calls into account.&nbsp; This is primarily used as a means
+    to check for collision prior to committing to the new pose.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: applies a 'temporary' time
+    step to actor A. re-poses the actor according to all
+    currently applicable cues. (failure implies Actor is
+    incompletely initialized) DeltaTime is always relative to the
+    the last AnimationStep()</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AnimationTestStepBoneOptimized"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_AnimationTestStepBoneOptimized</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> DeltaTime, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function steps the time for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A by
+    DeltaTime only for the bone indicated by BoneName and its
+    parents and reposes the actor appropriately.&nbsp; If </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> is passed for*
+    BoneName then only the &quot;root&quot; bone is affected;
+    but, the time step is only temporary and future
+    geActor_Animation*Step* calls will not take any* Test* calls
+    into account.&nbsp; This is primarily used as a means to
+    check for collision prior to committing to the new pose.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: optimized version of
+    geActor_AnimationTestStep.&nbsp; Limits calculations to the
+    bone named BoneName, and it's/ parents.&nbsp; BoneName will
+    be correctly computed, but the other bones will be
+    wrong.&nbsp; This is useful for moving and animating an actor
+    that is not actually visible.&nbsp; Rendering and queries
+    will be 'optimized' until the actor is given any pose or
+    animation that doesn't go through
+    geActor_AnimationStepBoneOptimized() or
+    geActor_AnimationTestStepBoneOptimized(). BoneName can be <a
+    href="BasetypesIndexed.htm#NULL">NULL</a> to compute only
+    'root' bone.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Attach"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_Attach</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Slave,&nbsp; </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><font
+color="#0000FF">char</font><font color="#000080"><b> *
+SlaveBoneName, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Master, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * MasterBoneName, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Attachment);</b></font> </p>
+
+<blockquote>
+    <p><b>This function attaches </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Slave to </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Master from
+    bone SlaveBoneName on Slave to bone MasterBoneName on Master
+    and orients Slave by transform Attachment relative to master </b><font
+    color="#FF0000"><b>(I think...)</b></font><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="BlendPose"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_BlendPose</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* Motion, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Time, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> BlendAmount);</b></font> </p>
+
+<blockquote>
+    <p><b>This function combines the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> Motion
+    with the current pose for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in the
+    amount specified by BlendAmount at a time offset of Time.
+    Transform is used to position the root of A; if it is null
+    then the current position is used.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Blends the current pose of
+    the <a href="geActorIndexed.htm#geActor">geActor</a> with a
+    new pose using motion M at a time offset of Time. A
+    BlendAmount of 0 will result in the existing pose, A
+    BlendAmount of 1 will result in the new pose from M.&nbsp;
+    The BlendingType set by _SetBlendingType() determines the
+    blending function between 0 and 1. Transform is where to
+    position the root for this pose.&nbsp; if Transform is <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, the root for the
+    pose is assumed to be the root of the actor.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ClearPose"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_ClearPose</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the pose for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A back to
+    its default pose and positions the actor at Transform.&nbsp;
+    If Transform is null then the actor is not moved.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Poses the actor in its
+    default pose. Transform is where to position the root for
+    this pose. if Transform is <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, the root for the
+    pose is assumed to be the root of the actor.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_Create</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> object from </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition and
+    returns it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Create an Actor instance
+    associated with the given Actor Definition</p>
+    <p><strong>Note from Jeff</strong>: The geActor_Create()
+    function increases the reference count of the geActor_Def and
+    returns a pointer to a geActor structure. This structure has
+    a copy of the geActor_Def structure and other values for
+    keeping track of this actor's properties. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="CreateRef"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_CreateRef</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor);</b></font> </p>
+
+<blockquote>
+    <p><b>This function increments the reference count for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Actor by
+    one.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Create an additional
+    reference (owner) for the Actor</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="DefCreate"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefCreate</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new empty </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> and returns it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Create an 'empty' Actor
+    Definition.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="DefCreateFromFile"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefCreateFromFile</b></font><font
+color="#000080"><b>(</b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* pFile);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    objects from the specified </b><a
+    href="geVFileIndexed.htm#geVFile">geVFile</a><b> pFile.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Create an Actor Definition
+    from a file image.</p>
+    <p><strong>Note from Jeff</strong>: <font color="#000000"
+    size="3">The geActor_DefCreateFromFile() function loads an
+    actor's body, materials, and motions in to memory and return
+    a pointer to the geActor_Def structure. The geActor_Def
+    structure is basically just a bunch of pointers to the
+    actor's body, materials, and motions. </font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="DefCreateRef"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefCreateRef</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* pActorDefinition);</b></font> </p>
+
+<blockquote>
+    <p><b>This function increases the reference count for </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> pActorDefinition by
+    one.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Create an additional
+    reference (owner) for the Actor_Definition</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<hr>
+
+<p><a name="DestroyDirect"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DestroyDirect</b></font>
+(<a href="geActorIndexed.htm#geActor">geActor</a>** <font color="#000080"><b>pA</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="Destroy"></a><hr>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_Destroy</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>**pA);</b></font> </p>
+
+<blockquote>
+    <p><b>This function decreases the reference count for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> pA by
+    one.&nbsp; If the reference count goes to 0 then all
+    resources for pA are freed.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Destroy an Actor.</p>
+    <p><strong>Note from Jeff</strong>: The geActor_Destroy()
+    function will check to see if there are multiple references
+    to the geActor, if so then it decreases the reference count
+    and returns. If there is only one reference then it destroys
+    the geActor and decreases the geActor_Def reference count.
+    This does not remove the actor's body, materials or motions
+    from memory. <br>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="DefDestroy"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefDestroy</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>** pActorDefinition);</b></font> </p>
+
+<blockquote>
+    <p><b>This function decreases the reference count for </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> pActorDefinition by
+    one.&nbsp; If the reference count goes to 0 then all
+    resources for pActorDefinition are freed.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if the reference count dropped to 0, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b> if the
+    reference count, after being reduced by 1, is still greater
+    than 0.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Function destroys a <a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a> (its <a
+    href="geBodyIndexed.htm#geBody">geBody</a> and its
+    geMotions).&nbsp; Actors that rely on this definition become
+    invalid. Function can fail if there are actors still
+    referencing this definition.</p>
+    <p><strong>Note from Jeff:</strong> The geActor_DefDestroy()
+    function will check to see if there are multiple references
+    to the geActor_Def, if so it decreases the reference count
+    and returns GE_FALSE. If there is only one reference then it
+    removes the actor's body, materials, and motions from memory
+    and returns GE_TRUE. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="DefHasBoneNamed"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefHasBoneNamed</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* Ad, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * Name);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks to see if </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> contains a bone with
+    the name Name.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if the named bone exists, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if the actor
+    definition has a bone named 'Name'</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="DefIsValid"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefIsValid</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks that </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    A is a valid, non-</b><a href="BasetypesIndexed.htm#NULL">NULL</a><b>
+    object.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if A is valid, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="DefWriteToFile"></a><hr></p>
+
+<p>&nbsp;</p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_DefWriteToFile</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* A, </b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* pFile);</b></font> </p>
+
+<blockquote>
+    <p><b>This function outputs the </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    A to the </b><a href="geVFileIndexed.htm#geVFile">geVFile</a><b>
+    pFile.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Writes an existing <a
+    href="geActorIndexed.htm#geActor">geActor</a> to a file
+    image.&nbsp; Returns <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    on success, <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    on failure.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Detach"></a></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_Detach</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Slave);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes the specified </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Slave from
+    the attachment specified by an earlier call to
+    geActor_Attach.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetActorDef"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetActorDef</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    object associated by </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    object.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns the Actor Definition
+    associated with Actor A</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<hr>
+
+<p><a name="GetAlpha"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetAlpha</b></font>(<font
+color="#000080">const</font> <a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A</b></font>) ;</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<p>// LWM_ACTOR_RENDERING:</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="GetAnimationEvent"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetAnimationEvent</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> **ppEventString);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current animation event
+    string for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A in ppEventString.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if an event string is returned, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Return data, if return value
+    is <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="GetBody"></a><hr>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBody</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> associated by </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns a <a
+    href="geBodyIndexed.htm#geBody">geBody</a> pointer from the <a
+    href="geActorIndexed.htm#geActor">geActor</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneAttachment"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneAttachment</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the position and orientation of
+    attachment for the bone indicated by BoneName of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in
+    Transform. </b><font color="#FF0000"><b>(I think...)</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneBoundingBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneBoundingBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Corner, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* DX, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* DY, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* DZ);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current non-axial-aligned
+    bounding box for the bone indicated by BoneName of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A.&nbsp; The
+    bounding box is returned as a corner (Corner) and an
+    orientation transform (DX, DY, DZ).</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets the non-axial-aligned
+    bounding box for a given bone (for the current pose). The box
+    is specified by a corner, and a non-normalized orientation
+    transform.&nbsp; Add DX,DY,DZ components of the orientation
+    to get other corners of the box if BoneName is <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, gets the a general
+    bounding box from the body of the actor if it has been set.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneCount"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b>int </font><font color="#800000"><b>geActor_GetBoneCount</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<blockquote>
+    <p>Mod for detailed collision detection</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneExtBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* ExtBox);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current axial-aligned
+    bounding box for the bone indicated by BoneName of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in
+    ExtBox.&nbsp; If BoneName is </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>, the bounding
+    box for the entire actor is returned, if set.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets the extent box
+    (axial-aligned bounding box) for a given bone (for the
+    current pose) if BoneName is <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, gets the a general
+    bounding box from the body of the actor if it has been set.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneExtBoxByIndex"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneExtBoxByIndex</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<font color="#000080">int</font> <font color="#000080"><b>BoneIndex</b></font>,
+<a href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>* <font
+color="#000080"><b>ExtBox</b></font>);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<blockquote>
+    <p>Mod for detailed collision detection</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneTransform</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current actor-space to
+    world-space transform for the bone indicated by BoneName of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in
+    Transform.&nbsp; If BoneName is </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>, then it returns
+    the actor's current root transform.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets the current transform
+    for a single bone in A.&nbsp; (actor space-world space
+    transform) with a <a href="BasetypesIndexed.htm#NULL">NULL</a>
+    BoneName, this returns the current 'root' transform</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneTransformByIndex"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetBoneTransformByIndex</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<font color="#000080">int</font> <font color="#000080"><b>BoneIndex</b></font>,
+<a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>*<font
+color="#000080"><b>Transform</b></font>);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<blockquote>
+    <p>Mod for detailed collision detection</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetCount"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetCount</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the number of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> objects
+    currently existing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: returns number of actors
+    that are currently created.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetDynamicExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetDynamicExtBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* ExtBox);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current axial-aligned
+    bounding box for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A taking all bones into account and returning the result in
+    ExtBox.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">ExtBox is returned with world space
+    coordinates for the bounding box, not values relative to the
+    actor (actor space). I.e. (753, 32, 2450) not (+20, +20,
+    -20). Note: this different from </font><a href="geActorIndexed.htm#GetExtBox"><font
+    color="#000080"><strong>GetExtBox</strong></font></a><font
+    color="#000080"> and </font><a href="geActorIndexed.htm#SetExtBox"><font
+    color="#000080"><strong>SetExtBox</strong></font></a><font
+    color="#000080">.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets the current
+    axial-aligned bounding box for an actor's bone configuration
+    takes all bones into account</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetEnvironOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geEnvironmentOptions">geEnvironmentOptions</a>
+<a href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetEnvironOptions</b></font>(<a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<blockquote>
+    <p>Gets current environmental mapping options. See discussion
+    in <a href="geActorIndexed.htm#SetEnvironOptions">geActor_SetEnvironOptions</a>.</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetExtBox"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetExtBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* ExtBox);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the originally assigned
+    axial-aligned non-changing bounding box for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in ExtBox.</b>
+    </p>
+    <p><font color="#000080">ExtBox is returned with actor space
+    values, not world space values. I.e. (+20, +20, -20) not
+    (753, 32, 2450). Note: this different from </font><a
+    href="geActorIndexed.htm#GetDynamicExtBox"><font color="#000080"><strong>GetDynamicExtBox</strong></font></a><font
+    color="#000080">. To convert between the two systems, use:
+    WorldSpaceValue - ActorWorldSpacePosition = ActorSpaceValue. </font></p>
+    <p><font color="#000080">For notes on the engine's use of the
+    Extbox, see </font><a href="geActorIndexed.htm#SetExtBox"><font color="#000080"><strong>SetExtBox</strong></font></a><font
+    color="#000080">.</font></p>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets an assigned general non
+    changing bounding box from the actor</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><a name="GetLightingOptions"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetLightingOptions</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>* UseFillLight, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* FillLightNormal, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* FillLightRed, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* FillLightGreen, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* FillLightBlue, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* AmbientLightRed, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* AmbientLightGreen, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* AmbientLightBlue, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>* UseAmbientLightFromFloor, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> *
+MaximumDynamicLightsToUse, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> ** LightReferenceBoneName, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>* PerBoneLighting);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current lighting options for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A.&nbsp; The
+    rest of the arguments represent the return values.&nbsp; See </b><a
+    href="geActorIndexed.htm#SetLightingOptions"><b>geActor_SetLightingOptions</b></a><b>
+    for further explanation.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMaterial"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMaterial</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaterialIndex, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>** Bitmap, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Red, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Green, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Blue);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> and color
+    settings for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    Actor at index MaterialIndex.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns the current material
+    for an instance of an actor</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="GetMaterialCount"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMaterialCount</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the number of material for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns the number of
+    materials for an instance of an actor.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="GetMotionByIndex"></a><hr></p>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMotionByIndex</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> Index);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function returns a pointer to the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> of </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition
+    indicated by index Index.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geMotionIndexed.htm#geMotion">geMotion</a><b>*
+    .</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns a <a
+    href="geMotionIndexed.htm#geMotion">geMotion</a> pointer from
+    the geActors <a href="geMotionIndexed.htm#geMotion">geMotion</a>
+    library. This is an aliased pointer - Not a copy.&nbsp;
+    Changes to this motion will be reflected in the actor.&nbsp;
+    Destroying this return motion will confuse the actor.Index
+    must be in range [0..geActor_GetMotionCount-1]</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMotionByName"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMotionByName</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><font
+color="#0000FF">char</font><font color="#000080"><b> * Name);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function returns a pointer to the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> of </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition named
+    Name.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geMotionIndexed.htm#geMotion">geMotion</a><b>*
+    on success, </b><a href="BasetypesIndexed.htm#NULL">NULL</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns a <a
+    href="geMotionIndexed.htm#geMotion">geMotion</a> pointer from
+    the geActors <a href="geMotionIndexed.htm#geMotion">geMotion</a>
+    library. This is an aliased pointer - Not a copy.&nbsp;
+    Changes to this motion will be reflected in the actor.&nbsp;
+    Destroying this return motion will confuse the actor.&nbsp;
+    If there is no motion that matches the given name, the return
+    value will be <a href="BasetypesIndexed.htm#NULL">NULL</a></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMotionCount"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMotionCount</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the number of </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> objects
+    in the </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    ActorDefinition's </b><a href="geMotionIndexed.htm#geMotion">geMotion</a><b>
+    library.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns the number of
+    geMotions in the geActors <a
+    href="geMotionIndexed.htm#geMotion">geMotion</a> library.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMotionName"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetMotionName</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> Index);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function returns the name of the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> object at
+    index Index of </b><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b>
+    ActorDefinition.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns a motion name given
+    an ActorDef and a motion index.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetNonWorldExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b>void </font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetNonWorldExtBox</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>* ExtBox);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<p>// Unlike geActor_GetExtBox, this gets the bounding box in
+non-world coordinates. </p>
+
+<p>// Whatever you put in with geActor_SetExtBox, you get out
+with this function.</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetPosition"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b>void </font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetPosition</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="geVec3dIndexed.htm#geVec3d">geVec3d</a> *Pos);</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<p>// Unlike geActor_GetExtBox, this gets the bounding box in
+non-world coordinates. </p>
+
+<p>// Whatever you put in with geActor_SetExtBox, you get out
+with this function.</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetRenderHintExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetRenderHintExtBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* Box, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>* Enabled);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns axial-aligned rendering hint
+    bound box for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    A.&nbsp; If the RenderHintExtBox option is enabled the
+    Enabled is </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>,
+    otherwise Enabled is false and the </b><a
+    href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><b> returned
+    is centered at the actor's root and has 0 dimensions.&nbsp;
+    See _SetRenderHintExtBox for more information.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Gets the rendering hint
+    bounding box from the actor.&nbsp; If the RenderHintExtBox is
+    disabled, Enabled is <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>,
+    and the box returned has zero dimensions, centered at the
+    root position of the actor.&nbsp; If the RenderHintExtBox is
+    enabled, Enabled is <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>,
+    and the box returned is the one set with
+    _SetRenderHintExtBox, offset by the bone position of the bone
+    named in _SetRenderHintExtBox().</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetStaticLightingOptions"></a><a
+href="geActorIndexed.htm#GetStaticLightingOptions">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetStaticLightingOptions</b></font>(<font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>UseAmbientLightFromStaticLights</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>TestRayCollision</b></font>, <font
+color="#000080">int</font>* <font color="#000080"><b>MaxStaticLightsToUse</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_GetUserData</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the pointer previously set with
+    geActor_SetUserData for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the pointer or </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> if no pointer
+    set.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Returns the pointer which
+    was set with geActor_SetUserData.&nbsp; <a
+    href="BasetypesIndexed.htm#NULL">NULL</a> if not set.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="IsValid"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_IsValid</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks that </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A is a valid
+    </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    object.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if valid, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Render"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_Render</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function renders the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A using </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> Engine, </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World, and </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera.&nbsp; This function is only available if WORLD.H is
+    included.&nbsp; _RenderPrep must have been called on A
+    previous to any call to _Render.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    This is NOT a <a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a>
+    function.</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; from ACTOR.H: Draws the <a
+    href="geActorIndexed.htm#geActor">geActor</a>.&nbsp;
+    (RenderPrep must be called first)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RenderPrep"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_RenderPrep</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This function is used to setup the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A for
+    rendering under </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp; This must be called before any calls to
+    rendering, posing, or world-transform functions.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> </p>
+</blockquote>
+
+<blockquote>
+    <p>This is NOT a <a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a>
+    function.</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; from ACTOR.H: Prepares the <a
+    href="geActorIndexed.htm#geActor">geActor</a> for rendering
+    and posing.&nbsp; Call Once once the actor is fully created.
+    Must be called prior to render/pose/setworldtransform</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RenderThroughFrustum"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_RenderThroughFrustum</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="FrustumIndexed.htm#Frustum_Info">Frustum_Info</a><font
+color="#000080"><b>* FInfo);</b></font> </p>
+
+<blockquote>
+    <p><b>This function renders the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A using </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> Engine, </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World, and </b><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><b> Camera if
+    it intersects the frustrum defined by Frustrum_Info.&nbsp;
+    _RenderPrep must have been called on A previous to any calls
+    to _RenderThroughFrustrum.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    This is NOT a <a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a>
+    function.</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; from ACTOR.H: Draws the <a
+    href="geActorIndexed.htm#geActor">geActor</a>.&nbsp;
+    (RenderPrep must be called first)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetAlpha"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetAlpha</b></font>(<a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>Alpha</b></font>) ;</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<p>// LWM_ACTOR_RENDERING:</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetBlendingType"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetBlendingType</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a><font
+color="#000080"><b> BlendingType);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the </b><a
+    href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a><b>
+    for </b><a href="geActorIndexed.htm#geActor">geActor</a><b> A
+    to BlendingType.&nbsp; </b><a
+    href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a><b>
+    sets the blending type used for blending poses and motions.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Selects a blending
+    type.&nbsp; BlendingType only affects the meaning of the
+    BlendAmount parameter for the blend functions.&nbsp; Can be
+    changed anytime.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetBody"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetBody</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>* ActorDefinition, </b></font><a
+href="geBodyIndexed.htm#geBody">geBody</a><font color="#000080"><b>*
+geBodyGeometry);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> for </b><a
+    href="geActorIndexed.htm#geActor_Def">geActor_Def</a><b> ActorDefinition to
+    geBodyGeometry.&nbsp; Once set the ownership of
+    geBodyGeometry is transferred to ActorDefinition and it must
+    not be destroyed.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Give the Actor Definition a
+    Body.&nbsp; <a href="geActorIndexed.htm#geActor">geActor</a>
+    becomes responsible for its destruction. Sets up default
+    materials as referenced by the Body.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetBoneAttachment"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetBoneAttachment</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the position and orientation of bone
+    indicated by the name BoneName on </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A in </b><a
+    href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><b>
+    Transform. </b><font color="#FF0000"><b>(I assume the bone
+    has to already exist, or can a bone be added this way?&nbsp;
+    Also it would seem that the transform must relate to the root
+    point of the bone.)</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetScale"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetScale</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> ScaleX, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> ScaleY, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> ScaleZ);</b></font> </p>
+
+<blockquote>
+    <p><b>This function scales the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A by
+    (ScaleX, ScaleY, ScaleZ).</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetEnvironOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetEnvironOptions</b></font>(<a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="geActorIndexed.htm#geEnvironmentOptions">geEnvironmentOptions</a>* opts );</p>
+
+<p>Added for Genesis3D v1.6</p>
+
+<blockquote>
+    <p><strong>This function enables pseudo-environmental mapping
+    for an actor. This pseudo-environmental mapping takes a
+    texture and applies it to the surface of the actor in a
+    manner that makes it look like a reflection, making the actor
+    look shiny.</strong></p>
+    <p><strong><u>Parameters</u></strong><strong>:<br>
+    A: </strong>The actor to modify<strong><br>
+    opts-&gt;UseEnvironmentMapping</strong>: //<font
+    color="#008000">Set to GE_TRUE for actor-level
+    environmental-mapping</font><br>
+    <strong>opts-&gt;Supercede</strong>: See Table. <font
+    color="#008000">//Toggle for material-level</font>. <font
+    color="#008000">The material for use with the mapping must be
+    contained in the actor (i.e. included during modeling and
+    compilation). The material name must begin with
+    &quot;env_&quot;.</font><br>
+    <strong>opts-&gt;PercentEnvironment</strong>: (See Table
+    below)<br>
+    <strong>opts-&gt;PercentMateria</strong>l: (See Table below).
+    <br>
+    <strong>opts-&gt;PercentPuppet</strong>: (See Table blow)</p>
+    <table border="1">
+        <tr>
+            <td><strong>Supercede value: </strong></td>
+            <td><strong>&quot;env_&quot; material found: </strong></td>
+            <td><strong>Mapping Coordinates Determined By:</strong></td>
+        </tr>
+        <tr>
+            <td>True</td>
+            <td>True</td>
+            <td>PercentPuppet and PercentMaterial</td>
+        </tr>
+        <tr>
+            <td>True</td>
+            <td>False</td>
+            <td>Regular mapping</td>
+        </tr>
+        <tr>
+            <td>False</td>
+            <td>(doesn't matter)</td>
+            <td>PercentPuppet and PercentEnvironment</td>
+        </tr>
+    </table>
+</blockquote>
+
+<blockquote>
+    <p>To get current settings, use <a href="geActorIndexed.htm#GetEnvironOptions">geActor_GetEnvironOptions</a>.</p>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetExtBox"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetExtBox</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* ExtBox, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * CenterBoxOnThisNamedBone);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the immutable basic bounding box of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A to ExtBox
+    and centers it on the bone indicated by
+    CenterBoxOnThisNamedBone.&nbsp; If* CenterBoxOnThisNameBone
+    is </b><a href="BasetypesIndexed.htm#NULL">NULL</a><b> then
+    the root is used.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">ExtBox is expected to be actor space
+    values, not world space values. I.e. (+20, +20, -20) not
+    (753, 32, 2450). Note: this different from </font><a
+    href="geActorIndexed.htm#GetDynamicExtBox"><font color="#000080"><strong>GetDynamicExtBox</strong></font></a><font
+    color="#000080">. To convert between the two systems, use:
+    WorldSpaceValue - ActorWorldSpacePosition = ActorSpaceValue. </font></p>
+    <p><font color="#000080">An actors ExtBox is the bounding box
+    that is used in collision detection. Genesis3D does not check
+    for collisions based on the polygon mesh that defines the
+    actor. Instead it checks for a intersection between this
+    extbox and the world geometry. It keeps engine speed up.
+    Users can use the bounding boxes for individual bones (see </font><a
+    href="geActorIndexed.htm#GetBoneBoundingBox"><font color="#000080"><strong>GetBoxBoundingBox</strong></font></a><font
+    color="#000080">) for higher resolution collision
+    detection--though these box intersections would need to be
+    hand calculated with some other function.</font></p>
+    <p><font color="#000080">Also, the ExtBox is aligned to <strong>world</strong>
+    coordinates (&quot;axial alignment&quot;). This means that
+    the box does not rotate with the actor. For example, imagine
+    that one had a long slender box to sized to contain a missle
+    when the actor's transform is at identity (i.e. reset to no
+    rotation's etc.). </font></p>
+    <p><font color="#000080"><img src="BoundingBox1.gif"
+    width="64" height="64"></font></p>
+    <p><font color="#000080">If the missle then rotates by 90
+    degrees, the ends of the missle will stick out of the sides
+    of the box unless the box is resized. </font></p>
+    <p><font color="#000080"><img src="BoundingBox2.gif"
+    width="64" height="64"></font></p>
+    <p><font color="#000080">It is not currently possible to have
+    the sides of the box to be other than parallel to the
+    principle axises of the world. So in our example, if the
+    missle were rotated to 45 degrees, we would need to enlarge
+    the bounding box size to contain the entire actor.</font></p>
+    <p><font color="#000080"><img src="BoundingBox3.gif"
+    width="61" height="61"></font></p>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Sets an assigned general non
+    changing bounding box from the actor</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetLightingOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetLightingOptions</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> UseFillLight, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* FillLightNormal, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> FillLightRed, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> FillLightGreen, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> FillLightBlue, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> AmbientLightRed, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> AmbientLightGreen, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> AmbientLightBlue, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> AmbientLightFromFloor, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b>
+MaximumDynamicLightsToUse, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * LightReferenceBoneName, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> PerBoneLighting);</b></font> </p>
+
+<blockquote>
+    <p><b>Purpose: </b>Sets lighting options for an actor</p>
+    <p><b>A: </b>The <a href="geActorIndexed.htm#geActor">geActor</a>
+    that is to have lighting options set.<b><br>
+    UseFillLight: </b>If <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a>
+    then use a directional fill light to shine onto actor.<b><br>
+    FillLightNormal: </b>A vector specifying the direction of a
+    directional fill light.<br>
+    <b>FillLightRed: </b>Directional fill light's red color (R of
+    RGB)&nbsp; [0 .. 255]<br>
+    <b>FillLightGreen: </b>Directional fill light's green color
+    (G of RGB)&nbsp; [0 .. 255]<br>
+    <b>FillLightBlue: </b>Directional fill light's blue color (B
+    of RGB)&nbsp; [0 .. 255]<br>
+    <b>AmbientLightRed: </b>Overall ambient light's red color (R
+    of RGB) [0 .. 255]<br>
+    <b>AmbientLightGreen: </b>Overall ambient light's green color
+    (G of RGB) [0 .. 255]<br>
+    <b>AmbientLightBlue: </b>Overall ambient light's blue color
+    (B of RGB) [0 .. 255]<br>
+    <font color="#000000"><b>AmbientLightFromFloor: </b>If </font><a
+    href="BasetypesIndexed.htm#GE_TRUE"><font color="#000000">GE_TRUE</font></a><font
+    color="#000000">, then the actor lighting value is taken from
+    the lighting of the floor directly beneath the actor, instead
+    of from <strong>AmbientLightRed/Green/Blue</strong>. </font>If
+    a dynamic light lights the floor, the actor will brighten
+    accordingly - but uniformly. This is a way to approximate the
+    local 'ambient' lighting situation for that actor (i.e. i<font
+    color="#000000">t allows the actor to look dark when standing
+    in shadows.</font>) <font color="#FF0000"><b><br>
+    </b></font><font color="#000000"><b>MaximumDynamicLightsToUse:</b></font><font
+    color="#FF0000"><b> </b></font><font color="#000000">Sets the
+    maximum number of dynamic lights to use for the lighting
+    calculations for this actor.</font><font color="#FF0000">&nbsp;</font><font
+    color="#000000">Use 0 for none. </font><font color="#FF0000">I
+    assume that lowering this number would improve the rendering
+    time for the </font><a href="geActorIndexed.htm#geActor">geActor</a><font
+    color="#FF0000">.&nbsp; I would guess that the lights that
+    are used are picked based on distance from the </font><a
+    href="geActorIndexed.htm#geActor">geActor</a><font
+    color="#FF0000">.</font>&nbsp; <br>
+    <strong>LightReferenceBoneName: </strong>If <strong>PerBoneLighting</strong>
+    is <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>, this
+    indicates a bone which will be used to calculate this for the
+    <a href="geActorIndexed.htm#geActor">geActor</a> as a whole. <br>
+    <b>PerBoneLighting: </b>If is <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> then the
+    lighting attenuation and direction is computed for each bone
+    individually.</p>
+    <p><strong>Notes from Mike Sandige</strong>: &quot;If you are
+    using AmbientLightFromFloor option, make sure the reference
+    bone is good. Also be aware that there is a bug with this
+    option: A ray is fired down from the reference bone to the
+    floor, and the light from that point is used... If that bit
+    of floor isn't currently visible, this can result in improper
+    lighting including unexpected blackness.&quot;<em> And</em>
+    &quot;The actor will check the lighting on the floor directly
+    beneath it, since you have 'AmbientLightFromFloor' enabled.
+    It uses the light value from the floor instead of the
+    AmbientLight colors you gave. If a dynamic light lights the
+    floor, the actor will brighten accordingly - but uniformly.
+    This is a way to approximate the local 'ambient' lighting
+    situation for that actor.&quot;<br>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetMaterial"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetMaterial</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaterialIndex, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Red, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Green, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Blue);</b></font> </p>
+
+<blockquote>
+    <p><b>This function can be used to apply a </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> Bitmap
+    and color (Red, Green, Blue) to an individual </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> instance
+    Actor.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Allows a material to be
+    overriden in an actor instance</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetPose"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetPose</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* Motion, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Time, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Transform);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the pose of </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A to </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> Motion at
+    time offset Time positioned at Transform.&nbsp; If Transform
+    is </b><a href="BasetypesIndexed.htm#NULL">NULL</a><b>, the
+    root of the </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    is used as the position.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Poses the actor using given
+    motion M at a time offset of Time. Transform is where to
+    position the root for this pose. If Transform is<a
+    href="BasetypesIndexed.htm#NULL">NULL</a>, the root for the
+    pose is assumed to be the root of the actor.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetRenderHintExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetRenderHintExtBox</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><font
+color="#000080"><b>* Box, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * CenterBoxOnThisNamedBone);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets an axial-aligned RenderHintBox for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A to Box and
+    centers it about CenterBoxOnThisNameBone.&nbsp; If*
+    CenterBoxOnThisNamedBone is </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> then the root
+    bone is used to center the </b><a
+    href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><b>.&nbsp; A
+    RenderHintBox is used to optimize the decision of whether the
+    </b><a href="geActorIndexed.htm#geActor">geActor</a><b> needs
+    to be rendered.&nbsp; A simple extent-box test can be used
+    rather than a more complex bone-by-bone test if this is
+    set.&nbsp; If any portion of the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> extends
+    outside of Box and only that portion of the </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> would be
+    visible then it will not be drawn.&nbsp; To disable the
+    RenderHintBox call this with a zeroed </b><a
+    href="geExtBoxIndexed.htm#geExtBox">geExtBox</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from ACTOR.H: Sets a rendering hint
+    bounding box from the actor.&nbsp; Increases performance by
+    enabling the rendering of the actor to occur only if the box
+    is visible. If the box is not visible, a detailed analysis of
+    the actor's current geometry is avoided. This does allow
+    errors to occur:&nbsp; If the actor has a bit of geometry
+    that extends outside this box for some animation, that
+    extended geometry may not be drawn, if the box if off-screen.
+    If the render hint box is not set, the engine will make no
+    conservative assumptions about the visibility of an actor -
+    it will always be drawn if any portion of it is visible. To
+    attach the box to the 'root' bone, pass <a
+    href="BasetypesIndexed.htm#NULL">NULL</a> for
+    CenterBoxOnThisNamedBone. For disabling the hint box:
+    (disabled is default) pass Box with zero mins and maxs</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetShadow"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetShadow</b></font><font
+color="#000080"><b>(</b></font><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> DoShadow, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Radius, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* ShadowMap, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the shadowmap option for </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A.&nbsp; If
+    DoShadow is </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    then </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    ShadowMap is used to create a cylindrical shadowmap about </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A centered
+    on the bone indicated by BoneName with radius Radius.&nbsp; </b><font
+    color="#FF0000"><b>(I'm just guessing about the cylindrical
+    stuff, maybe I'm totally off.&nbsp; I guess it could be a
+    sphere that would make more sense probably.)</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetStaticLightingOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geActor_SetStaticLightingOptions</b></font>(<a
+href="geActorIndexed.htm#geActor">geActor</a><font color="#000080"><b>* A</b></font>,
+<a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> AmbientLightFromStaticLights</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> TestRayCollision</b></font>, <font
+color="#000080">int</font> <font color="#000080"><b>MaxStaticLightsToUse</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#800000"><b>_SetUserData</b></font><font color="#000080"><b>(</b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><a href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* A, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * UserData);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a pointer to userdata to </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> A that can
+    be used to store non-Genesis3D information about an actor.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<p><b>Notes:</b> <br>
+&nbsp;&nbsp;&nbsp; from ACTOR.H: Sets the actors user data
+pointer to the given value.&nbsp; For clients only. </p>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"></a><font color="#0000FF" size="5"><b><i>Notes:</i></b></font>
+</p>
+
+<p><strong>Notes from Genesis3d forum (author Jeff):</strong></p>
+
+<p><font color="#000000" size="3">The <strong>geActor_DefCreateFromFile</strong>()
+function loads an actor's body, materials, and motions in to
+memory and return a pointer to the geActor_Def structure. The
+geActor_Def structure is basically just a bunch of pointers to
+the actor's body, materials, and motions. </font></p>
+
+<p><font color="#000000" size="3">The <strong>geActor_Create</strong>()
+function increases the reference count of the geActor_Def and
+returns a pointer to a geActor structure. This structure has a
+copy of the geActor_Def structure and other values for keeping
+track of this actor's properties. </font></p>
+
+<p><font color="#000000" size="3">The <strong>geWorld_AddActor</strong>()
+function will increase the reference count of the geActor and
+copy a reference to the world's actor array. This array is used
+to keep track of all the actors in the world. </font></p>
+
+<p><font color="#000000" size="3">The <strong>geWorld_RemoveActor</strong>()
+function will decrease the reference to the geActor and remove it
+from the world's actor array. </font></p>
+
+<p><font color="#000000" size="3">The <strong>geActor_Destroy</strong>()
+function will check to see if there are multiple references to
+the geActor, if so then it decreases the reference count and
+returns. If there is only one reference then it destroys the
+geActor and decreases the geActor_Def reference count. This does
+not remove the actor's body, materials or motions from memory. </font></p>
+
+<p><font color="#000000" size="3">The <strong>geActor_DefDestroy</strong>()
+function will check to see if there are multiple references to
+the geActor_Def, if so it decreases the reference count and
+returns GE_FALSE. If there is only one reference then it removes
+the actor's body, materials, and motions from memory and returns
+GE_TRUE. </font></p>
+
+<p>-------------------------------------------------------------------</p>
+
+<p>Notes from actor.h:</p>
+
+<p>Actor</p>
+
+<p>This object is designed to support character animation.</p>
+
+<p>There are two basic objects to deal with. </p>
+
+<p>Actor Definition (geActor_Def)</p>
+
+<p>A geActor_Def embodies the geometry (polygon, and bone
+information), <br>
+and a library of motions that can be applied to that geometry.</p>
+
+<p>Actor</p>
+
+<p>A geActor is an instance of an actor definition. The
+definition is used for <br>
+the geometry, but all additional settings, such as the bone pose,
+lighting information,<br>
+and cuing information is unique for a geActor.</p>
+
+<p><font color="#008000">// GENESIS_PRIVATE_API</font></p>
+
+<p>An Actor Definition is created either from an existing Actor
+Definition file, or from scratch by <br>
+first creating a geBody and geMotions and selecting these into an
+Actor. If the Actor Definition<br>
+is constructed from scratch, the objects selected into it (via
+SetBody and AddMotion) are<br>
+then 'owned' by the actor and will be destroyed along with the
+Actor when it is destroyed.</p>
+
+<p><br>
+Of course, when the Actor is loaded from a file, the Body and
+Motion it creates as it is<br>
+loaded are cleaned up when the Actor is destroyed.<br>
+<br>
+Once an Actor is created, prepare it for rendering and animating
+by calling <br>
+Actor_RenderPrep(). This must be called (and it must succeed)
+before any render or<br>
+pose setting functions can be called.</p>
+
+<p><font color="#008000">// GENESIS_PUBLIC_API</font></p>
+
+<p>There are two ways to use an Actor.</p>
+
+<p>Direct Control</p>
+
+<p>One method is to directly control the skeleton configuration.
+Use _SetPose() to set its <br>
+skeleton using a geMotion animation. The pose is positioned in
+world space relative to the <br>
+transform given in SetPose(). Whenever a new skeleton pose is
+required, call _SetPose() <br>
+to reposition the skeleton for a new point in time. </p>
+
+<p>More complex positioning can be achieved by blending more than
+one animation. Use<br>
+_BlendPose() after a _SetPose() to blend the second geMotion into
+the first. Additional<br>
+blends can be applied by additional _BlendPose() calls. Each
+blend is performed on the<br>
+the existing skeleton (the results of any previous blends).</p>
+
+<p>Cuing</p>
+
+<p>Another method is to 'cue' up motions that are applied with
+parameterized blending over time.<br>
+A cued motion takes effect 'now' in time. The Actor advances in
+time and repositions itself<br>
+according to its currently cued motions with a call to
+_AnimationStep(). AnimationStep() <br>
+redefines what the actor thinks 'now' is. This causes historical
+cues to be forgotten, and <br>
+motions that are no longer valid are cleaned up.
+AnimationTestStep() can be used to position <br>
+the actor for potential queries with its currently cued motions
+at some arbitrary future time <br>
+- relative to the last AnimationTestStep() call. AnimationNudge()
+applies a given transform <br>
+'instantly' to the current actor's cue list. This is usefull for
+moving the actor as a <br>
+result of a collision with another object.</p>
+
+<p>If a motion contains joint information that does not exactly
+match the Actor's skeleton <br>
+joints, only the joints that match by name are applied. So a
+geMotion can be applied to<br>
+a portion of the Actor, or a geMotion that has more joint
+information than the skeleton can<br>
+be applied and the extra joint information is ignored. </p>
+
+<p>Examples of this: If the Actor is a biped and has no tail, but
+the motion is for a <br>
+biped with a tail, the geMotion can be applied, but the tail
+information will be ignored.<br>
+Also if there is a geMotion for only a left arm, it can be
+applied and it will only affect<br>
+the left arm of the Actor, and consequently its left hand and
+fingers, but no other <br>
+bones that are not children of the affected bones will be
+changed.</p>
+
+<blockquote>
+    <p><a href="geActorIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 13:25:36 Feb 1, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:14 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

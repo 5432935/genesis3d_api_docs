@@ -1,0 +1,1205 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geQuaternionIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geQuaternion</b></font> </p>
+
+<p><font color="#000080"><b>Description: Quaternion mathematical
+system interface</b></font></p>
+
+<p>Source file: &#133;\genis3d\OpenSource\Source\Math\quatern.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+</p>
+
+<p><font color="#000080"><b>API Functions:</b></font> <a
+href="geQuaternionIndexed.htm#Copy">Copy</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Normalize">Normalize</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#SetFromAxisAngle">SetFromAxisAngle</a><font
+color="#000080"><b>, </b></font><a href="geQuaternionIndexed.htm#ToMatrix">ToMatrix</a></p>
+
+<p><font color="#000080"><b>Other Functions:</b></font> <a
+href="geQuaternionIndexed.htm#Add">Add</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Compare">Compare</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Exp">Exp</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#FromMatrix">FromMatrix</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Get">Get</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#GetAxisAngle">GetAxisAngle</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#GetVec3d">GetVec3d</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Inverse">Inverse</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#IsUnit">IsUnit</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#IsValid">IsValid</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Ln">Ln</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Magnitude">Magnitude</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Multiply">Multiply</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Rotate">Rotate</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Scale">Scale</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#Set">Set</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#SetNoRotation">SetNoRotation</a><font color="#000080"><b>,
+</b></font><a href="geQuaternionIndexed.htm#SetVec3d">SetVec3d</a><font color="#000080"><b>,
+</b></font><a href="geQuaternionIndexed.htm#Slerp">Slerp</a><font color="#000080"><b>, </b></font><a
+href="geQuaternionIndexed.htm#SlerpNotShortest">SlerpNotShortest</a><font
+color="#000080"><b>, </b></font><a href="geQuaternionIndexed.htm#Subtract">Subtract</a><font
+color="#000080"><b>, </b></font></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a></p>
+
+<p><font color="#000080"><b>Constants: </b></font><a
+href="geQuaternionIndexed.htm#QUATERNION_PI">QUATERNION_PI</a></p>
+
+<p><font color="#000080"><b>Notes:</b></font> <a href="geQuaternionIndexed.htm#Notes">view</a></p>
+
+<p><font color="#000080">Changes for Genesis3D v1.6</font>: <b>None</b></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geQuaternion"></a><font color="#800000"><b>geQuaternion</b></font><font
+color="#000080"><b>;</b></font> </p>
+
+<blockquote>
+    <p><font face="Courier New,Courier">typedef struct{</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+    face="Courier New,Courier"> W;</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+    face="Courier New,Courier">&nbsp;&nbsp; X,Y,Z;</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; //</font>
+    <a href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+    face="Courier New,Courier">&nbsp;&nbsp; QuatV;</font> <br>
+    <font face="Courier New,Courier">} geQuaternion;</font> </p>
+</blockquote>
+
+<dir>
+    <li><blockquote>
+            <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<hr>
+
+<p><br>
+<font color="#0000FF" size="5"><b><i>Constants:</i></b></font> </p>
+
+<p><a name="QUATERNION_PI"></a><font color="#000080"><b>QUATERNION_PI;</b></font>
+</p>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define QUATERNION_PI (</font><a
+    href="BasetypesIndexed.htm#GE_PI">GE_PI</a><font
+    face="Courier New,Courier">)</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="Add"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Add(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q2, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QSum);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds Q1 to Q2 returning the result in
+    QSum.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: QSum = Q1 + Q2&nbsp;
+    (result is not generally a unit quaternion!)</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Compare"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Compare(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q1, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q2, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Tolerance);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks whether Q1 and Q2 differ by no
+    more than Tolerance.&nbsp; The check is done element by
+    element, if anyone element differs by more than tolerance
+    then </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    is returned.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if Q1 and Q2 differ by no more than Tolerance, otherwise </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: return <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if
+    quaternions differ elementwise by less than Tolerance.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Copy"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Copy(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QSrc, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QDst);</b></font> </p>
+
+<blockquote>
+    <p><b>This function copies the contents of QSrc in
+    QDst.&nbsp; QDst must not be </b><a
+    href="BasetypesIndexed.htm#NULL">BasetypesIndexed.htm - NULL</a><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: copies quaternion QSrc
+    into QDst</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Exp"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Exp(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* ExpQ);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates e</b><sup><b>Q</b></sup><b>.&nbsp;
+    Q.W must equal 0.0.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: exp(Q) for pure quaternion
+    only!&nbsp; (zero scalar part (W))</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FromMatrix"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_FromMatrix(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>&nbsp;* RotationMatrix, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QDest);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets up QDest from the transformat
+    RotationMatrix.&nbsp; The resulting quaternion will only have
+    the rotational transform part of the transformation matrix.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: takes upper 3 by 3 portion
+    of matrix (rotation sub matrix) and generates a quaternion.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Get"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Get(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* W, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* X, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Z);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the components of Q in (W,X,Y,Z).</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: get quaternion components
+    into W,X,Y,Z</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetAxisAngle"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_GetAxisAngle(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Axis, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Theta);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the rotational transformation
+    represented by Q as an angle Theta and axis of rotation Axis.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: gets an axis and angle of
+    rotation around the axis from a quaternion.&nbsp; returns <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if there is
+    an axis. returns <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a>
+    if there is no axis (and Axis is set to 0,0,0, and Theta is
+    0)</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetVec3d"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_GetVec3d(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* W, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the components of Q as a scalar W
+    and a vector V.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: get quaternion components
+    into W and V</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Inverse"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Inverse(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QInv);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates the inverse of Q and returns
+    it as QInv.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: sets QInv to the inverse
+    of Q.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsUnit"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_IsUnit(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks to see the Q is a unit quaternion.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    of Q is a unit quaternion, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: returns <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if q is a
+    unit quaternion.&nbsp; <a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a> otherwise.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsValid"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_IsValid(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks that all the elements of Q are
+    real numbers.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    of Q is valid, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: return <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if Q is non
+    null and for has no NAN's in its components</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Ln"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Ln(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* LnQ);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates the natural logarithm of Q
+    returning the result in LnQ.&nbsp; Q must be a unit
+    quaternion.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: ln(Q) for unit quaternion
+    only!</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Magnitude"></a><a href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Magnitude(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates the Magnitude of Q and returns
+    it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: The magnitude of Q.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: returns Magnitude of Q. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp; What does the Magnitude of a Quaternion
+    represent?&nbsp; What is it useful for?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Multiply"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Multiply(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q2, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QProduct);</b></font> </p>
+
+<blockquote>
+    <p><b>This function multiplies Q1 by Q2 returning the result
+    in QProduct.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: multiplies q1* q2, and
+    places the result in q.&nbsp; No failure.&nbsp;
+    Renormalization not automatic</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Normalize"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Normalize(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q);</b></font> </p>
+
+<blockquote>
+    <p><b>This function normalizes Q and returns its original
+    magnitude.&nbsp; Q is modified by the resulting
+    normalization.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the inital magnitude of Q.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: normalizes q to be a unit
+    quaternion.&nbsp; returns original magnitude of q</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Rotate"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Rotate(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* VRotated);</b></font> </p>
+
+<blockquote>
+    <p><b>This function rotates a vector V by the quaternion Q
+    returning the resulting rotated vector in VRotated.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: Rotates V by the
+    quaternion Q, places the result in VRotated.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Scale"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Scale(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Scale, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QScaled);</b></font> </p>
+
+<blockquote>
+    <p><b>This function scales the quaternion Q by Scale
+    returning the result in QScaled.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: Q = Q* Scale&nbsp; (result
+    is not generally a unit quaternion!)</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Set"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Set(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> W, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> X, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Y, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Z);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the components of Q to (W,X,Y,Z).</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: set quaternion
+    components.&nbsp; Doesn't normalize.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFromAxisAngle"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_SetFromAxisAngle(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Axis, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Theta);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets up the quaternion Q to a rotation
+    about the axis Axis by the angle Theta.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: set a quaternion from an
+    axis and a rotation around the axis</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetNoRotation"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_SetNoRotation(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets Q to be a quaternion with NO
+    rotation.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: sets Q to be a quaternion
+    with no rotation (like an identity matrix)</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetVec3d"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_SetVec3d(</b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> W, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* V);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the components of Q using the scalar
+    W and the vector V.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: set quaternion
+    components.&nbsp; Doesn't normalize</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Slerp"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Slerp(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q0, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q1, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> T, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QT);</b></font> </p>
+
+<blockquote>
+    <p><b>This function uses spherical interpolation to
+    interpolate betwen Q0 and Q1 at T (0 &lt;= T &lt;= 1)
+    returning the result in QT.&nbsp; At T=0 QT=Q0, at T=1
+    QT=Q1.&nbsp; QT will always be returned with a positive W
+    (this implies that the route taken is always the shortest
+    through the positive W domain).</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: Spherical interpolation
+    between q0 and q1. 0&lt;=t&lt;=1 resulting quaternion is
+    'between' q0 and q1 with t==0 being all q0, and t==1 being
+    all q1. returns a quaternion with a positive W - always takes
+    shortest route through the positive W domain.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SlerpNotShortest"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_SlerpNotShortest(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>&nbsp;* Q0, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>&nbsp;* Q1, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> T, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QT);</b></font> </p>
+
+<blockquote>
+    <p><b>This function uses spherical interpolation to
+    interpolate betwen Q0 and Q1 at T (0 &lt;= T &lt;= 1)
+    returning the result in QT.&nbsp; I'm not sure exactly how
+    this differs from the standard Slerp above.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: spherical interpolation
+    between q0 and q1. 0&lt;=t&lt;=1 resulting quaternion is
+    'between' q0 and q1 with t==0 being all q0, and t==1 being
+    all q1.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Subtract"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_Subtract(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q2, </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* QDifference);</b></font> </p>
+
+<blockquote>
+    <p><b>This function subtracts Q2 from Q1 returning the result
+    in QDifference.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: QDifference = Q1 -
+    Q2&nbsp; (result is not generally a unit quaternion!)</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ToMatrix"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> geQuaternion_ToMatrix(</b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a><font
+color="#000080"><b>* Q, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* RotationMatrixDest);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates the transformation matrix
+    RotationMatrixDest resulting from the quaternion Q.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from QUATERN.H: takes a unit quaternion
+    and makes RotationMatrixDest an equivelant rotation xform.
+    (any translation in RotationMatrixDest will be lost)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"></a><font color="#0000FF" size="5"><b><i>Notes:</i></b></font>
+</p>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+    <p><font color="#000000">KDTOP Notes:</font></p>
+    <p><font color="#000000">Quaternions were extremely confusing
+    when I first encountered them. I read &quot;an extension of
+    complex numbers&quot; and thought, &quot;forget it!&quot; I
+    was reasonably good at college math, but I've forgotten much
+    of it. And who needs them anyway? I didn't --at least at
+    first.</font></p>
+    <p><font color="#000000">Then I ran into the problem of
+    trying to create a rotation matrix that would rotate an actor
+    around an arbitrary axis. I knew how to rotate about the
+    world's X, Y, or Z axis, but how could I rotate about some
+    other axis? I was simulating a ball that my actor could
+    throw. I thought, &quot;wouldn't it be cool if, upon landing,
+    it rolled like a real ball?&quot; But what a headache to
+    figure out a matrix that would do that! So I started reading
+    graphics-for-games books, and guess what I found? You guessed
+    it, quaternions.</font></p>
+    <p><font color="#000000">So here is the overview of what I've
+    learned about quaternions:</font></p>
+    <ul>
+        <li><font color="#000000">They can hold all the
+            information needed to rotate points, just as a matrix
+            can.</font></li>
+        <li><font color="#000000">It is easy to set the axis of
+            rotation to ANY desired axis</font></li>
+        <li><font color="#000000">They are numerically more
+            stable, and faster to compute, than a matrix</font></li>
+        <li><font color="#000000">They can be converted to a
+            standard matrix--so the result can be used for
+            geActor_SetPose()</font></li>
+    </ul>
+    <p><font color="#FF0000"><strong>LOOK AT THIS...</strong></font><font
+    color="#000000"> Here is a great page that helped me
+    understand: </font><a
+    href="Quaternions-UsingToRepresentRotation.htm"><font
+    color="#000000">view</font></a></p>
+    <p><font color="#000000">Note: some of these these
+    quanternion functions are not part of the Genesis3d API
+    (notice the lack of </font><a
+    href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+    color="#000080"><b> </b></font><font color="#000000">in front
+    of some functions.) So to get access to the full library, the
+    code must be included in one's project.</font></p>
+    <p><font color="#000000"><strong>Here's a great little
+    function that uses quaternions to rotate a matrix about any
+    arbitrary axis</strong>. </font><a
+    href="geXForm3dIndexed.htm#RotateAboutVector"><font
+    color="#000000">view</font></a></p>
+    <p>&nbsp;</p>
+    <p><font color="#000000">Now, here are some original notes...</font></p>
+    <p><font color="#000000">(The following was ripped from the
+    Genesis 3D header file quatern.h) </font></p>
+</blockquote>
+
+<blockquote>
+    <p>The quatern module contains basic support for a quaternion
+    object. </p>
+</blockquote>
+
+<blockquote>
+    <p>Quaternions are an extension of complex numbers that
+    allows an expression for rotation that can be easily
+    interpolated.&nbsp; geQuaternions are also&nbsp; more
+    numericaly stable for repeated rotations than matrices. </p>
+</blockquote>
+
+<blockquote>
+    <p>A quaternion is a 4 element 'vector'&nbsp; [w,x,y,z]
+    where: </p>
+</blockquote>
+
+<blockquote>
+    <p>q = w + x<strong>i</strong> + y<strong>j</strong> + z<strong>k</strong>
+    <br>
+    i*i = -1 <br>
+    j*j = -1 <br>
+    k*k = -1 <br>
+    i*j = -j*i = k <br>
+    j*k = -k*j = i <br>
+    k*i = -i*k = j <br>
+    q' (conjugate) = w - xi - yj - zk <br>
+    ||q|| (magnitude) = sqrt(q*q') = sqrt(w*w + x*x + y*y + z*z) <br>
+    unit quaternion ||q|| == 1; this implies&nbsp; q' == qinverse
+    <br>
+    quaternions are associative (q1*q2)*q3 == q1*(q2*q3) <br>
+    quaternions are not commutative&nbsp; q1*q2 != q2*q1 <br>
+    qinverse (inverse (1/q) ) = q'/(q*q')</p>
+</blockquote>
+
+<blockquote>
+    <p>Q can be expressed by w + xi + yj + zk or [w,x,y,z] or as
+    in this implementation (s,v) where s=w, and v=[x,y,z]. </p>
+</blockquote>
+
+<blockquote>
+    <p>Quaternions can represent a rotation.&nbsp; The rotation
+    is an angle t, around a unit vector u.&nbsp;&nbsp; q =
+    (s,v);&nbsp; s = cos(t/2);&nbsp;&nbsp; v =&nbsp; u*sin(t/2). </p>
+</blockquote>
+
+<blockquote>
+    <p>Quaternions can apply the rotation to a point.&nbsp; Let
+    the point be p [px,py,pz] and let P be a
+    quaternion(0,p).&nbsp; P<sub>rotated</sub> = q*P*q<sub>inverse</sub>
+    (P<sub>rotated</sub> = q*P*q' if q is a unit quaternion) <br>
+    Concatenation of rotations is similar to matrix
+    concatenation.&nbsp; Given two rotations q1 and q2, to rotate
+    by q1, then q2:&nbsp; let qc = (q2*q1), then the combined
+    rotation is given by qc*P*qc<sub>inverse</sub> (= qc*P*qc' if
+    q is a unit quaternion) </p>
+</blockquote>
+
+<blockquote>
+    <p>Multiplication: </p>
+</blockquote>
+
+<blockquote>
+    <p>q1 = w1 + x1i + y1j + z1k <br>
+    q2 = w2 + x2i + y2j + z2k <br>
+    q1*q2 = q3 = (w1*w2 - x1*x2 - y1*y2 -
+    z1*z2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {w3} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    (w1*x2 + x1*w2 + y1*z2 -
+    z1*y2)i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {x3} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    (w1*y2 - x1*z2 + y1*w2 +
+    z1*x2)j&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {y3} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    (w1*z2 + x1*y2 + y1*x2 + z1*w2)k&nbsp;&nbsp;&nbsp; {z3}</p>
+</blockquote>
+
+<blockquote>
+    <p>Also, </p>
+</blockquote>
+
+<blockquote>
+    <p>q1 = (s1,v1) = [s1,(x1,y1,z1)] <br>
+    q2 = (s2,v2) = [s2,(x2,y2,z2)] <br>
+    q1*q2 = q3 = (s1*s2 -
+    dot_product(v1,v2),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {s3} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    (s1*v2 + s2*v1 + cross_product(v1,v2))&nbsp;&nbsp; {v3}</p>
+</blockquote>
+
+<blockquote>
+    <p>Interpolation - it is possible (and sometimes reasonable)
+    to interpolate between two quaternions by interpolating each
+    component.&nbsp; This does not quarantee a resulting unit
+    quaternion, and will result in an animation with non-linear
+    rotational velocity. </p>
+</blockquote>
+
+<blockquote>
+    <p>Spherical interpolation: (slerp) treat the quaternions as
+    vectors find the angle between them (w = arccos(q1 dot q2) ).
+    Given 0&lt;=t&lt;=1,&nbsp; q(t) = q1*(sin((1-t)*w)/sin(w) +
+    q2* sin(t*w)/sin(w).&nbsp; Since q == -q, care must be taken
+    to rotate the proper way. </p>
+</blockquote>
+
+<blockquote>
+    <p>This implementation uses the notation quaternion q =
+    (quatS,quatV) where quatS is a scalar, and quatV is a 3
+    element vector.</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geQuaternionIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 23:20:25 Aug 16, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:39 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

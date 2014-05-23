@@ -1,0 +1,2673 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geWorldIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geWorld</b></font> </p>
+
+<p><font color="#000080"><b>Description: Code to render the
+world, and distribute work to other modules</b></font></p>
+
+<p>Source file: ...\genesis3d\OpenSource\Source\World\World.h,
+and also ..\genesis3d\OpenSource\Source\GENESIS.H.</p>
+
+<p><br>
+<a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+</p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="geWorldIndexed.htm#AddActor">AddActor</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#AddBitmap">AddBitmap</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#AddFog">AddFog</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#AddLight">AddLight</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#AddPoly">AddPoly</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#AddPolyOnce">AddPolyOnce</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#BitmapIsVisible">BitmapIsVisible</a><font color="#000080"><b>,
+</b></font><a href="geWorldIndexed.htm#Collision">Collision</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#Create">Create</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#Free">Free</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetBitmapByName">GetBitmapByName</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetContents">GetContents</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetEntitySet">GetEntitySet</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetLeaf">GetLeaf</a><font
+color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#GetModelRotationalCenter">GetModelRotationalCenter</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetModelXForm">GetModelXForm</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GetNextModel">GetNextModel</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#HasBitmap">HasBitmap</a><font
+color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#IsActorPotentiallyVisible">IsActorPotentiallyVisible</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#LeafMightSeeLeaf">LeafMightSeeLeaf</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#MightSeeLeaf">MightSeeLeaf</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelCollision">ModelCollision</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelGetBBox">ModelGetBBox</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelGetFlags">ModelGetFlags</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelGetMotion">ModelGetMotion</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelGetUserData">ModelGetUserData</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelSetFlags">ModelSetFlags</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#ModelSetUserData">ModelSetUserData</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#OpenModel">OpenModel</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#RemoveActor">RemoveActor</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#RemoveBitmap">RemoveBitmap</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#RemoveFog">RemoveFog</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#RemoveLight">RemoveLight</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#RemovePoly">RemovePoly</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#SetActorFlags">SetActorFlags</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#SetLightAttributes">SetLightAttributes</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#SetLTypeTable">SetLTypeTable</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#SetModelXForm">SetModelXForm</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#TestModelMove">TestModelMove</a></p>
+
+<p><font color="#000080"><b>Constants</b></font>: <a
+href="geWorldIndexed.htm#ActorFlags">Actor Flags</a>, <a href="geWorldIndexed.htm#GE_COLLIDE_">GE_COLLIDE...
+Flags</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#GE_CONTENTS_">GE_CONTENTS... Flags</a>, <a
+href="geWorldIndexed.htm#gePoly_Type">gePoly_Type</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#Rendering_Flags">Rendering Flags</a>, <a
+href="geWorldIndexed.htm#ModelFlags">Model flags</a>, <a href="geWorldIndexed.htm#SpriteFlags">Sprite
+flags</a>, <a href="geWorldIndexed.htm#MiscMacros">Miscellaneous</a> </p>
+
+<p><font color="#000080"><b>Types:</b></font> <a href="geWorldIndexed.htm#geWorld">geWorld</a>,
+<a href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a> , <a
+href="geWorldIndexed.htm#geWorld_Leaf">geWorld_Leaf</a>, <a href="geWorldIndexed.htm#geWorld_FogData">geWorld_FogData</a>,
+<a href="geWorldIndexed.htm#World_BSP">World_BSP</a>, <a href="geWorldIndexed.htm#World_SkyBox">World_SkyBox</a>,
+<a href="geWorldIndexed.htm#geWorld_SkyBoxTData">geWorld_SkyBoxTData</a>, <a
+href="geWorldIndexed.htm#World_Actor">World_Actor</a>, <a
+href="geWorldIndexed.htm#geWorld_EntClassSet">geWorld_EntClassSet</a>, <a
+href="geWorldIndexed.htm#geWorld_DebugInfo">geWorld_DebugInfo</a>, <a
+href="geWorldIndexed.htm#GE_Collision;">GE_Collision</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#GE_Contents;">GE_Contents</a>, <a href="geWorldIndexed.htm#GE_CollisionCB">GE_CollisionCB</a>,
+<a href="geWorldIndexed.htm#GE_Plane">GE_PLANE</a></p>
+
+<p><font color="#000080"><b>Changes in Genesis3D v1.6</b></font>:
+&nbsp;TYPES: <a href="geWorldIndexed.htm#World_Sprite">World_Sprite</a>. FUNCTIONS:
+<a href="geWorldIndexed.htm#ModelGetCenter">ModelGetCenter</a>,<font
+color="#800000"><b> </b></font><a href="geWorldIndexed.htm#AddSprite">AddSprite</a><font
+color="#800000"><b>,</b></font> <a href="geWorldIndexed.htm#RemoveSprite">RemoveSprite</a>,
+<a href="geWorldIndexed.htm#SetSpriteFlags">SetSpriteFlags</a>, <a
+href="geWorldIndexed.htm#IsSpritePotentiallyVisible">IsSpritePotentiallyVisible</a></p>
+
+<hr>
+
+<dl>
+    <dt>&nbsp;<font color="#0000FF" size="5"><b><i>Types:</i></b></font></dt>
+</dl>
+
+<p><a name="geWorld_Model"></a><font color="#800000"><b>geWorld_Model</b>
+</font></p>
+
+<dl>
+    <dd>typedef struct geWorld_Model {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[64];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Model's name<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXModelNum;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Model number in disk tree structure<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XForm;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Models transform&nbsp;(Object Space)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mins,
+        Maxs;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Model BBox (World Space)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TMins,
+        TMaxs;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Translated Model BBox (World Space)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pivot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Center of rotation (World Space)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RealCenter;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisFrame;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        == World-&gt;CurFrame if visible<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">void</font>
+        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserData;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Place for client to store data<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBSPIndexed.htm#GFX_Model">GFX_Model</a>
+        *&nbsp;&nbsp;&nbsp;BSPModel;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Oh, this is terrible.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Model Open/Closed&nbsp;(Set by API, used for area vising)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint32">uint32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        GE_MODEL_RENDER_NORMAL, etc... (getypes.h)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint32">uint32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ChangedFlags;<br>
+        } geWorld_Model;</dd>
+    <dd><a href="geWorldIndexed.htm#Contents">Return to Contents</a></dd>
+    <dt>&nbsp;</dt>
+</dl>
+
+<p><a name="geWorld_Leaf"></a><font color="#800000"><b>geWorld_Leaf</b>
+</font></p>
+
+<dl>
+    <dd>typedef struct geWorld_Leaf {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisFrame;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parent;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Parent nodes of all leafs<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="gePolyIndexed.htm#gePoly">gePoly</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PolyList;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        List of poly fragments to render for this leaf
+        (geWorld_AddPoly)<br>
+        } geWorld_Leaf;</dd>
+    <dd>&nbsp;<a href="geWorldIndexed.htm#Contents">Return to Contents</a></dd>
+    <dt>&nbsp;</dt>
+</dl>
+
+<p><a name="geWorld_FogData"></a><font color="#800000"><b>geWorld_FogData</b>
+</font></p>
+
+<dl>
+    <dd>typedef struct {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leaf;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mins;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        - Radius<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maxs;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        + Radius<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisFrame;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        == World-&gt;CurFrameDynamic when visible<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWorldIndexed.htm#geWorld">geWorld</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World;<br>
+        } geWorld_FogData;</dd>
+</dl>
+
+<blockquote>
+    <p>&nbsp;<a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="World_BSP"><font color="#800000"><b>World_BSP</b></font></a><font
+color="#800000"> </font></p>
+
+<dl>
+    <dd>typedef struct World_BSP {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">char</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileName[200];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</a>&nbsp;&nbsp;&nbsp;&nbsp;BSPData;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Info in the BSP loaded directly off disk<br>
+        &nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra
+        info thats not in the disk bsp structure<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="SurfaceIndexed.htm#Surf_SurfInfo">Surf_SurfInfo</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SurfInfo;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Valid when GE_SetGBSPFile is called<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="SurfaceIndexed.htm#Surf_TexVert">Surf_TexVert</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexVerts;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</a>*&nbsp;&nbsp;WBitmapPool;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Models[MAX_MODELS];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Extra info about models not in disk structure<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWorldIndexed.htm#geWorld_Leaf">geWorld_Leaf</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LeafData;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClusterVisFrame;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NodeVisFrame;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AreaVisFrame;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint8">uint8</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AreaConnections[256][256];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NodeParents;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Parent nodes of all leafs<br>
+        } World_BSP;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="World_SkyBox"></a><font color="#800000"><b>World_SkyBox</b>
+</font></p>
+
+<dl>
+    <dd>typedef struct {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &nbsp;Untransformed
+        original data<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verts[6][4];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="SurfaceIndexed.htm#Surf_TexVert">Surf_TexVert</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexVerts[6][4];&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Axis;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // Rotation axis<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dpm;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Degres per minute //Type is geFloat in Genesis3d v1.6<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawScale;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Texture drawscale //Type is geFloat in Genesis3d v1.6<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Textures[6];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angle;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Current rotation angle around roation axis //Type is
+        geFloat in Genesis3d v1.6<br>
+        } World_SkyBox;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geWorld_SkyBoxTData"><font color="#800000"><b>geWorld_SkyBoxTData</b></font></a><font
+color="#800000"> </font></p>
+
+<dl>
+    <dd>typedef struct {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &nbsp;Transformed data<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint32">uint32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkyFlags;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TransformedVecs[6][2];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBSPIndexed.htm#GFX_Plane">GFX_Plane</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TransformedPlanes[6];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumTransformed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Num transformed and clipped<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TransformedVerts[6][10];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Transformed verts<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="SurfaceIndexed.htm#Surf_TexVert">Surf_TexVert</a>&nbsp;&nbsp;&nbsp;TransformedTexVerts[6][10];&nbsp;&nbsp;&nbsp;//
+        Transformed tex verts<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumTransformedVerts[6];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Number of transformed verts/texverts<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OriginalFaces[6];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Indexes to original bitmap<br>
+        } geWorld_SkyBoxTData;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="World_Sprite"><font color="#800000"><b>World_Sprite</b></font></a></p>
+
+<p><font color="#FF0000">Note: </font>This is available only in
+Genesis3D v1.6</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef struct World_Sprite {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* Sprite;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#uint32">uint32</a> Flags; //Should be
+one of <a href="geWorldIndexed.htm#SpriteFlags">these</a> flags.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#uint32">uint32</a> UserFlags;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<a
+href="BasetypesIndexed.htm#int32">int32</a> Leaf; // Current leaf
+the sprite is in (currently used for PVS occlusion)<br>
+} World_Sprite;</p>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="World_Actor"><font color="#800000"><b>World_Actor</b></font></a><font
+color="#800000"> </font></p>
+
+<dl>
+    <dd>typedef struct World_Actor {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geActorIndexed.htm#geActor">geActor</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint32">uint32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+        size="2">// GE_ACTOR_RENDER_NORMAL,
+        GE_ACTOR_RENDER_MIRRORS, GE_ACTOR_COLLIDE<br>
+        </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#uint32">uint32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserFlags;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;
+        Leaf;&nbsp;&nbsp;&nbsp;<font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Current leaf the actor is in (currently used for PVS
+        occlusion)<br>
+        </font>} World_Actor;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geWorld_EntClassSet"><font color="#800000"><b>geWorld_EntClassSet</b></font></a><font
+color="#800000"> </font></p>
+
+<dl>
+    <dd>typedef struct {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">const</font>
+        <font color="#0000FF">char</font>
+        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClassName;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        <a href="BasetypesIndexed.htm#NULL">NULL</a> for main set<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a>*&nbsp;&nbsp;&nbsp;Set;<br>
+        } geWorld_EntClassSet;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geWorld_DebugInfo"><font color="#800000"><b>geWorld_DebugInfo</b></font></a><font
+color="#800000"> <br>
+</font>typedef struct {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumNodesTraversed1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumNodesTraversed2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumLeafsHit1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumLeafsHit2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumLeafsWithUserPolys;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumUserPolys;<br>
+} geWorld_DebugInfo;</p>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geWorld"></a><font color="#800000"><b>geWorld</b> </font></p>
+
+<blockquote>
+    <p><b>The geWorld object contains information about the
+    &quot;World&quot; including the &quot;unchanging&quot; world
+    geometry and the lists of entities and actors in the world.</b></p>
+</blockquote>
+
+<dl>
+    <dt>&nbsp;&nbsp;typedef struct geWorld {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurFrameStatic;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        World CurrentFrame<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurFrameDynamic;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        World CurrentFrame<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">float</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurTime;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        World CurrentTime //type is geFloat in Genesis3D v1.6<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentLeaf;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ForceVis;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisInfo;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Info
+        that each respective module fills in...<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geWorldIndexed.htm#World_BSP">World_BSP</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentBSP;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Valid when geWorld_SetGBSP is called<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geWorldIndexed.htm#World_SkyBox">World_SkyBox</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkyBox;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="FrustumIndexed.htm#Frustum_Info">Frustum_Info</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FrustumInfo;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="LightIndexed.htm#Light_LightInfo">Light_LightInfo</a>*&nbsp;&nbsp;&nbsp;&nbsp;LightInfo;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Info that the light module fills in<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mesh_MeshInfo*&nbsp;&nbsp;MeshInfo;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Info that the mesh module fills in<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActorCount;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Number of actors in world<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geWorldIndexed.htm#World_Actor">World_Actor</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActorArray;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Array of actors <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int32 &nbsp;SpriteCount; //
+        Number of sprites in world <font color="#FF0000">//Present
+        only in Genesis3D v1.6</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World_Sprite*
+        &nbsp;&nbsp;SpriteArray; // Array of sprites <font
+        color="#FF0000">// Present only in Genesis3D v1.6</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWorldIndexed.htm#geWorld_EntClassSet">geWorld_EntClassSet</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EntClassSets[MAX_WORLD_ENT_CLASS_SETS];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumEntClassSets;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="gePolyIndexed.htm#User_Info">User_Info</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserInfo;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug
+        info<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ActiveUserPolys;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geWorldIndexed.htm#geWorld_DebugInfo">geWorld_DebugInfo</a>&nbsp;DebugInfo;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geFogIndexed.htm#geFog">geFog</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FogList;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        Linked list of fog in the world currently<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geFogIndexed.htm#geFog">geFog</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisibleFog[MAX_VISIBLE_FOG];&nbsp;&nbsp;//
+        List of visible fog for this frame<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumVisibleFog;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BitmapListIndexed.htm#BitmapList">BitmapList</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AttachedBitmaps;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastCameraXForm;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RefCount;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geBoolean">geBoolean</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+        <a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> if
+        this world has changed<br>
+        } geWorld;</dt>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="GE_Collision"><font color="#800000"><b>GE_Collision</b></font></a></p>
+
+<blockquote>
+    <p><b>This structure is used to return information about
+    detected collisions from collision detections calls.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">typedef struct{</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+    face="Courier New,Courier">* Model;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Pointer to what model
+    was hit (if any)</font><font size="2"> </font><br>
+    <font face="Courier New,Courier">&nbsp;&nbsp; </font><a
+    href="BasetypesIndexed.htm#geMesh">geMesh</a><font
+    face="Courier New,Courier">*
+    Mesh;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Pointer to what mesh
+    was hit (if any)</font><font size="2"> </font><br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="geActorIndexed.htm#geActor">geActor</a><font
+    face="Courier New,Courier">*
+    Actor;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Pointer to what actor
+    was hit (if any)</font><font size="2"> </font><br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+    face="Courier New,Courier">
+    Impact;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Impact Point</font><font
+    size="2"> </font><br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><font
+    color="#0000FF">float</font><font face="Courier New,Courier">
+    Ratio;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Percent (0 to 1.0) how
+    far along the line for the impact point</font><font size="2">
+    </font><br>
+    <font face="Courier New,Courier">&nbsp;&nbsp; </font><a
+    href="geWorldIndexed.htm#GE_Plane"><font face="Courier New,Courier">GE_Plane</font></a><font
+    face="Courier New,Courier"> Plane;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+    size="2" face="Courier New,Courier">// Impact Plane</font><font
+    size="2"> </font><br>
+    <font face="Courier New,Courier">} GE_Collision;</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="GE_Contents"></a><font color="#800000"><b>GE_Contents</b></font></p>
+
+<blockquote>
+    <p><b>This structure is used to return information from about
+    the contained contents found in a call to
+    geWorld_GetContents.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">typedef struct{</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#geMesh">geMesh</a><font
+    face="Courier New,Courier">* Mesh;</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+    face="Courier New,Courier">* Model;</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="geActorIndexed.htm#geActor">geActor</a><font
+    face="Courier New,Courier">* Actor;</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;</font><a
+    href="BasetypesIndexed.htm#int32">int32</a><font
+    face="Courier New,Courier"> Contents;</font> <br>
+    <font face="Courier New,Courier">} GE_Contents;</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_CollisionCB"></a><font color="#800000"><strong>GE_CollisionCB</strong></font></p>
+
+<blockquote>
+    <p><font face="Courier New,Courier">typedef </font><a
+    href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+    face="Courier New,Courier"> GE_CollisionCB(</font><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+    face="Courier New,Courier">* Model, </font><a
+    href="geActorIndexed.htm#geActor">geActor</a><font
+    face="Courier New,Courier">* Actor, </font><font
+    color="#0000FF">void</font><font face="Courier New,Courier">
+    * Context);</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>This is a function type used to allow the user to
+    accept or decline a collision that has been detected.&nbsp;
+    One (but not both) of Model or Actor will be non-</b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>.&nbsp;* Context
+    can be used to maintain state information between calls to
+    your GE_CollisionCB function.&nbsp; Basically if you will
+    except the collision with the specified model or actor, then
+    return </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>,
+    if you don't want the collision to succeed, return </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_Plane"></a><font color="#800000"><strong>GE_Plane</strong></font></p>
+
+<blockquote>
+    <p><font face="Courier New,Courier"><strong>// Collision</strong><br>
+    typedef struct {<br>
+    &nbsp;&nbsp;</font><a href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+    face="Courier New,Courier"> Normal; // Orientation of plane<br>
+    &nbsp;&nbsp;</font><font color="#0000FF"
+    face="Courier New,Courier">float</font><font
+    face="Courier New,Courier"> &nbsp;&nbsp;Dist; &nbsp;&nbsp;//
+    Distance from origin<br>
+    } GE_Plane;</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Constants"></a><font color="#0000FF" size="5"><b><i>Constants:</i></b></font>
+</p>
+
+<p><a href="geWorldIndexed.htm#ActorFlags">Actor Flags</a>, <a href="geWorldIndexed.htm#GE_COLLIDE_">GE_COLLIDE_...</a><font
+color="#000080"><b>, </b></font><a href="geWorldIndexed.htm#GE_CONTENTS_">GE_CONTENTS_...</a>,
+<a href="geWorldIndexed.htm#gePoly_Type">gePoly_Type</a><font color="#000080"><b>, </b></font><a
+href="geWorldIndexed.htm#Rendering_Flags">Rendering Flags</a>, <a
+href="geWorldIndexed.htm#ModelFlags">Model flags</a>, <a href="geWorldIndexed.htm#SpriteFlags">Sprite
+flags</a>, <a href="geWorldIndexed.htm#MiscMacros">Miscellaneous</a> </p>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Actor_Flags"></a><font color="#000080"><b>Actor Flags</b></font>
+</p>
+
+<blockquote>
+    <p><b>These are used for the Flags argument of the
+    geWorld_AddActor call and may be combined.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define
+    GE_ACTOR_RENDER_NORMAL&nbsp;&nbsp;&nbsp; // Render in normal
+    views</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_ACTOR_RENDER_MIRRORS&nbsp;&nbsp; // Render in mirror views</font>
+    <br>
+    <font face="Courier New,Courier">#define
+    GE_ACTOR_RENDER_ALWAYS&nbsp;&nbsp;&nbsp; // Render always,
+    skipping all visibility tests</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_ACTOR_COLLIDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Collide when calling geWorld_Collision</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_COLLIDE_"></a><font color="#000080"><b>GE_COLLIDE_...
+FLAGS</b></font></p>
+
+<blockquote>
+    <p><b>These constants are used to specify the types of </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> objects to
+    test against for collisions.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define GE_COLLIDE_MESHES
+    (1&lt;&lt;0)</font> <br>
+    <font face="Courier New,Courier">#define GE_COLLIDE_MODELS
+    (1&lt;&lt;1)</font> <br>
+    <font face="Courier New,Courier">#define GE_COLLIDE_ACTORS
+    (1&lt;&lt;2)</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_COLLIDE_NO_SUB_MODELS (1&lt;&lt;3)</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define GE_COLLIDE_ALL
+    (GE_COLLIDE_MESHES | GE_COLLIDE_MODELS | GE_COLLIDE_ACTORS)</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="GE_CONTENTS_"></a><font color="#000080"><b>GE_CONTENTS_...</b>
+<b>FLAGS</b></font></p>
+
+<blockquote>
+    <p><b>These constants are used to partition </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> contents
+    into specific types.&nbsp; This is used for geWorld_Collision
+    calls to specify the </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    contents to test against, for example.&nbsp; They can be
+    combined.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define GE_CONTENTS_SOLID
+    (1&lt;&lt;0)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Solid (Visible)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_WINDOW
+    (1&lt;&lt;1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Window (Visible)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_EMPTY
+    (1&lt;&lt;2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Empty but Visible (water, lava, etc...)</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define
+    GE_CONTENTS_TRANSLUCENT (1&lt;&lt;3)&nbsp;&nbsp;&nbsp; // Vis
+    will see through it</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_WAVY
+    (1&lt;&lt;4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Wavy (Visible)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_DETAIL
+    (1&lt;&lt;5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Won't be included in vis oclusion</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define GE_CONTENTS_CLIP
+    (1&lt;&lt;6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Structural but not visible</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_HINT
+    (1&lt;&lt;7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Primary splitter (Non-Visible)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_AREA
+    (1&lt;&lt;8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Area seperator leaf (Non-Visible)</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">#define
+    GE_CONTENTS_FLOCKING (1&lt;&lt;9)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_SHEET
+    (1&lt;&lt;10)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_AIR
+    (1&lt;&lt;11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // No brush lives in this leaf</font> <br>
+    <font face="Courier New,Courier">#define GE_RESERVED4
+    (1&lt;&lt;12)</font> <br>
+    <font face="Courier New,Courier">#define GE_RESERVED5
+    (1&lt;&lt;13)</font> <br>
+    <font face="Courier New,Courier">#define GE_RESERVED6
+    (1&lt;&lt;14)</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_RESERVED7(1&lt;&lt;15)</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">// 16-31 reserved for
+    user contents</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER1
+    (1&lt;&lt;16)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER2
+    (1&lt;&lt;17)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER3
+    (1&lt;&lt;18)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER4
+    (1&lt;&lt;19)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER5
+    (1&lt;&lt;20)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER6
+    (1&lt;&lt;21)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER7
+    (1&lt;&lt;22)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER8
+    (1&lt;&lt;23)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER9
+    (1&lt;&lt;24)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER10
+    (1&lt;&lt;25)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER11
+    (1&lt;&lt;26)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER12
+    (1&lt;&lt;27)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER13
+    (1&lt;&lt;28)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER14
+    (1&lt;&lt;29)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER15
+    (1&lt;&lt;30)</font> <br>
+    <font face="Courier New,Courier">#define GE_CONTENTS_USER16
+    (1&lt;&lt;31)</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">// These contents are all
+    solid types</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_CONTENTS_SOLID_CLIP (GE_CONTENTS_SOLID |
+    GE_CONTENTS_WINDOW | GE_CONTENTS_CLIP)</font> <br>
+    <font face="Courier New,Courier">#define
+    GE_CONTENTS_CANNOT_OCCUPY GE_CONTENTS_SOLID_CLIP</font> </p>
+</blockquote>
+
+<blockquote>
+    <p><font face="Courier New,Courier">// These contents are all
+    visible types</font> <br>
+    <font face="Courier New,Courier">#define GE_VISIBLE_CONTENTS
+    (GE_CONTENTS_SOLID | GE_CONTENTS_EMPTY | GE_CONTENTS_WINDOW |
+    GE_CONTENTS_WAVY)</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Constants">Return to Constants</a></p>
+</blockquote>
+
+<p><br>
+<a name="gePoly_Type"></a><font color="#000080"><b>gePoly_Type;</b></font>
+</p>
+
+<blockquote>
+    <p><font face="Courier New,Courier">typedef enum{</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+    GE_TEXTURED_POLY,&nbsp; // The Polygon is textured, Bitmap
+    must be a valid </font><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+    face="Courier New,Courier">.</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+    GE_GOURAUD_POLY,&nbsp;&nbsp; // The Polygon is Gouraud
+    shaded, Bitmap must be </font><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><font
+    face="Courier New,Courier">.</font> <br>
+    <font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+    GE_TEXTURED_POINT&nbsp; // This renders a 3d sprite.&nbsp;
+    The vertices list must contain only one vertex which
+    specifies the center of the rendered sprite.&nbsp; Bitmap
+    must be a valid </font><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+    face="Courier New,Courier"> object. The bitmap is always
+    rendered perpendicular to the camera and the dimensions of it
+    are specified by the Scale argument.</font> <br>
+    <font face="Courier New,Courier">} gePoly_Type;</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Constants">Return to Constants</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="Rendering_Flags"></a><font color="#000080"><b>Rendering
+Flags</b></font> </p>
+
+<blockquote>
+    <p>#define GE_RENDER_DO_NOT_OCCLUDE_OTHERS&nbsp;&nbsp;&nbsp;
+    // Poly will not occlude others <br>
+    #define
+    GE_RENDER_DO_NOT_OCCLUDE_SELF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Renders under any condition.&nbsp; Useful for halos,
+    etc... <br>
+    #define
+    GE_RENDER_BACKFACED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Poly should be backfaced from the Camera's Pov <br>
+    #define
+    GE_RENDER_DEPTH_SORT_BF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Sorts relative to camera position, from back to front <br>
+    #define
+    GE_RENDER_CLAMP_UV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Clamp UV's in both directions </p>
+</blockquote>
+
+<blockquote>
+    <p><b>These flags can be combined.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="ModelFlags"></a><font color="#000080"><b>Model flags
+(geWorld_ModelSetFlags)</b></font> </p>
+
+<blockquote>
+    <p>#define GE_MODEL_RENDER_NORMAL&nbsp;&nbsp;
+    (1&lt;&lt;0)&nbsp; // Render in normal views <br>
+    #define GE_MODEL_RENDER_MIRRORS&nbsp;&nbsp;
+    (1&lt;&lt;1)&nbsp; // Render in mirror views <br>
+    #define GE_MODEL_RENDER_ALWAYS&nbsp;&nbsp; (1&lt;&lt;2)&nbsp;
+    // Render always, skipping all visibility tests <br>
+    #define GE_MODEL_COLLIDE&nbsp;&nbsp;&nbsp; (1&lt;&lt;3)&nbsp;
+    // Collide when calling geWorld_Collision</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a name="SpriteFlags"></a><font color="#000080"><b>Sprite
+    flags (used for geWorld_AddSprite and geWorld_SetSpriteFlags)</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080">Note: This is available only in
+    Genesis3D v1.6</font></p>
+</blockquote>
+
+<blockquote>
+    <p>#define GE_SPRITE_RENDER_NORMAL (1&lt;&lt;0) // Render in
+    normal views<br>
+    #define GE_SPRITE_RENDER_MIRRORS (1&lt;&lt;1) // Render in
+    mirror views<br>
+    #define GE_SPRITE_RENDER_ALWAYS (1&lt;&lt;2) // Render
+    always, skipping all visibility tests<br>
+    #define GE_SPRITE_COLLIDE (1&lt;&lt;3) // Collide when
+    calling geWorld_Collision</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="MiscMacros"></a><font color="#000080"><b>Miscellaneous</b></font>
+</p>
+
+<dl>
+    <dd><a name="MODEL_CHANGED_XFORM"></a>#define
+        MODEL_CHANGED_XFORM&nbsp;&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)&nbsp;&nbsp;</dd>
+    <dd><a name="MAX_VISIBLE_FOG"></a>#define
+        MAX_VISIBLE_FOG&nbsp;&nbsp;12&nbsp;// Hope to God there
+        is not this much visible at a time!!!</dd>
+    <dd><a name="MAX_WORLD_ENT_CLASS_SETS"></a>#define
+        MAX_WORLD_ENT_CLASS_SETS&nbsp;256</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="AddActor"></a><br>
+<a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_AddActor</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Flags, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> UserFlags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Actor to </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World
+    setting the </b><a href="geWorldIndexed.htm#Actor_Flags"><b>Actor Flags</b></a><b>
+    to Flags and the user-definable flags to UserFlags.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+    <p><b>Note from Jeff:</b><strong> </strong>The
+    geWorld_AddActor() function will increase the reference count
+    of the geActor and copy a reference to the world's actor
+    array. This array is used to keep track of all the actors in
+    the world. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddBitmap"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_AddBitmap</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> Bitmap to
+    </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b> World
+    making it available for use.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddFog"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="geFogIndexed.htm#geFog">geFog</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_AddFog</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a new </b><a
+    href="geFogIndexed.htm#geFog">geFog</a><b> object to the </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World and
+    returns it.</b> </p>
+    <p><strong>Notes from wxb1:</strong><font size="4"><strong> </strong>&quot;...</font><font
+    color="#000000" size="3">Fog kills framerate .... I think
+    regular fog does slow frame rate a little but &quot;fog
+    lights&quot; really kill frame rate... fog lights are really
+    dynamic lights which require another pass to render (this is
+    why they kill frame rate)...</font><font size="4">&quot;</font></p>
+    <p><strong>Note from kdtop</strong>: Another method of
+    creating fog, that doesn't affect framerate much is to use <a
+    href="geEngineIndexed.htm#SetFogEnable">geEngine_SetFogEnable</a>
+    (version 1.6). This appears to fill the whole world with fog
+    (which may affect sky visibility)</p>
+    <p>See also <a href="geFogIndexed.htm#geFog">geFog</a>
+    functions</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geFogIndexed.htm#geFog">geFog</a><b>
+    object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddLight"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="LightIndexed.htm#Light_DLight"><font color="#000080"><b>geLight</b></font></a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_AddLight</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a new </b><a
+    href="LightIndexed.htm#Light_DLight"><font color="#000080"><b>geLight</b></font></a><b>
+    object to the </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World and returns it.</b> <strong>Use AddLight first to
+    create the light, then call </strong><a
+    href="geWorldIndexed.htm#SetLightAttributes"><strong>geWorld_SetLightAttributes()</strong></a><strong>
+    to set the light properties.</strong></p>
+    <p><strong>Note from kdtop:</strong> This adds a dynamic
+    light to the world. Be aware, however, that dynamic lights
+    can slow down frame rate significantly. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a
+    href="LightIndexed.htm#Light_DLight"><font color="#000080"><b>geLight</b></font></a><b>
+    object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p>&nbsp;</p>
+
+<p><a name="AddPoly"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="gePolyIndexed.htm#gePoly">gePoly</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_AddPoly</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* Verts, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+NumVerts, </b></font><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, gePoly_Type Type, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> RenderFlags, </b></font><font color="#0000FF">float</font><font
+color="#000080"><b> Scale);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a polygon to </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp;* Verts should be a pointer to a list of NumVerts
+    vertices.&nbsp; Bitmap specifies the </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> for the
+    new polygon, Type specifies the </b><a href="geWorldIndexed.htm#gePoly_Type"><b>gePoly_Type</b></a><b>,
+    RenderFlags specifies the </b><a href="geWorldIndexed.htm#Rendering Flags"><b>Rendering
+    Flags,</b></a><b> and Scale is used to scale the </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> if Type
+    is set to </b><font face="Courier New,Courier">GE_TEXTURED_POINT</font><b>.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a
+    href="gePolyIndexed.htm#gePoly">gePoly</a><b> object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddPolyOnce"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a href="gePolyIndexed.htm#gePoly">gePoly</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_AddPolyOnce</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font
+color="#000080"><b>* Verts, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+NumVerts, </b></font><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, gePoly_Type Type, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> RenderFlags, </b></font><font color="#0000FF">float</font><font
+color="#000080"><b> Scale);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a polygon for the next rendered
+    frame ONLY.&nbsp; See details of geWorld_AddPoly for
+    arguments.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a
+    href="gePolyIndexed.htm#gePoly">gePoly</a><b> object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="BitmapIsVisible"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_BitmapIsVisible</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function tests whether the </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> Bitmap
+    was rendered in </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World during the last frame.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Collision"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_Collision</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Mins, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Maxs, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Front, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Back, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Contents, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> CollideFlags, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> UserFlags, </b></font><a
+href="geWorldIndexed.htm#GE_CollisionCB"><font color="#000080">GE_CollisionCB</font></a><font
+color="#000080"><b>* CollisionCB, </b></font><font
+color="#0000FF">void</font><font color="#000080"><b> * Context, </b></font><a
+href="geWorldIndexed.htm#GE_Collision">GE_Collision</a><font
+color="#000080"><b>* Col);</b></font> </p>
+
+<blockquote>
+    <p><b>This function tests for bounding box and linear
+    collisions with the world geometry.&nbsp; <br>
+    </b>Checks for collision of the world against either a simply
+    ray (defined by starting point Front to ending point Back),
+    or against a volume of space (with dimensions defined by
+    Mins, Maxs, Front, and Back).</p>
+</blockquote>
+
+<blockquote>
+    <p><b>World: </b>The <a href="geWorldIndexed.htm#geWorld">geWorld</a>
+    object representing the world geometry to be tested
+    against.&nbsp; <b><br>
+    Mins: </b>Mins (in object-space) of axial-aligned bounding
+    box for checking collision with against World<b>.</b><strong>
+    </strong>(e.g. &amp;ExtBox.Min) Values should be RELATIVE
+    (i.e. -20,-20, -20). May be NULL if a simple ray collision
+    wanted.<b> .<br>
+    Maxs: </b>Maxs (in object-space) of axial-aligned bounding
+    box for checking collision with against World<b>.</b><strong>
+    </strong>(e.g. &amp;ExtBox.Max) Values should be RELATIVE
+    (i.e. 20, 20, 20). May be NULL if a simple ray collision
+    wanted.<b> <br>
+    Front: </b>Front (or beginning) of the ray (or volume) to
+    test collision against. (e.g. &amp;CurrentPosition)<br>
+    <b>Back: </b>Back (or end) of the ray (or volume) to test
+    collision againts. (e.g. &amp;TentitiveNewPosition)<br>
+    <b>Contents: </b>Types of surfaces in the world to test
+    against, use the <a href="geWorldIndexed.htm#GE_CONTENTS_">GE_CONTENTS_</a>
+    flags constants to specify.<b>&nbsp; <br>
+    CollideFlags: </b>Types of objects (actors, etc.) to test
+    against. Use <a href="geWorldIndexed.htm#GE_COLLIDE_">GE_COLLIDE_</a>
+    constants.<b> </b>(Used to mask out certain object types.)<b><br>
+    UserFlags: </b>Mask to be tested against for the
+    user-definable flags as set in <a href="geWorldIndexed.htm#AddActor">AddActor</a>.<b>
+    </b>(Use to mask out certain actors.)<b><br>
+    CollisionCB: </b>Can be set to a callback function of type <a
+    href="geWorldIndexed.htm#GE_CollisionCB">GE_CollisionCB</a> that will be called
+    for each model or actor in <a
+    href="geWorldIndexed.htm#geWorld">geWorld</a> World for which
+    a collision is detected.&nbsp; If you want to accept the
+    collision, then your callback function should return <a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a> otherwise
+    return <a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>.&nbsp;
+    <br>
+    Context: </b>Can be used to pass data to your callback
+    function<b>.&nbsp; <br>
+    Col: </b>If a collision occurs, information about the
+    collision is returned in <a href="geWorldIndexed.htm#GE_Collision">GE_Collision</a>
+    Col. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on collision, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GENESIS.H: NOTE - Mins/Maxs CAN be <a
+    href="BasetypesIndexed.htm#NULL">NULL</a>.&nbsp; If you are
+    just testing a point, then use <a
+    href="BasetypesIndexed.htm#NULL">NULL</a> (it's faster!!!).</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_Create</b></font><font
+color="#000080"><b>(</b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* File);</b></font> </p>
+
+<blockquote>
+    <p><strong>This function creates a new </strong><a
+    href="geWorldIndexed.htm#geWorld"><strong>geWorld</strong></a><strong>
+    object from the information stored in File which should be a
+    BSP file like that generated by the Genesis Editor. </strong></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b>the newly created <a
+    href="geWorldIndexed.htm#geWorld">geWorld</a> object.</p>
+    <p><b>Note from Jeff: </b>The geWorld_Create() function will
+    create a world from a .BSP file or create a NULL world if the
+    passed parameter is NULL. The return value is a pointer to a
+    geWorld structure. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Free"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_Free</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This function decreases the reference count for </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World by
+    one.&nbsp; If World's reference count goes to zero then all
+    of its resources are freed.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+    <p><b>Note from Jeff:</b><strong> </strong>The geWorld_Free()
+    function will check to see if there are multiple references
+    to the geWorld, if so then it decreases the reference count
+    and returns. If there is only one reference then it removes
+    the geWorld from memory. This includes calling
+    geActor_Destroy() for every geActor in the world's actor
+    array. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBitmapByName"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_GetBitmapByName</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BitmapName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns a pointer to the </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> with
+    named BitmapName in </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    or </b><a href="BasetypesIndexed.htm#NULL">NULL</a><b> if
+    there is no </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    with the specified name.</b></p>
+</blockquote>
+
+<blockquote>
+    <p>Note: This will return only bitmaps that were added as
+    part of a loading a world. It will not return bitmaps that
+    have been added by geWorld_AddBitmap</p>
+    <p><br>
+    <a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetContents"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_GetContents</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Pos, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Mins, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Maxs, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Flags, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> UserFlags, GE_CollisionCB* CollisionCB, </b></font><font
+color="#0000FF">void</font><font color="#000080"><b> * Context, </b></font><a
+href="geWorldIndexed.htm#GE_Contents">GE_Contents</a><font
+color="#000080"><b>* Contents);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns information about a point or
+    volume of the </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp; If you want to check for what is found at a
+    point, then pass the point as Pos and set Mins and Maxs to </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>.&nbsp; If you
+    want to check for what is contained within an-axial aligned
+    bounding box, pass the minimums and maximums of the box in
+    Mins and Maxs respectively and set Pos to </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>.&nbsp; Flags
+    specifies what type of world objects you want to know about,
+    use the </b><a href="geWorldIndexed.htm#GE_COLLIDE_">GE_COLLIDE_</a><b>
+    constants to specify this.&nbsp; UserFlags specifies the mask
+    to be tested against for the user-definable flags as set in </b><a
+    href="geWorldIndexed.htm#geWorld_AddActor">geWorld_AddActor</a><b>.&nbsp;*CollisionCB
+    can be set to a callback function of type </b><a
+    href="geWorldIndexed.htm#GE_CollisionCB">GE_CollisionCB</a><b> that will be
+    called for each model or actor in </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World which
+    is detected.&nbsp; If you want to accept the detection, then
+    your callback function should return </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> otherwise
+    return </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>.&nbsp;
+    Context can be used to pass data to your callback
+    function.&nbsp; If something is detected then </b><a
+    href="geWorldIndexed.htm#GE_Contents">GE_Contents</a><b> Contents contains
+    information about what was found.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if anything was found, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetEntitySet"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_GetEntitySet</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * ClassName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the </b><a
+    href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a><b>
+    named ClassName from </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the specified </b><a
+    href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a><b>.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetLeaf"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_GetLeaf</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Pos, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>*
+Leaf);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the main world leaf from the BSP
+    tree in </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World at point Pos if there is one in Leaf.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if a leaf is found, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetModelRotationalCenter"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_GetModelRotationalCenter</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Center);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the rotational center of </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World in Center.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetModelXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_GetModelXForm</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* XForm);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current transform of </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World in XForm.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetNextModel"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_GetNextModel</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Start);</b></font> </p>
+
+<blockquote>
+    <p><b>This function iterates through the list of </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>s
+    in </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp; If Start is </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>, then the first </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    is returned, otherwise Start should be one of the </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>s
+    of World in which case the next </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    of World will be returned.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="HasBitmap"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_HasBitmap</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function tests whether Bitmap has been added to </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if World</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="IsActorPotentiallyVisible"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_IsActorPotentiallyVisible</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font> </p>
+
+<blockquote>
+    <p><b>This function does simple testing to see if </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Actor of </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World is
+    visible to </b><a href="geCameraIndexed.htm#geCamera">geCamera</a><b>
+    Camera.&nbsp; If there is no renderhintbox set for Actor this
+    function does no testing and returns </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>.&nbsp;
+    Only the center point of the renderhintbox is tested.&nbsp;
+    Mirrors are NOT accounted for.&nbsp;&nbsp; Note that this
+    function refers to the next frame, not the last rendered
+    frame.</b><font color="#FF0000"><b>&nbsp; I believe this
+    function does account for </b></font><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><font
+    color="#FF0000"><b> geometry and is not simply a test against
+    the </b></font><a href="geCameraIndexed.htm#geCamera">geCamera</a><font
+    color="#FF0000"><b> frustrum.&nbsp; Please correct me if this
+    is wrong.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if Actor is visible or if there is no renderhintbox defined, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="LeafMightSeeLeaf"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_LeafMightSeeLeaf</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+Leaf1, </b></font><a href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"><b> Leaf2, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> VisFlags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks whether Leaf1 can &quot;see&quot;
+    Leaf2 in </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp; </b><font color="#FF0000"><b>VisFlags is not
+    currently used.</b></font><b>&nbsp; I translate this to mean
+    that there exists a line that intersects the front (visible)
+    side of Leaf1 and Leaf2 without intersecting any other world
+    geometry in between.&nbsp; This test uses vis data and does
+    not account for actors or models. </b><font color="#FF0000"><b>If
+    vis data has not been calculated this function always returns
+    </b></font><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><font
+    color="#FF0000"><b>.&nbsp; I'm assuming here that
+    &quot;leaf&quot;s are one-sided objects.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if Leaf1 can see Leaf2, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GENESIS.H: Checks to see if Leaf1 can
+    see Leaf2. Currently VisFlags is not used yet.&nbsp; It could
+    be used for checking against areas, etc... Eventually you
+    could also pass in a VisObject, that is manipulated with a
+    camera...</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="MightSeeLeaf"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_MightSeeLeaf</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+Leaf);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks to see if Leaf of </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World might
+    possibly render during the next frame.&nbsp; </b><font
+    color="#FF0000"><b>I notice this doesn't refer to a </b></font><a
+    href="geCameraIndexed.htm#geCamera">geCamera</a><font
+    color="#FF0000"><b>.&nbsp; Wouldn't that have an effect?</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> if Leaf is
+    visible, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelCollision"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_ModelCollision</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* DXForm, </b></font><a
+href="geWorldIndexed.htm#GE_Collision">GE_Collision</a><font
+color="#000080"><b>* Collision);</b></font> </p>
+
+<blockquote>
+    <p><b>This function checks to see if </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World would collide with the something in World if transform
+    DXForm were applied to Model.&nbsp; The results of a
+    collision, if any, are returned in Collision.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if a collision occurs, </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelGetBBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_ModelGetBBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Mins, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Maxs);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the axial-aligned bounding box of
+    </b><a href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World in Mins and Maxs.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelGetCenter"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b>void </font><font color="#800000"><b>geWorld_ModelGetCenter</b></font><b>(</b><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model</b></font><b>, </b><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>*Center</b></font><b>);</b></p>
+
+<blockquote>
+    <p>Added in Genesis3D v1.6</p>
+</blockquote>
+
+<dir>
+    <li><b>Puts the center of Model, which is the center of its
+        bounding box, into Center</b><p><b>Returns: nothing</b></p>
+        <blockquote>
+            <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<hr>
+
+<p><br>
+<a name="ModelGetFlags"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_ModelGetFlags</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the flags set for </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model.&nbsp; </b><font color="#FF0000"><b>I believe these are
+    user-definable flags, maybe something from the editor?</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the flags.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelGetMotion"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geMotionIndexed.htm#geMotion">geMotion</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geWorld_ModelGetMotion</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the </b><a
+    href="geMotionIndexed.htm#geMotion">geMotion</a><b> set for </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model.&nbsp; </b><font color="#FF0000"><b>How is this motion
+    set?&nbsp; Where did it come from?</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geMotionIndexed.htm#geMotion">geMotion</a><b>
+    object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelGetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * </b></font><font color="#800000"><b>geWorld_ModelGetUserData</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns a pointer to user defined data
+    that has been assigned to </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the pointer.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelSetFlags"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_ModelSetFlags</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> ModelFlags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the flags for </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model to ModelFlags.&nbsp; </b><font color="#FF0000"><b>I
+    assume that this is user-defined.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ModelSetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_ModelSetUserData</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * UserData);</b></font> </p>
+
+<blockquote>
+    <p><b>This function assigns a pointer for user-definable data
+    for </b><a href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    model to UserData.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="OpenModel"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geWorld_OpenModel</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> Open);</b></font> </p>
+
+<blockquote>
+    <p><b>This function is used to disable or enable the vis
+    blocking capabilites of </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.&nbsp; If Open is </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> then Model
+    is capable of blocking visibility, if </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b> then it
+    doesn't.&nbsp; Basically this is used for doors.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RemoveActor"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemoveActor</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes </b><a
+    href="geActorIndexed.htm#geActor">geActor</a><b> Actor from </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+    <p><b>Note from Jeff: </b>The geWorld_RemoveActor() function
+    will decrease the reference to the geActor and remove it from
+    the world's actor array. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RemoveBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemoveBitmap</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> Bitmap
+    from </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RemoveFog"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemoveFog</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geFogIndexed.htm#geFog">geFog</a><font color="#000080"><b>*
+Fog);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes </b><a
+    href="geFogIndexed.htm#geFog">geFog</a><b> Fog from </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World.</b></p>
+</blockquote>
+
+<blockquote>
+    <p>See also <a href="geFogIndexed.htm#geFog">geFog</a>
+    functions</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RemoveLight"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemoveLight</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="LightIndexed.htm#Light_DLight"><font color="#000080">geLight</font></a><font
+color="#000080"><b>* Light);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes </b><a
+    href="LightIndexed.htm#Light_DLight"><font color="#000080"><b>geLight</b></font></a><b>
+    Light from </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="RemovePoly"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemovePoly</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="gePolyIndexed.htm#gePoly">gePoly</a><font color="#000080"><b>*
+Poly);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes </b><a
+    href="gePolyIndexed.htm#gePoly">gePoly</a><b> Poly from </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetActorFlags"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_SetActorFlags</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>* Actor, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Flags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the </b><a href="geWorldIndexed.htm#Actor Flags">Actor
+    Flags</a><b> for </b><a href="geActorIndexed.htm#geActor">geActor</a><b>
+    Actor of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World to Flags.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetLightAttributes"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_SetLightAttributes</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="LightIndexed.htm#Light_DLight"><font color="#000080">geLight</font></a><font
+color="#000080"><b>* Light, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b>&nbsp; </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Pos, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b>&nbsp; </b></font><a
+href="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</a><font
+color="#000080"><b>* RGBA, </b></font><font color="#0000FF">float</font><font
+color="#000080"><b> Radius, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> CastShadow);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the attributes of </b><a
+    href="LightIndexed.htm#Light_DLight"><font color="#000080"><b>geLight</b></font></a><b>
+    Light of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World including it position (Pos), color (RGBA), effect
+    radius (Radius), and whether it casts shadows (CastShadow).</b><font
+    color="#FF0000"><b>&nbsp; I've got to assume that changing
+    this during runtime would only affect runtime lit objects
+    like geActors.</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Contents</a><a href="geWorldIndexed.htm#Contents">Return
+    to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetLTypeTable"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_SetLTypeTable</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+LType, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * Table);</b></font> </p>
+
+<blockquote>
+    <p><b>This creates &quot;light type&quot; numberd LType in </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> World that
+    is defined by the string Table.&nbsp; Table should be a '\0'
+    terminated string of lowercase letters.&nbsp; Basically 'a'
+    sets a light to &quot;off&quot;, 'z' sets it to &quot;full
+    on&quot;, and all the letters in between are variations in
+    between.&nbsp; When you create a static light in the editor,
+    you can specify the &quot;light type&quot; number that
+    matches the LType you define with this API call.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Contents</a><a href="geWorldIndexed.htm#Contents">Return
+    to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<p><br>
+<a name="SetModelXForm"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b>&nbsp; </b></font><font color="#800000"><b>geWorld_SetModelXForm</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* XForm);</b></font> </p>
+
+<blockquote>
+    <p><b>This function transforms </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World by the transform XForm.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="TestModelMove"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geWorld_TestModelMove</b></font><font
+color="#000080"><b>(</b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><font
+color="#000080"><b>* Model, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* DXForm, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Mins, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Maxs, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* In, </b></font><a
+href="geVec3dIndexed.htm#geVec3d">geVec3d</a><font
+color="#000080"><b>* Out);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the result axial-aligned bounding
+    box (Mins, Maxs) and In and Out vectors for </b><a
+    href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a><b>
+    Model of </b><a href="geWorldIndexed.htm#geWorld">geWorld</a><b>
+    World if transform DXForm were applied to Model.&nbsp; It
+    does not however actually transform the model.&nbsp; This is
+    basically used to check for possible collisions, etc.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<blockquote>
+    <p><a name="RemoveSprite"></a></p>
+    <p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+    color="#000080"><b> </b></font><a
+    href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+    color="#000080"><b> </b></font><font color="#800000"><b>geWorld_RemoveSprite</b></font>(<a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><font
+    color="#000080"><b>* World</b></font>, <a
+    href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+    color="#000080"><b>Sprite</b></font>);</p>
+</blockquote>
+
+<blockquote>
+    <p>Added in Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p>Removes and destroys <font color="#000080"><b>Sprite</b></font>
+    from <font color="#000080"><b>World</b></font>.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<blockquote>
+    <p><a name="AddSprite"></a></p>
+    <p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+    color="#000080"><b> </b></font><a
+    href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+    color="#000080"><b> </b></font><font color="#800000"><b>geWorld_AddSprite</b></font>(<a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><font
+    color="#000080"><b>* World</b></font>, <a
+    href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+    color="#000080"><b>Sprite</b></font>, <a
+    href="BasetypesIndexed.htm#uint32">uint32</a> <font
+    color="#000080"><b>Flags</b></font>, <a
+    href="BasetypesIndexed.htm#uint32">uint32</a> <font
+    color="#000080"><b>UserFlags</b></font>);</p>
+</blockquote>
+
+<blockquote>
+    <p>Added in Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Adds </b><font color="#000080"><b>Sprite</b></font><b>
+    to </b><font color="#000080"><b>World</b></font><b>. </b></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><b>Sprite</b></font><b> must be a
+    valid </b><a href="geSpriteIndexed.htm#geSprite">geSprite</a>,
+    <b>created by geSprite_Create(). <br>
+    </b><font color="#000080"><b>Flags</b></font><b> should be
+    one of </b><a href="geWorldIndexed.htm#SpriteFlags">these</a><b> flags</b><font
+    color="#000080"><b>.<br>
+    UserFlags</b></font><b> to be set to any user-defined value.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<blockquote>
+    <p><a name="SetSpriteFlags"></a></p>
+    <p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+    color="#000080"><b> </b></font><a
+    href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+    color="#000080"><b> </b></font><font color="#800000"><b>geWorld_SetSpriteFlags</b></font>(<a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><font
+    color="#000080"><b>* World</b></font>, <a
+    href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+    color="#000080"><b>Sprite</b></font>, <a
+    href="BasetypesIndexed.htm#uint32">uint32</a> <font
+    color="#000080"><b>Flags</b></font>);</p>
+</blockquote>
+
+<blockquote>
+    <p>Added in Genesis3D v1.6</p>
+</blockquote>
+
+<blockquote>
+    <p><b>Changes rendering flags for sprite. </b></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000080"><b>Flags</b></font><b> should be one
+    of </b><a href="geWorldIndexed.htm#SpriteFlags">these</a><b> flags</b><font
+    color="#000080"><b>.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<p><a name="IsSpritePotentiallyVisible"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geWorld_IsSpritePotentiallyVisible</b></font>(<font
+color="#000080">const </font><a href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World</b></font>, <font color="#000080">const
+</font><a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>Sprite</b></font>, <font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera</b></font>);</p>
+
+<blockquote>
+    <p>Added in Genesis3D v1.6</p>
+</blockquote>
+
+<dir>
+    <li><b>Determines whether a </b><font color="#000080"><b>Sprite</b></font><b>
+        may be potentially visible, based on </b><font
+        color="#000080"><b>Camera</b></font><b>.</b><p>Note:
+        Mirrors aren't checked, and function doesn't check the
+        extents of the sprite, just the center point.</p>
+        <blockquote>
+            <p><br>
+            <a href="geWorldIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<blockquote>
+    <hr>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="Notes"></a>Notes:</p>
+
+<p>Notes from the Genesis3d forum (author was Jeff):</p>
+
+<p>The <strong>geWorld_Create</strong>() function will create a
+world from a .BSP file or create a NULL world if the passed
+parameter is NULL. The return value is a pointer to a geWorld
+structure. </p>
+
+<p>The <strong>geEngine_AddWorld</strong>() function will
+increase the reference count of the geWorld and copy a reference
+to the engine's world array. This array is used to keep track of
+all the worlds in the engine. </p>
+
+<p>The <strong>geEngine_RemoveWorld</strong>() function will
+check to see if there are multiple references to the geWorld, if
+so then it decreases the reference count and returns GE_TRUE. If
+there is only one reference then it removes the geWorld from the
+engine's world array and calls the geWorld_Free() function. </p>
+
+<p>The <strong>geWorld_Free</strong>() function will check to see
+if there are multiple references to the geWorld, if so then it
+decreases the reference count and returns. If there is only one
+reference then it removes the geWorld from memory. This includes
+calling geActor_Destroy() for every geActor in the world's actor
+array. </p>
+
+<p>&nbsp;</p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:40:31 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:15 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

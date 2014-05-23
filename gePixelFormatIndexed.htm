@@ -1,0 +1,217 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePixelFormatIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>gePixelFormat</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: The abstract Pixel primitives</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Bitmap\pixelformat.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePixelFormatIndexed.htm#BytesPerPel">BytesPerPel</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#ComposePixel">ComposePixel</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#ConvertPixel">ConvertPixel</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#DecomposePixel">DecomposePixel</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#Description">Description</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#GetColor">GetColor</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#GetOperations">GetOperations</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#GetPixel">GetPixel</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#HasAlpha">HasAlpha</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#HasGoodAlpha">HasGoodAlpha</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#HasPalette">HasPalette</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#IsRaw">IsRaw</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#IsValid">IsValid</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#PutColor">PutColor</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#PutPixel">PutPixel</A><A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Composer">gePixelFormat_Composer</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Decomposer">gePixelFormat_Decomposer</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_ColorGetter">gePixelFormat_ColorGetter</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_ColorPutter">gePixelFormat_ColorPutter</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_PixelGetter">gePixelFormat_PixelGetter</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_PixelPutter">gePixelFormat_PixelPutter</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Operations">gePixelFormat_Operations</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A></P>
+<B><FONT COLOR="#000080"><P>Constants: </B></FONT><A HREF="gePixelFormatIndexed.htm#GE_PIXELFORMAT_8BIT_PAL">GE_PIXELFORMAT_8BIT_PAL</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_Composer"></A>typedef </B></FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> (*</FONT><FONT COLOR="#800000">gePixelFormat_Composer</FONT><FONT COLOR="#000080">)(</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> R,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> G,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> B,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> A);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_Decomposer"></A>typedef </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> (*</FONT><FONT COLOR="#800000">gePixelFormat_Decomposer</FONT><FONT COLOR="#000080">)( </B></FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">R,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">G,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">B,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">A);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_ColorGetter"></A>typedef </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> (*</FONT><FONT COLOR="#800000">gePixelFormat_ColorGetter</FONT><FONT COLOR="#000080">)(</B></FONT><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">R,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">G,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">B,</B></FONT><FONT COLOR="#0000ff"> int* </FONT><B><FONT COLOR="#000080">A);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_ColorPutter"></A>typedef </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> (*</FONT><FONT COLOR="#800000">gePixelFormat_ColorPutter</FONT><FONT COLOR="#000080">)( </B></FONT><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080">&nbsp; R,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080">&nbsp; G,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080">&nbsp; B,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080">&nbsp; A);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_PixelGetter"></A>typedef </B></FONT><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><P><A NAME="gePixelFormat_PixelPutter"></A>typedef </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> (*</FONT><FONT COLOR="#800000">gePixelFormat_PixelPutter</FONT><FONT COLOR="#000080">)( </B></FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel);</B></FONT> </P>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="gePixelFormat_Operations"></A>gePixelFormat_Operations</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<FONT FACE="Courier New,Courier"><BLOCKQUOTE>typedef struct gePixelFormat_Operations{</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;RMask;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;GMask;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;BMask;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;AMask;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RShift;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GShift;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">&nbsp;&nbsp;int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; BShift;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; AShift;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; RAdd;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; GAdd;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; BAdd;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">int</FONT><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; AAdd;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">&nbsp;&nbsp;int</FONT><FONT FACE="Courier New,Courier">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;BytesPerPel;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;</FONT>&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><FONT FACE="Courier New,Courier"> &nbsp;HasPalette;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000ff">&nbsp;&nbsp;char* </FONT><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; Description;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Composer">gePixelFormat_Composer</A><FONT FACE="Courier New,Courier">&nbsp; &nbsp;&nbsp;&nbsp;ComposePixel;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Decomposer">gePixelFormat_Decomposer</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;DecomposePixel;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_ColorGetter">gePixelFormat_ColorGetter</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;GetColor;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_ColorPutter">gePixelFormat_ColorPutter</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;PutColor;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_PixelGetter">gePixelFormat_PixelGetter</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;GetPixel;</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp; </FONT><A HREF="gePixelFormatIndexed.htm#gePixelFormat_PixelPutter">gePixelFormat_PixelPutter</A><FONT FACE="Courier New,Courier"> &nbsp;&nbsp;&nbsp;PutPixel;</FONT> <BR>
+<FONT FACE="Courier New,Courier">} gePixelFormat_Operations;</FONT> <BR>
+<A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="gePixelFormat"></A>gePixelFormat</B> </P>
+</FONT><FONT FACE="Courier New,Courier"><BLOCKQUOTE>typedef enum{</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_NO_DATA = 0,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_8BIT,&nbsp;&nbsp;&nbsp; // PAL</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_8BIT_GRAY,&nbsp; // no palette (intensity from bit value)</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_555_RGB,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_555_BGR,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_565_RGB, // #5</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_565_BGR,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_4444_ARGB, // #7</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_16BIT_1555_ARGB,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_24BIT_RGB,&nbsp; // #9</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_24BIT_BGR,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_24BIT_YUV,&nbsp; //* see note below</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_RGBX,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_XRGB,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_BGRX,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_XBGR,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_RGBA,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_ARGB,&nbsp; // #17</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_BGRA,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_32BIT_ABGR,</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_WAVELET,&nbsp;&nbsp; // #20 , Wavelet Compression</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;PIXELFORMAT_COUNT</FONT> <BR>
+<FONT FACE="Courier New,Courier">} gePixelFormat;</FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PIXELFORMAT.H:&nbsp; There's something wacked out about these format names: for 16 bit &amp; 32 bit , the _RGB or _BGR refers to their order *in the word or dword* ; since we're on intel, this means the bytes in the data file have the *opposite* order !!&nbsp; (for example the 32 bit _ARGB is actually B,G,R,A in raw bytes) for 24 bit , the _RGB or _BGR refers to their order in the actual bytes, so that windows bitmaps actually have _RGB order in a dword !! <BR>
+&nbsp;&nbsp;* YUV : the pixelformat ops here are identical to those of 24bit_RGB; this is just a place-keeper to notify you that you should to a YUV_to_RGB conversion</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Constants:</B></I></FONT> </P>
+<P><BR>
+<A NAME="GE_PIXELFORMAT_8BIT_PAL"></A><B><FONT COLOR="#000080">PIXELFORMAT_8BIT_PAL;</B></FONT> </P>
+<FONT FACE="Courier New,Courier"><BLOCKQUOTE>#define PIXELFORMAT_8BIT_PAL PIXELFORMAT_8BIT</BLOCKQUOTE>
+</FONT><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<B><I><FONT SIZE=5 COLOR="#0000ff">Functions:</B></I></FONT> </P>
+<hr>
+<P>&nbsp;</P>
+<P><A NAME="BytesPerPel"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_BytesPerPel</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the number of bytes per pixel for the specified </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="ComposePixel"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_ComposePixel</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> R, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> G, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> B, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function produces a </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel of the specified format from the specified (R,G,B,A) parameters.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the created </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="ConvertPixel"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel, </B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> ToFormat);</B></FONT> </P>
+<B><BLOCKQUOTE>This function converts the given </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel Pixel from Format to ToFormat.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="DecomposePixel"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">R, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">G, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">B, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the (R,G,B,A) parameters of Pixel given that Pixel is of pixel format Format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Description"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_Description</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns a text description of the given </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> Format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the text description.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetColor"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">R, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">G, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">B, </B></FONT><FONT COLOR="#0000ff">int* </FONT><B><FONT COLOR="#000080">A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the (R,G,B,A) parameters of the pixel pointed to by ppData if it is translated as being of Format pixel format and increments ppData by one pixel.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetOperations"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_GetOperations</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the </B><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Operations">gePixelFormat_Operations</A><B> structure for the given pixel format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="gePixelFormatIndexed.htm#gePixelFormat_Operations">gePixelFormat_Operations</A><B> structure.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetPixel"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel pointed to by ppData given that it is stored in Format pixel format and increments ppData by one pixel.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="HasAlpha"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_HasAlpha</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function tests whether the specified </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> supports Alpha.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="HasGoodAlpha"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_HasGoodAlpha</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks whether the specified </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> specifies more than one bit of Alpha.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PIXELFORMAT.H: more than 1 bit of alpha.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="HasPalette"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_HasPalette</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks whether the given </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> is palettized.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="IsRaw"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_IsRaw</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function tests whether the given </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> supports the compose functions.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from PIXELFORMAT.H: 'Raw' means pixels can be made with the Compose operations</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="IsValid"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">gePixelFormat_IsValid</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks whether the specified </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> is a valid </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B>.&nbsp; I assume this means that it checks whether the constant specified represents a valid </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> (i.e. listed in the enum).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="PutColor"></A><A HREF="BasetypesIndexed.htm#uint8">uint8</A><B><FONT COLOR="#000080">** ppData, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> R, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> G, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> B, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function colors the pixel pointed to by ppData (R,G,B,A) utilizing the specified </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> and increments ppData by one pixel.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="PutPixel"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel);</B></FONT> </P>
+<B><BLOCKQUOTE>This function puts the raw </B><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B> pixel Pixel into ppData utilizing the </B><A HREF="gePixelFormatIndexed.htm#GePixelFormat">gePixelFormat</A><B> Format and increments ppData by one pixel.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+<FONT SIZE=4><BLOCKQUOTE>Notes:</B></FONT> <BR>
+&nbsp;&nbsp;&nbsp; from PIXELFORMAT.H: the Masks double as boolean "HaveAlpha" .. etc.. <BR>
+&nbsp; <BR>
+<A HREF="gePixelFormatIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P>&nbsp; </P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:24:49 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:47 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

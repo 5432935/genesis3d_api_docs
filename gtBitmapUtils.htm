@@ -1,0 +1,274 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GTest geBitmap Utils"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>GTest geBitmapUtils</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>gebmutil.h</b></font> </p>
+
+<p><font color="#000080"><b>Description: The following is code
+from GTest, and not part of the original Genesis3d engine</b></font></p>
+
+<p>Source file: &#133;\genesis3d\src\Procedurals\gebmutil.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+<a name="x"></a></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_CreateHBITMAP"><font color="#000080"><strong>CreateHBITMAP</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_CreateFromHBITMAP"><font color="#000080"><strong>CreateFromHBITMAP</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_SetColor"><font color="#000080"><strong>SetColor</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_SmoothBits"><font color="#000080"><strong>SmoothBits</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_SetAlphaFromBrightness"><font color="#000080"><strong>SetAlphaFromBrightness</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_CreateFromFileName"><font color="#000080"><strong>CreateFromFileName</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_CreateFromFileAndAlphaNames"><font
+color="#000080"><strong>CreateFromFileAndAlphaNames</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_SetPaletteFromString"><font color="#000080"><strong>SetPaletteFromString</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_CompareBitmaps"><font color="#000080"><strong>CompareBitmaps</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_MSE2PSNR"><font color="#000080"><strong>MSE2PSNR</strong></font></a><font
+color="#000080"><strong>, </strong></font><a
+href="gtBitmapUtils.htm#geBitmapUtil_PSNR2MSE"><font color="#000080"><strong>PSNR2MSE</strong></font></a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geBitmapUtil_CreateHBITMAP"><font color="#000080"></font></a><font
+color="#000080">HBITMAP </font><font color="#800000"><strong>geBitmapUtil_CreateHBITMAP</strong></font><font
+color="#000080">(</font><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* <strong>Bitmap</strong>, HWND <strong>window</strong>,
+int <strong>mip</strong>);</font></p>
+
+<blockquote>
+    <p><font color="#000080">// use DeleteObject when done</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_CreateFromHBITMAP"><font color="#000080"></font></a><a
+href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font color="#000080">* </font><font
+color="#800000"><strong>geBitmapUtil_CreateFromHBITMAP</strong></font><font
+color="#000080">(HWND <strong>window</strong>, HBITMAP <strong>hbm</strong>);</font></p>
+
+<p><font color="#000080"></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_SetColor"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>geBitmapUtil_SetColor</strong></font><font
+color="#000080">(</font><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* <strong>Bmp</strong>, int <strong>R</strong>,
+int <strong>G</strong>, int <strong>B</strong>, int <strong>A</strong>);</font></p>
+
+<blockquote>
+    <p><font color="#000080">// sets all of the bitmap to one
+    color<br>
+    // on palettized, use R=G=B=A= 0 to set all palette indeces
+    to zero</font></p>
+    <p><font color="#000080"></font>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_SmoothBits"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>geBitmapUtil_SmoothBits</strong></font><font
+color="#000080">(</font><a
+href="GTest%20Custom/geBitmapIndexed.htm#geBitmap_Info"><font color="#000080">geBitmap_Info</font></a><font
+color="#000080">* <strong>pInfo</strong>,void* <strong>FmBits</strong>,void*
+<strong>ToBits</strong>, int <strong>radius</strong>, </font><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#000080"><strong>wrap</strong>);</font></p>
+
+<blockquote>
+    <p><font color="#000080">// a convolution filter for linear
+    smoothing<br>
+    // assembly &amp; fast<br>
+    // Fm == To is ok<br>
+    // (btw wrap is slow &amp; not in assembly yet)</font></p>
+</blockquote>
+
+<p><font color="#000080"></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_SetAlphaFromBrightness"><font
+color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>geBitmapUtil_SetAlphaFromBrightness</strong></font><font
+color="#000080">(</font><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* <strong>Bmp</strong>);</font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_CreateFromFileName"><font
+color="#000080"></font></a><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* </font><font color="#800000"><strong>geBitmapUtil_CreateFromFileName</strong></font><font
+color="#000080">(const </font><a
+href="GTest%20Custom/GTest%20Custom/geVFileIndexed.htm#geVFile"><font
+color="#000080">geVFile</font></a><font color="#000080">* <strong>BaseFS</strong>,const
+char* <strong>BmName</strong>);</font></p>
+
+<p><font color="#000080"></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_CreateFromFileAndAlphaNames"><font
+color="#000080"></font></a><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* </font><font color="#800000"><strong>geBitmapUtil_CreateFromFileAndAlphaNames</strong></font><font
+color="#000080">(const </font><a
+href="GTest%20Custom/GTest%20Custom/geVFileIndexed.htm#geVFile"><font
+color="#000080">geVFile</font></a><font color="#000080">* <strong>BaseFS</strong>,
+const char* <strong>BmName</strong>, const char* <strong>AlphaName</strong>);</font></p>
+
+<p><font color="#000080"></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_SetPaletteFromString"><font
+color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>geBitmapUtil_SetPaletteFromString</strong></font><font
+color="#000080">(</font><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* <strong>Bitmap</strong>,char** <strong>pParams</strong>);</font></p>
+
+<blockquote>
+    <p><font color="#000080">// moves pParams past the used
+    palette entries</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_CompareBitmaps"><font color="#000080"></font></a><a
+href="GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/GTest%20Custom/BasetypesIndexed.htm#geBoolean"><font
+color="#000080">geBoolean</font></a> <font color="#800000"><strong>geBitmapUtil_CompareBitmaps</strong></font><font
+color="#000080">(</font><a href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font
+color="#000080">* <strong>bm1</strong>,</font> <a
+href="gtBitmapUtils.htm#geBitmap">geBitmap</a><font color="#000080">* <strong>bm2</strong>,
+char* <strong>IntoStr</strong>, double* <strong>pMSE</strong>);</font></p>
+
+<blockquote>
+    <p><font color="#000080">// compares YUV's</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_MSE2PSNR"><font color="#000080"></font></a><font
+color="#000080">double </font><font color="#800000"><strong>geBitmapUtil_MSE2PSNR</strong></font><font
+color="#000080">(double <strong>mse</strong>);</font></p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="geBitmapUtil_PSNR2MSE"><font color="#000080"></font></a><font
+color="#000080">double </font><font color="#800000"><strong>geBitmapUtil_PSNR2MSE</strong></font><font
+color="#000080">(double <strong>psnr</strong>);</font></p>
+
+<p><font color="#000080"></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"></a><font color="#0000FF" size="5"><b><i>Notes:</i></b></font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="gtBitmapUtils.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:12:38 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:59:08 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

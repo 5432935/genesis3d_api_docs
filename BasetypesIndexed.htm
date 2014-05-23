@@ -1,0 +1,858 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>BasetypesIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<hr>
+
+<p><font color="#008000" size="6"><b>Basetypes</b></font> </p>
+
+<hr>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font></p>
+
+<p><a href="BasetypesIndexed.htm#geDriver_System">geDriver_System,</a> <a
+href="BasetypesIndexed.htm#geMesh">geMesh</a>, <a href="BasetypesIndexed.htm#geMesh_Def">geMesh_Def</a>, <br>
+<a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#NULL">NULL</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#int16">int16</a>, <a href="BasetypesIndexed.htm#int8">int8</a>, <a
+href="BasetypesIndexed.htm#uint32">uint32</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#uint16">uint16</a>, <a href="BasetypesIndexed.htm#uint8">uint8</a></p>
+
+<p><a href="BasetypesIndexed.htm#GE_ABS">GE_ABS(x)</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_CLAMP">GE_CLAMP(x,lo,hi)</a>, <a href="BasetypesIndexed.htm#GE_CLAMP8">GE_CLAMP8(x)</a>,
+<a href="BasetypesIndexed.htm#GE_CLAMP16">GE_CLAMP16(x)</a>, <a href="BasetypesIndexed.htm#GE_BOOLSAME">GE_BOOLSAME(x,y)</a>,
+<a href="BasetypesIndexed.htm#GE_EPSILON">GE_EPSILON</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_FLOATS_EQUAL">GE_FLOATS_EQUAL(x,y)</a>, <a
+href="BasetypesIndexed.htm#GE_FLOAT_ISZERO">GE_FLOAT_ISZERO(x)</a>, <a href="BasetypesIndexed.htm#GE_PI">GE_PI</a>,
+<a href="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</a>, <a href="BasetypesIndexed.htm#GE_Rect">GE_Rect</a><font
+color="#000080"><b>, </b></font><a href="BasetypesIndexed.htm#geRect">geRect</a>, <a
+href="BasetypesIndexed.htm#geFloatRect">geFloatRect</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</a><font color="#000080"><b>, </b></font><a
+href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a></p>
+
+<p>&nbsp;</p>
+
+<p><font color="#0000FF" size="5"><b><i>Links to Types in Other
+Files:</i></b></font> </p>
+
+<p>Actor Types:<font color="#000080"><b> </b></font><a
+href="geActorIndexed.htm#geActor">geActor</a><font
+color="#000080"><b>, </b></font><a name="geActor_Def"><font
+color="#000080"><b></b></font></a><a
+href="geActorIndexed.htm#geActor_Def">geActor_Def</a><font
+color="#000080"><b>, </b></font><a name="geActor_BlendingType"><font
+color="#000080"><b></b></font></a><a href="BasetypesIndexed.htm#geActor_BlendingType">geActor_BlendingType</a>
+</p>
+
+<p>Bitmap Types: <a href="geBitmapIndexed.htm#geBitmap">geBitmap</a>,
+<a href="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</a>,
+<a href="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</a>, <a
+href="geBitmapIndexed.htm#geBitmap_StreamingStatus">geBitmap_StreamingStatus</a></p>
+
+<p>BitmapList Types<b>:</b><font color="#000080"><b> </b></font><a
+href="BitmapListIndexed.htm#BitmapList">BitmapList</a></p>
+
+<p>Body Types: <a href="geBodyIndexed.htm#geBody">geBody</a>&nbsp;</p>
+
+<p>geVec3dIndexed: <a href="geVec3dIndexed.htm#geVec3d">geVec3d</a></p>
+
+<p>BitmapListIndexed: <a href="BitmapListIndexed.htm#BitmapList">BitmapList</a></p>
+
+<p>DirTreeIndexed: <a href="DirTreeIndexed.htm#DirTree">DirTree</a>,
+<a href="DirTreeIndexed.htm#DirTree_Finder">DirTree_Finder</a></p>
+
+<p>geActorIndexed: <a href="geActorIndexed.htm#geActor">geActor</a>,
+<a href="geActorIndexed.htm#geActor_Def">geActor_Def</a>, <a
+href="geActorIndexed.htm#geActor_BlendingType">geActor_BlendingType</a></p>
+
+<p>geBodyIndexed: <a href="geBodyIndexed.htm#geBody">geBody</a></p>
+
+<p>geBodyInstIndexed: <a href="geBodyInstIndexed.htm#geBodyInst">geBodyInst</a>,
+<a href="geBodyInstIndexed.htm#geBodyInst">geBodyInst_Index</a>, <a
+href="geBodyInstIndexed.htm#geBodyInst_FaceType">geBodyInst_FaceType</a>,
+<a href="geBodyInstIndexed.htm#geBodyInst_SkinVertex">geBodyInst_SkinVertex</a>,
+<a href="geBodyInstIndexed.htm#geBodyInst_Geometry">geBodyInst_Geometry</a></p>
+
+<p>geBoxIndexed: <a href="geBoxIndexed.htm#geBox">geBox</a></p>
+
+<p>geBSPIndexed: <a href="geBSPIndexed.htm#GBSP_Chunk">GBSP_Chunk</a>,
+<a href="geBSPIndexed.htm#GBSP_ChunkData">GBSP_ChunkData</a>, <a
+href="geBSPIndexed.htm#GBSP_Header">GBSP_Header</a>, <a
+href="geBSPIndexed.htm#GFX_SkyData">GFX_SkyData</a>, <a
+href="geBSPIndexed.htm#GFX_Plane">GFX_Plane</a>, <a
+href="geBSPIndexed.htm#GFX_Node">GFX_Node</a>, <a
+href="geBSPIndexed.htm#GFX_BNode">GFX_BNode</a>, <a
+href="geBSPIndexed.htm#GFX_AreaPortal">GFX_AreaPortal</a>, <a
+href="geBSPIndexed.htm#GFX_Area">GFX_Area</a>, <a
+href="geBSPIndexed.htm#GFX_Leaf">GFX_Leaf</a>, <a
+href="geBSPIndexed.htm#GFX_Cluster">GFX_Cluster</a>, <a
+href="geBSPIndexed.htm#GFX_LeafSide">GFX_LeafSide</a>, <a
+href="geBSPIndexed.htm#GFX_Face">GFX_Face</a>, <a
+href="geBSPIndexed.htm#GFX_Model">GFX_Model</a>, <a
+href="geBSPIndexed.htm#GFX_Texture">GFX_Texture</a>, <a
+href="geBSPIndexed.htm#GFX_TexInfo">GFX_TexInfo</a>, <a
+href="geBSPIndexed.htm#GFX_Portal">GFX_Portal</a>, <a
+href="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</a></p>
+
+<p>geCameraIndexed: <a href="geCameraIndexed.htm#geCamera">geCamera</a></p>
+
+<p>geDriverIndexed: <a
+href="geDriverIndexed.htm#geEngine_FrameState">geEngine_FrameState</a>,
+<a href="geDriverIndexed.htm#Sys_String">Sys_String</a>, <a
+href="geDriverIndexed.htm#Sys_FontInfo">Sys_FontInfo</a>, <a
+href="geDriverIndexed.htm#Sys_CPUInfo">Sys_CPUInfo</a>, <a
+href="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</a>, <a
+href="geDriverIndexed.htm#geDriver">geDriver</a>, <a
+href="geDriverIndexed.htm#Sys_DriverInfo">Sys_DriverInfo</a>, <a
+href="geDriverIndexed.htm#Sys_DebugInfo">Sys_DebugInfo</a>, <a
+href="geDriverIndexed.htm#geEngine_WorldList">geEngine_WorldList</a>,
+<a href="geDriverIndexed.htm#geEngine">geEngine</a></p>
+
+<p>SystemIndexed: <a href="SystemIndexed.htm#geEngine_FrameState">geEngine_FrameState</a>,
+<a href="SystemIndexed.htm#Sys_String">Sys_String</a>, <a
+href="SystemIndexed.htm#Sys_FontInfo">Sys_FontInfo</a>, <a
+href="SystemIndexed.htm#Sys_CPUInfo">Sys_CPUInfo</a>, <a
+href="SystemIndexed.htm#geDriver_Mode">geDriver_Mode</a>, <a
+href="SystemIndexed.htm#geDriver">geDriver</a>, <a
+href="SystemIndexed.htm#Sys_DriverInfo">Sys_DriverInfo</a>, <a
+href="SystemIndexed.htm#Sys_DebugInfo">Sys_DebugInfo</a>, <a
+href="SystemIndexed.htm#geEngine_WorldList">geEngine_WorldList</a>,
+<a href="SystemIndexed.htm#geEngine">geEngine</a></p>
+
+<p>geErrorLogIndexed: <a
+href="geErrorLogIndexed.htm#geErrorLog_ErrorIDEnumType">geErrorLog_ErrorIDEnumType</a>,
+<a href="geErrorLogIndexed.htm#geErrorLog_ErrorClassType">geErrorLog_ErrorClassType</a></p>
+
+<p>geExtBoxIndexed: <a href="geExtBoxIndexed.htm#geExtBox">geExtBox</a></p>
+
+<p>geFogIndexed: <a href="geFogIndexed.htm#SET_ATTR_CB">SET_ATTR_CB</a>,
+<a href="geFogIndexed.htm#geFog">geFog</a></p>
+
+<p>geFontIndexed: <a href="geFontIndexed.htm#geFont">geFont</a></p>
+
+<p>geMotionIndexed: <a href="geMotionIndexed.htm#geMotion">geMotion</a></p>
+
+<p>gePathIndexed: <a href="gePathIndexed.htm#gePath_Interpolator">gePath_Interpolator</a></p>
+
+<p>gePhysicsJointIndexed: <a
+href="gePhysicsJointIndexed.htm#gePhysicsJoint_Kind">gePhysicsJoint_Kind</a>,
+<a href="gePhysicsJointIndexed.htm#gePhysicsJoint">gePhysicsJoint</a></p>
+
+<p>gePhysicsObjectIndexed: <a
+href="gePhysicsObjectIndexed.htm#gePhysicsObject">gePhysicsObject</a></p>
+
+<p>gePhysicsSystemIndexed: <a
+href="gePhysicsSystemIndexed.htm#gePhysicsSystem">gePhysicsSystem</a></p>
+
+<p>gePixelFormatIndexed: <a
+href="gePixelFormatIndexed.htm#gePixelFormat_Composer">gePixelFormat_Composer</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_Decomoser">gePixelFormat_Decomoser</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_ColorGetter">gePixelFormat_ColorGetter</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_ColorGetter">gePixelFormat_ColorPutter</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_PixelGetter">gePixelFormat_PixelGetter</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_PixelPutter">gePixelFormat_PixelPutter</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat_Operations">gePixelFormat_Operations</a>,
+<a href="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</a></p>
+
+<p>gePolyIndexed: <a href="gePolyIndexed.htm#gePoly">gePoly</a>, <a
+href="gePolyIndexed.htm#User_Info">User_Info</a>, <a
+href="gePoseIndexed.htm#gePose_BlendingType">gePose_BlendingType</a>,
+<a href="gePoseIndexed.htm#gePose">gePose</a></p>
+
+<p>gePuppetIndexed: <a href="gePuppetIndexed.htm#gePuppet">gePuppet</a></p>
+
+<p>geQKFrameIndexed: <a
+href="geQKFrameIndexed.htm#geQKFrame_InterpolationType">geQKFrame_InterpolationType</a></p>
+
+<p>geQuaternionIndexed: <a
+href="geQuaternionIndexed.htm#geQuaternion">geQuaternion</a></p>
+
+<p>geRamIndexed: <a
+href="geRamIndexed.htm#geRam_CriticalCallbackFunction">geRam_CriticalCallbackFunction</a></p>
+
+<p>geStrBlockIndexed: <a href="geStrBlockIndexed.htm#geStrBlock">geStrBlock</a></p>
+
+<p>geTKArrayIndexed: <a
+href="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</a>,
+<a href="geTKArrayIndexed.htm#geTKArray">geTKArray</a></p>
+
+<p>geVFileIndexed: <a href="geVFileIndexed.htm#geVFile">geVFile</a>,
+<a href="geVFileIndexed.htm#Attributes">geVFile_Attributes</a>, <a
+href="geVFileIndexed.htm#Finder">geVFile_Finder</a>, <a
+href="geVFileIndexed.htm#Hints">geVFile_Hints</a>, <a
+href="geVFileIndexed.htm#MemoryContext">geVFile_MemoryContext</a>,
+<a href="geVFileIndexed.htm#Properties">geVFile_Properties</a>, <a
+href="geVFileIndexed.htm#Time">geVFile_Time</a>, <a
+href="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</a></p>
+
+<p>geVKFrameIndexed: <a
+href="geVKFrameIndexed.htm#geVKFrame_InterpolationType">geVKFrame_InterpolationType</a></p>
+
+<p>geWBitmapIndexed: <a href="geWBitmapIndexed.htm#geWBitmap">geWBitmap</a></p>
+
+<p>geWBitmapIndexed: <a
+href="geWBitmapIndexed.htm#geWBitmap_Pool">geWBitmap_Pool</a></p>
+
+<p>geWorldIndexed: <a href="geWorldIndexed.htm#geWorld">geWorld</a>,
+<a href="geWorldIndexed.htm#geWorld_Model">geWorld_Model</a>, <a
+href="geWorldIndexed.htm#geWorld_Leaf">geWorld_Leaf</a>, <a
+href="geWorldIndexed.htm#geWorld_FogData">geWorld_FogData</a>, <a
+href="geWorldIndexed.htm#geWorld_BSP">geWorld_BSP</a>, <a
+href="geWorldIndexed.htm#geWorld_SkyBox">geWorld_SkyBox</a>, <a
+href="geWorldIndexed.htm#geWorld_SkyBoxTData">geWorld_SkyBoxTData</a>,
+<a href="geWorldIndexed.htm#geWorld_Actor">geWorld_Actor</a>, <a
+href="geWorldIndexed.htm#geWorld_EntClassSet">geWorld_EntClassSet</a>,
+<a href="geWorldIndexed.htm#geWorld_DebugInfo">geWorld_DebugInfo</a>,
+<a href="geWorldIndexed.htm#GE_Collision">GE_Collision</a>, <a
+href="geWorldIndexed.htm#GE_Contents">GE_Contents</a></p>
+
+<p>geXFArrayIndexed: <a href="geXFArrayIndexed.htm#geXFArray">geXFArray</a></p>
+
+<p>geXForm3dIndexed: <a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a></p>
+
+<p>LightIndexed: <a href="LightIndexed.htm#Light_DLight">Light_DLight</a></p>
+
+<p>LightIndexed: <a href="LightIndexed.htm#Light_LightInfo">Light_LightInfo</a></p>
+
+<p>Matrix33Indexed: <a href="Matrix33Indexed.htm#Matrix33">Matrix33</a></p>
+
+<p>MemPoolIndexed: <a href="MemPoolIndexed.htm#MemPool">MemPool</a></p>
+
+<p>NetPlayIndexed: <a href="NetPlayIndexed.htm#SP_DESC">SP_DESC</a></p>
+
+<p>NetPlayIndexed: <a href="NetPlayIndexed.htm#SESSION_DESC">SESSION_DESC</a></p>
+
+<p>SurfaceIndexed: <a href="SurfaceIndexed.htm#Surf_SurfInfo">Surf_SurfInfo</a>,
+<a href="SurfaceIndexed.htm#Surf_TextVert">Surf_TextVert</a>, <a
+href="SurfaceIndexed.htm#Surf_LVertex">Surf_LVertex</a>, <a
+href="SurfaceIndexed.htm#Surf_TLVertex">Surf_TLVertex</a></p>
+
+<p>VFile_SystemIndexed: <a href="VFIle_SystemIndexed.htm">geVFile_SystemAPIs</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_FinderCreateFN">geVFile_FinderCreateFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_FinderGetNextFileFN">geVFile_FinderGetNextFileFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_FinderGetPropertiesFN">geVFile_FinderGetPropertiesFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_FinderDestroyFN">geVFile_FinderDestroyFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_OpenNewSystemFN">geVFile_OpenNewSystemFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_UpdateContextFN">geVFile_UpdateContextFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_OpenFN">geVFile_OpenFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_DeleteFileFN">geVFile_DeleteFileFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_RenameFileFN">geVFile_RenameFileFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_FileExistsFN">geVFile_FileExistsFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_DisperseFN">geVFile_DisperseFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_CloseFN">geVFile_CloseFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_GetSFN">geVFile_GetSFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_ReadFN">geVFile_ReadFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_WriteFN">geVFile_WriteFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SeekFN">geVFile_SeekFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_EOFFN">geVFile_EOFFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_TellFN">geVFile_TellFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_GetPropertiesFN">geVFile_GetPropertiesFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SizeFN">geVFile_SizeFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SetSizeFN">geVFile_SetSizeFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SetAttributesFN">geVFile_SetAttributesFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SetTimeFN">geVFile_SetTimeFN</a>,
+<a href="VFIle_SystemIndexed.htm#geVFile_SetHintsFN">geVFile_SetHintsFN</a></p>
+
+<p>geBitmapIndexed: <a href="geBitmapIndexed.htm#geBitmap">geBitmap</a></p>
+
+<p>CSNetworkIndexed: <a href="CSNetworkIndexed.htm#geCSNetMgr">geCSNetMgr</a>,
+<a href="CSNetworkIndexed.htm#geCSNetMgr_NetID">geCSNetMgr_NetID</a>,
+<a href="CSNetworkIndexed.htm#geCSNetMgr_NetMsgType">geCSNetMgr_NetMsgType</a>,
+<a href="CSNetworkIndexed.htm#geCSNetMgr_NetClient">geCSNetMgr_NetClient</a>,
+<a href="CSNetworkIndexed.htm#geCSNetMgr_NetSession">geCSNetMgr_NetSession</a></p>
+
+<p>geEntityIndexed: <a
+href="geEntityIndexed.htm#geEntity_ClassType">geEntity_ClassType</a>,
+<a href="geEntityIndexed.htm#geEntity_Field">geEntity_Field</a>, <a
+href="geEntityIndexed.htm#geEntity_Class">geEntity_Class</a>, <a
+href="geEntityIndexed.htm#geEntity_Epair">geEntity_Epair</a>, <a
+href="geEntityIndexed.htm#geEntity">geEntity</a>, <a
+href="geEntityIndexed.htm#geEntity_EntitySet">geEntity_EntitySet</a></p>
+
+<p>DCommonIndexed: <a href="DCommonIndexed.htm#U8">U8</a>, <a
+href="DCommonIndexed.htm#U16">U16</a>, <a
+href="DCommonIndexed.htm#U32">U32</a>, <a
+href="DCommonIndexed.htm#C8">C8</a>, <a
+href="DCommonIndexed.htm#S8">S8</a>, <a
+href="DCommonIndexed.htm#S16">S16</a>, <a
+href="DCommonIndexed.htm#S32">S32</a>, <a
+href="DCommonIndexed.htm#geRDriver_THandle">geRDriver_THandle</a>,
+<a href="DCommonIndexed.htm#geRDriver_PixelFormat">geRDriver_PixelFormat</a>,
+<a href="DCommonIndexed.htm#geRDriver_THandleInfo">geRDriver_THandleInfo</a>,
+<a href="DCommonIndexed.htm#DRV_Debug">DRV_Debug</a>, <a
+href="DCommonIndexed.htm#DRV_CacheInfo">DRV_CacheInfo</a>, <a
+href="DCommonIndexed.htm#DRV_Window">DRV_Window</a>, <a
+href="DCommonIndexed.htm#DRV_RGB">DRV_RGB</a>, <a
+href="DCommonIndexed.htm#DRV_Palette">DRV_Palette</a>, <a
+href="DCommonIndexed.htm#DRV_Bitmap">DRV_Bitmap</a>, <a
+href="DCommonIndexed.htm#DRV_LInfo">DRV_LInfo</a>, <a
+href="DCommonIndexed.htm#DRV_TexInfo">DRV_TexInfo</a>, <a
+href="DCommonIndexed.htm#DRV_TLVertex">DRV_TLVertex</a>, <a
+href="DCommonIndexed.htm#DRV_DriverHook">DRV_DriverHook</a>, <a
+href="DCommonIndexed.htm#GInfo">GInfo</a>, <a
+href="DCommonIndexed.htm#DRV_EngineSettings">DRV_EngineSettings</a>,
+<a href="DCommonIndexed.htm#BEGIN_MESHES">BEGIN_MESHES</a>, <a
+href="DCommonIndexed.htm#BEGIN_MODELS">BEGIN_MODELS</a>, <a
+href="DCommonIndexed.htm#BEGIN_SCENE">BEGIN_SCENE</a>, <a
+href="DCommonIndexed.htm#BEGIN_WORLD">BEGIN_WORLD</a>, <a
+href="DCommonIndexed.htm#CREATE_TEXTURE">CREATE_TEXTURE</a>, <a
+href="DCommonIndexed.htm#DESTROY_TEXTURE">DESTROY_TEXTURE</a>, <a
+href="DCommonIndexed.htm#DRAW_DECAL">DRAW_DECAL</a>, <a
+href="DCommonIndexed.htm#DRV_Driver">DRV_Driver</a>, <a
+href="DCommonIndexed.htm#DRV_RENDER_MODE">DRV_RENDER_MODE</a>, <a
+href="DCommonIndexed.htm#DRV_ENUM_PFORMAT">DRV_ENUM_PFORMAT</a>, <a
+href="DCommonIndexed.htm#DRV_ENUM_MODES_CB">DRV_ENUM_MODES_CB</a>,
+<a href="DCommonIndexed.htm#DRV_ENUM_DRV_CB">DRV_ENUM_DRV_CB</a>,
+<a href="DCommonIndexed.htm#DRV_ENUM_PFORMAT_CB">DRV_ENUM_PFORMAT_CB</a>,
+<a href="DCommonIndexed.htm#DRV_Hook">DRV_Hook</a>, <a
+href="DCommonIndexed.htm#DRV_INIT">DRV_INIT</a>, <a
+href="DCommonIndexed.htm#DRV_RESET">DRV_RESET</a>, <a
+href="DCommonIndexed.htm#DRV_SET_ACTIVE">DRV_SET_ACTIVE</a>, <a
+href="DCommonIndexed.htm#DRV_SET_FOG_ENABLE">DRV_SET_FOG_ENABLE</a>,
+<a href="DCommonIndexed.htm#DRV_SHUTDOWN">DRV_SHUTDOWN</a>, <a
+href="DCommonIndexed.htm#DRV_UPDATE_WINDOW">DRV_UPDATE_WINDOW</a>,
+<a href="DCommonIndexed.htm#END_MESHES">END_MESHES</a>, <a
+href="DCommonIndexed.htm#END_MODELS">END_MODELS</a>, <a
+href="DCommonIndexed.htm#END_SCENE">END_SCENE</a>, <a
+href="DCommonIndexed.htm#END_WORLD">END_WORLD</a>, <a
+href="DCommonIndexed.htm#GET_ALPHA">GET_ALPHA</a>, <a
+href="DCommonIndexed.htm#GET_GAMMA">GET_GAMMA</a>, <a
+href="DCommonIndexed.htm#GET_PALETTE">GET_PALETTE</a>, <a
+href="DCommonIndexed.htm#LOCK_THANDLE">LOCK_THANDLE</a>, <a
+href="DCommonIndexed.htm#RENDER_G_POLY">RENDER_G_POLY</a>, <a
+href="DCommonIndexed.htm#RENDER_MT_POLY">RENDER_MT_POLY</a>, <a
+href="DCommonIndexed.htm#RENDER_W_POLY">RENDER_W_POLY</a>, <a
+href="DCommonIndexed.htm#SCREEN_SHOT">SCREEN_SHOT</a>, <a
+href="DCommonIndexed.htm#SET_ALPHA">SET_ALPHA</a>, <a
+href="DCommonIndexed.htm#SET_GAMMA">SET_GAMMA</a>, <a
+href="DCommonIndexed.htm#SETUP_LIGHTMAP_CB">SETUP_LIGHTMAP_CB</a>,
+<a href="DCommonIndexed.htm#SET_PALETTE">SET_PALETTE</a>, <a
+href="DCommonIndexed.htm#THANDLE_GET_INFO">THANDLE_GET_INFO</a>, <a
+href="DCommonIndexed.htm#UNLOCK_THANDLE">UNLOCK_THANDLE</a>, <a
+href="DCommonIndexed.htm#DRV_ENUM_DRIVER">DRV_ENUM_DRIVER</a>, <a
+href="DCommonIndexed.htm#DRV_ENUM_MODES">DRV_ENUM_MODES</a></p>
+
+<p><a name="x"></a></p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p>&nbsp;</p>
+
+<p><a name="geDriver_System"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef struct geDriver_System </b></font><font
+color="#800000"><b>geDriver_System</b></font><font
+color="#000080"><b>;</b></font></p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+
+<p><a name="geMesh_Def"><font color="#000080"><strong></strong></font></a><font
+color="#000080"><strong>typedef struct geMesh_Def</strong></font>
+<font color="#800000"><strong>geMesh_Def</strong></font><strong>;</strong></p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+
+<p><a name="geMesh"><font color="#000080"><strong></strong></font></a><font
+color="#000080"><strong>typedef struct geMesh </strong></font><font
+color="#800000"><strong>geMesh</strong></font>; </p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geBoolean"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geBoolean</b></font></p>
+
+<dir>
+    <li><font color="#000080"><b>typedef signed int </b></font><font
+        color="#800000"><b>geBoolean</b></font><font
+        color="#000080"><b>;</b></font> <br>
+        <a name="GE_FALSE"></a><font color="#000080"><b>#define
+        GE_FALSE (0)</b></font> <br>
+        <a name="GE_TRUE"></a><font color="#000080"><b>#define
+        GE_TRUE&nbsp; (1)</b></font> <blockquote>
+            <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<p><font color="#800000"><b>geFloat&nbsp;</b></font></p>
+
+<dir>
+    <li><a name="geFloat"><font color="#000080"><b></b></font></a><font
+        color="#000080"><b>typedef float </b></font><font
+        color="#800000"><b>geFloat</b></font><font
+        color="#000080"><b>;</b></font> <blockquote>
+            <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<p><font color="#000080"><b>#ifndef NULL</b></font> <br>
+<a name="NULL"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000080"><b>#define
+</b></font><font color="#800000"><b>NULL </b></font><font
+color="#000080"><b>((void *)0)</b></font> <br>
+<font color="#000080"><b>#endif</b></font> </p>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="int32"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef signed long&nbsp;&nbsp;&nbsp;&nbsp; </b></font><font
+color="#800000"><b>int32</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<p><a name="int16"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef signed short&nbsp;&nbsp;&nbsp; </b></font><font
+color="#800000"><b>int16</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<p><a name="int8"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef signed char&nbsp;&nbsp;&nbsp;&nbsp; </b></font><font
+color="#800000"><b>int8 </b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<p><a name="uint32"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef unsigned long&nbsp; </b></font><font
+color="#800000"><b>uint32</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<p><a name="uint16"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef unsigned short </b></font><font
+color="#800000"><b>uint16</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<p><a name="uint8"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef unsigned char&nbsp; </b></font><font
+color="#800000"><b>uint8</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="GENESISCC"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define </b></font><font color="#800000"><b>GENESISCC</b></font><font
+color="#000080"><b> _fastcall </b></font></p>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b></b></font>&nbsp;</p>
+
+<p><a name="GENESISAPI"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define </b></font><font color="#800000"><b>GENESISAPI
+</b></font><font color="#000080"><b>_declspec(dllexport) [or]
+_declspec(dllimport) [or] &lt;nothing&gt; </b></font></p>
+
+<p><font color="#000080"><b>Note</b>: If a function does not have
+this in its declaration, then it will not be available in
+precompiled libarary files.</font></p>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_RGBA"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>GE_RGBA</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp; float r, g, b, a; //note: in Genesis3D
+    v1.6 this is of type geFloat<br>
+    } GE_RGBA;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_Rect"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>GE_Rect</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp; int32 Left; <br>
+    &nbsp;&nbsp;&nbsp; int32 Right; <br>
+    &nbsp;&nbsp;&nbsp; int32 Top; <br>
+    &nbsp;&nbsp;&nbsp; int32 Bottom; <br>
+    } GE_Rect; </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#800000"><b>geRect&nbsp;</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a name="geRect"></a></p>
+    <p>typedef GE_Rect <font color="#800000"><b>geRect</b></font><b>;</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><br>
+<a name="geFloatRect"></a><font color="#800000"><b>geFloatRect</b></font><font
+color="#000080"><b>;</b></font> </p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp; geFloat MinX,MaxX; <br>
+    &nbsp;&nbsp;&nbsp; geFloat MinY,MaxY; <br>
+    } geFloatRect;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_LVertex"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>GE_LVertex</b></font><font color="#000080"><b>;</b></font>
+</p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp; float X, Y,
+    Z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 3d
+    vertex //note: for Genesis3D v1.6 this is of type geFloat<br>
+    &nbsp;&nbsp;&nbsp; float u,
+    v;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Uv's //note: for Genesis3D v1.6 this is of type geFloat<br>
+    &nbsp;&nbsp;&nbsp; float r, g, b,
+    a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // color //note: for
+    Genesis3D v1.6 this is of type geFloat<br>
+    } GE_LVertex; </p>
+</blockquote>
+
+<blockquote>
+    <p><b>This structure stores a Lit Vertex.</b> <br>
+    <a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_TLVertex"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>GE_TLVertex</b> </font></p>
+
+<blockquote>
+    <p>typedef struct { <br>
+    &nbsp;&nbsp;&nbsp; float x, y,
+    z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // screen points //note: for Genesis3D v1.6 this is of type
+    geFloat<br>
+    &nbsp;&nbsp;&nbsp; float u,
+    v;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    // Uv's //note: for Genesis3D v1.6 this is of type geFloat<br>
+    &nbsp;&nbsp;&nbsp; float r, g, b,
+    a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // color //note:
+    for Genesis3D v1.6 this is of type geFloat<br>
+    } GE_TLVertex; </p>
+</blockquote>
+
+<blockquote>
+    <p><b>This structure stores a Transformed Lit Vertex.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; What is meant by Transformed?&nbsp; This
+    seems to be the same as GE_LVertex except the x,y,z here are
+    labeled screen points. What are screen point?&nbsp; Is this
+    in screen coordinate space?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geColor"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geColor</b></font></p>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;geFloat r, g, b;<br>
+    } geColor;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geUV"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geUV</b></font></p>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;geFloat u, v;<br>
+    } geUV;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geCoordinate"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geCoordinate&nbsp;</b></font></p>
+
+<blockquote>
+    <p>typedef struct {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;geFloat X;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;geFloat Y;<br>
+    } geCoordinate;</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Macros:</i></b></font><font
+color="#000080"><b> </b></font></p>
+
+<p><a name="GE_ABS"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_ABS(x) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>Computes the absolute value of x.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="GE_CLAMP"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_CLAMP(x,lo,hi) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>If x is less than lo, lo is
+    returned, otherwise if x is greater than hi, hi is returned,
+    otherwise x is returned.&nbsp; In other words x is
+    &quot;clamped&quot; between hi and lo.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_CLAMP8"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_CLAMP8(x) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>This is an 8-bit unsigned (0-255)
+    clamp.&nbsp; See </b></font><a href="BasetypesIndexed.htm#GE_CLAMP"><b>GE_CLAMP</b></a><font
+    color="#000080"><b> above for more information.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_CLAMP16"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_CLAMP16(x) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>This is a 16-bit unsigned
+    (0-65536) clamp.&nbsp; See </b></font><a href="BasetypesIndexed.htm#GE_CLAMP"><b>GE_CLAMP</b></a><font
+    color="#000080"><b> above for more information</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_BOOLSAME"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_BOOLSAME(x,y) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>This returns True if x and y are
+    both true or both false, otherwise it returns False.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_EPSILON"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_EPSILON&nbsp;&nbsp;&nbsp;
+((geFloat)0.000797f) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>If two floating point values
+    differ by this constant or less then they are considered
+    equivalent per the definition of GE_FLOATS_EQUAL shown
+    below.&nbsp; Thanks to Raul Beltran for clarifying and
+    confirming my suspicions about this.&nbsp; </b></font><font
+    color="#FF0000"><b>I'm still uncertain what the derivation of
+    the specific value is.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_FLOATS_EQUAL"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_FLOATS_EQUAL(x,y) ( GE_ABS((x) -
+(y)) &lt; GE_EPSILON ) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>This appears to define 2 floats
+    (x,y) equal if they only differ by EPSILON as defined above.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_FLOAT_ISZERO"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_FLOAT_ISZERO(x)&nbsp;
+GE_FLOATS_EQUAL(x,0.0f) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>This defines a float as being
+    &quot;equal&quot; to zero if it only differs from zero by
+    EPSILON as define above.</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b><br>
+</b></font><a name="GE_PI"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_PI&nbsp;&nbsp;&nbsp;&nbsp;
+((geFloat)3.14159265358979323846f) </b></font></p>
+
+<blockquote>
+    <p><font color="#000080"><b>A value to use for pi.</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><font color="#000080"><b>Model flags (geWorld_ModelSetFlags)</b></font>
+</p>
+
+<blockquote>
+    <p>#define GE_MODEL_RENDER_NORMAL&nbsp;&nbsp;
+    (1&lt;&lt;0)&nbsp; // Render in normal views <br>
+    #define GE_MODEL_RENDER_MIRRORS&nbsp;&nbsp;
+    (1&lt;&lt;1)&nbsp; // Render in mirror views <br>
+    #define GE_MODEL_RENDER_ALWAYS&nbsp;&nbsp; (1&lt;&lt;2)&nbsp;
+    // Render always, skipping all visibility tests <br>
+    #define GE_MODEL_COLLIDE&nbsp;&nbsp;&nbsp; (1&lt;&lt;3)&nbsp;
+    // Collide when calling geWorld_Collision</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="BasetypesIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 18:00:48 Jan 29, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:28 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

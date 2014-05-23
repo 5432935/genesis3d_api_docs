@@ -1,0 +1,1235 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geEngineIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geEngine</b></font></p>
+
+<p><font color="#000080"><b>Description: Maintains the driver
+interface, as well as the bitmaps attached to the driver. </b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Engine\engine.h</p>
+
+<p><a name="Contents"></a><font color="#0000FF" size="5"><b><i>Contents:</i></b></font>
+</p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="geEngineIndexed.htm#Activate">Activate</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#AddBitmap">AddBitmap</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#AddWorld">AddWorld</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#BeginFrame">BeginFrame</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#Create">Create</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#DrawBitmap">DrawBitmap</a><font color="#000080"><b>, </b></font><a
+href="geEngineIndexed.htm#EnableFrameRateCounter">EnableFrameRateCounter</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#EndFrame">EndFrame</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#FillRect">FillRect</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#Free">Free</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#GetDriverSystem">GetDriverSystem</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#GetGamma">GetGamma</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#Printf">Printf</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#RemoveBitmap">RemoveBitmap</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#RemoveWorld">RemoveWorld</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#RenderPoly">RenderPoly</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#RenderPolyArray">RenderPolyArray</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#RenderWorld">RenderWorld</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#ScreenShot">ScreenShot</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#SetDriverAndMode">SetDriverAndMode</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#SetGamma">SetGamma</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#ShutdownDriver">ShutdownDriver</a><font
+color="#000080"><b>, </b></font><a href="geEngineIndexed.htm#UpdateWindow">UpdateWindow</a></p>
+
+<p><font color="#000080"><b>The following are defined in System:</b></font></p>
+
+<p><font color="#000080"><b>Types</b>: </font><a
+href="SystemIndexed.htm#geEngine_FrameState">geEngine_FrameState</a>,
+<a href="SystemIndexed.htm#geEngine_WorldList">geEngine_WorldList</a>,
+<a href="SystemIndexed.htm#geEngine">geEngine</a></p>
+
+<p><font color="#000080"><b>And also here, in </b></font><a
+href="geDriverIndexed.htm#geDriver">geDriver</a><font
+color="#000080"><b>:</b></font></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="geDriverIndexed.htm#geEngine_FrameState">geEngine_FrameState</a><font
+color="#000080"><b>, </b></font><a
+href="geDriverIndexed.htm#geEngine_WorldList">geEngine_WorldList</a><font
+color="#000080"><b>, </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a></p>
+
+<p><font color="#000080"><b>Additions for Genesis3D v1.6</b></font>:
+<a href="geEngineIndexed.htm#DrawAlphaBitmap">DrawAlphaBitmap</a>, <a
+href="geEngineIndexed.htm#SetFogEnable">SetFogEnable</a>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="Activate"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_Activate</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> bActive);</b></font> </p>
+
+<blockquote>
+    <p><b>This seems to have something to do with whether the
+    application is the current Active application.&nbsp; If the
+    application has been moved to the background, this would seem
+    to restore it to the foreground and take care of all
+    necessary details.&nbsp; This is primarily implemented by the
+    driver and therefore functionality may vary depending on
+    which driver is in use.&nbsp; D3D seems to implement this,
+    Glide does not seems to implement this (currently the Glide
+    implementation just returns TRUE), SoftDrv seems to implement
+    it, and SoftDrv2 seems to implement it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    if unsuccessful due to an error.&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    otherwise.&nbsp; Note that a driver without an implementation
+    may return true despite not actual action.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from opensource/source/engine/engine.c --
+    this hits the driver activation code to manage surfaces and
+    exclusive modes for devices (WM_ACTIVATEAPP)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="AddBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_AddBitmap</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> to a </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> so that
+    it may be used in calls to the </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b>.&nbsp;
+    Note that if the </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    is to be used in other modules it must be added to them as
+    well.&nbsp; It appears that this is implemented via reference
+    counting, therefore it is safe to add a bitmap to an engine
+    more than once, and little or no additional memory should be
+    used.&nbsp; Note that this function may not be called between
+    geEngine_BeginFrame and geEngine_EndFrame.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:&nbsp;
+    Adds a <a href="geBitmapIndexed.htm#geBitmap">geBitmap</a> to
+    a <a href="geDriverIndexed.htm#geEngine">geEngine</a> object,
+    and increases the reference count of the <a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a> object by
+    1.&nbsp; A <a href="geBitmapIndexed.htm#geBitmap">geBitmap</a>
+    can be added to a <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    more than once.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="AddWorld"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_AddWorld</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> to a </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b>.&nbsp;
+    This is implemented via reference counting and therefore the
+    world may be added mutiple times.&nbsp; Note that this
+    function may not be called between geEngine_BeginFrame and
+    geEngine_EndFrame.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:&nbsp;
+    Adds a <a href="geWorldIndexed.htm#geWorld">geWorld</a>
+    object to a <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    object, and increases the reference count of the world by
+    one.&nbsp; A <a href="geWorldIndexed.htm#geWorld">geWorld</a>
+    object can be added to a <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a> object more
+    than once. </p>
+    <p><strong>Note from Jeff</strong>: The geEngine_AddWorld()
+    function will increase the reference count of the geWorld and
+    copy a reference to the engine's world array. This array is
+    used to keep track of all the worlds in the engine. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; What does it mean for an engine to have
+    the same world added multiple times?&nbsp; Furthermore what
+    does it mean for an engine to have multiple worlds added to
+    it?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="BeginFrame"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_BeginFrame</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> ClearScreen);</b></font> </p>
+
+<blockquote>
+    <p><b>This function puts the </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> into
+    &quot;drawing&quot; mode.&nbsp; Between this call and a
+    matching geEngine_EndFrame call all drawing/rendering must be
+    done.&nbsp; Camera is the camera through which the rendering
+    will be done.&nbsp; ClearScreen tells the engine whether or
+    not to wipe the back-buffer before drawing begins.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:&nbsp;
+    Prepares the <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    object for a new frame, and sets up the current active
+    back-buffer for drawing. Any Drawing, or Rendering APIs MUST
+    be called after geEngine_BeginFrame. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Is it possible to have more than one
+    Camera object and switch between them utilizing the Camera
+    specifier above?&nbsp; <font color="#008000">&quot;Yes,
+    hundreds.&quot;</font> Would doing this cause any
+    delay?&nbsp; <font color="#008000">&quot;Switching from one
+    to the other doesn't, rendering more than one at a time
+    does.&quot;</font> In other words is there any information
+    that has to be generated once a camera is set, but not
+    generally regenerated unless the camera is changed? <font
+    color="#008000">&quot;Yes, The camera(s) should all
+    change/update (imo) data as the game progresses, but not
+    necessarily need to be rendered until needed. &quot;</font></p>
+    <p><font color="#008000"><strong>Answers </strong>provided by
+    Securitron in green above.</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* </b></font><font color="#800000"><b>geEngine_Create</b></font><font
+color="#000080"><b>(HWND hWnd, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * AppName, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * DriverDirectory);</b></font> </p>
+
+<blockquote>
+    <p><b>This function is the constructor for a </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    object.&nbsp; hWnd is a handle to a window object from which
+    Genesis will get its focus and to which, in a windowed mode,
+    Genesis will render.&nbsp; The is a &quot;*Remove*&quot;
+    reference in the online docs for the AppName arg, perhaps
+    this is to be deprecated and may not provide much if any
+    facility currently.&nbsp; The DriverDirectory is the
+    directory in which </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    will look for its drivers upon creation.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    object on success, otherwise </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b>.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:
+    Creates a <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    object.&nbsp; hWnd is a handle to the window that should
+    belong to Genesis. This window handle will be what Genesis
+    received its focus from. In a windowed video mode it will
+    also be what is rendered into.&nbsp; DriverDirectory is the
+    directory where Genesis will look for drivers upon creation.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="DrawBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_DrawBitmap</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geRect">geRect</a><font
+color="#000080"><b>* Source, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> x, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> y);</b></font> </p>
+
+<blockquote>
+    <p><b>This function draws the specified </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> into the </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b>'s current
+    active back-buffer.&nbsp; If there is more than one
+    back-buffer, the bitmap will not be rendered until the next
+    call to geEngoine_EndFrame.&nbsp; Source specifies the part
+    of the </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    to draw.&nbsp; x and y specify the point in pixel-space where
+    drawing will begin.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GENESIS.H: //DrawBitmap &amp;
+    RenderPoly : must Engine_AddBitmap first! </p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Draws a <a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a> into the
+    current active back-buffer. If there is more than one
+    back-buffer, the bitmap will not be seen until the next call
+    to geEngine_EndFrame. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Does x,y specify the top-left
+    corner?&nbsp; Or is it some other corner?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<blockquote>
+    <p><a name="DrawAlphaBitmap"></a></p>
+    <p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+    color="#000080"><b> </b></font><a
+    href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+    color="#000080"><b> </b></font><a
+    href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+    color="#000080"><b> </b></font><font color="#800000"><b>geEngine_DrawAlphaBitmap</b></font>(<a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><font
+    color="#000080"><b>* Engine</b></font>, <a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+    color="#000080"><b>* Bitmap</b></font>, <a
+    href="geVec3dIndexed.htm#geVec3d">geVec3d</a>* <font
+    color="#000080"><b>VertUVArray</b></font>, <a
+    href="geCameraIndexed.htm#geCamera">geCamera</a>* <font
+    color="#000080"><b>ClipCamera</b></font>, <a
+    href="BasetypesIndexed.htm#GE_Rect">GE_Rect</a>* <font
+    color="#000080"><b>PixelRect</b></font>, <a
+    href="BasetypesIndexed.htm#GE_Rect">GE_Rect</a>* <font
+    color="#000080"><b>PercentRect</b></font>, <a
+    href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+    color="#000080"><b>Alpha</b></font>, <a
+    href="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</a>* <font
+    color="#000080"><b>RGBA_Array</b></font>);</p>
+</blockquote>
+
+<dir>
+    <li>Added for Genesis3D v1.6<p>Draws a bitmap with alpha
+        transparancy</p>
+        <blockquote>
+            <p>Notes: <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ClipCamera</b>: if
+            null, uses full screen.<br>
+            <b>PixelRect</b>: pixels in the &quot;camera&quot;
+            view<br>
+            <b>PercentRect</b>: percent of the &quot;camera&quot;
+            view</p>
+        </blockquote>
+        <blockquote>
+            <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<hr>
+
+<p><a name="EnableFrameRateCounter"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_EnableFrameRateCounter</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> Enabled);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets or resets a framerate/debug
+    information display at the upper left of the screen based on
+    Enabled.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Enable
+    detail debug info, using the current active font.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="EndFrame"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_EndFrame</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine);</b></font> </p>
+
+<blockquote>
+    <p><b>This function ends the current drawing/rendering
+    session and renders the current active back-buffer to the
+    screen.&nbsp; The buffer is then added to the end of the
+    back-buffer chain.&nbsp; Note that all drawing/rendering must
+    be complete before this function is called.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference: Ends
+    the current drawing session in the <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a>, makes the
+    current active back-buffer visible, and flips this buffer to
+    the next buffer in the chain.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FillRect"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_FillRect</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_Rect">GE_Rect</a><font
+color="#000080"><b>* Rect, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</a><font
+color="#000080"><b>* Color);</b></font> </p>
+
+<blockquote>
+    <p><b>This function renders a rectangle of solid color to the
+    current active back-buffer.&nbsp; As with all rendering
+    functions, this must be called between an appropriate
+    geEngine_BeginFrame and geEngine_EndFrame pair. Note the
+    inclusion of ALPHA.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference: Fills
+    a specified region of the current active back-buffer with a
+    specified color.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Free"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_Free</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine);</b></font> </p>
+
+<blockquote>
+    <p><b>This function destroys the specified </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> object.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:
+    Destroys a <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    object. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Question:</b> <br>
+    &nbsp;&nbsp;&nbsp; Are geEngines stored via a reference
+    counting scheme?&nbsp; Is it therefore possible for this
+    function call to decrease a reference count but not actually
+    free any resources?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetDriverSystem"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> geDriver_System* </b></font><font
+color="#800000"><b>geEngine_GetDriverSystem</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine);</b></font> </p>
+
+<blockquote>
+    <p><b>Returns the geDriver_System object currently associated
+    with the specified </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    object.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; the geDriver_System object, or </b><a
+    href="BasetypesIndexed.htm#NULL">NULL</a><b> on failure.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetGamma"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_GetGamma</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Gamma);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the current gamma settings for
+    the </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> on
+    success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference: Gets
+    the current gamma correction value that the <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a> object is
+    currently using for all drawing, and rendering API's.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Printf"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_Printf</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+x, </b></font><a href="BasetypesIndexed.htm#int32">int32</a><font
+color="#000080"><b> y, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * String, ...);</b></font> </p>
+
+<blockquote>
+    <p><b>This function outputs a formatted string to the
+    specified pixel-space coordinates of the current active
+    back-buffer.&nbsp; This function should be called between the
+    appropriate matching pair of geEngine_BeginFrame and
+    geEngine_EndFrame calls.&nbsp; The current font is used for
+    rendering.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:
+    Prints a formatted <a href="BasetypesIndexed.htm#NULL">NULL</a>
+    terminated string using the currently selected font. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Does the engine handle clipping?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RemoveBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_RemoveBitmap</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap);</b></font> </p>
+
+<blockquote>
+    <p><b>This function removes the specified </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> from the
+    specifed </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    object.&nbsp; This is implemented via reference counts, so
+    each AddBitmap must be matched by a RemoveBitmap.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    <b>&nbsp;&nbsp;&nbsp; </b>from Genesis3D Api Reference:
+    Removes a previously added <a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a> object from
+    a <a href="geDriverIndexed.htm#geEngine">geEngine</a> object,
+    and decreases the reference count of the <a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a> object by
+    one.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RemoveWorld"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_RemoveWorld</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World);</b></font> </p>
+
+<blockquote>
+    <p><b>This functions removes the specified </b><a
+    href="geWorldIndexed.htm#geWorld">geWorld</a><b> object from
+    the specified </b><a href="geDriverIndexed.htm#geEngine">geEngine</a><b>
+    object.&nbsp; This is implement via reference counting, so
+    each AddWorld must be matched by a RemoveWorld.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Removes a
+    previously added <a href="geWorldIndexed.htm#geWorld">geWorld</a>
+    object from a <a href="geDriverIndexed.htm#geEngine">geEngine</a>
+    object, and decreases the reference count of the <a
+    href="geWorldIndexed.htm#geWorld">geWorld</a> object by one.</p>
+    <p><strong>Note from Jeff</strong>: The
+    geEngine_RemoveWorld() function will check to see if there
+    are multiple references to the geWorld, if so then it
+    decreases the reference count and returns GE_TRUE. If there
+    is only one reference then it removes the geWorld from the
+    engine's world array and calls the geWorld_Free() function. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RenderPoly"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_RenderPoly</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><font
+color="#000080"><b>* Points, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> NumPoints, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Texture, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Flags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function renders an optionally textured polygon to
+    the current active back-buffer.&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><b> is
+    a Transformed Lit Vertex and appears to be a reference to
+    screen-space.&nbsp; If Texture is null, the polygon will be
+    rendering Gouraud shaded. The world specified must contain
+    the specified texture.&nbsp; The Flags field seems to be
+    unused currently.&nbsp; The points in the </b><a
+    href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><b>
+    array must be defined in the proper winding order.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from GENESIS.H: //RenderPoly : if Texture
+    is null, we Gouraud shade. </p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Renders a
+    poly to the current active back-buffer using the <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a> object
+    supplied. If there is more than one back-buffer, the poly
+    will not be seen until the next call to geEngine_EndFrame is
+    called, and the buffer is made visible. This function must be
+    called AFTER geEngine_BeginFrame, and BEFORE
+    geEngine_EndFrame. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Can there be any number of co-planar
+    vertices?&nbsp; Must they define a convex polygon?&nbsp; What
+    is meant be winding order?&nbsp; Will this define a front and
+    back to the polygon?&nbsp; Is screen-space 2D or 3D?&nbsp; If
+    it is 3D is it perspective-rendered?&nbsp; How does
+    screen-space differ from pixel-space and camera-space?&nbsp;
+    Is any sort of clipping or Z-buffering done?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RenderPolyArray"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_RenderPolyArray</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GE_TLVertex">GE_TLVertex</a><font
+color="#000080"><b>* * pPoints, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * pNumPoints, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> NumPolys, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Texture, </b></font><a
+href="BasetypesIndexed.htm#uint32">uint32</a><font
+color="#000080"><b> Flags);</b></font> </p>
+
+<blockquote>
+    <p><b>This function renders multiple optionally textured
+    polygons to the screen.&nbsp; I assume this is implemented
+    much like geEngine_RenderPoly, so see the details above.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Much like geEngine_RenderPoly above,
+    Z-buffered? Clipped? 3D or 2D?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RenderWorld"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_RenderWorld</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geWorldIndexed.htm#geWorld">geWorld</a><font
+color="#000080"><b>* World, </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Time);</b></font> </p>
+
+<blockquote>
+    <p><b>This function handles the actual rendering of the World
+    to the current active back-buffer.&nbsp; This must be done
+    between the appropriate matching geEngine_BeginFrame and
+    geEngine_EndFrame calls.&nbsp; The Time arg is currently
+    un-implemented.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> on
+    success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Renders the
+    entire contents of a <a href="geWorldIndexed.htm#geWorld">geWorld</a>
+    into the current active back-buffer. NOTE - If there is more
+    than one back-buffer, then this buffer will not be visible
+    until the next call to geEngine_Endframe. This function MUST
+    be called after geEngine_BeginFrame, and before
+    geEngine_EndFrame. </p>
+</blockquote>
+
+<blockquote>
+    <p>Questions: <br>
+    &nbsp;&nbsp;&nbsp; How does this sync with other rendering
+    calls such as geEngine_RenderPoly?&nbsp; Is the Z-Buffering
+    handled appropriately or should renders for objects in front
+    of the world be handled after calling RenderWorld?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ScreenShot"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_ScreenShot</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * FileName);</b></font> </p>
+
+<blockquote>
+    <p><b>This function save the current contents of the
+    front-buffer to a .bmp file.&nbsp; This is implemented via
+    the driver and so there may be some implementation variations
+    depending on which driver is in use.&nbsp; D3D does not
+    implement this currently and returns </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>, Glide
+    appears to implement this, SoftDrv does not implement this
+    and currently returns </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>,
+    SoftDrv2 does not implement this and currently returns </b><a
+    href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>;</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> on
+    success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Grabs the
+    current contents of the front-buffer, and saves it to a file,
+    in .BMP format. </p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;&nbsp;&nbsp; I believe someone has implemented this
+    for D3D, check the Genesis3D bulletin board.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetDriverAndMode"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_SetDriverAndMode</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="geDriverIndexed.htm#geDriver">geDriver</a><font
+color="#000080"><b>* Driver, </b></font><a
+href="geDriverIndexed.htm#geDriver_Mode">geDriver_Mode</a><font
+color="#000080"><b>* DriverMode);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the Driver and Mode for the engine.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> on
+    success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Set
+    the current driver and mode that the <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a> object will
+    use for all further drawing, and rendering operations. Note
+    that this function can be called anytime outside
+    geEngine_BeginFrame/geEngine_EndFrame. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Presumably this must be called outside of
+    geEngine_BeginFrame and geEngine_EndFrame.&nbsp; Must this be
+    called before any other function calls?&nbsp; Can this be
+    changed at any time?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetGamma"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_SetGamma</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Gamma);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the gamma correction value that the </b><a
+    href="geDriverIndexed.htm#geEngine">geEngine</a><b> object
+    will use for all further drawing or rendering.&nbsp; The
+    range for gamma is 0 to 3.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns:&nbsp; </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b> on
+    success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference: Sets the
+    current gamma correction value that the <a
+    href="geDriverIndexed.htm#geEngine">geEngine</a> object is to
+    use for all further drawing, or rendering API's. </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Questions:</b> <br>
+    &nbsp;&nbsp;&nbsp; Does it matter where this is called?&nbsp;
+    I'm sure that it can be called outside of Begin/End Frame,
+    how about inside?&nbsp; Can it be called for individual
+    rendering?&nbsp; Could this be used to effect gamma
+    correction on a per render basis?</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFogEnable"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_SetFogEnable</b></font>(<a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> Enable</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> r</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> g</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> b</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Start</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> End</b></font>);</p>
+
+<blockquote>
+    <p>Added for Genesis3D v1.6</p>
+    <p><strong>Notes from kdtop</strong>: This fills the world
+    with fog. It does not affect frame rate like geFog's do. (see
+    <a href="geWorldIndexed.htm#AddFog">geWorld_AddFog</a>)</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="ShutdownDriver"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_ShutdownDriver</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine);</b></font> </p>
+
+<blockquote>
+    <p><b>This function shuts down the current driver and
+    restores the display to its original state before ANY calls
+    to geEngine_SetDriverAndMode.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Genesis3D Api Reference:&nbsp; Shuts
+    down any current Driver/Mode combo, and restores the display
+    to the original prior to the very first call to
+    geEngine_SetDriverAndMode.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="UpdateWindow"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geEngine_UpdateWindow</b></font><font
+color="#000080"><b>(</b></font><a
+href="geDriverIndexed.htm#geEngine">geEngine</a><font
+color="#000080"><b>* Engine);</b></font> </p>
+
+<blockquote>
+    <p><b>This function tells the current driver to update it's
+    window rect.&nbsp; This is usually called as a result of a
+    window move, resize, etc.&nbsp; This is implemented by each
+    driver individually and the implementation may vary.&nbsp;
+    Currently D3D implements this, Glide does not implement this
+    returning </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    immediately, SoftDrv similarly returns </b><a
+    href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    immediately, SoftDrv2 does not seem to provide any
+    implementation.&nbsp; It may be that for Glide and SoftDrv
+    nothing needs to be done for this function so that nothing IS
+    a full implementation.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from Opensource/source/engine/engine.c:
+    this call updates the drivers with a new rect to blit to
+    (usually the result of a window move or resize)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;There appear to be 4 drivers:&nbsp;
+    D3D, Glide, SoftDrv, and SoftDrv2.&nbsp; I THINK the
+    difference in the 2 software drivers is one (SoftDrv, I
+    think) implement 3DNow support while the other does not. </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geEngineIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:39:16 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:01 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

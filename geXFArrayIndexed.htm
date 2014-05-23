@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geXFArrayIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geXFArray</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: object to formalize an array of transforms</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\Actor\xfarray.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geXFArrayIndexed.htm#Create">Create</A>, <A HREF="geXFArrayIndexed.htm#Destroy">Destroy</A>, <A HREF="geXFArrayIndexed.htm#GetElements">GetElements</A>, <A HREF="geXFArrayIndexed.htm#SetAll">SetAll</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geXFArrayIndexed.htm#geXFArray">geXFArray</A></P>
+<B><FONT COLOR="#000080"><P>Overview:&nbsp;</B></FONT><A HREF="geXFArrayIndexed.htm#Overview">view</A></P>
+<FONT COLOR="#000080"><P>&nbsp;Additions for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</B></I></FONT> </P>
+<P>This is a simple object to formalize an array of transforms (<A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A>). Unfortunately, it's not a very safe object. This object exports data (allows external access to one of it's data members). This is dangerous - no checking can be done on the use of that data, and no checking can be done on array boundry conditions. This is on purpose. ...In the name of optimal access to the array.</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P><A NAME="geXFArray"></A>typedef struct geXFArray </FONT><FONT COLOR="#800000">geXFArray</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<P><A NAME="Create"></A><A HREF="geXFArrayIndexed.htm#geXFArray">geXFArray</A><B><FONT COLOR="#000080"> *</B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geXFArray_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Size);</P>
+</B></FONT><P>Create the object. Creates an array of Size elements. </P>
+<P>All elements are initialized to the identity transform</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geXFArray_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geXFArrayIndexed.htm#geXFArray">geXFArray</A><B><FONT COLOR="#000080"> **XFA );</P>
+</B></FONT><P>Destroy the object. Don't use the pointer returned by _GetElements</P>
+<P>after destroying the ojbect!</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetElements"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geXFArray_GetElements</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXFArrayIndexed.htm#geXFArray">geXFArray</A><B><FONT COLOR="#000080"> *XFA, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> *Size);</P>
+</B></FONT><P>Get a pointer to the array. For external iteration. The size of the </P>
+<P>array is returned in Size. Valid array indicies are (0..Size-1)</P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+</B></FONT><BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetAll"><A NAME="y"></A></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080"> *Matrix);</P>
+</B></FONT><P>Sets every transform in the array to the given transform.</P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geXFArrayIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:11:30 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:23 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

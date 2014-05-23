@@ -1,0 +1,244 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>gePolyIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>gePoly</P>
+</FONT><FONT COLOR="#000080"><P>Description: User poly's</P>
+</B></FONT><P>Source file: ...\genesis3d\OpenSource\Source\World\USER.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="gePolyIndexed.htm#EngineInit">EngineInit</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#EngineShutdown">EngineShutdown</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#WorldInit">WorldInit</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#WorldShutdown">WorldShutdown</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#RenderPolyList">RenderPolyList</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#AddPolyOnce">AddPolyOnce</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#AddPoly">AddPoly</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#RemovePoly">RemovePoly</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#GetLVertex">GetLVertex</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#SetLVertex">SetLVertex</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#SetCameraInfo">SetCameraInfo</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#DestroyOncePolys">DestroyOncePolys</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#DestroyPolyList">DestroyPolyList</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="gePolyIndexed.htm#EngineFillRect">EngineFillRect</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="gePolyIndexed.htm#gePoly">gePoly</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="gePolyIndexed.htm#User_Info">User_Info</A>, <A HREF="gePolyIndexed.htm#gePoly_Type">gePoly_Type</A></P>
+<B><FONT COLOR="#000080"><P>Constants: </B></FONT><A HREF="gePolyIndexed.htm#Constants">view</A></P>
+<FONT COLOR="#000080"><P>Sample Code</FONT>: <A HREF="gePolyIndexed.htm#SampleCode">view</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis3D v1.6</FONT>: types float changed to geFloat</P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="gePoly"></A>gePoly</P>
+</B></FONT><DL>
+<DD>typedef struct&nbsp;gePoly {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geWorldIndexed.htm#geWorld">geWorld</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verts[MAX_USER_VERTS];&nbsp;// Copy of user verts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geWorldIndexed.htm#geWorld_Leaf">geWorld_Leaf</A>* &nbsp;&nbsp;&nbsp;LeafData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZOrder; // type is geFloat in Genesi3D v1.6<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumVerts;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A>&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bitmap;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="gePolyIndexed.htm#gePoly_Type">gePoly_Type</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Type of poly<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenderFlags;&nbsp;&nbsp;&nbsp;// Fx of poly. See types <A HREF="gePolyIndexed.htm#RenderFlags">here</A><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scale;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Currently only used for TexturedPoint // type is geFloat in Genesi3D v1.6<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct gePoly* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prev;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct gePoly* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct gePoly* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddOnceNext;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct gePoly* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self1; // only avail if: #ifdef _DEBUG<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct gePoly* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self2; // only avail if: #ifdef _DEBUG<BR>
+} gePoly;</DD>
+</DL>
+<P><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></P>
+<DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><FONT COLOR="#800000"><P><A NAME="User_Info"></A>User_Info</P>
+</B></FONT><DL>
+<DD>typedef struct User_Info {</DD>
+<DD>&nbsp;<A HREF="gePolyIndexed.htm#gePoly">gePoly</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddPolyOnceList;</DD>
+<DD>} User_Info;</DD>
+</DL>
+<P>&nbsp;<A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<B><FONT COLOR="#800000"><P><A NAME="gePoly_Type"></A>gePoly_Type</P>
+</B></FONT><BLOCKQUOTE>Note: this is from …\genesis3d\include\genesis.h</BLOCKQUOTE>
+<BLOCKQUOTE>typedef enum {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_TEXTURED_POLY,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_GOURAUD_POLY,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_TEXTURED_POINT <BR>
+} gePoly_Type;</BLOCKQUOTE>
+<P>&nbsp;<A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></P>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Constants"></A>Constants:</B></I></FONT> </P>
+<CODE><P>#define MAX_USER_VERTS&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;</P>
+<P>#define USER_MAX_SORTED_POLYS&nbsp;&nbsp;1024</P>
+</CODE><P>&nbsp;</P>
+<FONT FACE="Courier New,Courier" SIZE=2 COLOR="#800000"><STRONG><P><A NAME="RenderFlags"></A>RenderFlags</P>
+</FONT></STRONG><CODE><P>Note: The following are defined in ...\genesis3d\include\genesis.h</P>
+<FONT COLOR="#008000"><P>// Poly Fx flags</FONT><BR>
+#define GE_RENDER_DO_NOT_OCCLUDE_OTHERS (1&lt;&lt;0) <FONT COLOR="#008000">// Poly will not occlude others</FONT><BR>
+#define GE_RENDER_DO_NOT_OCCLUDE_SELF (1&lt;&lt;1) <FONT COLOR="#008000">// Renders under any condition. Useful for halos, etc...</FONT><BR>
+#define GE_RENDER_BACKFACED (1&lt;&lt;2) <FONT COLOR="#008000">// Poly should be backfaced from the Camera's Pov<BR>
+</FONT>#define GE_RENDER_DEPTH_SORT_BF (1&lt;&lt;3) <FONT COLOR="#008000">// Sorts relative to camera position, from back to front</FONT><BR>
+#define GE_RENDER_CLAMP_UV (1&lt;&lt;4)<FONT COLOR="#008000"> // Clamp UV's in both directions</P>
+</FONT></CODE><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="EngineInit"></A><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080">* Engine);</P>
+</B><P>This creates a new User_Info object, and attaches to Engine-&gt;User_Info. Note: Each call of this function should be matched with a call to </FONT><A HREF="gePolyIndexed.htm#EngineShutdown"><FONT COLOR="#000080">User_EngineShutDown()</FONT></A><FONT COLOR="#000080"> to avoid memory leakage.</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="EngineShutdown"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">User_EngineShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geDriverIndexed.htm#geEngine">geEngine</A><B><FONT COLOR="#000080">* Engine);</P>
+</B><P>This frees up and deletes Engine-&gt;User_Info object</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WorldInit"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B><P>This creates a new User_Info object, and attaches to World-&gt;User_Info</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="WorldShutdown"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">User_WorldShutdown</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B><P>This frees up and deletes World-&gt;User_Info object</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RenderPolyList"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">User_RenderPolyList</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="gePolyIndexed.htm#gePoly">gePoly</A><B><FONT COLOR="#000080">* PolyList);</P>
+</B><P>Renders all Poly's in the PolyList chain of gePoly's </P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="AddPolyOnce"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> RenderFlags, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> Scale);</P>
+</B><P>Adds a user poly to be draw for 1 frame only (removed after one rendering).</P>
+<P>For comments on argument required, see descriptions of variables in </FONT><A HREF="gePolyIndexed.htm#AddPoly"><FONT COLOR="#000080">geWorld_AddPoly()</FONT></A></P>
+<FONT COLOR="#000080"><P>Note: in Genesis3D v1.6, Scale is of type geFloat</P>
+<STRONG><P>Returns</STRONG>: pointer to </FONT><A HREF="gePolyIndexed.htm#gePoly"><FONT COLOR="#000080">gePoly</FONT></A><FONT COLOR="#000080"> added</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="AddPoly"></A>&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> RenderFlags, </B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> Scale);</P>
+</B><P>Adds a user polygon to the world.</P>
+<STRONG><P>World</STRONG>: a valid pointer to a geWorld. Note: World-&gt;UserInfo must not be NULL (i.e. </FONT><A HREF="gePolyIndexed.htm#WorldInit"><FONT COLOR="#000080">User_WorldInit()</FONT></A><FONT COLOR="#000080"> must have been called a some point prior to this function). </FONT><FONT COLOR="#808080">Note: The sample code (</FONT><A HREF="gePolyIndexed.htm#SampleCode"><FONT COLOR="#808080">view</FONT></A><FONT COLOR="#808080">) appears to call this function without a prior call to </FONT><A HREF="gePolyIndexed.htm#WorldInit"><FONT COLOR="#808080">User_WorldInit()</FONT></A><FONT COLOR="#808080">--and it works fine. But this function's code begins with: assert (World-&gt;UserInfo != NULL), so perhaps it is set elsewhere?.</FONT><FONT COLOR="#000080"><BR>
+<STRONG>Verts</STRONG>: This is a pointer to the beginning of an array of </FONT><A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A><FONT COLOR="#000080">'s. The length of the array is indicated by <STRONG>NumVerts</STRONG><BR>
+<STRONG>NumVerts</STRONG>: Indicates the number of vertex elements in poly, as above. Max number of vertex's allowed = 4.<BR>
+<STRONG>Bitmap</STRONG>: This must point to a </FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><FONT COLOR="#000080">, or may be NULL if Type = GE_GOURAUD_POLY<BR>
+<STRONG>Type</STRONG>: Type of polygon-- See </FONT><A HREF="gePolyIndexed.htm#gePoly_Type">gePoly_Type</A> for available types<FONT COLOR="#000080"><BR>
+<STRONG>RenderFlags</STRONG>: Type of polygon. See types </FONT><A HREF="gePolyIndexed.htm#RenderFlags"><FONT COLOR="#000080">here</FONT></A><FONT COLOR="#000080"><BR>
+<STRONG>Scale</STRONG>: A scale factor for polygon (set to 1.0f for no scale)</P>
+<STRONG><P>Returns</STRONG>: pointer to </FONT><A HREF="gePolyIndexed.htm#gePoly"><FONT COLOR="#000080">gePoly</FONT></A><FONT COLOR="#000080"> added</P>
+<P>Note: in Genesis3D v1.6, Scale is of type geFloat</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RemovePoly"></A>&nbsp;<A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World, </B></FONT><A HREF="gePolyIndexed.htm#gePoly">gePoly</A><B><FONT COLOR="#000080">* Poly);</P>
+</B><P>Removes specified user Poly from World</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetLVertex"></A>&nbsp;<A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A><B><FONT COLOR="#000080">* LVert);</P>
+</B><P>Copies Index'th GE_LVertex contained in Poly into structure pointed to by LVert, (i.e. *LVert= Poly-&gt;Verts[Index])</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetLVertex"></A>&nbsp;<A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A><B><FONT COLOR="#000080">* LVert);</P>
+</B><P>Sets Index'th GE_LVertex contained in Poly from structure pointed to by LVert, (i.e. Poly-&gt;Verts[Index] = *LVert)</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetCameraInfo"></A>&nbsp;<A HREF="FrustumIndexed.htm#Frustum_Info"><FONT COLOR="#000080">Frustum_Info</FONT></A><B><FONT COLOR="#000080">* Fi);</P>
+</B><P>Purpose: Set the camera for use during rendering user polygons.</P>
+<STRONG><P>Engine</STRONG>: A valid Engine pointer<BR>
+<STRONG>World</STRONG>: A valid World pointer<BR>
+<STRONG>Camera</STRONG>: A valid Camera pointer<BR>
+<STRONG>Fi</STRONG>: (Not sure what this is for, or how it is used)</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DestroyOncePolys"></A><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World);</P>
+</B><P>Deletes all one-time polys. This should be done automatically at end of one frame rendering. This could be called early if needed.</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="DestroyPolyList"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">User_DestroyPolyList</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geWorldIndexed.htm#geWorld">geWorld</A><B><FONT COLOR="#000080">* World, </B></FONT><A HREF="gePolyIndexed.htm#gePoly">gePoly</A><B><FONT COLOR="#000080">* List);</P>
+</B><P>Deletes all polys in List, beginning with the </FONT><A HREF="gePolyIndexed.htm#gePoly">gePoly</A><FONT COLOR="#000080"> pointed to by List</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="EngineFillRect"></A>void</FONT><B><FONT COLOR="#000080">&nbsp;&nbsp;</FONT><FONT COLOR="#800000">User_EngineFillRect</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</A><B><FONT COLOR="#000080">* Color);</P>
+</B><P>Make a spolygon with 4 vertexs, as specified by Rect, filled with Color. RenderGouraudPoly() is then called with this polygon. Polygon doesn't appear to be persistent. </P>
+<STRONG><P>Question</STRONG>: Is this function similar to </FONT><A HREF="geEngineIndexed.htm#FillRect"><FONT COLOR="#800000">geEngine_FillRect()</FONT></A><FONT COLOR="#800000">?</P>
+</FONT><BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="SampleCode"></A>Sample Code:</P>
+</B></I></FONT><P>The following code is from ...\genesis3d\OpenSource\drawbbox.c<BR>
+Each call to DrawBoundBox() adds a box at a given position, with width of Max-Min. The box will exist for one rendering cycle.</P>
+<PRE>/*
+This file is provided as a debugging aid. It contains code for drawing an axial
+aligned bounding box. You can use this code as you see fit.
+*/
+
+static void DrawFace(geWorld* World, const geVec3d** Verts)
+{
+  <A HREF="BasetypesIndexed.htm#GE_LVertex">GE_LVertex</A>&#9;LVerts[4];
+  int&#9;        i;
+
+  for&#9;(i = 0; i &lt; 4; i++) {
+    LVerts[i].r = 40.0f;
+    LVerts[i].g = 40.0f;
+    LVerts[i].b = 80.0f + 20.0f * (<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A>)i;
+    LVerts[i].a = 128.0f;
+    LVerts[i].X = Verts[i]-&gt;X;
+    LVerts[i].Y = Verts[i]-&gt;Y;
+    LVerts[i].Z = Verts[i]-&gt;Z;
+  }
+
+  <A HREF="gePolyIndexed.htm#AddPolyOnce">geWorld_AddPolyOnce</A>(World, &amp;LVerts[0], 4, NULL, GE_GOURAUD_POLY, GE_FX_TRANSPARENT, 1.0f);
+}
+
+
+void DrawBoundBox(geWorld* World, const geVec3d* Pos, const geVec3d* Min, const geVec3d* Max)
+{
+    <A HREF="BasetypesIndexed.htm#geFloat">geFloat</A>&#9;dx;
+    <A HREF="BasetypesIndexed.htm#geFloat">geFloat</A>&#9;dy;
+    <A HREF="BasetypesIndexed.htm#geFloat">geFloat</A>&#9;dz;
+    static <A HREF="geVec3dIndexed.htm#geVec3d">geVec3d</A>&#9;  Verts[8];
+    static geVec3d*  Faces[6][4] = {
+        { &amp;Verts[0], &amp;Verts[1], &amp;Verts[2], &amp;Verts[3] },&#9;//Top
+        { &amp;Verts[4], &amp;Verts[5], &amp;Verts[6], &amp;Verts[7] },&#9;//Bottom
+        { &amp;Verts[3], &amp;Verts[2], &amp;Verts[6], &amp;Verts[7] }, //Side
+        { &amp;Verts[1], &amp;Verts[0], &amp;Verts[4], &amp;Verts[5] }, //Side
+        { &amp;Verts[0], &amp;Verts[3], &amp;Verts[7], &amp;Verts[4] }, //Front
+        { &amp;Verts[2], &amp;Verts[1], &amp;Verts[5], &amp;Verts[6] }, //Back
+    };
+    int&#9;i;
+
+    for&#9;(i = 0; i &lt; 8; i++)
+        <A HREF="geVec3dIndexed.htm#Add">geVec3d_Add</A>(Pos, Min, &amp;Verts[i]);
+
+    dx = Max-&gt;X - Min-&gt;X;
+    dy = Max-&gt;Y - Min-&gt;Y;
+    dz = Max-&gt;Z - Min-&gt;Z;
+
+    Verts[0].Y += dy;
+    Verts[3].Y += dy;
+    Verts[3].X += dx;
+    Verts[7].X += dx;
+
+    Verts[1].Y += dy;
+    Verts[1].Z += dz;
+    Verts[5].Z += dz;
+    Verts[6].Z += dz;
+    Verts[6].X += dx;
+
+    Verts[2].X += dx;
+    Verts[2].Y += dy;
+    Verts[2].Z += dz;
+
+    for (i = 0; i &lt; 6; i++)
+        DrawFace(World, &amp;Faces[i][0]);
+}</PRE>
+<BLOCKQUOTE><A HREF="gePolyIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:21:40 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:50 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

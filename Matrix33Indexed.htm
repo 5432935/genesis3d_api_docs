@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Matrix33Indexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>Matrix33</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Pure 3x3 matrix</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Physics\Matrix33.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Content:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="Matrix33Indexed.htm#Add">Add</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#Copy">Copy</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#ExtractFromXForm3d">ExtractFromXForm3d</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#GetTranspose">GetTranspose</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#GetInverse">GetInverse</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#MakeCrossProductMatrix33">MakeCrossProductMatrix33</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#Multiply">Multiply</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#MultiplyScalar">MultiplyScalar</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#MultiplyVec3d">MultiplyVec3d</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#SetIdentity">SetIdentity</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="Matrix33Indexed.htm#Subtract">Subtract</A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A></P>
+<B><FONT COLOR="#000080"><P>Additions to Genesis3D v1.6: </B>types float converted to geFloat</P>
+</FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="Matrix33"></A>Matrix33</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<B><BLOCKQUOTE>// </B>A 3x3 Matrix. </BLOCKQUOTE><DIR>
+
+<P>typedef struct{ <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[3][3]; <BR>
+} Matrix33;</P>
+<BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P>&nbsp;<A NAME="Add"></A><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> Matrix33_Add(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m1, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m2, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* res);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adds matrix m1 to matrix m2 returning the result in res.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Copy"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_Copy(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* c);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns a copy of matrix m in c.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="ExtractFromXForm3d"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_ExtractFromXForm3d(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* xform, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m);</B></FONT> </P>
+<B><BLOCKQUOTE>This function extracts the upper left 3x3 sections of the </B><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B> xform and copies it to m.&nbsp; I guess this would represent the non-translational transformation.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetTranspose"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_GetTranspose(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* t);</B></FONT> </P>
+<B><BLOCKQUOTE>This function transposes matrix m returning the result in t.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetInverse"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_GetInverse(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* inv);</B></FONT> </P>
+<B><BLOCKQUOTE>This function inverts matrix m returning the result in t.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns:nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="MakeCrossProductMatrix33"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_MakeCrossProductMatrix33(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* v, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m);</B></FONT> </P>
+<B><BLOCKQUOTE>This function can be used to create a matrix from a vector to help calculate the cross product of two vectors.&nbsp; As an example, if you wanted the cross product of the vectors A and B (A x B), this could be calculated as Matrix33_MakeCrossProductMatrix33(A,temp); Matrix33_MultiplyVec3d(temp, B, result) where result is the result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Multiply"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_Multiply(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m1, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m2, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* res);</B></FONT> </P>
+<B><BLOCKQUOTE>This function multiplies matrices m1 and m2 returning the result in res.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="MultiplyScalar"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_MultiplyScalar(</B></FONT><FONT COLOR="#0000ff">float</FONT><B><FONT COLOR="#000080"> s, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* res);</B></FONT> </P>
+<B><BLOCKQUOTE>This function multiplies the matrix m by the scalar </B><FONT COLOR="#0000ff">float</FONT><B> s returning the result in res.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="MultiplyVec3d"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_MultiplyVec3d(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* res);</B></FONT> </P>
+<B><BLOCKQUOTE>This function multiplies the matrix m by the </B><A HREF="geVec3dIndexed.htm__#geVec3d">geVec3d</A><B> in res.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="SetIdentity"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_SetIdentity(</B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the matrix m to the identity matrix.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Subtract"></A>void</FONT><B><FONT COLOR="#000080"> Matrix33_Subtract(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m1, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* m2, </B></FONT><A HREF="Matrix33Indexed.htm#Matrix33">Matrix33</A><B><FONT COLOR="#000080">* res);</B></FONT> </P>
+<B><BLOCKQUOTE>This function subtracts matrix m2 from matrix m1 returning the result in res.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="_#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:45:20 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:17 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

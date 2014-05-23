@@ -1,0 +1,357 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geBSPIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geBSP</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: BSP loader</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\World\GBSPFILE.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geBSPIndexed.htm#LoadGBSPFile">LoadGBSPFile</A>, <A HREF="geBSPIndexed.htm#FreeGBSPFile">FreeGBSPFile</A></P>
+<B><FONT COLOR="#000080"><P>Types:</B></FONT> <A HREF="geBSPIndexed.htm#GBSP_Chunk">GBSP_Chunk, </A><A HREF="geBSPIndexed.htm#GBSP_ChunkData">GBSP_ChunkData</A>, <A HREF="geBSPIndexed.htm#GBSP_Header">GBSP_Header</A>, <A HREF="geBSPIndexed.htm#GFX_SkyData">GFX_SkyData</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Plane">GFX_Plane</A><B><FONT COLOR="#000080">&nbsp;, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Node">GFX_Node</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_BNode">GFX_BNode</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_AreaPortal">GFX_AreaPortal</A><B><FONT COLOR="#000080"> , </B></FONT><A HREF="geBSPIndexed.htm#GFX_Area">GFX_Area</A>&nbsp;, <A HREF="geBSPIndexed.htm#GFX_Leaf">GFX_Leaf</A><B><FONT COLOR="#000080">, <A NAME="x"></A></B></FONT><A HREF="geBSPIndexed.htm#GFX_Cluster">GFX_Cluster</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_LeafSide">GFX_LeafSide</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Face">GFX_Face</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Model">GFX_Model</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Texture">GFX_Texture</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_TexInfo">GFX_TexInfo</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GFX_Portal">GFX_Portal</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</A></P>
+<B><FONT COLOR="#000080"><P>Constants:&nbsp;</B></FONT><A HREF="geBSPIndexed.htm#constants">view</A></P>
+<P>Changes for Genesis3d v1.6: <B><FONT COLOR="#000080">None</P>
+<hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P>Constants:</B></I></FONT> </P>
+<DL>
+<DD>#define GBSP_VERSION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;</DD>
+<DD>#define GBSP_CHUNK_HEADER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+#define GBSP_CHUNK_MODELS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+#define GBSP_CHUNK_NODES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>
+#define GBSP_CHUNK_BNODES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<BR>
+#define GBSP_CHUNK_LEAFS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<BR>
+#define GBSP_CHUNK_CLUSTERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<BR>
+#define GBSP_CHUNK_AREAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;<BR>
+#define GBSP_CHUNK_AREA_PORTALS&nbsp;7&nbsp;<BR>
+#define GBSP_CHUNK_LEAF_SIDES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<BR>
+#define GBSP_CHUNK_PORTALS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<BR>
+#define GBSP_CHUNK_PLANES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<BR>
+#define GBSP_CHUNK_FACES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11<BR>
+#define GBSP_CHUNK_LEAF_FACES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12<BR>
+#define GBSP_CHUNK_VERT_INDEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13<BR>
+#define GBSP_CHUNK_VERTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14<BR>
+#define GBSP_CHUNK_RGB_VERTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<BR>
+#define GBSP_CHUNK_ENTDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<BR>
+#define GBSP_CHUNK_TEXINFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17<BR>
+#define GBSP_CHUNK_TEXTURES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18 <BR>
+#define GBSP_CHUNK_TEXDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19<BR>
+#define GBSP_CHUNK_LIGHTDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20<BR>
+#define GBSP_CHUNK_VISDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21<BR>
+#define GBSP_CHUNK_SKYDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22<BR>
+#define GBSP_CHUNK_PALETTES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23<BR>
+#define GBSP_CHUNK_MOTIONS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24</DD>
+<DD>&nbsp;#define GBSP_CHUNK_END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0xffff</DD>
+<DD>&nbsp;</DD>
+<DD>#define BSP_CONTENTS_SOLID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;<BR>
+#define BSP_CONTENTS_EMPTY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2</DD>
+<DD>&nbsp;</DD>
+<DD>#define&nbsp;PLANE_X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+#define&nbsp;PLANE_Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+#define&nbsp;PLANE_Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>
+#define&nbsp;PLANE_ANYX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<BR>
+#define&nbsp;PLANE_ANYY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<BR>
+#define&nbsp;PLANE_ANYZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<BR>
+#define&nbsp;PLANE_ANY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;</DD>
+<DT>&nbsp;</DT>
+<DD>Note: This interface file also includes other constants (such as GE_CONTENTS_..., GE_RESERVED_.. etc.)  They are duplications of constants declared in other files (such as GBSPFILE.H, GBSPLIB, and Genesis.H).  They need not be described here.</DD>
+<DT>&nbsp;</DT>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="GBSP_Chunk"></A>GBSP_Chunk</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Type;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Type of chunk<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Size;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Size of each element<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Elements;&nbsp;&nbsp;&nbsp;&nbsp;// Number of elements<BR>
+} GBSP_Chunk;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DT>&nbsp;</DT>
+</DL>
+<B><FONT COLOR="#800000"><P><A NAME="GBSP_ChunkData"></A>GBSP_ChunkData&nbsp;</P>
+</B></FONT><DL>
+<DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Type;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Size;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;Elements;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> * &nbsp;&nbsp;Data;<BR>
+} GBSP_ChunkData;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DT>&nbsp;</DT>
+<B><FONT COLOR="#800000"><DD><A NAME="GBSP_Header"></A>GBSP_Header</DD>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TAG[5];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 'G','B','S','P','0'<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSTEMTIME&nbsp;&nbsp;&nbsp;BSPTime;<BR>
+} GBSP_Header;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_SkyData"></A>GFX_SkyData</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Axis;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Axis of rotation<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dpm;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Degres per minute<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Textures[6];&nbsp;&nbsp;&nbsp;&nbsp;// Texture indexes for all six sides...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawScale;<BR>
+} GFX_SkyData;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Plane"></A>GFX_Plane</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dist;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Defined in MathLib.h (PLANE_X, PLANE_Y, etc...)<BR>
+} GFX_Plane;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Node"></A>GFX_Node</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Children[2];&nbsp;&nbsp;&nbsp;&nbsp;// Children, indexed into GFXNodes, &lt; 0 = Leaf<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumFaces;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Num faces<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstFace;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First face<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneNum;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;Mins;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// For BBox frustum culling<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;Maxs;<BR>
+} GFX_Node;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_BNode"></A>GFX_BNode</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Children[2];&nbsp;&nbsp;&nbsp;&nbsp;// Children, indexed into GFXBNodes, &lt; 0 = Contents<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneNum;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;PlaneSide;<BR>
+} GFX_BNode;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_AreaPortal"></A>GFX_AreaPortal</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ModelNum;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Area;<BR>
+} GFX_AreaPortal;<BR>
+</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Area"></A>GFX_Area</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumAreaPortals;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstAreaPortal;<BR>
+} GFX_Area;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Leaf"></A>GFX_Leaf</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contents;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Contents of leaf<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mins;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// For BBox vis testing<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maxs;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstFace;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First face in GFXLeafFaces <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumFaces;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstPortal;&nbsp;&nbsp;&nbsp;&nbsp;// Number of portals<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPortals;&nbsp;&nbsp;// First portal<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cluster;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Cluster area for this leaf<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Area;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// -1 = Area, 0 = Solid &gt; 0 = Area number<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstSide;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Beveled sides for BBox collisions<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumSides;<BR>
+} GFX_Leaf;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Cluster"></A>GFX_Cluster</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisOfs;<BR>
+} GFX_Cluster;<BR>
+</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_LeafSide"></A>GFX_LeafSide</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneNum;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneSide;<BR>
+} GFX_LeafSide;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Face"></A>GFX_Face</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstVert;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First vertex indexed in GFXVertices<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumVerts;&nbsp;&nbsp;&nbsp;&nbsp;// Number of vertices in face<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneNum;&nbsp;&nbsp;&nbsp;&nbsp;// PlaneNum <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlaneSide;&nbsp;&nbsp;&nbsp;&nbsp;// 0 = Same direction of plane normal<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TexInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LightOfs;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Offset info GFXLightData, -1 = No light<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LWidth;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Lightmap width<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LHeight;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Lightmap height<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LTypes[4];<BR>
+} GFX_Face;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Model"></A>GFX_Model</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RootNode[2];&nbsp;&nbsp;// Top level Node in GFXNodes/GFXBNodes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mins;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maxs;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Origin;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstFace;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First face in GFXFaces<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumFaces;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Number of faces<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstLeaf;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First leaf in GFXLeafs;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumLeafs;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Number of leafs (including solid leafs)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstCluster;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// First leaf cluster ijn GFXCLusters<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumClusters;&nbsp;&nbsp;&nbsp;// Number of clusters in this model<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Areas[2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion">geMotion</A>* &nbsp;Motion;<BR>
+} GFX_Model;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Texture"></A>GFX_Texture</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name[32];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp;&nbsp;Flags;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;Width;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;Height;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;Offset;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;PaletteIndex;<BR>
+} GFX_Texture;</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_TexInfo"></A>GFX_TexInfo</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;Vecs[2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shift[2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawScale[2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceLight;&nbsp;&nbsp;&nbsp;// Used in radiosity satge only (remove?)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReflectiveScale;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alpha;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MipMapBias;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Texture;<BR>
+} GFX_TexInfo;<BR>
+</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GFX_Portal"></A>GFX_Portal</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;Origin;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Center of portal<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LeafTo;&nbsp;&nbsp;&nbsp;// Leaf looking into<BR>
+} GFX_Portal;<BR>
+</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<DL>
+<DD>&nbsp;</DD>
+<B><FONT COLOR="#800000"><DT><A NAME="GBSP_BSPData"></A>GBSP_BSPData</DT>
+</B></FONT><DD>typedef struct {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GBSP_Header">GBSP_Header</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GBSPHeader;&nbsp;&nbsp;&nbsp;// Header<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_SkyData">GFX_SkyData</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXSkyData;&nbsp;&nbsp;&nbsp;// Sky data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Model">GFX_Model</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXModels;&nbsp;&nbsp;&nbsp;// Model data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Node">GFX_Node</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXNodes;&nbsp;&nbsp;&nbsp;// Nodes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_BNode">GFX_BNode</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXBNodes;&nbsp;&nbsp;&nbsp;// Bevel Clip Nodes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Leaf">GFX_Leaf</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXLeafs;&nbsp;&nbsp;&nbsp;// Leafs<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Cluster">GFX_Cluster</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXClusters;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Area">GFX_Area</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXAreas;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_AreaPortal">GFX_AreaPortal</A>* &nbsp;GFXAreaPortals;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Plane">GFX_Plane</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXPlanes;&nbsp;&nbsp;&nbsp;// Planes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Face">GFX_Face</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXFaces;&nbsp;&nbsp;&nbsp;// Faces<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXLeafFaces;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_LeafSide">GFX_LeafSide</A>* &nbsp;&nbsp;&nbsp;GFXLeafSides;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXVerts;&nbsp;&nbsp;&nbsp;// Verts<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXVertIndexList;&nbsp;// Index list<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXRGBVerts;&nbsp;&nbsp;// RGBVerts<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXEntData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Texture">GFX_Texture</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXTextures;&nbsp;&nbsp;// Textures<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_TexInfo">GFX_TexInfo</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXTexInfo;&nbsp;&nbsp;// TexInfo<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXTexData;&nbsp;&nbsp;// TexData<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="DCommonIndexed.htm#DRV_Palette">DRV_Palette</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXPalettes;&nbsp;&nbsp;// Texture palettes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXLightData;&nbsp;&nbsp;// Lightmap data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint8">uint8</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXVisData;&nbsp;&nbsp;// Vis data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geBSPIndexed.htm#GFX_Portal">GFX_Portal</A>* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GFXPortals;&nbsp;&nbsp;// Portal data<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumGFXModels;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumGFXNodes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumGFXBNodes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumGFXLeafs;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumGFXClusters;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXAreas;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXAreaPortals;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXPlanes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXFaces;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXLeafFaces;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXLeafSides;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXVerts;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXVertIndexList;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXRGBVerts;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXEntData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXTextures;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXTexInfo;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXTexData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXPalettes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXLightData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXVisData;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumGFXPortals;<BR>
+} GBSP_BSPData;&nbsp;<BR>
+</DD>
+</DL>
+<BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<B><FONT COLOR="#000080"><hr>
+</FONT><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<p><a name="LoadGBSPFile"></a><a href="/web/20081013021444/http://www.genesis3d.com/~kdtop/BasetypesIndexed.htm#geBoolean">geBoolean</a><b><font color="#000080"> </font><font color="#800000">GBSP_LoadGBSPFile</font><font color="#000080">(</font></b><a href="/web/20081013021444/http://www.genesis3d.com/~kdtop/geVFileIndexed.htm#geVFile">geVFile</a><b><font color="#000080">* File, </font></b><a href="/web/20081013021444/http://www.genesis3d.com/~kdtop/geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</a><b><font color="#000080">* BSP);</font></b></p>
+</B></FONT><BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="FreeGBSPFile"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">GBSP_FreeGBSPFile</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBSPIndexed.htm#GBSP_BSPData">GBSP_BSPData</A><B><FONT COLOR="#000080">* BSP);</P>
+</B></FONT><BLOCKQUOTE><A HREF="geBSPIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:14:44 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:45 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

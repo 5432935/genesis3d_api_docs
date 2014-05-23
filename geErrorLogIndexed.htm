@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geErrorLogIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geErrorLog</B></FONT> </P>
+<P>Source file: ...\genesis3d\OpenSource\Source\Support\ERRORLOG.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> <A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geErrorLogIndexed.htm#Add">Add</A> <B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#AddString">AddString</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#AppendString">AppendString</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#Clear">Clear</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#Count">Count</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#Report">Report</A></P>
+<B><FONT COLOR="#000080"><P>Types:&nbsp;</B></FONT> <A HREF="geErrorLogIndexed.htm#geErrorLog_ErrorIDEnumType">geErrorLog_ErrorIDEnumType</A> <B><FONT COLOR="#000080">, </B></FONT><A HREF="geErrorLogIndexed.htm#geErrorLog_ErrorClassType">geErrorLog_ErrorClassType</A> </P>
+<B><FONT COLOR="#000080"><P>Additions for Genesis3D v1.6</B>:  enums added: ERR_SPRITE_ENOMEM, &nbsp;&nbsp;ERR_SPRITE_INVALIDBITMAP </P>
+</FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="geErrorLog_ErrorIDEnumType"></A>geErrorLog_ErrorIDEnumType;</B> </FONT><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>typedef enum{ <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_DRIVER_HANDLE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Driver not supported <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_MODE_HANDLE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Mode not supported <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_INIT_FAILED,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Could not init Driver <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_ALLREADY_INITIALIZED, // Driver init failure <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_NOT_FOUND,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // File open error for driver <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_NOT_INITIALIZED,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Driver shutdown failure <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_DRIVER,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Wrong driver version, or bad driver <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_BEGIN_SCENE_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DRIVER_END_SCENE_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_CREATE_SOUND_MANAGER_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_CREATE_SOUND_BUFFER_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DS_ERROR, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_WAV, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_NO_PERF_FREQ, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILE_OPEN_ERROR, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILE_READ_ERROR, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILE_WRITE_ERROR, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_PALETTE_LOAD_FAILURE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_GBSP_LOAD_FAILURE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_PARMS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_CAMERA, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_RENDER_WORLD_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_BEGIN_WORLD_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_END_WORLD_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_BEGIN_MODELS_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_END_MODELS_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_BEGIN_MESHES_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_END_MESHES_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_RENDER_MESH_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_BAD_LMAP_EXTENTS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_TEXTURE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_REGISTER_WORLD_TEXTURE_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_REGISTER_LIGHTMAPS_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_REGISTER_WORLD_PALETTE_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_REGISTER_MISC_TEXTURE_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_MESH_FILE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_LOAD_BITMAP_FAILED, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_MESH_DEFS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MESH_MAX_NODES, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_MESH_MATERIAL, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_MESH_MATERIALS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_MESH_CLIP_PLANES, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_RENDERQ_OVERFLOW, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_LTYPE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_ENTITIES, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_GET_ENTITY_DATA_ERROR, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_ENTITY_FIELD_TYPE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MODEL_NOT_FOUND, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MODEL_NOT_IN_ENTITY, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_TEXTURES, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_DECALS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MAX_VERTS, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_OUT_OF_MEMORY, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_BSP_TAG, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_BSP_VERSION, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_ERROR_READING_BSP_CHUNK, <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_CREATE_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create a path (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_INSERT_R_KEYFRAME,&nbsp;&nbsp;&nbsp; // failure to insert a rotation keyframe <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_INSERT_T_KEYFRAME,&nbsp;&nbsp;&nbsp; // failure to insert a translation keyframe <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_DELETE_R_KEYFRAME,&nbsp;&nbsp;&nbsp; // failure to delete a rotation keyframe <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_DELETE_T_KEYFRAME,&nbsp;&nbsp;&nbsp; // failure to delete a translation keyframe <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from file <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_FILE_VERSION,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // tried to create path from file with wrong/bad version <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse file (unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_PATH_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from file <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_CREATE_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_ADDPATH_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp; // failure to add path into motion (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_ADDPATH_PATH,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to add path into motion (path creation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_ADDPATH_BAD_NAME,&nbsp;&nbsp; // failure to add path into motion due to name conflict <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_INSERT_EVENT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to insert event (memory allocation failed or duplicate key) <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_DELETE_EVENT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to insert event <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from file <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to write to file <BR>
+&nbsp;&nbsp;&nbsp; ERR_MOTION_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse file (unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKARRAY_INSERT_IDENTICAL,&nbsp; // failure to insert into list because of existing identical key <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKARRAY_INSERT_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp; // failure to insert into list because of memory allocation failure <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKARRAY_DELETE_NOT_FOUND,&nbsp; // failure to delete from list because key was not found <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKARRAY_CREATE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create TKArray object (out of memroy) <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKARRAY_TOO_BIG,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TKArray object can't be added to - it's list is as big as it can get <BR>
+&nbsp;&nbsp;&nbsp; ERR_VKARRAY_INSERT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // insertion to VKArray failed <BR>
+&nbsp;&nbsp;&nbsp; ERR_QKARRAY_INSERT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // insertion to QKArray failed <BR>
+&nbsp;&nbsp;&nbsp; ERR_POSE_CREATE_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Motion object failed to create (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_POSE_ADDJOINT_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Motion_AddJoint failed to allocate/reallocate memory for new joint <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_CREATE_ENOMEM,&nbsp;&nbsp;&nbsp; // failure to create TKEvents object (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_DELETE_NOT_FOUND, // failure to delete from list because key was not found <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_INSERT_ENOMEM,&nbsp;&nbsp;&nbsp; // failure to insert into list because of memory allocation failure <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_INSERT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to insert into list <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to write to data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_FILE_VERSION,&nbsp;&nbsp;&nbsp;&nbsp; // failure to read tkevents object: file has wrong version <BR>
+&nbsp;&nbsp;&nbsp; ERR_TKEVENTS_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse file (unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_STRBLOCK_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create, insert, or append (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_STRBLOCK_STRLEN,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // string too long to insert or append <BR>
+&nbsp;&nbsp;&nbsp; ERR_STRBLOCK_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_STRBLOCK_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to write to data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_STRBLOCK_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse reading from input file (unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_BODY_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create, or add (memory allocation failed) <BR>
+&nbsp;&nbsp;&nbsp; ERR_BODY_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse reading from input file (unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_BODY_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_BODY_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to write to data file <BR>
+&nbsp;&nbsp;&nbsp; ERR_BODY_BONEXFARRAY,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // XFArray object failed to return array, or array size doesn't match bone count <BR>
+&nbsp;&nbsp;&nbsp; ERR_XFARRAY_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create. (memory allocation failure) <BR>
+&nbsp;&nbsp;&nbsp; ERR_PUPPET_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create. (memory allocation failure) <BR>
+&nbsp;&nbsp;&nbsp; ERR_PUPPET_RENDER,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to render. <BR>
+&nbsp;&nbsp;&nbsp; ERR_PUPPET_NO_MATERIALS,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create: associated body has no materials. <BR>
+&nbsp;&nbsp;&nbsp; ERR_PUPPET_LOAD_TEXTURE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to load texture <BR>
+&nbsp;&nbsp;&nbsp; ERR_TEXPOOL_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create or add to. (memory allocation/reallocation failure) <BR>
+&nbsp;&nbsp;&nbsp; ERR_TEXPOOL_TOO_BIG,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to add to pool, pool is too large. <BR>
+&nbsp;&nbsp;&nbsp; ERR_TEXPOOL_LOAD_TEXTURE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to load texture into pool <BR>
+&nbsp;&nbsp;&nbsp; ERR_TEXPOOL_TEXTURE_NOT_FREE,&nbsp; // texture pool destroyed without first freeing all it's shared textures <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_ENOMEM,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to create. (memory allocation failure) <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_RENDER_PREP,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to prepare actor for rendering (bad Body or allocation failure) <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_RENDER_FAILED,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to render.&nbsp; failure to get geometry from Body <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_TOO_MANY_MOTIONS,&nbsp;&nbsp;&nbsp; // failure to add motion. too many. <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_FILE_READ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to read from data file. <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_FILE_PARSE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to parse reading from input file(unexpected format problem) <BR>
+&nbsp;&nbsp;&nbsp; ERR_ACTOR_FILE_WRITE,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // failure to write to data file. <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INVALID_MODEL_MOTION_FILE, // Bad model motion file (for bsp files) <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_BAD_BSP_FILE_CHUNK_SIZE,&nbsp;&nbsp; // Chunk size does not match structure size of kind <BR>
+//Below added for Genesis3D v1.6<BR>
+//geSprite<BR>
+&#9;ERR_SPRITE_ENOMEM,&#9;&#9;// failure to create. (memory allocation failure)<BR>
+&#9;ERR_SPRITE_INVALIDBITMAP,&#9;// failure to use bitmap because bitmap was invalid<BR>
+} geErrorLog_ErrorIDEnumType;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><BR>
+<A NAME="geErrorLog_ErrorClassType"></A><B><FONT COLOR="#800000">geErrorLog_ErrorClassType</FONT><FONT COLOR="#000080">;</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>typedef enum{ <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_MEMORY_RESOURCE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DISPLAY_RESOURCE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_SOUND_RESOURCE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_SYSTEM_RESOURCE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_INTERNAL_RESOURCE, </BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_OPEN, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_CLOSE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_READ, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_WRITE, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_FORMAT, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_FILEIO_VERSION, </BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;&nbsp;&nbsp; GE_ERR_LIST_FULL, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_DATA_FORMAT, <BR>
+&nbsp;&nbsp;&nbsp; GE_ERR_SEARCH_FAILURE, <BR>
+} geErrorLog_ErrorClassType;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><BR>
+<B><I><FONT SIZE=5 COLOR="#0000ff">Functions:</B></I></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="Add"></A>geErrorLog_Add</FONT><FONT COLOR="#000080">(Error, Context);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This is a convenience macro that adds a line to the error log with a string Error to describe the error and a string Context to describe the context of the error.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: logs an error.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="AddString"></A>geErrorLog_AddString</FONT><FONT COLOR="#000080">(Error, String, Context);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This is a convenience macro that adds a line to the error log with a string Error to describe the error, a string Context to describe the context of the error, and an additional user definable string String for further explanation.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: logs an error with additional identifing string.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="AppendString"></A>geErrorLog_AppendString</FONT><FONT COLOR="#000080">(String);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This is a convenience macro that appends an additional string String to the last recorded error entry.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: adds text to the previous logged error</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Clear"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geErrorLog_Clear</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This function clears out the error log buffer.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: clears error history</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Count"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geErrorLog_Count</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This function returns the number of entries currently stored in the error log.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: reports size of current error log</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+<BLOCKQUOTE><A NAME="Report"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geErrorLog_Report</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> History, </B></FONT><A HREF="geErrorLogIndexed.htm#geErrorLog_ErrorClassType">geErrorLog_ErrorClassType</A><B><FONT COLOR="#000080">* Error, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> ** UserString);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This function plucks the specified entry History (0 for most recent, 1 for second most recent, etc.) from the error log, returning the </B><A HREF="geErrorLogIndexed.htm#geErrorLog_ErrorClassType">geErrorLog_ErrorClassType</A><B> Error and the string UserString.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from ERRORLOG.H: reports from the error log. history is 0 for most recent,&nbsp; 1.. for second most recent etc. returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> if it failed.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geErrorLogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><hr>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:08:19 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:58 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

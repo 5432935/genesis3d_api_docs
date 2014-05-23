@@ -1,0 +1,903 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geSpriteIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geSprite</b></font> </p>
+
+<p><font color="#000080"><b>Description: Implements a sprite
+system for Genesis3D</b></font></p>
+
+<p><font color="#FF0000"><b>Note</b></font><font color="#000080"><b>:
+</b>This is only available in Genesis3D v1.6</font></p>
+
+<p>Source file: ...\genesis3d\G3D\sprite.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="geSpriteIndexed.htm#Create">Create</a><font color="#000080"><b>, </b></font><a
+href="geSpriteIndexed.htm#CreateRef">CreateRef</a><font color="#800000"><b>, </b></font><a
+href="geSpriteIndexed.htm#Destroy">Destroy</a><font color="#800000"><b>, </b></font><a
+href="geSpriteIndexed.htm#GetAlpha">GetAlpha</a><font color="#800000"><b>, </b></font><a
+href="geSpriteIndexed.htm#GetBackface">GetBackface</a><font color="#800000"><b>, </b></font><a
+href="geSpriteIndexed.htm#GetBackfaceBitmap">GetBackfaceBitmap</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetBitmap">GetBitmap</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetCount">GetCount</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetExtBox">GetExtBox</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetFaceCamera">GetFaceCamera</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetInternalTransform">GetInternalTransform</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetLightingOptions">GetLightingOptions</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetNonWorldExtBox">GetNonWorldExtBox</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetPosition">GetPosition</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetScale">GetScale</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetTextureParameters">GetTextureParameters</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetTransform">GetTransform</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#GetUserData">GetUserData</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#IsValid">IsValid</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetAlpha">SetAlpha</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetBackface">SetBackface</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetExtBox">SetExtBox</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetFaceCamera">SetFaceCamera</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetInternalTransform">SetInternalTransform</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetLightingOptions">SetLightingOptions</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetPosition">SetPosition</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetScale">SetScale</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetTextureParameters">SetTextureParameters</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetTransform">SetTransform</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#SetUserData">SetUserData</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#RenderPrep">RenderPrep</a><font
+color="#800000"><b>, </b></font><a href="geSpriteIndexed.htm#RenderThroughFrustum">RenderThroughFrustum</a></p>
+
+<p><a name="x"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>Types: </b></font><a href="geSpriteIndexed.htm#geSprite">geSprite</a></p>
+
+<p><font color="#000080"><b>Constants:&nbsp;</b></font><a
+href="geSpriteIndexed.htm#Constants">view</a></p>
+
+<p><font color="#000080"><b>Notes:&nbsp;</b></font><a
+href="geSpriteIndexed.htm#Notes">view</a></p>
+
+<p><font color="#000080"><b>Changes for Genesis3D v1.6:</b> (This
+entire file is new)</font></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font></p>
+
+<p><a name="geSprite"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geSprite</b></font></p>
+
+<dir>
+    <li><dir>
+            <li><font color="#000080"><b>typedef struct geSprite </b></font><font
+                color="#800000"><b>geSprite</b></font><font
+                color="#000080"><b>;</b></font> // an instance of
+                a sprite</li>
+        </dir>
+    </li>
+</dir>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Constants"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Constants:</i></b></font></p>
+
+<blockquote>
+    <p><a name="SpriteFlags"><font color="#800000"><b></b></font></a></p>
+    <p><font color="#800000"><b>Sprite flags</b></font><b> </b>(used
+    for geWorld_AddSprite)</p>
+</blockquote>
+
+<blockquote>
+    <p>#define GE_SPRITE_RENDER_NORMAL (1&lt;&lt;0) // Render in
+    normal views<br>
+    #define GE_SPRITE_RENDER_MIRRORS (1&lt;&lt;1) // Render in
+    mirror views<br>
+    #define GE_SPRITE_RENDER_ALWAYS (1&lt;&lt;2) // Render
+    always, skipping all visibility tests<br>
+    #define GE_SPRITE_COLLIDE (1&lt;&lt;3) // Collide when
+    calling geWorld_Collision</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>:<br>
+<hr>
+
+<p><a name="Create"></a><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a>
+<a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_Create</b></font>(<a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a>* <font
+color="#000080"><b>SpriteBitmap</b></font>, <a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a>* <font
+color="#000080"><b>SpriteBackfaceBitmap</b></font>);</p>
+
+<p>Create a sprite instance associated with the given bitmaps as
+faces</p>
+
+<p>Pass in a <a href="BasetypesIndexed.htm#NULL"><font size="2">NULL</font></a>
+bitmap for a gouraud face</p>
+
+<p>Backface bitmap can be the same as the front face bitmap</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="CreateRef"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font><font color="#000080"> </font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_CreateRef</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>Sprite</b></font>);</p>
+
+<p>Create an additional reference (owner) for the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_Destroy</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>** <font color="#000080"><b>pS</b></font>);</p>
+
+<p>Destroy a sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetCount"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> int32 <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetCount</b></font>();</p>
+
+<p>Returns number of sprites that are currently created</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="IsValid"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_IsValid</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>);</p>
+
+<p>Checks to see if a sprite is valid or not</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetBitmap</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>);</p>
+
+<p>Returns the Bitmap associated with the sprite's front face</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetBackfaceBitmap"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetBackfaceBitmap</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>);</p>
+
+<p>Returns the Bitmap associated with the sprite's backface</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetBackface"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetBackface</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>Enabled</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>MirrorImage</b></font>);</p>
+
+<p>Gets backface parameters</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetBackface"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetBackface</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<font color="#0000FF">const</font> <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <font
+color="#000080"><b>Enabled</b></font>, <font color="#0000FF">const</font>
+<a href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <font
+color="#000080"><b>MirrorImage</b></font>);</p>
+
+<p>Sets the backface parameters</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetFaceCamera"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetFaceCamera</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>Enabled</b></font>);</p>
+
+<p>Gets whether the sprite always faces the camera</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetFaceCamera"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetFaceCamera</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<a href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <font
+color="#000080"><b>Enabled</b></font>);</p>
+
+<p>Sets whether the sprite always faces the camera</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetPosition"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetPosition</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>Pos</b></font>);</p>
+
+<p>Gets the position of the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetPosition"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetPosition</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<font color="#0000FF">const</font> <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>Pos</b></font>);</p>
+
+<p>Sets the position of the sprite</p>
+
+<p>For easy modification of the sprite position if the sprite
+always faces the camera</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetTransform</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <font
+color="#000080"><b>Transform</b></font>);</p>
+
+<p>Gets the current transform for the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetTransform</b></font>(geSprite* <font
+color="#000080"><b>S</b></font>, <font color="#0000FF">const</font>
+<a href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <font
+color="#000080"><b>Transform</b></font>);</p>
+
+<p>Sets the current transform for the sprite</p>
+
+<p>Rotation information is ignored if the sprite always faces the
+camera</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetInternalTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetInternalTransform</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <font
+color="#000080"><b>Transform</b></font>);</p>
+
+<p>Gets the internal transform for the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetInternalTransform"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetInternalTransform</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<font color="#0000FF">const</font> <a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a>* <font
+color="#000080"><b>Transform</b></font>);</p>
+
+<p>Sets the internal transform for the sprite</p>
+
+<p>Allows the sprite to be rendered offset from its main
+transform. For example, translation could make the bottom of the
+sprite its center of rotation.</p>
+
+<p>This is totally ignored if the sprite always faces the camera</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetScale"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetScale</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>ScaleX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>ScaleY</b></font>);</p>
+
+<p>Gets the scale of the sprite (width and height)</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetScale"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetScale</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>ScaleX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>ScaleY</b></font>);</p>
+
+<p>Sets the scale of the sprite (width and height)</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetExtBox</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>* <font
+color="#000080"><b>ExtBox</b></font>);</p>
+
+<p>Gets an assigned general non changing bounding box from the
+sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetNonWorldExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetNonWorldExtBox</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>* <font
+color="#000080"><b>ExtBox</b></font>);</p>
+
+<p>Gets the bounding box in non-world coordinates</p>
+
+<p>Whatever you put in with geSprite_SetExtBox, you get out with
+this function</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetExtBox"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetExtBox</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<font color="#0000FF">const</font> <a
+href="geExtBoxIndexed.htm#geExtBox">geExtBox</a>* <font
+color="#000080"><b>ExtBox</b></font>);</p>
+
+<p>Sets an assigned general non changing bounding box from the
+sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetTextureParameters"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetTextureParameters</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>OffsetX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>OffsetY</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>ScaleX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>ScaleY</b></font>);</p>
+
+<p>Gets the texture parameters for the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetTextureParameters"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetTextureParameters</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>OffsetX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>OffsetY</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>ScaleX</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>ScaleY</b></font>);</p>
+
+<p>Sets the texture parameters for the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetLightingOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetLightingOptions</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightRed</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightGreen</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightBlue</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>UseFillLight</b></font>, <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>FillLightNormal</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightRed</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightGreen</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightBlue</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>UseLightFromFloor</b></font>, int32* <font
+color="#000080"><b>MaximumDynamicLightsToUse</b></font>);</p>
+
+<dir>
+    <li>Gets the lighting options for the sprite<p><b>Note: <br>
+        </b>All <a href="BasetypesIndexed.htm#geFloat">geFloat</a>
+        values will be 0..255. <br>
+        <b>FillLightNormal </b>is a normalized vector<br>
+        <b>MaximumDynamicLightsToUse </b>= 0 if None</p>
+    </li>
+</dir>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetLightingOptions"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetLightingOptions</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightRed</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightGreen</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>AmbientLightBlue</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>UseFillLight</b></font>, <a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>* <font
+color="#000080"><b>FillLightNormal</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightRed</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightGreen</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>FillLightBlue</b></font>, <a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a>* <font
+color="#000080"><b>UseLightFromFloor</b></font>, int32* <font
+color="#000080"><b>MaximumDynamicLightsToUse</b></font>); </p>
+
+<dir>
+    <li>Sets the lighting options for the sprite<p><b>Note: <br>
+        </b>All <a href="BasetypesIndexed.htm#geFloat">geFloat</a>
+        values should be 0..255. <br>
+        <b>FillLightNormal </b>is a normalized vector<br>
+        <b>MaximumDynamicLightsToUse </b>= 0 if None</p>
+        <blockquote>
+            <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+        </blockquote>
+    </li>
+</dir>
+
+<hr>
+
+<p><a name="GetAlpha"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetAlpha</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>Alpha</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a>* <font
+color="#000080"><b>BackfaceAlpha</b></font>);</p>
+
+<p>Gets the alpha transparency of the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetAlpha"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetAlpha</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<a href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>Alpha</b></font>, <a
+href="BasetypesIndexed.htm#geFloat">geFloat</a> <font
+color="#000080"><b>BackfaceAlpha</b></font>);</p>
+
+<p>Sets the alpha transparency of the sprite</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font><font color="#000080"> </font>* <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_GetUserData</b></font>(<font
+color="#0000FF">const</font> <a href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font
+color="#000080"><b>S</b></font>);</p>
+
+<p>Returns the pointer which was set with geSprite_SetUserData. <a
+href="BasetypesIndexed.htm#NULL">NULL</a> if not set.</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="SetUserData"></a><a
+href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a> <font
+color="#0000FF">void</font> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_SetUserData</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<font color="#0000FF">void</font><font color="#000080"> </font>* <font
+color="#000080"><b>UserData</b></font>);</p>
+
+<p>Sets the sprites user data pointer to the given value. For
+clients only.</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="RenderPrep"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a> <a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_RenderPrep</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>A</b></font>,
+<a href="geWorldIndexed.htm#geWorld">geWorld</a>* <font
+color="#000080"><b>World</b></font>);</p>
+
+<p>This is a GENESIS_PRIVATE_APIS</p>
+
+<p>Only available if: #ifdef GE_WORLD_H</p>
+
+<p>&nbsp;</p>
+
+<p>Prepares the <a href="geSpriteIndexed.htm#geSprite">geSprite</a> for rendering
+and posing. Call Once once the sprite is fully created.</p>
+
+<p>Must be called prior to render/pose/setworldtransform </p>
+
+<p><font color="#000080"><b></b></font>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="y"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a>
+<a href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a> <font
+color="#800000"><b>geSprite_RenderThroughFrustum</b></font>(<a
+href="geSpriteIndexed.htm#geSprite">geSprite</a>* <font color="#000080"><b>S</b></font>,
+<a href="geDriverIndexed.htm#geEngine">geEngine</a>* <font
+color="#000080"><b>Engine</b></font>, <a
+href="geWorldIndexed.htm#geWorld">geWorld</a>* <font
+color="#000080"><b>World</b></font>, <a
+href="geCameraIndexed.htm#geCamera">geCamera</a>* <font
+color="#000080"><b>Camera</b></font>, <a
+href="FrustumIndexed.htm#Frustum_Info">Frustum_Info</a>* <font
+color="#000080"><b>FInfo</b></font>);</p>
+
+<p>This is a GENESIS_PRIVATE_APIS</p>
+
+<p>Only available if: #ifdef GE_WORLD_H</p>
+
+<p>Draws the <a href="geSpriteIndexed.htm#geSprite">geSprite</a>. (RenderPrep must
+be called first)</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Notes"><font color="#0000FF"><b><i></i></b></font></a><font
+color="#0000FF"><b><i>Notes:</i></b></font></p>
+
+<p><font color="#000080"><b>&nbsp;</b></font>In general: Objects
+retuned from Get functions should not not be destroyed. If
+ownership is desired, call the objects _CreateRef() function to
+create another owner. (An 'owner' has access to the object
+regardless of the number of other owners, and an owner must call
+the object's _Destroy() function to relinquish ownership )</p>
+
+<blockquote>
+    <p><font color="#000080"><b></b></font>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geSpriteIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:39:54 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:00 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

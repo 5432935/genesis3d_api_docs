@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geStrBlockIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geStrBlock</P>
+</FONT><FONT COLOR="#000080"><P>Description: String block interface.</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\strblock.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geStrBlockIndexed.htm#Create">Create</A>, <A HREF="geStrBlockIndexed.htm#Destroy">Destroy</A>, <A HREF="geStrBlockIndexed.htm#Append">Append</A>, <A HREF="geStrBlockIndexed.htm#Delete">Delete</A>, <A HREF="geStrBlockIndexed.htm#GetString">GetString</A>, <A HREF="geStrBlockIndexed.htm#SetString">SetString</A>, <A HREF="geStrBlockIndexed.htm#Insert">Insert</A>, <A HREF="geStrBlockIndexed.htm#FindString">FindString</A>, <A HREF="geStrBlockIndexed.htm#GetCount">GetCount</A>, <A HREF="geStrBlockIndexed.htm#GetChecksum">GetChecksum</A>, <A HREF="geStrBlockIndexed.htm#CreateFromFile">CreateFromFile</A>, <A HREF="geStrBlockIndexed.htm#WriteToFile">WriteToFile</A>, <A HREF="geStrBlockIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A></P>
+<FONT COLOR="#000080"><P>Additons for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+<P><A NAME="geStrBlock"></A>typedef struct geStrBlock </FONT><FONT COLOR="#800000">geStrBlock</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">** SB);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Append"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_Append</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">** ppSB,</B></FONT><FONT COLOR="#0000ff"> const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Delete"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_Delete</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">** ppSB,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Nth);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetString"></A>const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_GetString</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* SB, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="SetString"></A>//</B></FONT> <A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_SetString</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">** ppSB, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String);</P>
+</B></FONT><P>// This code is available in strblock.c, but it is currently commented out. To use, remove comments, but be sure to test first!</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Insert"></A>//</B></FONT> <A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_Insert</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">** ppSB,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> InsertAfterIndex,</B></FONT><FONT COLOR="#0000ff"> const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String);</P>
+</B></FONT><P>// This code is available in strblock.c, but it is currently commented out. To use, remove comments, but be sure to test first!</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="FindString"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_FindString</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* pSB, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * pIndex);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetCount"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_GetCount</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* SB);</P>
+</B></FONT><BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="GetChecksum"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geStrBlock_GetChecksum</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* SB);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromFile"></A><A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="y"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geStrBlockIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:20:06 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:43 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

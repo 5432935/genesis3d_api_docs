@@ -1,0 +1,192 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geTKArrayIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en"><B><FONT SIZE=6 COLOR="#008000">geTKArray</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: Time-Keyed-Array support</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Actor\tkarray.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geTKArrayIndexed.htm#Create">Create</A>, <A HREF="geTKArrayIndexed.htm#CreateEmpty">CreateEmpty</A>, <A HREF="geTKArrayIndexed.htm#CreateFromBinaryFile">CreateFromBinaryFile</A>, <A HREF="geTKArrayIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A>, <A HREF="geTKArrayIndexed.htm#BSearch">BSearch</A>, <A HREF="geTKArrayIndexed.htm#Insert">Insert</A>, <A HREF="geTKArrayIndexed.htm#DeleteElement">DeleteElement</A>, <A HREF="geTKArrayIndexed.htm#Destroy">Destroy</A>, <A HREF="geTKArrayIndexed.htm#Element">Element</A>, <A HREF="geTKArrayIndexed.htm#NumElements">NumElements</A>, <A HREF="geTKArrayIndexed.htm#ElementTime">ElementTime</A>, <A HREF="geTKArrayIndexed.htm#ElementSize">ElementSize</A>, <A HREF="geTKArrayIndexed.htm#SamplesAreTimeLinear">SamplesAreTimeLinear</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A></P>
+<B><FONT COLOR="#000080"><P>Overview: </B></FONT><A HREF="geTKArrayIndexed.htm#Overview">view</A></P>
+<FONT COLOR="#000080"><P>Additons for Genesis3D v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</P><DIR>
+<DIR>
+
+</B></I></FONT><P>TKArray means Time-Keyed-Array. This module is designed primarily to support path.c . The idea is that there are these packed arrays of elements, sorted by a <A HREF="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</A> key. The key is assumed to be the first field in each element. The TKArray functions operate on this very specific array type. Error conditions are reported to errorlog</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</I></FONT><FONT COLOR="#000080"><P><A NAME="geTKArray_TimeType"></A>typedef </B></FONT><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_TimeType</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<P><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<B><FONT COLOR="#000080"><P>&nbsp;</P>
+<P><A NAME="geTKArray"></A>typedef struct geTKArray </FONT><FONT COLOR="#800000">geTKArray</FONT><FONT COLOR="#000080">;</P>
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp;</P>
+<P><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Constants:</I></FONT><FONT COLOR="#000080">&nbsp;</P>
+<P>#define GE_TKA_TIME_TOLERANCE (0.00001f)</P>
+<P>&nbsp;</P>
+<P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> <B><FONT COLOR="#000080">&nbsp;</P>
+</B></FONT><hr>
+<B><FONT COLOR="#000080"><P><A NAME="Create"></A>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> ElementSize);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;creates new array with given attributes</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="CreateEmpty"></A><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_CreateEmpty</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> ElementSize,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> ElementCount);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;creates new array with given element size and given count of uninitialized members</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="CreateFromBinaryFile"></A><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* </B></FONT><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>stream positioned at array data</P>
+<P>Creates a new array from the given stream.</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="WriteToBinaryFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>Array is a sorted array to write</P>
+<P>PFile is a stream positioned for writing</P>
+<P>&nbsp;Writes the array to the given stream.</P>
+<P>&nbsp;</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="BSearch"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_BSearch</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* Array, </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</A><B><FONT COLOR="#000080"> Key);&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>Array is a sorted array to searc. &nbsp;Key is time to search for </P>
+<P>&nbsp;Searches for key in the Array. (assumes array is sorted) </P>
+<P>&nbsp;if key is found (within +-tolerance), the index to that element is returned.</P>
+<P>&nbsp;if key is not found, the index to the key just smaller than the </P>
+<P>&nbsp;given key is returned. (-1 if the key is smaller than the first element)</P>
+<P>&nbsp;search is only accurate to 2*TKA_TIME_TOLERANCE. </P>
+<P>&nbsp;if multiple keys exist within 2*TKA_TIME_TOLERANCE, this will find an arbitrary one of them.</P>
+<P>&nbsp;</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="Insert"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_Insert</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* *Array, </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</A><B><FONT COLOR="#000080"> Key,&nbsp;&nbsp;</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);&nbsp;&nbsp;&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>Key is time to insert. Index is the new element index</P>
+<P>&nbsp;inserts a new element into Array.</P>
+<P>&nbsp;sets only the key for the new element - the rest is junk</P>
+<P>&nbsp;returns TRUE if the insertion was successful.</P>
+<P>&nbsp;returns FALSE if the insertion failed. </P>
+<P>&nbsp;if Array is empty (no elements, <A HREF="BasetypesIndexed.htm#NULL">NULL</A> pointer) it is allocated and filled </P>
+<P>&nbsp;with the one Key element</P>
+<P>&nbsp;Index is the index of the new element </P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="DeleteElement"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_DeleteElement</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* *Array, &nbsp;</B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> N);&nbsp; </P><DIR>
+<DIR>
+
+</B></FONT><P>N is element to delete</P>
+<P>&nbsp;deletes an element from Array.</P>
+<P>&nbsp;returns TRUE if the deletion was successful. </P>
+<P>&nbsp;returns FALSE if the deletion failed. (key not found or realloc failed)</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Destroy"></A>void</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* *Array);&nbsp;</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;destroys array</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="Element"></A>void</FONT><B><FONT COLOR="#000080"> * </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_Element</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* Array, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> N);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;returns a pointer to the Nth element of the array.</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="NumElements"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_NumElements</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* Array);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;returns the number of elements in the array</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="ElementTime"></A><A HREF="geTKArrayIndexed.htm#geTKArray_TimeType">geTKArray_TimeType</A><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_ElementTime</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* Array, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> N);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;returns the Time associated with the Nth element of the array</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="ElementSize"></A>int</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geTKArray_ElementSize</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geTKArrayIndexed.htm#geTKArray">geTKArray</A><B><FONT COLOR="#000080">* A);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;returns the size of each element in the array</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="SamplesAreTimeLinear"><A NAME="y"></A></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Tolerance);</P><DIR>
+<DIR>
+
+</B></FONT><P>&nbsp;returns true if the samples are linear in time within a tolerance</P></DIR>
+</DIR>
+
+<B><FONT COLOR="#000080"><P>&nbsp;</B></FONT><A HREF="geTKArrayIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:18:27 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:57:57 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

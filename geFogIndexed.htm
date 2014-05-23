@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geFogIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geFog</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Fog module</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\World\fog.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents: </P>
+</I></FONT><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geFogIndexed.htm#Create">Create</A>, <A HREF="geFogIndexed.htm#Destroy">Destroy</A>, <A HREF="geFogIndexed.htm#SetAttributes">SetAttributes</A>, <A HREF="geFogIndexed.htm#SetUserData">SetUserData</A>, <A HREF="geFogIndexed.htm#GetUserData">GetUserData</A></P>
+<B><FONT COLOR="#000080"><P>Releated functions (in </B></FONT><A HREF="geWorldIndexed.htm#RemoveFog">geWorld_RemoveFog</A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geFogIndexed.htm#SET_ATTR_CB">SET_ATTR_CB</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="geFogIndexed.htm#geFog">geFog</A></P>
+<FONT COLOR="#000080"><P>Additions to Genesis3D v1.6:</FONT> <B>None</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Types"></A>Types:</B></I></FONT> </P>
+<BLOCKQUOTE><A NAME="SET_ATTR_CB"></A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><BLOCKQUOTE>SET_ATTR_CB</BLOCKQUOTE>
+</FONT><FONT COLOR="#000080"><BLOCKQUOTE>typedef </B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080">&nbsp;</FONT><FONT COLOR="#800000">SET_ATTR_CB</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geFogIndexed.htm#geFog">geFog</A><B><FONT COLOR="#000080">* Fog)</FONT>; //CB means call back procedure</BLOCKQUOTE>
+</B><BLOCKQUOTE>&nbsp;<A HREF="geFogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE><A NAME="geFog"></A></BLOCKQUOTE>
+<B><FONT COLOR="#800000"><BLOCKQUOTE>geFog</BLOCKQUOTE>
+</B></FONT><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note: The elements of this structure may be set via standard API calls</P>
+<DL>
+<DD>typedef struct geFog {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pos;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Color;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LightBrightness;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VolumeBrightness;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VolumeRadius;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VolumeRadius2;&nbsp;&nbsp;&nbsp;// *2<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">float</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VolumeRadiusSquared;&nbsp;&nbsp;// Radius squared<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">void</FONT> *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserData;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geFogIndexed.htm#SET_ATTR_CB">SET_ATTR_CB</A>*&nbsp;&nbsp;SetAttrCB;&nbsp;&nbsp;&nbsp;&nbsp;// CB for when geFog_SetAttributes is called<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct geFog*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct geFog*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prev;<BR>
+} geFog;</DD>
+</DL>
+<BLOCKQUOTE>&nbsp;<A HREF="geFogIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B>&nbsp;&nbsp;</B><A HREF="geFogIndexed.htm#geFog"><A HREF="geFogIndexed.htm#geFog">geFog</A></A><B>* <FONT COLOR="#800000">geFog_Create</FONT>(</B><A HREF="geFogIndexed.htm#SET_ATTR_CB">SET_ATTR_CB</A><B>* SetAttrCB);</P>
+<BLOCKQUOTE>This function creates a new </B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>, and returns a pointer to the structure. SetAttrCB is a call back procedure. <FONT COLOR="#ff0000">Note:</FONT> the standard way to create a new </B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>, is NOT via this function, but rather through the </B><A HREF="geWorldIndexed.htm#AddFog">geWorld_AddFog(geWorld* World)</A><B><FONT COLOR="#000080"> </FONT>function.</BLOCKQUOTE>
+</B><P><A HREF="geFogIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A><B>&nbsp;&nbsp;</B><FONT COLOR="#0000ff">void</FONT><B> <FONT COLOR="#800000">geFog_Destroy</FONT>(</B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>* Fog);</P>
+<BLOCKQUOTE>This function destroys a </B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>. <FONT COLOR="#ff0000">Note:</FONT> As discussed in geFog_Create, users should use the function </B><A HREF="geWorldIndexed.htm#RemoveFog">geWorld_RemoveFog(geWorld* World, geFog* Fog)</A><B> to add or remove a </B><A HREF="geFogIndexed.htm#geFog">geFog</A></BLOCKQUOTE>
+<P><A HREF="geFogIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="SetAttributes"></A><A HREF="BasetypesIndexed.htm#GE_RGBA">GE_RGBA</A><B>* Color, </B><FONT COLOR="#0000ff">float</FONT><B>&nbsp;LightBrightness, </B><FONT COLOR="#0000ff">float</FONT><B> VolumeBrightness, </B><FONT COLOR="#0000ff">float</FONT><B> VolumeRadius); </P>
+<BLOCKQUOTE>This sets the attributes for a </B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>, based on parameters passed: Pos, Color, LightBrightness, VolumeBrightness, VolumeRadius</BLOCKQUOTE>
+</B><P><A HREF="geFogIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="SetUserData"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B> <FONT COLOR="#800000">geFog_SetUserData</FONT>(</B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>* Fog, </B><FONT COLOR="#0000ff">void</FONT><B>* UserData);</P>
+<BLOCKQUOTE>The </B><A HREF="geFogIndexed.htm#geFog">geFog</A><B> structure allows for user data. A pointer to a user-supplied data may be set with this function.</BLOCKQUOTE>
+</B><P><A HREF="geFogIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="GetUserData"></A><A HREF="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</A> <FONT COLOR="#0000ff">void</FONT><B>* <FONT COLOR="#800000">geFog_GetUserData</FONT>(</B><A HREF="geFogIndexed.htm#geFog">geFog</A><B>* Fog);</P>
+<BLOCKQUOTE>&nbsp;Returns pointer to user data</BLOCKQUOTE>
+</B><P><A HREF="geFogIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:46:33 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:05 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

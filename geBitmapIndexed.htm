@@ -1,0 +1,785 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geBitmapIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geBitmap</B></FONT> </P>
+<P>Source file: ...\genesis3d\OpenSource\Source\Bitmap\Bitmap.h &amp; bitmap_blitdata.h (for geBitmap_BlitData) &amp; bitmap_gamma.h (for geBitmap_Gamma_Apply)</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geBitmapIndexed.htm#Blit">Blit</A>, <A HREF="geBitmapIndexed.htm#BlitBestMip">BlitBestMip</A>, <A HREF="geBitmapIndexed.htm#BlitData">BlitData</A>, <A HREF="geBitmapIndexed.htm#BlitBitmap">BlitBitmap</A>, <A HREF="geBitmapIndexed.htm#BlitMip">BlitMip</A>, <A HREF="geBitmapIndexed.htm#ClearMips">ClearMips</A>, <A HREF="geBitmapIndexed.htm#Create">Create</A>, <A HREF="geBitmapIndexed.htm#CreateFromFile">CreateFromFile</A>, <A HREF="geBitmapIndexed.htm#CreateFromFileName">CreateFromFileName</A>, <A HREF="geBitmapIndexed.htm#CreateFromInfo">CreateFromInfo</A>, <A HREF="geBitmapIndexed.htm#CreateRef">CreateRef</A>, <A HREF="geBitmapIndexed.htm#Debug_GetCount">Debug_GetCount</A>, <A HREF="geBitmapIndexed.htm#Destroy">Destroy</A>, <A HREF="geBitmapIndexed.htm#Gamma_Apply">Gamma_Apply</A>, <A HREF="geBitmapIndexed.htm#GetAlpha">GetAlpha</A>, <A HREF="geBitmapIndexed.htm#GetAverageColor">GetAverageColor</A>, <A HREF="geBitmapIndexed.htm#GetBits">GetBits</A>, <A HREF="geBitmapIndexed.htm#GetInfo">GetInfo</A>, <A HREF="geBitmapIndexed.htm#GetPalette">GetPalette</A>, <A HREF="geBitmapIndexed.htm#GetPreferredFormat">GetPreferredFormat</A>, <A HREF="geBitmapIndexed.htm#GetStreamingStatus">GetStreamingStatus</A>, <A HREF="geBitmapIndexed.htm#HasAlpha">HasAlpha</A>, <A HREF="geBitmapIndexed.htm#Height">Height</A>, <A HREF="geBitmapIndexed.htm#LockForRead">LockForRead</A>, <A HREF="geBitmapIndexed.htm#LockForReadNative">LockForReadNative</A>, <A HREF="geBitmapIndexed.htm#LockForWrite">LockForWrite</A>, <A HREF="geBitmapIndexed.htm#LockForWriteFormat">LockForWriteFormat</A>, <A HREF="geBitmapIndexed.htm#MipBytes">MipBytes</A>, <A HREF="geBitmapIndexed.htm#Palette_Copy">Palette_Copy</A>, <A HREF="geBitmapIndexed.htm#Palette_Create">Palette_Create</A>, <A HREF="geBitmapIndexed.htm#Palette_CreateCopy">Palette_CreateCopy</A>, <A HREF="geBitmapIndexed.htm#Palette_CreateFromBitmap">Palette_CreateFromBitmap</A>, <A HREF="geBitmapIndexed.htm#Palette_CreateFromFile">Palette_CreateFromFile</A>, <A HREF="geBitmapIndexed.htm#Palette_CreateRef">Palette_CreateRef</A>, <A HREF="geBitmapIndexed.htm#Palette_Destroy">Palette_Destroy</A>, <A HREF="geBitmapIndexed.htm#Palette_GetData">Palette_GetData</A>, <A HREF="geBitmapIndexed.htm#Palette_GetEntry">Palette_GetEntry</A>, <A HREF="geBitmapIndexed.htm#Palette_GetEntryColor">Palette_GetEntryColor</A>, <A HREF="geBitmapIndexed.htm#Palette_GetInfo">Palette_GetInfo</A>, <A HREF="geBitmapIndexed.htm#Palette_Lock">Palette_Lock</A>, <A HREF="geBitmapIndexed.htm#Palette_SetData">Palette_SetData</A>, <A HREF="geBitmapIndexed.htm#Palette_SetEntry">Palette_SetEntry</A>, <A HREF="geBitmapIndexed.htm#Palette_SetEntryColor">Palette_SetEntryColor</A>, <A HREF="geBitmapIndexed.htm#Palette_SetFormat">Palette_SetFormat</A>, <A HREF="geBitmapIndexed.htm#Palette_SortColors">Palette_SortColors</A>, <A HREF="geBitmapIndexed.htm#Palette_UnLock">Palette_UnLock</A>, <A HREF="geBitmapIndexed.htm#Palette_WriteToFile">Palette_WriteToFile</A>, <A HREF="geBitmapIndexed.htm#RefreshMips">RefreshMips</A>, <A HREF="geBitmapIndexed.htm#SetAlpha">SetAlpha</A>, <A HREF="geBitmapIndexed.htm#SetColorKey">SetColorKey</A>, <A HREF="geBitmapIndexed.htm#SetFormat">SetFormat</A>, <A HREF="geBitmapIndexed.htm#SetFormatMin">SetFormatMin</A>, <A HREF="geBitmapIndexed.htm#SetGammaCorrection">SetGammaCorrection</A>, <A HREF="geBitmapIndexed.htm#SetMipCount">SetMipCount</A>, <A HREF="geBitmapIndexed.htm#SetPalette">SetPalette</A>, <A HREF="geBitmapIndexed.htm#SetPreferredFormat">SetPreferredFormat</A>, <A HREF="geBitmapIndexed.htm#UnLock">UnLock</A>, <A HREF="geBitmapIndexed.htm#UnLockArray">UnLockArray</A>, <A HREF="geBitmapIndexed.htm#UpdateMips">UpdateMips</A>, <A HREF="geBitmapIndexed.htm#Width">Width</A>, <A HREF="geBitmapIndexed.htm#WriteToFile">WriteToFile</A>, <A HREF="geBitmapIndexed.htm#WriteToFileName">WriteToFileName</A>, </P>
+<B><FONT COLOR="#000080"><P>Types</FONT><FONT SIZE=4 COLOR="#000080">:</B></FONT> <A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_StreamingStatus">geBitmap_StreamingStatus</A></P>
+<B><FONT COLOR="#000080"><P>Additions for Genesis3d v1.6</B></FONT>: <A HREF="geBitmapIndexed.htm#Debug_GetRefs">Debug_GetRefs</A></P>
+<B><FONT COLOR="#000080"><P>Notes: </B></FONT><A HREF="geBitmapIndexed.htm#Notes">view</A></P>
+<B><FONT COLOR="#000080"><P>Tutorial: </B></FONT>Charles Bloom's <A HREF="geBitmapIndexed.htm#Tutorial">Tutorial</A><B>&nbsp;</P>
+</B><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#800000"><P><A NAME="geBitmap"></A>geBitmap</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<FONT FACE="Courier New"><BLOCKQUOTE>typedef struct geBitmap geBitmap;</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geBitmap_Palette"></A>geBitmap_Palette</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<FONT FACE="Courier New"><BLOCKQUOTE>typedef struct geBitmap_Palette geBitmap_Palette;</BLOCKQUOTE>
+</FONT><BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><P><A NAME="geBitmap_Info"></A>geBitmap_Info</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<BLOCKQUOTE>typedef struct geBitmap_Info{ <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stride;//stride is in* pixels*;it's the step to the next line: Stride = Width <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Format; <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MinimumMip; //*including* minimumMip == 0 often <BR>
+&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaximumMip; //*including* maximumMip == nummips-1 <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HasColorKey; <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#uint32">uint32</A>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ColorKey; // meaningless unless HasColorKey;the ColorKey is a Pixel in Format <BR>
+&nbsp;&nbsp;&nbsp;<A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A>* Palette; <BR>
+} geBitmap_Info;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<B><FONT COLOR="#800000"><BLOCKQUOTE><A NAME="geBitmap_StreamingStatus"></A>geBitmap_StreamingStatus</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE>typedef enum { <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_ERROR=0, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_NOT, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_STARTED, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_IDLE, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_CHANGED, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_DATADONE, <BR>
+&nbsp;&nbsp;&nbsp; GE_BITMAP_STREAMING_DONE, <BR>
+} geBitmap_StreamingStatus;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<P><A NAME="Blit"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Blit</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Src, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SrcPositionX, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SrcPositionY, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Dst, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> DstPositionX, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> DstPositionY, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SizeX, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SizeY );</B></FONT> </P>
+<B><BLOCKQUOTE>This function blits the area (SrcPositionX, SrcPositionY)-(SrcPositionX+SizeX, SrcPositionY+SizeY) of Src to (DstPositionX, DstPositionY)-(DstPositionX+SizeX, DstPositionY+SizeY) of Dst.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="BlitBestMip"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_BlitBestMip</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Src, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Dst);</B></FONT> </P>
+<B><BLOCKQUOTE>To quote the note below: This function blits the largest MIP from Src that fits into Dst.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: blits the largest mip from Src that fits in Dst</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="BlitBitmap"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_BlitBitmap</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Src, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Dst);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function blits the bitmap in Src to Dst.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Questions:</B> <BR>
+&nbsp;&nbsp;&nbsp; How does this differ from <A HREF="geBitmapIndexed.htm#BlitBestMip">geBitmap_BlitBestMip</A>?&nbsp; Does it copy ALL MIPs?</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="BlitMip"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_BlitMip</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Src, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SrcMip, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Dst, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> DstMip);</B></FONT> </P>
+<B><BLOCKQUOTE>This function blits the MIP specified by SrcMip from Src to the DstMip of Dst.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Don't use this with Src == Dst, use <A HREF="geBitmapIndexed.htm#UpdateMips">UpdateMips</A> instead!</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="ClearMips"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_ClearMips</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function clears/destroys all MIPs except the initial MIP from Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Destroy all mips (except the first)! Use with care! This is not polite!</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Create"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format );</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates and returns a new </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> with the specified Width, Height, MipCount, pixel format Format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the created </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new bitmap object from a file (BMP I presume).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the new </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="CreateFromFileName"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* BaseFS, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new bitmap from the named file and file system.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the new </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="CreateFromInfo"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_CreateFromInfo</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* pInfo);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new blank bitmap object based on the properties in pInfo.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the new </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="CreateRef"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_CreateRef</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adds one to the reference count for Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Debug_GetCount"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Debug</FONT><FONT COLOR="#000080">_GetCount(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</B></FONT> </P>
+<B><BLOCKQUOTE>This function provides a count of the number of bitmap references still extant in the system (I think).&nbsp; Basically at shutdown this should return 0 otherwise some bitmap is not being properly destroyed.&nbsp;<FONT COLOR="#ff0000"> This API is only available in debug mode.</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the number of bitmap references in existence.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H:&nbsp; assert this is zero before you shutdown !</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Debug_GetRefs"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Debug_GetRefs</B></FONT>(<FONT COLOR="#0000ff">void</FONT>);</P>
+<BLOCKQUOTE>Added for Genesis3D v1.6</BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H:&nbsp; assert this is zero before you shutdown !</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">** Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function decreases by one the reference count for Bmp.&nbsp; If the reference count reaches zero all resources for the bitmap are cleaned up.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: returns whether Bmp was actually destroyed : not success/failure</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetAlpha"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetAlpha</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns a </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> with just the current alpha channel of Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the alpha channel bitmap.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<BR>
+<A NAME="GetAverageColor"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetAverageColor</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * pR, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * pG, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * pB);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the average color for Bmp in (pR,pG,pB).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Tells you the average color; computes it and caches it out.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetBits"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetBits</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns a pointer to the actual bits of Bmp which must be Locked.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the pointer to the bitmap data.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: works only on a Lock().</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetInfo"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetInfo</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* Info, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* SecondaryInfo);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the info for Bmp.&nbsp; The Info/SecondaryInfo seems to have something to do with the driver.&nbsp; If a driver is in use the Info is the Driver info and SecondaryInfo is the actual bitmap's info, otherwise Info is the bitmap's info.&nbsp; If SecondaryInfo is </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> then SecondaryInfo will not be returned.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: LockForWrite returns data in Info's format.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetPalette"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetPalette</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the palette for Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetPreferredFormat"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetPreferredFormat</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the </B><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B> for Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="GetStreamingStatus"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_GetStreamingStatus</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><BLOCKQUOTE>Not implemented in v1.01 to v1.6.</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="HasAlpha"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_HasAlpha</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks whether Bmp has any alpha and returns the result.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> if not.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: returns true if bitmap has* any* type of alpha</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Height"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Height</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the Height of Bitmap in pixels.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the Height of Bitmap.</BLOCKQUOTE>
+</B><P><BR>
+&nbsp; </P>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="LockForRead"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> ColorKey);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function locks the </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> Bmp for reading.&nbsp; I'm not too sure about this one.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: A non-exclusive lock. Not really <FONT COLOR="#0000ff">const</FONT>, stores lock-count, but* data* is <FONT COLOR="#0000ff">const</FONT>. Will do a format conversion!</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="LockForReadNative"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_LockForReadNative</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">** Target, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MinimumMip, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MaximumMip);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function locks the </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> Bmp for reading.&nbsp; Again, I don't really get this.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Lock for read in a format that gaurantee no conversions. Then do GetInfo on the locks to see what you have!</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="LockForWrite"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_LockForWrite</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">** Target, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MinimumMip, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> MaximumMip);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>Once again, I'm a bit clueless.&nbsp; I think maybe Target returns the </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> that is edittable.&nbsp; But...</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: an exclusive lock</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="LockForWriteFormat"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Format must be one of the two returned in GetInfo !!</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P>&nbsp; </P>
+<P><A NAME="MipBytes"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_MipBytes</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> mip);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the number of bytes in the specified mip of Bitmap.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_Copy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_Copy</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Src, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Target);</B></FONT> </P>
+<B><BLOCKQUOTE>This function copies the palette of Src to Target.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_Create"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B> object with the specified pixel format Format and Size entries.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the created </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A NAME="Palette_CreateCopy"></A><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_CreateCopy</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Palette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B> identical to Palette.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the copied </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_CreateFromBitmap"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Slow);</B></FONT> </P>
+<B><BLOCKQUOTE>This function generates a palette from the given </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B>.&nbsp; If Slow == </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B> it does a slower, higher-quality version.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Does GetPalette, and if <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, then it create an optimal palette for a non-palettized bitmap (this is a create, you must destroy later!) Put Slow == TRUE for higher quality &amp; slower.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function reads the header date of the bitmap file F and creates an empty palette with the same stats.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the created </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_CreateRef"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_CreateRef</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Palette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function increases the reference count of the </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B> by one.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">** ppPalette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function destroys (decreases reference count by one) the </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B> freeing up resources if possible.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_GetData"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Colors);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a copy of the palette data of P at Format pixelformat and Colors colordepth and returns the pointer in Into.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_GetEntry"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080">* Pixel);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns entry Color of P in Pixel.&nbsp; All of the Get/Set functions handle locking for you which makes them slow.&nbsp; Be careful.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_GetEntryColor"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_GetEntryColor</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Color, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * R, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * G, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * B, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns entry Color of palette P in (R,G,B,A).&nbsp; All of the Get/Set functions handle locking for you which makes them slow.&nbsp; Be careful.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Set/Get does Lock/Unlock for you ; these are slow! do not use these to work on all the colors!</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_GetInfo"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_GetInfo</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* P, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* Into);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the info from the palette P.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: get the info as if it were a bitmap; Into-Height == 1</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_Lock"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080">* pFormat, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * pSize);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function locks the palette.&nbsp; I still don't get how these work, I'll have to find some examples eventually.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: pFormat &amp; pSize are optional</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_SetData"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Colors);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the palette data of P from From for pixelformat Format and colordepth Colors.&nbsp; This handles lock/unlock for you.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H:&nbsp; does Lock/UnLock for you. From and Into are arrays of Colors*<A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A>_BytesPerPel bytes</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_SetEntry"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> Pixel);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets entry Color of palette P to Pixel.&nbsp; It handle lock/unlock for you.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_SetEntryColor"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_SetEntryColor</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Color, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> R, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> G, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> B, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> A);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets entry Color of palette P to (R,G,B,A).&nbsp; It handles lock/unlock for you.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_SetFormat"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the </B><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B> of Palette to Format. <FONT COLOR="#ff0000">This function doesn't appear to do any lock/unlock for you.&nbsp; Is it necessary?</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_SortColors"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Slower);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><BLOCKQUOTE>It doesn't appear that this is currently implemented.</BLOCKQUOTE>
+</B></FONT><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_UnLock"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Palette_UnLock</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Palette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function unlocks Palette.&nbsp; Details still elude me.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: Palette unlock does NOT notify the bitmap that the palette has changed. Call <A HREF="geBitmapIndexed.htm#SetPalette">Bitmap_SetPalette()</A> with the same palette pointer to tell the bitmap that it must to some processing (don't worry, it won't duplicate it or copy it onto itself)</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Palette_WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes the </B><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B> Palette to file F.&nbsp; <FONT COLOR="#ff0000">Is this just raw data (</B></FONT><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#ff0000">s)?</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="RefreshMips"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_RefreshMips</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function rebuilds the MIPs of the </B><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B> Bmp from the base data.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: rebuilds mips;* tries* to be smart &amp; not overwrite manually-fixed mips. RefreshMips does* not* build mips that don't exist</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetAlpha"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_SetAlpha</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* AlphaBmp);</B></FONT> </P>
+<B><FONT COLOR="#ff0000"><P>incomplete</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the alpha layer of Bmp to AlphaBmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: We Ref the AlphaBmp, so you may destroy it after calling Set(). it may be <A HREF="BasetypesIndexed.htm#NULL">NULL</A>. there's only one Alpha per bitmap (for the top Mip) right now.</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetColorKey"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Smart);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the color key of Bmp to ColorKey.&nbsp; It sets the HasColorKey element of Bmp to HasColorKey.&nbsp; <FONT COLOR="#ff0000">I don't really follow the Smart arg.</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.h: SetColorKey discards old colorkey information! does not do a conversion (changes the colorkey in the current data) if 'Smart' is on, we don't set HasColorKey to true unless it is actually used!</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetFormat"></A><A HREF="BasetypesIndexed.htm#uint32">uint32</A><B><FONT COLOR="#000080"> ColorKey, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Palette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets Bmp's format information to that specified doing any necessary conversions.&nbsp; If the new format is palettized in Palette == </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B>, the new palette is returned in Palette.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H:&nbsp; _SetFormat may cause you to lose color information! SetFormat does a conversion! If NewFormat is palettized and Palette is <A HREF="BasetypesIndexed.htm#NULL">NULL</A>, we create a palette for the bitmap!</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetFormatMin"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> NewFormat);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the format of Bmp to Newformat but maintains colorkey and palette.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: the Min version keeps colorkey &amp; palette from the old format</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetGammaCorrection"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Apply);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the Gamma level of Bmp if Apply == </B><A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: This Gamma does not change the* original* (system/secondary) bits, it only affects the appearance when drawn. Note: if you write to the gamma corrected bits, you must gamma correct manually if you wish to fit in smoothly with the previous data. Warning : if you use this function with many different gammas, performance will suffer! use one global gamma for all bitmaps!&nbsp; try to let the engine manage gamma for you, via <A HREF="geEngineIndexed.htm#SetGamma">geEngine_SetGamma</A> !</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetMipCount"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_SetMipCount</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp ,</B></FONT><FONT COLOR="#0000ff"> int</FONT><B><FONT COLOR="#000080"> Count);</B></FONT> </P>
+<B><BLOCKQUOTE>This function changes to total number of MIPs of Bmp to Count, destroying or creating as necesary.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: creates or destroys to match the new count</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetPalette"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_SetPalette</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Palette">geBitmap_Palette</A><B><FONT COLOR="#000080">* Palette);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the palette of Bmp to Palette.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: _SetPal tries to <A HREF="geBitmapIndexed.htm#CreateRef">_CreateRef</A> your Palette, so no copy occurs &amp; palettes may be shared you may <A HREF="geBitmapIndexed.htm#Destroy">_Destroy()</A> palette after using it to set (though its bits may not be freed) (hence Palette is* not* <FONT COLOR="#0000ff">const</FONT>) Warning : SetPalette on any mip changes the palette of ALL mips ! see Palette note at _UnLock _SetPal destroys the bitmap's original palette and refs the new one, so if you setpal with the bitmap's palette, there is no net change in ref counts (good!)</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="SetPreferredFormat"></A><A HREF="gePixelFormatIndexed.htm#gePixelFormat">gePixelFormat</A><B><FONT COLOR="#000080"> Format);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the pixelformat of Bmp to Format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="UnLock"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_UnLock</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp);</B></FONT> </P>
+<B><BLOCKQUOTE>This function unlocks the bitmap Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: must be done on All locked mips</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="UnLockArray"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_UnLockArray</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">** Locks, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Size);</B></FONT> </P>
+<B><BLOCKQUOTE>This function unlocks and array Size bitmaps.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="UpdateMips"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_UpdateMips</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bmp, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SourceMip, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> TargetMip);</B></FONT> </P>
+<B><BLOCKQUOTE>This function recreates TargetMip from SourceMip in Bmp.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: will create the target if it doesn't exist; will overwrite manually-fixed mips!</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="Width"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_Width</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the width of Bitmap.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* F );</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes Bmp to the file F (in .bmp format?).</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><BR>
+<A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* BaseFS,</B></FONT><FONT COLOR="#0000ff"> const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes Bmp to the file specified by BaseFS and Name.&nbsp; (.bmp?)</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H: BaseFS is not really const if it is a virtual file; it* is* const if it is a dos directory.</BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<B><FONT SIZE=4>Notes:</B></FONT> <BR>
+&nbsp;&nbsp;&nbsp; from BITMAP.H:&nbsp; If Bitmap is a lock for read, functions that modify it return failure. If Bitmap is a lock for write, functions that modify it attempt to modify the owner of the lock. warning : if you lock multiple mips for write, and then modify one of the mips (such as via <A HREF="geBitmapIndexed.htm#SetPalette">SetPalette</A>) it may affect the owner and all sibling mips!&nbsp; Doing different <A HREF="geBitmapIndexed.htm#SetPalette">SetPalettes</A> with different palettes on different locked mips has undefined behavior! <BR>
+&nbsp; <BR>
+<A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="BlitData"></A>extern </B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geBitmap_BlitData</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* SrcInfo, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * SrcData, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* SrcBmp, </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap_Info">geBitmap_Info</A><B><FONT COLOR="#000080">* DstInfo, </B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080"> * DstData, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* DstBmp, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SizeX, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SizeY);</P>
+</B></FONT><P>(Source file: ...\genesis3d\OpenSource\Source\Bitmap\bitmap_blitdata.h)</P>
+<P>PURPOSE: Does all format conversions</P>
+<B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><FONT COLOR="#000080"><P><A NAME="Gamma_Apply"></A>extern </B></FONT><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> Invert);</P>
+</B></FONT><P>(Source file: ...\genesis3d\OpenSource\Source\Bitmap\bitmap_gamma.h)</P>
+<P>PURPOSE: Fast Gamma correction routines for various pixel formats</P>
+<P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Notes"></A>Notes:</P>
+</B></I></FONT><P>From bitmap.h:</P>
+<P>* if Bitmap is a lock for read, functions that modify it return failure<BR>
+* if Bitmap is a lock for write, functions that modify it attempt to<BR>
+*&#9;modify the owner of the lock<BR>
+*<BR>
+* warning : if you lock multiple mips for write, and then modify one of the mips<BR>
+*&#9;&#9;(such as via SetPalette) it may affect the owner and all sibling mips!<BR>
+*&#9;&#9;doing different SetPalettes with different palettes on different locked mips <BR>
+*&#9;&#9;has undefined behavior!</P>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Tutorial"></A>Tutorial</P>
+</B></I></FONT><CODE><P>/************************************************************************</P>
+</CODE><P>&nbsp;</P>
+<CODE><P>A brief tutorial on the Bitmap system, by Charles Bloom, cbloom@wildtangent.com</P>
+</CODE><P>&nbsp;</P>
+<CODE><P>The Bitmap is a smart wrapper for complex functionality. You give it hints to the opaque Bitmap object, and it tries its best to follow those hints, but it may not always do so. The Bitmap is the owner of its bits; you must Lock the bitmap to get permission to touch those bits, and UnLock to tell the bitmap you are done. The format may change between two Locks. Bitmaps can also be multiply owned, so you should account for the fact that others may touch your bitmap between your uses.</P>
+<P>The Bitmap contains one or two pixel-sets representing an image. The "primary" is a fast-blitting version of the image, and the "secondary" is a storage version (eventually wavelet compressed) which can be used to rebuild the primary if it is freed or damaged. Both carry a generalized format.</P>
+<P>Let's do an example. I want to load a bitmap, set it up for drawing with the genesis Engine, and then blit some interactive stuff into it. </P>
+<P>******** </P>
+<PRE>//-----------------------------------------------------------------------------
+void Init(</CODE><A HREF="SystemIndexed.htm#geEngine"><U><FONT COLOR="#0000ff"><CODE>geEngine</U></FONT></CODE></A><CODE>* Engine);
+void Shutdown(void);
+void Draw(void);
+void DrawPolite(void);
+static </CODE><A HREF="geBitmapIndexed.htm#geBitmap"><U><FONT COLOR="#0000ff"><CODE>geBitmap</U></FONT></CODE></A><CODE>* myBM = NULL; static </CODE><A HREF="SystemIndexed.htm#geEngine"><U><FONT COLOR="#0000ff"><CODE>geEngine</U></FONT></CODE></A><CODE>* myEngine = NULL;
+void Init(</CODE><A HREF="SystemIndexed.htm#geEngine"><U><FONT COLOR="#0000ff"><CODE>geEngine</U></FONT></CODE></A><CODE>* Engine)
+{
+  </CODE><A HREF="BasetypesIndexed.htm#geBoolean"><U><FONT COLOR="#0000ff"><CODE>geBoolean</U></FONT></CODE></A><CODE> success;
+  </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Info"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Info</U></FONT></CODE></A><CODE> Info;
+  myEngine = Engine; // this is not looked well upon; for ease of demonstration only! assert(Engine);</CODE> <CODE>myBM = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_CreateFromFileName"><U><FONT COLOR="#0000ff"><CODE>geBitmap_CreateFromFileName</U></FONT></CODE></A><CODE>(NULL,"mybitmap.bmp"); // CreateFromFile can load windows BMP files, or custom GeBm files. assert(myBM);</CODE>
+<CODE>  // get the main info; I don't care about the secondary, so leave it NULL
+  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetInfo"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetInfo</U></FONT></CODE></A><CODE>(myBM,&amp;Info,NULL);
+  assert(success);
+  // make sure I loaded a bitmap in the format I understand !
+  if ( Info.Format == GE_PIXELFORMAT_8BIT_PAL )
+  {
+    // I want palette index 255 to act as transparency, so I must use SetColorKey
+    success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_SetColorKey"><U><FONT COLOR="#0000ff"><CODE>geBitmap_SetColorKey</U></FONT></CODE></A><CODE>(myBM,GE_TRUE,255);
+    assert(success);
+    // just for fun, let's modify the palette:
+    if (1)
+    {
+      </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Palette"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Palette</U></FONT></CODE></A><CODE>* Pal;
+</CODE>      <CODE>// get the palette ; I don't care if its primary or secondary, so
+      /// I don't use the Info.Palette field
+</CODE>      <CODE>Pal = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetPalette"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetPalette</U></FONT></CODE></A><CODE>(myBM);
+      assert(Pal);
+</CODE>    <CODE>  // I'm only fiddling one entry, so don't bother with a full Lock() UnLock()
+      // sequence on the palette
+</CODE>      <CODE>// make palette index zero bright red; we use alpha = 255 for opaque
+</CODE>    <CODE>  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Palette_SetEntryColor"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Palette_SetEntryColor</U></FONT></CODE></A><CODE>(Pal,0,255,0,0,255);
+      assert(success);
+</CODE>      <CODE>// tell the bitmap system you've changed the palette; this function
+      // is smart enough to not do unecessary copies or whatever.
+</CODE>      <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_SetPalette"><U><FONT COLOR="#0000ff"><CODE>geBitmap_SetPalette</U></FONT></CODE></A><CODE>(myBM,Pal);
+      assert(success);
+    }
+  } else {
+    // otherwise, treat black as transparent, in whatever format I have
+</CODE>    <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_SetColorKey"><U><FONT COLOR="#0000ff"><CODE>geBitmap_SetColorKey</U></FONT></CODE></A><CODE>(myBM,GE_TRUE, gePixelFormat_ComposePixel(Info.Format,0,0,0,0));
+    assert(success);
+  }
+  // note that I did NOT use SetFormat. SetFormat may do a conversion, and since the original
+  // bitmap was created without colorkey, it would have been converted to a new format but
+  // kept its property of having no colorkey!
+  // (SetFormat will fiddle the bits and whatever way necessary to keep bitmaps as visually similar
+  // as possible)
+  // I want to fiddle the fast format in 565 later, so cue the bitmap to try to give me that format.
+  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_SetPreferredFormat"><U><FONT COLOR="#0000ff"><CODE>geBitmap_SetPreferredFormat</U></FONT></CODE></A><CODE>(myBM,GE_PIXELFORMAT_16BIT_565_RGB);
+  assert(success);
+</CODE>  <CODE>// Add it to the engine so it can be used for drawing.
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geEngine_AddBitmap"><U><FONT COLOR="#0000ff"><CODE>geEngine_AddBitmap</U></FONT></CODE></A><CODE>(myEngine,myBM);
+  assert(success);
+}</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>void Shutdown(void)
+{
+  </CODE><A HREF="BasetypesIndexed.htm#geBoolean"><U><FONT COLOR="#0000ff"><CODE>geBoolean</U></FONT></CODE></A><CODE> WasDestroyed;
+</CODE>  <CODE>assert(myBM);
+  // clean up
+</CODE>  <A HREF="geBitmapIndexed.htm#geEngine_RemoveBitmap"><U><FONT COLOR="#0000ff"><CODE>geEngine_RemoveBitmap</U></FONT></CODE></A><CODE>(myEngine,myBM);
+</CODE>  <CODE>WasDestroyed = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Destroy"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Destroy</U></FONT></CODE></A><CODE>(&amp;myBM);
+</CODE>  <CODE>// someone else might have done _CreateRef on our bitmap,
+  // so we can't be sure it's actually destroyed.
+  // this code is still ready to be run again with a new call to Init()
+</CODE>  <CODE>//assert(WasDestroyed);
+</CODE>  <CODE>myBM = NULL;
+  myEngine = NULL;
+}</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>void Draw(void)
+{
+  </CODE><A HREF="geBitmapIndexed.htm#geBitmap"><U><FONT COLOR="#0000ff"><CODE>geBitmap</U></FONT></CODE></A><CODE>* Lock;
+  </CODE><A HREF="BasetypesIndexed.htm#geBoolean"><U><FONT COLOR="#0000ff"><CODE>geBoolean</U></FONT></CODE></A><CODE> success;
+  </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Info"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Info</U></FONT></CODE></A><CODE> Info;
+  </CODE><A HREF="DCommonIndexed.htm#uint16"><U><FONT COLOR="#0000ff"><CODE>uint16</U></FONT></CODE></A><CODE> *bits,*bptr;
+  int x,y;
+</CODE>  <CODE>// lets fiddle the bits.
+  // we need to lock the bitmap for write.
+  // LockForWrite is an exclusive lock, unlike LockForRead which is non-blocking
+  // request our favorite format, and only lock Mip 0 (the full size bitmap)
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_LockForWriteFormat"><U><FONT COLOR="#0000ff"><CODE>geBitmap_LockForWriteFormat</U></FONT></CODE></A><CODE>(myBM,&amp;Lock,0,0,GE_PIXELFORMAT_16BIT_565_RGB);
+  if ( ! success )
+  {
+    // well, we tried to be nice; if we were very polite, we would do a LockForWrite
+    // here, and try to fiddle the bits in whatever format we got; However, we aren't
+    // that polite, so we just do a _SetFormat
+    //
+    // note that we are destroying the original bitmap by changing its format
+    // we should only do this if we are going to draw into the bitmap
+</CODE>    <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_SetFormat"><U><FONT COLOR="#0000ff"><CODE>geBitmap_SetFormat</U></FONT></CODE></A><CODE>(myBM,GE_PIXELFORMAT_16BIT_565_RGB,GE_TRUE,0,NULL);
+    assert(success);
+</CODE>  <CODE>  // now we should be able to get the bits we want, *but* they may not be the
+    // primary (fast) format; oh well, it's the best we can do...
+    // (if you must have the fastest bits, then use only _LockForWrite, never LockForWriteFormat,
+    // which might have to do a conversion)
+</CODE>  <CODE>  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_LockForWriteFormat"><U><FONT COLOR="#0000ff"><CODE>geBitmap_LockForWriteFormat</U></FONT></CODE></A><CODE>(myBM,&amp;Lock,0,0,GE_PIXELFORMAT_16BIT_565_RGB);
+    assert(success);
+  }
+  // now Lock is our bitmap in 565
+  // we do a GetInfo because the Lock's info could be different than
+  // the original bitmap's (particularly the Palette &amp; the Stride)</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetInfo"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetInfo</U></FONT></CODE></A><CODE>(Lock,&amp;Info,NULL);
+  assert(success);
+  // you can only call _GetBits on a locked bitmap
+  bits = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetBits"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetBits</U></FONT></CODE></A><CODE>(Lock);
+  assert( bits );
+  bptr = bits;
+  for(y=0; y &lt; Info.Height; y++)
+  {
+    for(x=0; x &lt; Info.Width; x++)
+    {
+      </CODE><A HREF="DCommonIndexed.htm#uint16"><U><FONT COLOR="#0000ff"><CODE>uint16</U></FONT></CODE></A><CODE> R,G,B;
+      // make a silly 565 gradient
+      R = x &amp; 0x1F;
+      G = x &amp; 0x3F;
+      B = y &amp; 0x1F;
+      *bptr++ = (R&lt;&lt;11) + (G&lt;&lt;5) + B;
+    }
+</CODE>    <CODE>// note that bptr is a word pointer, and Stride is in pixels :
+</CODE>    <CODE>bptr += Info.Stride - Info.Width;
+  }
+  bits = bptr = NULL;
+  // you call Unlock on all the mips you locked - not on the original bitmap!
+  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_UnLock"><U><FONT COLOR="#0000ff"><CODE>geBitmap_UnLock</U></FONT></CODE></A><CODE>(Lock);
+  assert(success);
+  // now, we only fiddled the full-size Mip, and there might be more,
+  // so lets percolate the changes into the smaller mips:
+  success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_RefreshMips"><U><FONT COLOR="#0000ff"><CODE>geBitmap_RefreshMips</U></FONT></CODE></A><CODE>(myBM);
+  assert(success);
+  // a null rect means use the whole bitmap;
+  // Engine_DrawBitmap blits a 2d decal to the framebuffer (fast)
+  success = </CODE><A HREF="geBitmapIndexed.htm#geEngine_DrawBitmap"><U><FONT COLOR="#0000ff"><CODE>geEngine_DrawBitmap</U></FONT></CODE></A><CODE>(myEngine,myBM,NULL,0,0);
+  assert(success);
+}</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>void DrawPolite(void)
+{
+  </CODE><A HREF="geBitmapIndexed.htm#geBitmap"><U><FONT COLOR="#0000ff"><CODE>geBitmap</U></FONT></CODE></A><CODE>* Lock;
+  </CODE><A HREF="BasetypesIndexed.htm#geBoolean"><U><FONT COLOR="#0000ff"><CODE>geBoolean</U></FONT></CODE></A><CODE> success;
+  </CODE><A HREF="geBitmapIndexed.htm#geBitmap_Info"><U><FONT COLOR="#0000ff"><CODE>geBitmap_Info</U></FONT></CODE></A><CODE> Info;
+  void* bits;
+  int x,y;
+</CODE>  <CODE>// this function does the same thing as Draw() , but is more polite
+  // lock in the fastest format (whatever it is)
+  // because we did SetPreferred, this should be 565_RGB, but might not be
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_LockForWrite"><U><FONT COLOR="#0000ff"><CODE>geBitmap_LockForWrite</U></FONT></CODE></A><CODE>(myBM,&amp;Lock,0,0);
+  assert(success);
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetInfo"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetInfo</U></FONT></CODE></A><CODE>(Lock,&amp;Info,NULL);
+  assert(success);
+</CODE>  <CODE>bits = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_GetBits"><U><FONT COLOR="#0000ff"><CODE>geBitmap_GetBits</U></FONT></CODE></A><CODE>(Lock);
+  assert( bits );
+</CODE>  <CODE>if ( Info.Format == GE_PIXELFORMAT_16BIT_565_RGB )
+  {
+    </CODE><A HREF="DCommonIndexed.htm#uint16"><U><FONT COLOR="#0000ff"><CODE>uint16</U></FONT></CODE></A><CODE>* wptr;
+    // our favorite format
+    wptr = bits;
+    for(y=0; y &lt; Info.Height; y++)
+    {
+      for(x=0; x &lt; Info.Width; x++)
+      {
+        </CODE><A HREF="DCommonIndexed.htm#uint16"><U><FONT COLOR="#0000ff"><CODE>uint16</U></FONT></CODE></A><CODE> R,G,B;
+        // make a silly 565 gradient
+        R = x &amp; 0x1F;
+        G = x &amp; 0x3F;
+        B = y &amp; 0x1F;
+        *wptr++ = (R&lt;&lt;11) + (G&lt;&lt;5) + B;
+      }
+      wptr += Info.Stride - Info.Width;
+    }
+  } else {
+    </CODE><A HREF="DCommonIndexed.htm#uint8"><U><FONT COLOR="#0000ff"><CODE>uint8</U></FONT></CODE></A><CODE>* bptr;
+</CODE>    <CODE>// oh well, do our best
+    // bitmaps must have had a good reason to not give us the format we preferred,
+    bptr = bits;
+    for(y=0; y &lt; Info.Height; y++)
+    {
+      for(x=0; x &lt; Info.Width; x++)
+      {
+        uint32 R,G,B;
+</CODE>        <CODE>// put a color in any format
+</CODE>        <CODE>R = (x &amp; 0x1F)&lt;&lt;3;
+        G = (x &amp; 0x3F)&lt;&lt;2;
+        B = (y &amp; 0x1F)&lt;&lt;3;
+</CODE>        <CODE>// we use alpha of 255 for opaque
+        </CODE><A HREF="geBitmapIndexed.htm#gePixelFormat_PutColor"><U><FONT COLOR="#0000ff"><CODE>gePixelFormat_PutColor</U></FONT></CODE></A><CODE>(Info.Format,&amp;bptr,R,G,B,255);
+      }
+</CODE>      <CODE>bptr += (Info.Stride - Info.Width) * </CODE><A HREF="geBitmapIndexed.htm#gePixelFormat_BytesPerPel"><U><FONT COLOR="#0000ff"><CODE>gePixelFormat_BytesPerPel</U></FONT></CODE></A><CODE>(Info.Format);
+    }
+  }
+  bits = NULL;
+</CODE>  <CODE>// same as before:
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_UnLock"><U><FONT COLOR="#0000ff"><CODE>geBitmap_UnLock</U></FONT></CODE></A><CODE>(Lock);
+  assert(success);
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geBitmap_RefreshMips"><U><FONT COLOR="#0000ff"><CODE>geBitmap_RefreshMips</U></FONT></CODE></A><CODE>(myBM);
+  assert(success);
+</CODE>  <CODE>success = </CODE><A HREF="geBitmapIndexed.htm#geEngine_DrawBitmap"><U><FONT COLOR="#0000ff"><CODE>geEngine_DrawBitmap</U></FONT></CODE></A><CODE>(myEngine,myBM,NULL,0,0);
+  assert(success);
+}</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>// end tutorial on the Bitmap system
+//-----------------------------------------------------------------------------
+// }</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>/***********************************************************************************/</PRE>
+</CODE><P>&nbsp;</P>
+<CODE><PRE>#endif</PRE>
+</CODE><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="geBitmapIndexed.htm#Contents"><U><FONT COLOR="#0000ff"><CODE>Return to Contents</U></FONT></CODE></A></BLOCKQUOTE></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:17:33 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:28 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

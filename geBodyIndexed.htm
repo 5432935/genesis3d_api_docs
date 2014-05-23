@@ -1,0 +1,833 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geBodyIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geBody</b></font> </p>
+
+<p><font color="#000080"><b>Description: Actor body interface. </b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\Actor\body.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="geBodyIndexed.htm#AddBone">AddBone</a><font color="#000080"><b>, </b></font><a
+href="geBodyIndexed.htm#AddFace">AddFace</a><font color="#000080"><b>, </b></font><a
+href="geBodyIndexed.htm#AddMaterial">AddMaterial</a><font color="#000080"><b>, </b></font><a
+href="geBodyIndexed.htm#ComputeLevelsOfDetail">ComputeLevelsOfDetail</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#Create">Create</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#CreateFromFile">CreateFromFile</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#Destroy">Destroy</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetBone">GetBone</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetBoneByName">GetBoneByName</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetBoneCount">GetBoneCount</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetBoneNameChecksum">GetBoneNameChecksum</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetBoundingBox">GetBoundingBox</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetGeometryStats">GetGeometryStats</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetMaterial">GetMaterial</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GetMaterialCount">GetMaterialCount</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#IsValid">IsValid</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#SetBoundingBox">SetBoundingBox</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#SetMaterial">SetMaterial</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#WriteToFile">WriteToFile</a><font
+color="#000080"><b>, </b></font></p>
+
+<p><font color="#000080"><b>Types: </b></font><a href="geBodyIndexed.htm#geBody">geBody</a></p>
+
+<p><font color="#000080"><b>Constants: </b></font><a
+href="geBodyIndexed.htm#GE_BODY_ROOT">GE_BODY_NUMBER_OF_LOD</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GE_BODY_HIGHEST_LOD">GE_BODY_HIGHEST_LOD</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GE_BODY_NO_PARENT_BONE">GE_BODY_NO_PARENT_BONE</a><font
+color="#000080"><b>, </b></font><a href="geBodyIndexed.htm#GE_BODY_ROOT">GE_BODY_ROOT</a></p>
+
+<p>Changes for Genesis3D v1.6: <b>None&nbsp;</b></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geBody"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geBody;</b> </font></p>
+
+<p><b>typedef struct geBody </b><font color="#800000"><b>geBody</b></font><font
+face="Courier New">;</font></p>
+
+<blockquote>
+    <p><b>geBody contains the information necessary for a
+    &quot;skeletal mesh&quot; body including geometry and
+    materials.</b></p>
+</blockquote>
+
+<blockquote>
+    <p>NOTE: The contents of this structure have been
+    intentionally left out of the interface, by the designers of
+    this module. Think of this as a handle only.</p>
+    <p>Although not part of the API, the definition is <a
+    href="geBody_h-Indexed.htm#geBody">here</a>.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Constants:</i></b></font>
+</p>
+
+<p><a name="GE_BODY_NUMBER_OF_LOD"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>#define GE_BODY_NUMBER_OF_LOD </b></font></p>
+
+<blockquote>
+    <p><b>This constant specifies the number of Levels of Detail
+    available for </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    objects.&nbsp; 0 would specify the highest level and 3 the
+    lowest.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from BODY.H: 0 is highest detail</p>
+</blockquote>
+
+<p><br>
+<a name="GE_BODY_HIGHEST_LOD"></a><font color="#000080"><b>#define
+GE_BODY_HIGHEST_LOD (0)</b></font> </p>
+
+<blockquote>
+    <p><b>This constant specifies the highest Level of Detail of
+    a given </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>.</b></p>
+</blockquote>
+
+<p><br>
+<a name="GE_BODY_NO_PARENT_BONE"></a><font color="#000080"><b>#define
+GE_BODY_NO_PARENT_BONE (-1)</b></font> </p>
+
+<blockquote>
+    <p><b>This constant would be returned from the varius
+    _GetBone functions for the ParentBoneIndex if the returned
+    bone has no parent bone.</b></p>
+</blockquote>
+
+<p><br>
+<a name="GE_BODY_ROOT"></a><font color="#000080"><b>#define
+GE_BODY_ROOT (-1)</b></font> </p>
+
+<blockquote>
+    <p><b>This constant is used for a bone index when the caller
+    want to refer to the root bone.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from BODY.H: for specifying 'root'
+    bounding box.</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<font color="#0000FF" size="5"><b><i>Functions:</i></b></font> </p>
+
+<hr>
+
+<p>&nbsp;</p>
+
+<p><a name="AddBone"></a><a href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_AddBone</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> ParentBoneIndex, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><font
+color="#0000FF">char</font><font color="#000080"><b> * BoneName, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* AttachmentMatrix, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> * BoneIndex);</b></font>
+</p>
+
+<blockquote>
+    <p><b>This function adds a bone with name BoneName to </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B as a child of ParentBoneIndex
+    with a position and orientation specified by </b><a
+    href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><b>
+    AttachmentMatrix.&nbsp; The bone index for the new bone is
+    returned in BoneIndex.&nbsp; </b><font color="#FF0000"><b>(I'm
+    not too clear about this.&nbsp; Shouldn't there be more
+    information than this about a bone?&nbsp; Don't bones at
+    least have a length to them?&nbsp; And what exactly is the
+    AttachmentMatrix?&nbsp; What space is it in?&nbsp; Maybe the
+    length of the bone is the distance between the point
+    specified in AttachmentMatrix and the the AttachmentMatrix of
+    the Parent Bone?)</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddFace"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_AddFace</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vertex1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Normal1, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> U1, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> V1, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex1, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vertex2, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Normal2, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> U2, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> V2, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex2, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Vertex3, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Normal3, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> U3, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> V3, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex3, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaterialIndex);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a new face to </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    B.&nbsp; The new face is specified by three vertices
+    (Vertex1, Vertex2, Vertex3), corresponding normals (Normal1,
+    Normal2, Normal3), corresponding material map alignment
+    ((U1,V1), (U2, V2), (U3, V3)), and the corresponding index of
+    the bone to be connected to (BoneIndex1, BoneIndex2,
+    BoneIndex3).&nbsp; A material is also specified by the
+    material index MaterialIndex.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="AddMaterial"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_AddMaterial</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * MaterialName, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Red, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Green, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Blue, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * MaterialIndex);</b></font> </p>
+
+<blockquote>
+    <p><b>This function adds a material to </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    B.&nbsp; A material contains a name MaterialName, an optional
+    </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    Bitmap, and a color (Red, Green, Blue).&nbsp; The material
+    index applied to the new material is returned in
+    MaterialIndex. The reference count for the Bitmap is
+    increased by one, so the caller is still responsible for
+    destroying it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from BODY.H: Bitmap is added to
+    body.&nbsp; It's reference count is increased.&nbsp; Caller
+    still owns a pointer to the bitmap, and is responsible for
+    destroying it.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="ComputeLevelsOfDetail"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_ComputeLevelsOfDetail</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> Levels);</b></font> </p>
+
+<blockquote>
+    <p><b>This function calculates Levels levels of detail for </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B.&nbsp; </b><font
+    color="#FF0000"><b>This is not currently implemented.</b></font>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Create"></a><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_Create</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new empty </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    object and returns it.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="CreateFromFile"></a><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_CreateFromFile</b></font><font
+color="#000080"><b>(</b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* pFile);</b></font> </p>
+
+<blockquote>
+    <p><b>This function creates a new </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    object from the give data file pFile.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the newly created </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    object.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="Destroy"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_Destroy</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>** B);</b></font> </p>
+
+<blockquote>
+    <p><b>This function decreases the reference count for </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B by one.&nbsp; If the reference
+    count goes to zero all resources allocated to B are freed.</b>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBone"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetBone</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> ** BoneName, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Attachment, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * ParentBoneIndex);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the name BoneName, attachment
+    transformation matrix Attachment, and the parent bone index
+    ParentBoneIndex of the bone BoneIndex of </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: nothing.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneByName"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetBoneByName</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * BoneName, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * pBoneIndex, </b></font><a
+href="geXForm3dIndexed.htm#geXForm3d">geXForm3d</a><font
+color="#000080"><b>* Attachment, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * pParentBoneIndex);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the index pBoneIndex, attachment
+    transformation matrix Attachment, and the parent bone index
+    ParentBoneIndex of the bone indicated by name BoneName of </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneCount"></a><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetBoneCount</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the number of bones associated
+    with </b><a href="geBodyIndexed.htm#geBody">geBody</a><b> B.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoneNameChecksum"></a><a
+href="BasetypesIndexed.htm#int32">int32</a><font color="#000080"><b>
+</b></font><a href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetBoneNameChecksum</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the 32bit checksum of all the
+    bone names of </b><a href="geBodyIndexed.htm#geBody">geBody</a><b> B.&nbsp; </b><font
+    color="#FF0000"><b>(I think... I doubt this is of use except
+    internally.)</b></font></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetBoundingBox"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetBoundingBox</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* MinimumBoxCorner, </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* MaximumBoxCorner);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the non-axial-aligned bounding
+    box of the bone indicated by BoneIndex of </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B in the form of the 2 extreme
+    corners MinimumBoxCorner and MaximumBoxCorner.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetGeometryStats"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetGeometryStats</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> lod, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * Vertices, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * Faces, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> * Normals);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the number of vertices Vertices,
+    number of face Faces, and number of normals Normals of the
+    given level-of-detail lod of </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    B. </b><font color="#FF0000"><b>(I don't believe
+    level-of-detail is really supported so should lod simply be
+    0? And wouldn't Normals = Vertices?)</b></font> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMaterial"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetMaterial</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* Body, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaterialIndex, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><font
+color="#0000FF">char</font><font color="#000080"><b> **
+MaterialName, </b></font><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>** Bitmap, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Red, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Green, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b>* Blue);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns the material properties of the
+    material at index MaterialIndex of </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    Body.&nbsp; The material name MaterialName, associated </b><a
+    href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b> Bitmap
+    and color (Red, Green, Blue) are returned.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from BODY.H: returned bitmap is a pointer
+    to the bitmap in the body's list.&nbsp; It may not be
+    destroyed. if caller would like to 'own' a copy of that
+    bitmap pointer, it should call geBitmap_CreateRef()</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="GetMaterialCount"></a><font color="#0000FF">int</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_GetMaterialCount</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B);</b></font> </p>
+
+<blockquote>
+    <p><b>This function returns a count of the number of
+    materials associated with </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    B.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: the result.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="IsValid"></a><a href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_IsValid</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B);</b></font> </p>
+
+<blockquote>
+    <p><b>This function check that B represent a valid </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> object.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    if B is valid, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetBoundingBox"></a><font color="#0000FF">void</font><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_SetBoundingBox</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> BoneIndex, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* MinimumBoxCorner, </b></font><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* MaximumBoxCorner);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the non-axial-aligned bounding box
+    of the bone at index BoneIndex of </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    B to the bounding box represented by the corners
+    MinimumBoxCorner and MaximumBoxCorner.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="SetMaterial"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_SetMaterial</b></font><font
+color="#000080"><b>(</b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* Body, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaterialIndex, </b></font><a
+href="geBitmapIndexed.htm#geBitmap">geBitmap</a><font
+color="#000080"><b>* Bitmap, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Red, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Green, </b></font><a
+href="BasetypesIndexed.htm#geFloat">geFloat</a><font
+color="#000080"><b> Blue);</b></font> </p>
+
+<blockquote>
+    <p><b>This function sets the material properties of the
+    material at index MaterialIndex of </b><a href="geBodyIndexed.htm#geBody">geBody</a><b>
+    Body to the </b><a href="geBitmapIndexed.htm#geBitmap">geBitmap</a><b>
+    Bitmap and color (Red, Green, Blue).</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Notes:</b> <br>
+    &nbsp;&nbsp;&nbsp; from BODY.H: Bitmap is set into the
+    body.&nbsp; It's reference count is increased.&nbsp; Caller
+    still owns a pointer to the bitmap, and is responsible for
+    destroying it.</p>
+</blockquote>
+
+<blockquote>
+    <p><br>
+    <a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><br>
+<a name="WriteToFile"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBody_WriteToFile</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B, </b></font><a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* pFile);</b></font> </p>
+
+<blockquote>
+    <p><b>This function outputs the data for </b><a
+    href="geBodyIndexed.htm#geBody">geBody</a><b> B to the file pFile.</b> </p>
+</blockquote>
+
+<blockquote>
+    <p><b>Returns: </b><a href="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</a><b>
+    on success, </b><a href="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</a><b>
+    otherwise.</b></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 2:21:21 Oct 13, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:54:36 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

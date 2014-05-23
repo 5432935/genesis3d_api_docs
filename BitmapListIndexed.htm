@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>BitmapListIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>BitmapList</P>
+</FONT><FONT COLOR="#000080"><P>Description: Maintains a pool of bitmap pointers.</P>
+</B></FONT><P>Source file: …\genesis3d\OpenSource\Source\Engine\BitmapList.h</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="BitmapListIndexed.htm#Create">Create</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#Destroy">Destroy</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#SetGamma">SetGamma</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#AttachAll">AttachAll</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#DetachAll">DetachAll</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#Add">Add</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#Remove">Remove</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#Has">Has</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#CountMembers">CountMembers</A><B><FONT COLOR="#800000">, </B></FONT><A HREF="BitmapListIndexed.htm#CountMembersAttached">CountMembersAttached</A></P>
+<B><FONT COLOR="#000080"><P><A NAME="x"></A>Types: </B></FONT><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A></P>
+<FONT COLOR="#000080"><P>Changes for Genesis v1.6: <B>None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</B></I></FONT> </P>
+<B><FONT COLOR="#000080"><P><A NAME="BitmapList"></A>typedef struct BitmapList </FONT><FONT COLOR="#800000">BitmapList</FONT><FONT COLOR="#000080">;</P><DIR>
+<DIR>
+
+</B></FONT><P>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.</P>
+<B><FONT COLOR="#000080"><BLOCKQUOTE>&nbsp;</B></FONT><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="Create"></A><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A><B><FONT COLOR="#000080">* </FONT><FONT COLOR="#800000">BitmapList_Create</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">void</FONT><B><FONT COLOR="#000080">);</P>
+</B></FONT><BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">BitmapList_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A><B><FONT COLOR="#000080">* pList);</P>
+</B></FONT><BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetGamma"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Gamma);</P>
+<P>&nbsp;</B></FONT><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<P><A NAME="AttachAll"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Gamma);</P>
+</B></FONT><BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DetachAll"></A><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">BitmapList_DetachAll</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A><B><FONT COLOR="#000080">* pList);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Add"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap); </P>
+<P>Does do not do any Attach or Detach</P>
+<P>Returns: Was It New ? (Note: does NOT return Ok/NOk )</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Remove"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap);</P>
+<P>Does do not do any Attach or Detach</P>
+<P>Returns: Was It New ? (Note: does NOT return Ok/NOk )</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Has"></A><A HREF="geBitmapIndexed.htm#geBitmap">geBitmap</A><B><FONT COLOR="#000080">* Bitmap);</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="CountMembers"></A>int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">BitmapList_CountMembers</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A><B><FONT COLOR="#000080">* pList);</P>
+<P>only available if: #ifndef NDEBUG</P>
+</B></FONT><P>&nbsp;</P>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<FONT COLOR="#0000ff"><P><A NAME="y"></A>int</FONT><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">BitmapList_CountMembersAttached</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="BitmapListIndexed.htm#BitmapList">BitmapList</A><B><FONT COLOR="#000080">* pList);</P>
+<P>only available if: #ifndef NDEBUG</P>
+</B></FONT><BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BitmapListIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+</BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:47:44 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:34 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

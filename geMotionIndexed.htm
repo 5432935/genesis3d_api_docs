@@ -1,0 +1,366 @@
+<HTML>
+<HEAD>
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>geMotionIndexed</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+
+
+<P><IMG SRC="img/UNG3DLOG.jpg" WIDTH=333 HEIGHT=49></P>
+<B><FONT SIZE=6 COLOR="#008000"><P>geMotion</B></FONT> </P>
+<B><FONT COLOR="#000080"><P>Description: Motion interface.</P>
+</B></FONT><P>Source file: …\genesis3d\include\motion.h <BR>
+(in Genesis3D v1.6 this is located in ..\G3D\Actor\motion.h)</P>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Contents"></A>Contents:</P>
+</I></FONT><FONT COLOR="#000080"><P>Functions: </B></FONT><A HREF="geMotionIndexed.htm#Create">Create</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#DeleteEvent">DeleteEvent</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#Destroy">Destroy</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetEventExtents">GetEventExtents</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetName">GetName</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetNextEvent">GetNextEvent</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetPath">GetPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetPathCount">GetPathCount</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetTimeExtents">GetTimeExtents</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#InsertEvent">InsertEvent</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetName">SetName</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetupEventIterator">SetupEventIterator</A></P>
+<B><FONT COLOR="#000080"><P>Private API Functions </FONT><I><FONT SIZE=2 COLOR="#000080">(available in API, but best reserved for advanced applications)</I></FONT><FONT COLOR="#000080">:  </B></FONT><A HREF="geMotionIndexed.htm#AddPath">AddPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#AddSubMotion">AddSubMotion</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#CreateFromFile">CreateFromFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetBaseTransform">GetBaseTransform</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetBlendAmount">GetBlendAmount</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetBlendPath">GetBlendPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetSubMotion">GetSubMotion</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetSubMotionCount">GetSubMotionCount</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetSubMotionNamed">GetSubMotionNamed</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetNameChecksum">GetNameChecksum</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetNameOfPath">GetNameOfPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetPathNamed">GetPathNamed</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetTimeOffset">GetTimeOffset</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetTransform">GetTransform</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#GetTimeScale">GetTimeScale</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#HasNames">HasNames</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#IsValid">IsValid</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#RemoveNames">RemoveNames</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#RemoveSubMotion">RemoveSubMotion</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SampleChannels">SampleChannels</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SampleChannelsNamed">SampleChannelsNamed</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#Sample">Sample</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SampleNamed">SampleNamed</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetBaseTransform">SetBaseTransform</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetBlendPath">SetBlendPath</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetTimeOffset">SetTimeOffset</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#SetTimeScale">SetTimeScale</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#WriteToBinaryFile">WriteToBinaryFile</A><B><FONT COLOR="#000080">, </B></FONT><A HREF="geMotionIndexed.htm#WriteToFile">WriteToFile</A><A NAME="x"></A></P>
+<B><FONT COLOR="#000080"><P>Types: </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A></P>
+<B><FONT COLOR="#000080"><P>Overview: </B></FONT><A HREF="geMotionIndexed.htm#Overview">view</A><B><FONT COLOR="#000080">&nbsp;</P>
+</B><P>Additions to Genesis3D v1.6:<B> None</P>
+</B></FONT><hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P><A NAME="Overview"></A>Overview:</P>
+</B></I></FONT><BLOCKQUOTE>(From the official Genesis3D documentation) </BLOCKQUOTE>
+<B><FONT SIZE=4><BLOCKQUOTE>Summary</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>The Motion module provides support for creating and maintaining lists of named Paths and associated time-indexed events, and methods to sample the animation paths at any arbitrary time. </BLOCKQUOTE>
+<B><FONT SIZE=4><BLOCKQUOTE>Overview</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>A Motion is a set of Paths and an associated list of time-indexed events. The most common use of Motions is to hold Actor animation. See documentation for <A HREF="geActorIndexed.htm#geActor">geActor</A> for more information about Actor animations. </BLOCKQUOTE>
+<BLOCKQUOTE>Motions are reference counted. </BLOCKQUOTE>
+<BLOCKQUOTE>A number of functions return pointers to the Paths or sub motions that are maintained by the Motion object. Clients should not destroy these objects, as they are owned by the Motion. If you want to own a Path that's maintained by a Motion, call gePath_CreateRef to increase the Path's reference count. </BLOCKQUOTE>
+<B><FONT SIZE=4><BLOCKQUOTE>Creating and Maintaining Motions</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>To create a Motion, call geMotion_Create. This will create an initially-empty Motion with with no Paths, Events, or sub motions. The Motion's type (simple or compound) is not set until the first Path or sub motion is added to the Motion. Once a motion's type is set, it cannot be changed. </BLOCKQUOTE>
+<BLOCKQUOTE>To add a Path to the Motion, call geMotion_AddPath. There is no way to remove a path from the Motion. </BLOCKQUOTE>
+<BLOCKQUOTE>To add a sub motion, call geMotion_AddSubMotion. To remove a sub motion, call geMotion_RemoveSubMotion. See the discussion of compound motions below for more information on sub motions. </BLOCKQUOTE>
+<BLOCKQUOTE>To add an event, call geMotion_InsertEvent. To remove an event, call geMotion_DeleteEvent. See the discussion of Events below for more information. </BLOCKQUOTE>
+<B><FONT SIZE=4><BLOCKQUOTE>Compound Motions</B></FONT> </BLOCKQUOTE>
+<BLOCKQUOTE>Instead of individual paths, a motion may contain other motions. This type of motion is called a compound motion and the motions that it contains are called sub motions. Motions that contain other motions are also known as branch motions, and motions that contain path information are called leaf motions. Just like in a tree, a branch may have other branches subordinate to it, and it may also have leaves on it. But leaves are the end of the line. </BLOCKQUOTE>
+<BLOCKQUOTE>A sub motion's time offset is its starting time, relative to the parent motion's starting time. So a sub motion that starts when the parent motion starts has a time offset of 0.0f. </BLOCKQUOTE>
+<BLOCKQUOTE>Compound motions own their sub motions, and destroy them if the compound motion is destroyed. However, if you remove a sub motion from a compound motion, a pointer to the sub motion is returned and it is the caller's responsibility to destroy it. </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Types:</P>
+</B></I></FONT><STRONG><P><A NAME="geMotion"></A>typedef struct geMotion </STRONG><B><FONT COLOR="#800000">geMotion</FONT><FONT COLOR="#000080">;</B></FONT> </P>
+<BLOCKQUOTE>NOTE: The contents of this structure have been intentionally left out of the interface, by the designers of this module. Think of this as a handle only.&nbsp; </BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<P>Note: The following structures are PRIVATE (not included in the interface). I have included it here only to help me understand the geMotion data structures.</P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="geMotion_NodeType"></A>geMotion_NodeType</P>
+</FONT></STRONG><P>typedef enum {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOTION_NODE_UNDECIDED, <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOTION_NODE_BRANCH, <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOTION_NODE_LEAF <BR>
+} geMotion_NodeType;</P>
+<P><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="geMotion_Leaf"></A>geMotion_Leaf</P>
+</FONT></STRONG><P>typedef struct geMotion_Leaf {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PathCount; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#int32">int32</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NameChecksum; <FONT COLOR="#008000">// checksum based on names and list order</FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geTKEventsIndexed.htm#geTKEvents">geTKEvents</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Events;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geStrBlockIndexed.htm#geStrBlock">geStrBlock</A> *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NameArray;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="gePathIndexed.htm#gePath">gePath</A>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PathArray;<BR>
+} geMotion_Leaf;</P>
+<P><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="geMotion_Mixer"></A>geMotion_Mixer</P>
+</FONT></STRONG><P>typedef struct geMotion_Mixer {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TimeScale; <FONT COLOR="#008000">// multipler for time</FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geFloat">geFloat</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TimeOffset; <FONT COLOR="#008000">// already scaled.</FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="gePathIndexed.htm#gePath">gePath</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blend; <FONT COLOR="#008000">// path used to interpolate blending amounts. </FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A> &nbsp;&nbsp;&nbsp;Transform; <FONT COLOR="#008000">// base transform for this motion (if TransformUsed==GE_TRUE)</FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TransformUsed; <FONT COLOR="#008000">// GE_FALSE if there is no base transform.</FONT><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion2">geMotion</A>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Motion; <BR>
+} geMotion_Mixer;</P>
+<P><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="geMotion_Branch"></A>geMotion_Branch</FONT></STRONG> </P>
+<P>typedef struct geMotion_Branch {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MixerCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">&nbsp;int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentEventIterator;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion_Mixer">geMotion_Mixer</A>*&nbsp;&nbsp;MixerArray;<BR>
+} geMotion_Branch;</P>
+<P><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></P>
+<P>&nbsp;</P>
+<FONT COLOR="#800000"><STRONG><P><A NAME="geMotion2"></A>geMotion</P>
+</FONT></STRONG><P>typedef struct geMotion {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">char</FONT>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#0000ff">int</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloneCount;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaintainNames; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion_NodeType">geMotion_NodeType</A> &nbsp;NodeType;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;union {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion_Leaf">geMotion_Leaf</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leaf;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="geMotionIndexed.htm#geMotion_Branch">geMotion_Branch</A> &nbsp;&nbsp;Branch;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geMotion*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SanityCheck;<BR>
+} geMotion;</P>
+<P><BR>
+<A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></P>
+<hr>
+<B><I><FONT SIZE=5 COLOR="#0000ff"><P>Functions:</B></I></FONT> </P>
+<hr>
+<P><A NAME="AddPath"></A><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* P, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adds the specified </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> may be specified.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: AddPath adds a reference of P to the motion M.&nbsp; Ownership is shared - The caller must destroy P.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="AddSubMotion"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> * Index);</B></FONT> </P>
+<B><BLOCKQUOTE>This function adds </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> SubMotion to the compound </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> ParentMotion at time TimeOffset relative the start of ParentMotion.&nbsp; The time of SubMotion is scaled by TimeScale.&nbsp; Blending times and magnitudes are specifed by StartTime, StartMagnitude, EndTime, and EndMagnitude. Transform is a transformation matrix which can be used to specify the relative positioning of the SubMotion within the ParentMotion.&nbsp; The index of SubMotion within ParentMotion is returned in Index.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Questions:</B> <BR>
+&nbsp;&nbsp;&nbsp; The official Genesis3D documentation states that TimeScale must be between 0 and 1.&nbsp; I don't think this is correct, TimeScale can definitely not be 0, but I don't see any reason that it can't be greater than 1.&nbsp; Can it be negative? </BLOCKQUOTE>
+<BLOCKQUOTE><BR>
+<A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<BLOCKQUOTE><A NAME="Create"></A></BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="BasetypesIndexed.htm#geBoolean">geBoolean</A><B><FONT COLOR="#000080"> ManageNames);</B></FONT> </BLOCKQUOTE>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> object and returns it.&nbsp; If ManageNames is </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> the resources are not allocated and paths may not be named.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="CreateFromFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* f);</B></FONT> </P>
+<B><BLOCKQUOTE>This function creates a new </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> object from the data in the specified </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> f.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the newly created </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="DeleteEvent"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> tKey);</B></FONT> </P>
+<B><BLOCKQUOTE>This function deletes the event at at time tKey from </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Deletes the event</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Destroy"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_Destroy</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* *PM);</B></FONT> </P>
+<B><BLOCKQUOTE>This function deletes one from the reference count for </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> PM.&nbsp; If the reference count goes to 0 then the resources of PM are all freed.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBaseTransform"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetBaseTransform</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SubMotionIndex);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the base transformation&nbsp; for the submotion of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M at index SubMotionIndex.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the base transform.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBlendAmount"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> Time);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the blend amount for the submotion of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M specifed by SubMotionIndex at the time Time relative to M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the blend amount.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Get blending amount for a particular submotion.&nbsp; The Time parameter is parent-relative.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetBlendPath"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetBlendPath</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SubMotionIndex);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the blending path for the submotion of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M specified by SubMotionIndex.&nbsp; The times in the blending path are relative to the submotion start time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the blending path.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Get blending path.&nbsp; The keyframe times in the blend path are relative to the submotion.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetEventExtents"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080">* LastEventTime);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the times of the first and last events in </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: returns the time associated with the first and last events. returns <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> if there are no events (and Times are not set)</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetName"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetName</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the name associated with </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the name or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> if there is no name.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetNameChecksum"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetNameChecksum</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the checksom of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M's name pool.&nbsp; This only seems to have any internal use.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the checksum.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetNameOfPath"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetNameOfPath</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the name of the </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> is returned.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the name of the </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetNextEvent"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080">* pTime, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * *ppEventString);</B></FONT> </P>
+<B><BLOCKQUOTE>This function iterates over the list of events of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M returning the time of the event in pTime and the event string ppEventString.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> if there are no more events to return.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Iterates from StartTime to EndTime as setup in geMotion_SetupEventIterator() and for each event between these times [StartTime,EndTime) this function will return Time and EventString returned for that event and the iterator will be positioned for the next search.&nbsp; When there are no more events in the range, this function will return <A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A> (Time will be 0 and ppEventString will be empty).</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetPath"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetPath</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> must not be destroyed unless the caller increases the reference count.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetPathCount"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetPathCount</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the number of </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> objects contained by </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the result.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetPathNamed"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetPathNamed</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B> must not be destroyed unless the caller increases the reference count.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the </B><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B>.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: the returned Paths from _Get functions should not be destroyed. if ownership is desired, call gePath_CreateRef() to create another owner. an 'owner' has access to the object regardless of the number of other owners, and an owner must call the object's destroy method to relinquish ownership</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetSubMotion"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetSubMotion</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> Index);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the sub motion at index Index of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.&nbsp; This function does not increase the reference count of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> and so the returned </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> must not be destroyed unless the caller increase the reference count.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the sub motion.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: the returned motions from these _Get functions should not be destroyed. if ownership is desired, call geMotion_CreateRef() to create another owner. an 'owner' has access to the object regardless of the number of other owners, and an owner must call the object's destroy method to relinquish ownership.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetSubMotionCount"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetSubMotionCount</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">*M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the number of sub motions of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the number of sub motions, or 0 if M is not a compound motion.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: support for compound motions.&nbsp; A motion can either have sub-motions, or be single motion. these functions support motions that have sub-motions.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetSubMotionNamed"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetSubMotionNamed</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the sub motion of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M named Name.&nbsp; This function does not increase the reference count of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> and so the returned </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> must not be destroyed unless the caller increase the reference count.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the sub motion.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTimeExtents"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080">* EndTime);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the start and end times of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.&nbsp; If M is a compound motion, the start time of the first motion and end time of the last motion with scaling applied are returned.&nbsp; If M is not a compound motion then the start time of the earliest path and the end time of the latest path are returned.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: gets time of first key and time of last key (as if motion did not loop) if there are no paths in the motion: returns <A HREF="BasetypesIndexed.htm#GE_TRUE">GE_TRUE</A>. For a compound motion, GetTimeExtents will return the extents of the scaled submotions. For a single motion, no scaling is applied.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTimeOffset"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetTimeOffset</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SubMotionIndex);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the originally set TimeOffset of the sub motion at SubMotionIndex of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the time offset.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Get/Set submotion time offset.&nbsp; The time offset is the offset into the compound (parent) motion at which the submotion should start.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTimeScale"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_GetTimeScale</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SubMotionIndex);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the original set TimeScale of the sub motion at SubMotionIndex of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the time scale.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Get/Set submotion time scale.&nbsp; Time scaling is applied to the submotion after the TimeOffset is applied.&nbsp; The formula is:&nbsp; (CurrentTime - TimeOffset)* TimeScale</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="GetTransform"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the blending of the base transforms of all sub motions of the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M at time Time.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the resulting tranform.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="HasNames"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_HasNames</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks whether the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M supports names.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="InsertEvent"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> tKey, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * String);</B></FONT> </P>
+<B><BLOCKQUOTE>This function inserts an event string String at time tKey into the </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: Inserts the new event and corresponding string. Only one event is allowed per time key.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="IsValid"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_IsValid</FONT><FONT COLOR="#000080">(</B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function checks to see if M is a valid </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B>.&nbsp; This doesn't seem to be of all that much use externally.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RemoveNames"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_RemoveNames</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M);</B></FONT> </P>
+<B><BLOCKQUOTE>This function deletes all names from the paths in </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M.&nbsp; M will no longer support named paths after this function is called and this is not reversible.&nbsp; M must be a simple motion.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="RemoveSubMotion"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_RemoveSubMotion</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* ParentMotion, </B></FONT><FONT COLOR="#0000ff">int</FONT><B><FONT COLOR="#000080"> SubMotionIndex);</B></FONT> </P>
+<B><BLOCKQUOTE>This function removes the sub motion of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> ParentMotion indicated by SubMotionIndex and returns it.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: the sub motion removed or </B><A HREF="BasetypesIndexed.htm#NULL">NULL</A><B> if unsuccessful.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="Sample"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the transform of the specified path PathIndex of M at time Time.&nbsp; If M is a compound motion then the indexed path of all sub motions are blended using the leaf motions blending and scaling values and the blended transform is returned.&nbsp; The function will fail if the specifed path does not exist in all leafs of the motion.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SampleChannels"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Translation);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the positional transformation in Translation and rotational transformation in </B><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B> Rotation of the specified path PathIndex of M at time Time.&nbsp; If M is a compound motion then the indexed path of all sub motions are blended using the leaf motions blending and scaling values and the blended transform is returned.&nbsp; The function will fail if the specifed path does not exist in all leafs of the motion.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SampleChannelsNamed"></A><A HREF="geVec3dIndexed.htm_#geVec3d">geVec3d</A><B><FONT COLOR="#000080">* Translation);</B></FONT> </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><BLOCKQUOTE>This function returns the positional transformation in Translation and rotational transformation in </B><A HREF="geQuaternionIndexed.htm#geQuaternion">geQuaternion</A><B> Rotation of the named path PathName of M at time Time.&nbsp; If M is a compound motion then the named path of all sub motions are blended using the leaf motions blending and scaling values and the blended transform is returned.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<hr>
+<P><A NAME="SampleNamed"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* Transform);</B></FONT> </P>
+<B><BLOCKQUOTE>This function returns the transform of the named path PathName of M at time Time.&nbsp; If M is a compound motion then the named path of all sub motions are blended using the leaf motions blending and scaling values and the blended transform is returned.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetBaseTransform"></A><A HREF="geXForm3dIndexed.htm#geXForm3d">geXForm3d</A><B><FONT COLOR="#000080">* BaseTransform);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the base transform of the sub motion specified by index SubMotionIndex of M to BaseTransform.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetBlendPath"></A><A HREF="gePathIndexed.htm#gePath"><FONT COLOR="#000080">gePath</FONT></A><B><FONT COLOR="#000080">* Blend);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the blend path of the sub motion specified by index SubMotionIndex of M to Blend.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetName"></A><A HREF="BasetypesIndexed.htm#GENESISCC">GENESISCC</A><B><FONT COLOR="#000080"> </FONT><FONT COLOR="#800000">geMotion_SetName</FONT><FONT COLOR="#000080">(</B></FONT><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B><FONT COLOR="#000080">* M, </B></FONT><FONT COLOR="#0000ff">const</FONT><B><FONT COLOR="#000080"> </B></FONT><FONT COLOR="#0000ff">char</FONT><B><FONT COLOR="#000080"> * Name);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the name of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to Name.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetTimeOffset"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> TimeOffset);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the time offset of the sub motion specified by index SubMotionIndex of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to TimeOffset.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetTimeScale"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> TimeScale);</B></FONT> </P>
+<B><BLOCKQUOTE>This function sets the time scale of the sub motion specified by index SubMotionIndex of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to TimeScale.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="SetupEventIterator"></A><A HREF="BasetypesIndexed.htm#geFloat">geFloat</A><B><FONT COLOR="#000080"> EndTime);</B></FONT> </P>
+<B><BLOCKQUOTE>This function initializes the event iterator of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to start at StartTime and stop before EndTime.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: nothing.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Notes:</B> <BR>
+&nbsp;&nbsp;&nbsp; from MOTION.H: For searching or querying the array for events between two times times are compaired [StartTime,EndTime), '[' is inclusive, ')' is non-inclusive.&nbsp; This prepares the geMotion_GetNextEvent() function.</BLOCKQUOTE>
+<BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToBinaryFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* pFile);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes the data of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> pFile in binary format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr>
+<P><A NAME="WriteToFile"></A><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B><FONT COLOR="#000080">* f);</B></FONT> </P>
+<B><BLOCKQUOTE>This function writes the data of </B><A HREF="geMotionIndexed.htm#geMotion">geMotion</A><B> M to </B><A HREF="geVFileIndexed.htm#geVFile">geVFile</A><B> f in ascii format.</B> </BLOCKQUOTE>
+<B><BLOCKQUOTE>Returns: </B><A HREF="BasetypesIndexed.htm#GE_FALSE">GE_FALSE</A><B> otherwise.</BLOCKQUOTE>
+</B><BLOCKQUOTE><A HREF="geMotionIndexed.htm#Contents">Return to Contents</A></BLOCKQUOTE>
+<hr></BODY>
+</HTML>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:23:57 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:55:14 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

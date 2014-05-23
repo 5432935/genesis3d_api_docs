@@ -1,0 +1,309 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>geBodyInstIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>geBodyInst</b></font> </p>
+
+<p><font color="#000080"><b>Description: Actor body instance
+interface. </b></font></p>
+
+<p>Source file: ...\genesis3d\OpenSource\Source\Actor\bodyinst.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="geBodyInstIndexed.htm#Create">Create</a>, <a href="geBodyInstIndexed.htm#Destroy">Destroy</a>, <a
+href="geBodyInstIndexed.htm#GetGeometry">GetGeometry</a></p>
+
+<p><font color="#000080"><b>Types: </b></font><a
+href="geBodyInstIndexed.htm#geBodyInst">geBodyInst</a><b> </b><font color="#800000"><b>,
+</b></font><a href="geBodyInstIndexed.htm#geBodyInst_Index">geBodyInst_Index</a><b> </b><font
+color="#800000"><b>, </b></font><a href="geBodyInstIndexed.htm#geBodyInst_FaceType">geBodyInst_FaceType</a><b>
+</b><font color="#800000"><b>, </b></font><a
+href="geBodyInstIndexed.htm#geBodyInst_SkinVertex">geBodyInst_SkinVertex</a><font
+color="#800000"><b>, </b></font><a href="geBodyInstIndexed.htm#geBodyInst_Geometry">geBodyInst_Geometry</a></p>
+
+<p><a name="x"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>Overview: </b></font><a href="geBodyInstIndexed.htm#overview">view</a></p>
+
+<p><font color="#000080">Changes for Genesis3D v1.6: <b>None&nbsp;
+</b></font></p>
+
+<p><font color="#000080"><b>&nbsp;<hr></b></font></p>
+
+<p><a name="Overview"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Overview:</i></b></font></p>
+
+<p>Format for <a href="geBodyInstIndexed.htm#geBodyInst_Geometry">geBodyInst_Geometry</a>.FaceList:</p>
+
+<dl>
+    <dd>&nbsp;primitive type (GE_BODY_FACE_TRIANGLE,&nbsp;
+        GE_BODY_FACE_TRISTRIP, GE_BODY_FACE_TRIFAN )</dd>
+    <dd>&nbsp;followed by material index</dd>
+    <dd>&nbsp;followed by...</dd>
+    <dd>&nbsp;case primitive </dd>
+    <dd>&nbsp;&nbsp;GE_BODY_FACE_TRIANGLE:</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 1, normal index 1</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 2, normal index 2</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 3, normal index 3</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;(next primitive)</dd>
+    <dd>&nbsp;&nbsp;GE_BODY_FACE_TRISTRIP:</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;triangle count</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 1, normal index 1</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 2, normal index 2</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 3, normal index 3</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 4, normal index 4</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;... # vertices is triangle
+        count+2</dd>
+    <dd>&nbsp;&nbsp; (next primitive)</dd>
+    <dd>&nbsp;&nbsp;GE_BODY_FACE_TRIFAN:</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;triangle count</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 1, normal index 1</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 2, normal index 2</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 3, normal index 3</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;vertex index 4, normal index 4</dd>
+    <dd>&nbsp;&nbsp; &nbsp;&nbsp;... # vertices is triangle
+        count+2</dd>
+    <dd>&nbsp;&nbsp; (next primitive)</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p><font color="#000080"><b>&nbsp;<hr></b></font></p>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font><font
+color="#000080"><b>&nbsp;</b></font></p>
+
+<p><a name="geBodyInst"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef struct geBodyInst </b></font><font
+color="#800000"><b>geBodyInst</b></font><font color="#000080"><b>;</b></font></p>
+
+<p>NOTE: The contents of this structure have been intentionally
+left out of the interface, by the designers of this module. Think
+of this as a handle only.</p>
+
+<blockquote>
+    <p><strong>For the curious, the following is private and not
+    part of the API.</strong></p>
+</blockquote>
+
+<blockquote>
+    <p>typedef struct geBodyInst<br>
+    {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">const </font><a
+    href="geBodyIndexed.htm#geBody">geBody</a>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BodyTemplate;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geBodyInstIndexed.htm#geBodyInst_Geometry">geBodyInst_Geometry</a>
+    &nbsp;&nbsp;ExportGeometry;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">int</font>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastLevelOfDetail;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="geBodyInstIndexed.htm#geBodyInst_Index">geBodyInst_Index</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceCount;<br>
+    } geBodyInst;<br>
+    <br>
+    </p>
+</blockquote>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="geBodyInst_Index"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#int16">int16</a><font color="#000080"><b>
+</b></font><font color="#800000"><b>geBodyInst_Index</b></font><font
+color="#000080"><b>;</b></font></p>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<dl>
+    <dd><a name="geBodyInst_FaceType"><font color="#800000"><b></b></font></a><font
+        color="#800000"><b>geBodyInst_FaceType</b></font></dd>
+    <dd>typedef enum {</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_BODYINST_FACE_TRIANGLE,</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_BODYINST_FACE_TRISTRIP,</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GE_BODYINST_FACE_TRIFAN</dd>
+    <dd>} geBodyInst_FaceType;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><a name="geBodyInst_SkinVertex"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geBodyInst_SkinVertex</b></font></p>
+
+<dl>
+    <dd>typedef struct geBodyInst_SkinVertex {</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVPoint;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#geFloat">geFloat</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVU,SVV;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReferenceBoneIndex;</dd>
+    <dd>} geBodyInst_SkinVertex;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<dl>
+    <dt>&nbsp;</dt>
+</dl>
+
+<p><a name="geBodyInst_Geometry"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geBodyInst_Geometry</b></font></p>
+
+<dl>
+    <dd>typedef struct geBodyInst_Geometry {</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyInstIndexed.htm#geBodyInst">geBodyInst_Index</a>&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SkinVertexCount;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyInstIndexed.htm#geBodyInst_SkinVertex">geBodyInst_SkinVertex</a>*
+        &nbsp;&nbsp;SkinVertexArray;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyInstIndexed.htm#geBodyInst">geBodyInst_Index</a>&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NormalCount;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NormalArray;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyInstIndexed.htm#geBodyInst">geBodyInst_Index</a>&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceCount;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="BasetypesIndexed.htm#int32">int32</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceListSize;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geBodyInstIndexed.htm#geBodyInst">geBodyInst_Index</a>*
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FaceList;</dd>
+    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="geVec3dIndexed.htm_#geVec3d">geVec3d</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maxs,
+        Mins;</dd>
+    <dd>}&nbsp;geBodyInst_Geometry;</dd>
+</dl>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><font color="#000080"><b>&nbsp;<hr></b></font></p>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="Create"></a><a
+href="geBodyInstIndexed.htm#geBodyInst">geBodyInst</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBodyInst_Create</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geBodyIndexed.htm#geBody">geBody</a><font
+color="#000080"><b>* B );</b></font></p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="Destroy"><font color="#0000FF"></font></a><font
+color="#0000FF">void</font><font color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBodyInst_Destroy</b></font><font
+color="#000080"><b>(</b></font><a
+href="geBodyInstIndexed.htm#geBodyInst">geBodyInst</a><font
+color="#000080"><b>** BI);</b></font></p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="GetGeometry"><font color="#0000FF"></font></a><font
+color="#0000FF">const</font><font color="#000080"><b> </b></font><a
+href="geBodyInstIndexed.htm#geBodyInst_Geometry">geBodyInst_Geometry</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geBodyInst_GetGeometry</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geBodyInstIndexed.htm#geBodyInst">geBodyInst</a><font
+color="#000080"><b>* BI, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geVec3dIndexed.htm_#geVec3d">geVec3d</a><font
+color="#000080"><b>* Scale, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geXFArrayIndexed.htm#geXFArray">geXFArray</a><font
+color="#000080"><b>* BoneXformArray, </b></font><font
+color="#0000FF">int</font><font color="#000080"><b>
+LevelOfDetail, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a
+href="geCameraIndexed.htm#geCamera">geCamera</a><font
+color="#000080"><b>* Camera);</b></font></p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="geBodyInstIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:36:25 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:56:37 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

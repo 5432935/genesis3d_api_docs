@@ -1,0 +1,628 @@
+<html>
+
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Template"
+content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>VFile_SystemIndexed</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+
+
+<p><IMG SRC="img/UNG3DLOG.jpg" width="333" height="49"></p>
+
+<p><font color="#008000" size="6"><b>VFile_System</b></font> </p>
+
+<p><font color="#000080"><b>Description: Collection file system
+interface</b></font></p>
+
+<p>Source file: &#133;\genesis3d\OpenSource\Source\VFile\ fsvfs.h
+&amp; FSMEMORY.h &amp; fsdos.h</p>
+
+<p><a name="Contents"><font color="#0000FF" size="5"><b><i></i></b></font></a><font
+color="#0000FF" size="5"><b><i>Contents:</i></b></font> </p>
+
+<p><font color="#000080"><b>Functions: </b></font><a
+href="VFile_SystemIndexed.htm#RegisterFileSystem">RegisterFileSystem</a>, <a
+href="VFile_SystemIndexed.htm#FSVFS_GetAPIs">FSVFS_GetAPIs</a>, <a
+href="VFile_SystemIndexed.htm#FSMemory_GetAPIs">FSMemory_GetAPIs</a>, <a
+href="VFile_SystemIndexed.htm#FSDos_GetAPIs">FSDos_GetAPIs</a></p>
+
+<p><a name="x"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>Types:</b></font><font color="#800000"><b> </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_SystemAPIs">SystemAPIs</a><font color="#800000"><b>,
+</b></font><a href="VFile_SystemIndexed.htm#geVFile_FinderCreateFN">FinderCreateFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_FinderGetNextFileFN">FinderGetNextFileFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_FinderGetPropertiesFN">FinderGetPropertiesFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_FinderDestroyFN">FinderDestroyFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_OpenNewSystemFN">OpenNewSystemFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_UpdateContextFN">UpdateContextFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_OpenFN">OpenFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_DeleteFileFN">DeleteFileFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_RenameFileFN">RenameFileFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_FileExistsFN">FileExistsFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_DisperseFN">DisperseFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_CloseFN">CloseFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_GetSFN">GetSFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_ReadFN">ReadFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_WriteFN">WriteFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_SeekFN">SeekFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_EOFFN">EOFFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_TellFN">TellFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_GetPropertiesFN">GetPropertiesFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_SizeFN">SizeFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_SetSizeFN">SetSizeFN</a><font
+color="#800000"><b>, </b></font><a
+href="VFile_SystemIndexed.htm#geVFile_SetAttributesFN">SetAttributesFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_SetTimeFN">SetTimeFN</a><font
+color="#800000"><b>, </b></font><a href="VFile_SystemIndexed.htm#geVFile_SetHintsFN">SetHintsFN</a><font
+color="#000080"><b>&nbsp;</b></font></p>
+
+<p><font color="#000080">&nbsp;Addition for Genesis3D v1.6</font>:
+<a href="VFile_SystemIndexed.htm#CloseAPI">CloseAPI</a></p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Types:</i></b></font> </p>
+
+<p><a name="geVFile_SystemAPIs"><font color="#800000"><b></b></font></a><font
+color="#800000"><b>geVFile_SystemAPIs</b></font></p>
+
+<dl>
+    <dd>typedef&nbsp;struct&nbsp;geVFile_SystemAPIs {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_FinderCreateFN">geVFile_FinderCreateFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FinderCreate;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_FinderGetNextFileFN">geVFile_FinderGetNextFileFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FinderGetNextFile;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_FinderGetPropertiesFN">geVFile_FinderGetPropertiesFN</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;FinderGetProperties;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_FinderDestroyFN">geVFile_FinderDestroyFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FinderDestroy;<br>
+        &nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_OpenNewSystemFN">geVFile_OpenNewSystemFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenNewSystem;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_UpdateContextFN">geVFile_UpdateContextFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UpdateContext;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_OpenFN">geVFile_OpenFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_DeleteFileFN">geVFile_DeleteFileFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeleteFile;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_RenameFileFN">geVFile_RenameFileFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RenameFile;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_FileExistsFN">geVFile_FileExistsFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileExists;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_DisperseFN">geVFile_DisperseFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disperse;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_CloseFN">geVFile_CloseFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close;<br>
+        &nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_GetSFN">geVFile_GetSFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GetS;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_ReadFN">geVFile_ReadFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Read;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_WriteFN">geVFile_WriteFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_SeekFN">geVFile_SeekFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seek;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_EOFFN">geVFile_EOFFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eof;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_TellFN">geVFile_TellFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tell;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VFile_SystemIndexed.htm#geVFile_SizeFN">geVFile_SizeFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size;<br>
+        &nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_GetPropertiesFN">geVFile_GetPropertiesFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GetProperties;<br>
+        &nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_SetSizeFN">geVFile_SetSizeFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetSize;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_SetAttributesFN">geVFile_SetAttributesFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetAttributes;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_SetTimeFN">geVFile_SetTimeFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetTime;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="VFile_SystemIndexed.htm#geVFile_SetHintsFN">geVFile_SetHintsFN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetHints;<br>
+        }&nbsp;geVFile_SystemAPIs;</dd>
+</dl>
+
+<p>&nbsp;</p>
+
+<p><font color="#000080"><b>&nbsp;</b></font><a
+name="geVFile_FinderCreateFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * &nbsp;&nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_FinderCreateFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FileSystem, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * FileSpec);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_FinderGetNextFileFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> &nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_FinderGetNextFileFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_FinderGetPropertiesFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> &nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_FinderGetPropertiesFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><a
+href="geVFileIndexed.htm#Properties">geVFile_Properties</a><font
+color="#000080"><b>* Properties);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_FinderDestroyFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> &nbsp;&nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_FinderDestroyFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_OpenNewSystemFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * &nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_OpenNewSystemFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * Name, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * &nbsp;Context, unsigned </b></font><font
+color="#0000FF">int</font><font color="#000080"><b> </b></font></p>
+
+<p><font color="#000080"><b>OpenModeFlags);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_UpdateContextFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_UpdateContextFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Context, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> ContextSize);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_OpenFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * &nbsp;(</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_OpenFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * Name, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * &nbsp;Context, unsigned </b></font><font
+color="#0000FF">int</font><font color="#000080"><b>
+OpenModeFlags);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_DeleteFileFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_DeleteFileFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * FileName);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_RenameFileFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_RenameFileFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * FileName, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * NewFileName);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_FileExistsFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_FileExistsFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * FileName);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_DisperseFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_DisperseFN</b></font><font
+color="#000080"><b>)(</b></font> <a
+href="geVFileIndexed.htm#geVFile">geVFile</a><font
+color="#000080"><b>* FS, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">char</font><font
+color="#000080"><b> * Directory, </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> Recursive);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_CloseFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><font color="#0000FF">void</font><font
+color="#000080"><b> &nbsp; (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_CloseFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_GetSFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_GetSFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Buff, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> MaxSize);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_ReadFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_ReadFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Buff, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> Count);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_WriteFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_WriteFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Buff, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> Count);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SeekFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SeekFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">int</font><font
+color="#000080"><b> Where, geVFile_Whence Whence);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_EOFFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_EOFFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_TellFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_TellFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, long* Position);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_GetPropertiesFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_GetPropertiesFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, </b></font><a
+href="geVFileIndexed.htm#Properties">geVFile_Properties</a><font
+color="#000080"><b>* Properties);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SizeFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef&nbsp;</b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SizeFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> const</font><font
+color="#000080"><b> </b></font><font color="#0000FF">void</font><font
+color="#000080"><b> * Handle, long* Size);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SetSizeFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SetSizeFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, long Size);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SetAttributesFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SetAttributesFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><a
+href="geVFileIndexed.htm#Attributes">geVFile_Attributes</a><font
+color="#000080"><b> Attributes);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SetTimeFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SetTimeFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVFileIndexed.htm#Time">geVFile_Time</a><font
+color="#000080"><b>* Time);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<p><a name="geVFile_SetHintsFN"><font color="#000080"><b></b></font></a><font
+color="#000080"><b>typedef </b></font><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> (</b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> *</b></font><font color="#800000"><b>geVFile_SetHintsFN</b></font><font
+color="#000080"><b>)(</b></font><font color="#0000FF"> void</font><font
+color="#000080"><b> * Handle, </b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="geVFileIndexed.htm#Hints">geVFile_Hints</a><font
+color="#000080"><b>* Hints);</b></font></p>
+
+<p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><font color="#0000FF" size="5"><b><i>Functions:</i></b></font>
+</p>
+
+<hr>
+
+<p><a name="RegisterFileSystem"></a><a
+href="BasetypesIndexed.htm#geBoolean">geBoolean</a><font
+color="#000080"><b> </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>VFile_RegisterFileSystem</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">const</font><font
+color="#000080"><b> </b></font><a href="VFIle_SystemIndexed.htm">geVFile_SystemAPIs</a><font
+color="#000080"><b>* &nbsp;APIs, </b></font><a
+href="geVFileIndexed.htm#TypeIdentifier">geVFile_TypeIdentifier</a><font
+color="#000080"><b>* &nbsp;Type);</b></font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FSVFS_GetAPIs"><font color="#0000FF"></font></a><font
+color="#0000FF">const</font><font color="#000080"><b>&nbsp;</b></font><a
+href="VFIle_SystemIndexed.htm">geVFile_SystemAPIs</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>FSVFS_GetAPIs</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font></p>
+
+<p>Note: This is the primary function to use</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FSMemory_GetAPIs"><font color="#0000FF"></font></a><font
+color="#0000FF">const</font><font color="#000080"><b>&nbsp;</b></font><a
+href="VFIle_SystemIndexed.htm">geVFile_SystemAPIs</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>FSMemory_GetAPIs</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font></p>
+
+<p>Note: This is located in a separate file (fsmemory.h) but it
+depends of stuff here, so I am combining with file here</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+    <p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a name="FSDos_GetAPIs"><font color="#0000FF"></font></a><font
+color="#0000FF">const</font><font color="#000080"><b>&nbsp;</b></font><a
+href="VFIle_SystemIndexed.htm">geVFile_SystemAPIs</a><font
+color="#000080"><b>* </b></font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>FSDos_GetAPIs</b></font><font
+color="#000080"><b>(</b></font><font color="#0000FF">void</font><font
+color="#000080"><b>);</b></font></p>
+
+<p>Note: This is located in a separate file (fsdos.h) but it
+depends of stuff here, so I am combining with file here</p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+
+<p><a href="BasetypesIndexed.htm#GENESISAPI">GENESISAPI</a><font
+color="#000080"><b> </b>void </font><a
+href="BasetypesIndexed.htm#GENESISCC">GENESISCC</a><font
+color="#000080"><b> </b></font><font color="#800000"><b>geVFile_CloseAPI
+</b></font><font color="#000080">(void);</font></p>
+
+<p><font color="#000080">Note: this is found in ...\VFile\vfile.h</font></p>
+
+<p><font color="#000080">Closes and frees API's</font></p>
+
+<blockquote>
+    <p><a href="VFile_SystemIndexed.htm#Contents">Return to Contents</a></p>
+</blockquote>
+
+<hr>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 4:20:57 Nov 23, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:58:12 May 23, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
